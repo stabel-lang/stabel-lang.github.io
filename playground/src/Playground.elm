@@ -2,6 +2,8 @@ module Playground exposing (main)
 
 import Browser
 import Html exposing (Html)
+import Html.Attributes as Attributes
+import Html.Events as Events
 
 
 
@@ -24,12 +26,16 @@ init _ =
 
 
 type Msg
-    = NoOp
+    = EditSource String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        EditSource newSource ->
+            ( { model | source = newSource }
+            , Cmd.none
+            )
 
 
 
@@ -38,7 +44,19 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    Html.text "Hello"
+    Html.div
+        [ Attributes.style "height" "100vh"
+        ]
+        [ Html.h1
+            []
+            [ Html.text "Playground" ]
+        , Html.textarea
+            [ Attributes.style "width" "50vw"
+            , Attributes.style "height" "50%"
+            , Events.onInput EditSource
+            ]
+            [ Html.text model.source ]
+        ]
 
 
 
