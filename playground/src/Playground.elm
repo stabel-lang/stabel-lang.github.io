@@ -1,9 +1,26 @@
 module Playground exposing (main)
 
 import Browser
+import Dict exposing (Dict)
 import Html exposing (Html)
 import Html.Attributes as Attributes
 import Html.Events as Events
+import Lesson01
+import Lesson02
+import LessonContract exposing (LessonContract)
+
+
+
+-- LESSONS
+
+
+lessons : Dict String LessonContract
+lessons =
+    [ Lesson01.contract
+    , Lesson02.contract
+    ]
+        |> List.map LessonContract.asDictEntry
+        |> Dict.fromList
 
 
 
@@ -11,12 +28,16 @@ import Html.Events as Events
 
 
 type alias Model =
-    { source : String }
+    { activeLesson : LessonContract
+    , source : String
+    }
 
 
 init : flags -> ( Model, Cmd Msg )
 init _ =
-    ( { source = "" }
+    ( { activeLesson = Lesson01.contract
+      , source = Lesson01.contract.content
+      }
     , Cmd.none
     )
 
@@ -27,6 +48,7 @@ init _ =
 
 type Msg
     = EditSource String
+    | SwitchLesson String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -36,6 +58,19 @@ update msg model =
             ( { model | source = newSource }
             , Cmd.none
             )
+
+        SwitchLesson contractKey ->
+            case Dict.get contractKey lessons of
+                Just contract ->
+                    ( { model
+                        | activeLesson = contract
+                        , source = contract.content
+                      }
+                    , Cmd.none
+                    )
+
+                Nothing ->
+                    ( model, Cmd.none )
 
 
 
@@ -50,13 +85,30 @@ view model =
         [ Html.h1
             []
             [ Html.text "Playground" ]
-        , Html.textarea
-            [ Attributes.style "width" "50vw"
-            , Attributes.style "height" "50%"
-            , Events.onInput EditSource
+        , Html.div [ Attributes.style "height" "50%" ]
+            [ Html.textarea
+                [ Attributes.style "width" "50vw"
+                , Attributes.style "height" "100%"
+                , Events.onInput EditSource
+                , Attributes.value model.source
+                ]
+                []
+            , lessonSwitcher model
             ]
-            [ Html.text model.source ]
         ]
+
+
+lessonSwitcher : Model -> Html Msg
+lessonSwitcher model =
+    Html.select
+        [ Events.onInput SwitchLesson ]
+        (List.map lessonSwitcherOption (Dict.values lessons))
+
+
+lessonSwitcherOption : LessonContract -> Html Msg
+lessonSwitcherOption contract =
+    Html.option [ Attributes.value contract.key ]
+        [ Html.text contract.label ]
 
 
 
