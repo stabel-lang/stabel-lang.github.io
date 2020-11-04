@@ -1,4 +1,4 @@
-module Playground exposing (main)
+port module Playground exposing (main)
 
 import Browser
 import Dict exposing (Dict)
@@ -30,6 +30,7 @@ lessons =
 type alias Model =
     { activeLesson : LessonContract
     , source : String
+    , result : String
     }
 
 
@@ -37,6 +38,7 @@ init : flags -> ( Model, Cmd Msg )
 init _ =
     ( { activeLesson = Lesson01.contract
       , source = Lesson01.contract.content
+      , result = ""
       }
     , Cmd.none
     )
@@ -49,6 +51,8 @@ init _ =
 type Msg
     = EditSource String
     | SwitchLesson String
+    | Compile String
+    | CompilationResult String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -72,6 +76,16 @@ update msg model =
                 Nothing ->
                     ( model, Cmd.none )
 
+        Compile source ->
+            ( model
+            , compileSource source
+            )
+
+        CompilationResult result ->
+            ( { model | result = result }
+            , Cmd.none
+            )
+
 
 
 -- VIEW
@@ -85,15 +99,28 @@ view model =
         [ Html.h1
             []
             [ Html.text "Playground" ]
-        , Html.div [ Attributes.style "height" "50%" ]
-            [ Html.textarea
-                [ Attributes.style "width" "50vw"
-                , Attributes.style "height" "100%"
-                , Events.onInput EditSource
-                , Attributes.value model.source
+        , Html.div
+            [ Attributes.style "height" "100%" ]
+            [ Html.div
+                [ Attributes.style "height" "50%" ]
+                [ Html.textarea
+                    [ Attributes.style "width" "50vw"
+                    , Attributes.style "height" "100%"
+                    , Events.onInput EditSource
+                    , Attributes.value model.source
+                    ]
+                    []
+                , Html.span
+                    []
+                    [ Html.text model.result ]
                 ]
+            , Html.div
                 []
-            , lessonSwitcher model
+                [ lessonSwitcher model
+                , Html.button
+                    [ Events.onClick <| Compile model.source ]
+                    [ Html.text "Run" ]
+                ]
             ]
         ]
 
@@ -112,6 +139,16 @@ lessonSwitcherOption contract =
 
 
 
+-- PORTS
+
+
+port compileSource : String -> Cmd msg
+
+
+port compilationResult : (String -> msg) -> Sub msg
+
+
+
 -- MAIN
 
 
@@ -121,5 +158,5 @@ main =
         { init = init
         , update = update
         , view = view
-        , subscriptions = always Sub.none
+        , subscriptions = always <| compilationResult CompilationResult
         }
