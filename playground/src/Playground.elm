@@ -83,6 +83,7 @@ update msg model =
                     ( { model
                         | activeLesson = contract
                         , source = contract.content
+                        , result = ""
                       }
                     , Cmd.none
                     )
