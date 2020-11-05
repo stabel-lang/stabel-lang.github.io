@@ -7,6 +7,9 @@ import Html.Attributes as Attributes
 import Html.Events as Events
 import Lesson01
 import Lesson02
+import Lesson03
+import Lesson04
+import Lesson05
 import LessonContract exposing (LessonContract)
 
 
@@ -18,6 +21,9 @@ lessons : Dict String LessonContract
 lessons =
     [ Lesson01.contract
     , Lesson02.contract
+    , Lesson03.contract
+    , Lesson04.contract
+    , Lesson05.contract
     ]
         |> List.map LessonContract.asDictEntry
         |> Dict.fromList
