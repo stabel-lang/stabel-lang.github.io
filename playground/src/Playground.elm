@@ -10,6 +10,10 @@ import Lesson02
 import Lesson03
 import Lesson04
 import Lesson05
+import Lesson06
+import Lesson07
+import Lesson08
+import Lesson09
 import LessonContract exposing (LessonContract)
 
 
@@ -24,6 +28,10 @@ lessons =
     , Lesson03.contract
     , Lesson04.contract
     , Lesson05.contract
+    , Lesson06.contract
+    , Lesson07.contract
+    , Lesson08.contract
+    , Lesson09.contract
     ]
         |> List.map LessonContract.asDictEntry
         |> Dict.fromList
