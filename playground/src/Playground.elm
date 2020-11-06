@@ -109,33 +109,51 @@ update msg model =
 view : Model -> Html Msg
 view model =
     Html.div
-        [ Attributes.style "height" "100vh"
+        [ Attributes.style "height" "100%"
+        , Attributes.style "display" "flex"
+        , Attributes.style "flex-direction" "column"
         ]
-        [ Html.h1
+        [ Html.div
             []
-            [ Html.text "Playground" ]
-        , Html.div
-            [ Attributes.style "height" "100%" ]
-            [ Html.div
-                [ Attributes.style "height" "50%" ]
-                [ Html.textarea
-                    [ Attributes.style "width" "50vw"
-                    , Attributes.style "height" "100%"
-                    , Events.onInput EditSource
-                    , Attributes.value model.source
-                    ]
-                    []
-                , Html.span
-                    []
-                    [ Html.text model.result ]
-                ]
-            , Html.div
+            [ Html.h1
                 []
-                [ lessonSwitcher model
-                , Html.button
-                    [ Events.onClick <| Compile model.source ]
-                    [ Html.text "Run" ]
+                [ Html.text "Playground" ]
+            , lessonSwitcher model
+            , Html.button
+                [ Events.onClick <| Compile model.source ]
+                [ Html.text "Run" ]
+            ]
+        , Html.div
+            [ Attributes.style "display" "flex"
+            , Attributes.style "justify-content" "space-between"
+            , Attributes.style "flex-grow" "1"
+            , Attributes.style "height" "100%"
+            ]
+            [ Html.textarea
+                [ Attributes.style "width" "100%"
+                , Attributes.style "height" "100%"
+                , Attributes.style "padding" "8px"
+                , Attributes.style "font-size" "16px"
+                , Attributes.style "font-family" "monospace"
+                , Attributes.style "margin-right" "8px"
+                , Attributes.style "overflow-y" "scroll"
+                , Attributes.style "resize" "none"
+                , Events.onInput EditSource
+                , Attributes.value model.source
                 ]
+                []
+            , Html.div
+                [ Attributes.style "width" "100%"
+                , Attributes.style "height" "100%"
+                , Attributes.style "padding" "8px"
+                , Attributes.style "background-color" "#000000"
+                , Attributes.style "color" "#ffffff"
+                , Attributes.style "white-space" "pre"
+                , Attributes.style "font-size" "16px"
+                , Attributes.style "font-family" "monospace"
+                , Attributes.style "overflow" "scroll"
+                ]
+                [ Html.text model.result ]
             ]
         ]
 
