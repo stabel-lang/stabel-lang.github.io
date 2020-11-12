@@ -12,14 +12,6 @@ npm run build
 
 popd
 
-# Build frontpage
-pushd frontpage
-
-npm ci
-npm run build
-
-popd
-
 # Upload to s3
 pushd dist
 

@@ -4,8 +4,8 @@
   "private": true,
   "description": "A playground for the Play programming language",
   "scripts": {
-    "start": "parcel src/playground.html",
-    "build": "parcel build src/playground.html -d ../dist --no-source-maps",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html -d ../dist --no-source-maps",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Robin Heggelund Hansen",
