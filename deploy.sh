@@ -2,15 +2,8 @@
 set -e
 
 rm -r dist || true
-mkdir dist
-
-# Build playground
-pushd playground
-
 npm ci
 npm run build
-
-popd
 
 # Upload to s3
 pushd dist

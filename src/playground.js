@@ -1,5 +1,5 @@
 import { Elm } from './Playground.elm';
-import Compiler from '../../../play/wasm_tests/compiler';
+import Compiler from '../../play/wasm_tests/compiler';
 import '@babel/polyfill';
 import wabtInit from 'wabt';
 
