@@ -2,35 +2,89 @@
     <head>
         <meta charset="utf-8">
         <title>Play</title>
+
+        <style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #fcfcfd;
+}
+
+header {
+    color: #fcfcfd;
+    background: #36af6d;
+}
+
+#header-content {
+    width: 990px;
+    margin: 0 auto;
+    padding-bottom: 24px;
+}
+
+#header-content nav {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#header-content nav h1 {
+    margin: 0;
+}
+
+#header-content nav ul {
+    display: flex;
+    align-items: flex-end;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header-content nav ul li {
+    margin-right: 6px;
+}
+        </style>
     </head>
     <body>
         <header>
-            <h1 id="title">Play</h1>
-            <span>alpha 1</span>
+            <div id="header-content">
+                <nav>
+                    <h1>
+                        <span>Play</span>
+                        <span class="small">v0.1</span>
+                    </h1>
 
-            <nav>
+                    <ul>
+                        <li><a alt="" href="">News</a></li>
+                        <li><a alt="" href="">Forum</a></li>
+                        <li><a alt="" href="">Source</a></li>
+                    </ul>
+                </nav>
+
+                <hr />
+
+                <h2>An easy to learn language, for making reliable applications</h2>
+
                 <ul>
-                    <li><a alt="" href="">News</a></li>
-                    <li><a alt="" href="">Forum</a></li>
-                    <li><a alt="" href="">Source</a></li>
+                    <li>Minimal syntax makes the language easy to learn and get started with.</li>
+                    <li>Strong static typing let's you know when you've made a mistake.</li>
+                    <li>There are no side effects, making it easier to reason about your code.</li>
+                    <li>Compiles to web assembly, so it can run in- and outside of a browser.</li>
                 </ul>
-            </nav>
 
-            <hr />
-
-            <h2>An easy to learn language, for making reliable applications</h2>
-
-            <ul>
-                <li>Minimal syntax makes the language easy to learn and get started with.</li>
-                <li>Strong static typing let's you know when you've made a mistake.</li>
-                <li>There are no side effects, making it easier to reason about your code.</li>
-                <li>Compiles to web assembly, so it can run in- and outside of a browser.</li>
-            </ul>
-
-            <a class="link-button" alt="" href="">
-                Learn
-            </a>
-
+                <a class="link-button" alt="Try the Play language" href="/playground.html">
+                    Learn
+                </a>
+            </div>
         </header>
 
         <section>
@@ -78,7 +132,7 @@
         </section>
 
         <footer>
-            <p>Sounds good? Why don't you <a alt="" href="">try it out?</a> </p>
+            <p>Sounds good? Why don't you <a alt="Try the Play language" href="/playground.html">try it out?</a></p>
         </footer>
     </body>
 </html>
