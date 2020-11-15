@@ -15,15 +15,18 @@ contract =
 content : String
 content =
     """
-    # Sometimes it can be nice to re-arrange values on the stack, and Play has some built in words for that purpose.
+    # Sometimes it can be nice to re-arrange values on the stack. 
+    # Play has some built in words for that purpose.
 
     # 'dup' let's you duplicate a value
+
     def: square
     : dup *
 
     # 'swap' switches the positions of two values
     # 'drop' discards a value
     # When you have two values on the stack, like '4' and '5', you can drop '4' like this
+
     def: drop-first
     : swap drop
 

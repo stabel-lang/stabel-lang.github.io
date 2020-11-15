@@ -15,7 +15,7 @@ contract =
 content : String
 content =
     """
-    # Play allows you to define compound structures
+    # Play allows you to define compound structures.
 
     deftype: Coordinate
     : x Int
@@ -34,6 +34,6 @@ content =
     type: -- Int
     entry: true
     : 1 2 >Coordinate # creates a Coordinate(x=1, y=2)
-      5 >x # Replaces the Coordinate(x=1, y=2) with Coordinate(x=5, y=2)
-      x> # Replaces the Coordinate(x=5, y=2) with the value of x.
+      5 >x            # Replaces the Coordinate(x=1, y=2) with Coordinate(x=5, y=2)
+      x>              # Replaces the Coordinate(x=5, y=2) with the value of x.
     """

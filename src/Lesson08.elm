@@ -15,7 +15,7 @@ contract =
 content : String
 content =
     """
-    # Multi words allows you to be very specific about when a specific condition applies.
+    # Multi-words allows you to be very specific about when a specific condition applies.
 
     deftype: Coordinate
     : x Int

@@ -15,8 +15,9 @@ contract =
 content : String
 content =
     """
-    # Play is staticly typed, but in most cases is smart enough to infer what the type of a word is without any input from you.
-    # The word definitions in the previous lesson are shown here with type annotations.
+    # Play is staticly typed. 
+    # In most cases, Play is smart enough to infer what the type of words.
+    # The word definitions in the previous example are shown here with type annotations.
 
     def: square
     type: Int -- Int
@@ -33,7 +34,7 @@ content =
       drop-first
       square
 
-    # '--' is what seperates inputs from outputs.
+    # '--' is what seperates requirements from results.
     # 'drop-first' requires two Int's to be on the stack, and will replace them with one Int.
     # 'main' requires nothing to be on the stack, and will add one Int to it.
     """

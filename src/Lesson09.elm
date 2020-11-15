@@ -49,5 +49,5 @@ content =
     entry: true
     : >EmptyList
       10 push
-      0 first-or-default # Could have use 'first>' here
+      0 first-or-default # Could have used 'first>' here.
     """

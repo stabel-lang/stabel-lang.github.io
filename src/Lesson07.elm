@@ -26,7 +26,8 @@ content =
 
     # This defines a Union of On and Off, called State.
     # Whenever you use State as a type, you're saying that it really could be either On or Off.
-    # To handle such types we need to use multi-words, which are words with a definition that depends on the type that is actually present.
+    # To handle such types we need to use multi-words.
+    # Multi-words are words with a definition that depends on the type that is actually present on the stack.
 
     defmulti: state->int
     type: State -- Int
