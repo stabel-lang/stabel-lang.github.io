@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #fcfcfd;
+}
+
+header {
+    color: #fcfcfd;
+    background: #36af6d;
+}
+
+#header-content {
+    width: 990px;
+    margin: 0 auto;
+    padding-bottom: 24px;
+}
+
+#header-content nav {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+#header-content nav h1 {
+    margin: 0;
+}
+
+#header-content nav ul {
+    display: flex;
+    align-items: flex-end;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header-content nav ul li {
+    margin-right: 6px;
+}
+
+#selling-points {
+    width: 990px;
+    margin: 0 auto;
+}
+
+#selling-points .content {
+    display: flex;
+    justify-content: space-between;
+}
