@@ -5,11 +5,33 @@
 body {
     margin: 0;
     padding: 0;
+    font-size: 20px;
 }
 
 a {
     text-decoration: none;
     color: #fcfcfd;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a.link-button {
+    display: inline-block;
+    background: #36af6d;
+    color: #fcfcfc;
+    border: 1px solid;
+    border-radius: .3rem;
+    border-color: #fcfcfc;
+    padding: .8rem 2rem;
+    font-size: 1.25rem;
+}
+
+a.link-button:hover {
+    color: #ffffff;
+    background: #38b772;
+    text-decoration: none;
 }
 
 header {
@@ -26,12 +48,18 @@ header {
 #header-content nav {
     display: flex;
     justify-content: space-between;
-    padding-left: 12px;
-    padding-right: 12px;
 }
 
 #header-content nav h1 {
     margin: 0;
+}
+
+#header-content nav h1 .big {
+    font-size: 1.25em;
+}
+
+#header-content nav h1 .small {
+    font-size: .6em;
 }
 
 #header-content nav ul {
@@ -47,12 +75,42 @@ header {
     margin-right: 6px;
 }
 
+#header-content nav ul li a {
+    color: rgba(255, 255, 255, .85);
+}
+
+#header-content nav ul li a:hover {
+    color: #ffffff;
+}
+
 #selling-points {
     width: 990px;
     margin: 0 auto;
+    padding-bottom: 200px;
 }
 
 #selling-points .content {
     display: flex;
     justify-content: space-between;
 }
+
+.shell {
+    padding: 8px;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    white-space: pre-line;
+    font-family: monospace;
+}
+
+#selling-points .content .shell {
+    width: 400px;
+}
+
+#selling-points .content img {
+    width: 400px;
+}
+
+#selling-points a {
+    color: #36af6d;
+}
+
