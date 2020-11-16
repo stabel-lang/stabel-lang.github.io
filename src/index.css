@@ -37,17 +37,19 @@ a.link-button:hover {
 header {
     color: #fcfcfd;
     background: #36af6d;
+    padding-top: 16px;
+    padding-bottom: 60px;
 }
 
 #header-content {
-    width: 990px;
+    width: 800px;
     margin: 0 auto;
-    padding-bottom: 24px;
 }
 
 #header-content nav {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2em;
 }
 
 #header-content nav h1 {
@@ -83,8 +85,12 @@ header {
     color: #ffffff;
 }
 
+#header-content ul {
+    margin-bottom: 40px;
+}
+
 #selling-points {
-    width: 990px;
+    width: 800px;
     margin: 0 auto;
     padding-bottom: 200px;
 }
