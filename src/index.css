@@ -92,7 +92,12 @@ header {
 #selling-points {
     width: 800px;
     margin: 0 auto;
+    padding-top: 50px;
     padding-bottom: 200px;
+}
+
+#selling-points article {
+    margin-bottom: 50px;
 }
 
 #selling-points .content {
@@ -108,12 +113,18 @@ header {
     font-family: monospace;
 }
 
+#selling-points .content p {
+    width: 50%;
+    margin: 0;
+    padding-right: 25px;
+}
+
 #selling-points .content .shell {
-    width: 400px;
+    width: 50%;
 }
 
 #selling-points .content img {
-    width: 400px;
+    width: 50%;
 }
 
 #selling-points a {
