@@ -43,7 +43,7 @@
                 <div class="content">
                     <p>The syntax of Play is based on Forth, resulting in a syntax which could fit on a postcard while still being flexible enough for anything you need. All functions (what we call 'words') are implicitly composable, and so Play programs are a concatination of words just like books.</p>
 
-                    <code class="shell">
+                    <pre class="shell">
                         def: main
                         : 1 inc
                           2 =
@@ -53,7 +53,7 @@
 
                         def: dec
                         : 1 -
-                    </code>
+                    </pre>
                 </div>
             </article>
 
@@ -63,7 +63,7 @@
                 <div class="content">
                     <p>Play uses a static type system with type inference, which lets you rule out bugs while it staying out of your way. In addition, all data structures are immutable, greatly reducing the number of states your program can be in and which you must account for when writing code.</p>
 
-                    <div class="shell">
+                    <pre class="shell">
                         Compilation failed:
 
                         2 | def: main
@@ -73,7 +73,7 @@
 
                         The type of 'main' is specified to be  -- Int.
                         However, it seems that the actual type is:  -- Int Int
-                    </div>
+                    </pre>
                 </div>
             </article>
 
