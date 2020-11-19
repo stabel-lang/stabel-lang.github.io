@@ -1,5 +1,5 @@
 import { Elm } from './Playground.elm';
-import Compiler from '../../play/wasm_tests/compiler';
+import Compiler from './compiler.js';
 import wabtInit from 'wabt';
 
 const app = Elm.Playground.init({
