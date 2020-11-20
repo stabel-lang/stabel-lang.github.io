@@ -21,13 +21,13 @@
                     </ul>
                 </nav>
 
-                <h2>An easy to learn language, for making reliable applications</h2>
+                <h2>A small, portable language, for making reliable applications</h2>
 
                 <ul>
-                    <li>Minimal syntax makes the language easy to learn and get started with</li>
-                    <li>Strong static typing let's you know when you've made a mistake</li>
-                    <li>There are no side effects, making it easier to reason about your code</li>
-                    <li>Compiles to web assembly, so it can run in- and outside of a browser</li>
+                    <li>You can learn the syntax and semantics in an afternoon</li>
+                    <li>The compiler helps you find mistakes with a strong static type system</li>
+                    <li>Tightly controlled side effects gives you a better control over third party code</li>
+                    <li>Run your code on a server or in the browser, using web assembly</li>
                 </ul>
 
                 <a class="link-button" alt="Try the Play language" href="/playground.html">
@@ -36,62 +36,51 @@
             </div>
         </header>
 
-        <section id="selling-points">
-            <article>
-                <h3>Minimal, yet flexible, syntax</h3>
+        <main>
+            <h3>Minimal, yet flexible, syntax</h3>
 
-                <div class="content">
-                    <p>The syntax of Play is based on Forth, resulting in a syntax which could fit on a postcard while still being flexible enough for anything you need. All functions (what we call 'words') are implicitly composable, and so Play programs are a concatination of words just like books.</p>
+            <p>The syntax of Play is based on Forth, resulting in a syntax which could fit on a postcard while still being flexible enough for anything you need. All functions (what we call 'words') are implicitly composable, and so Play programs are a concatination of words just like books.</p>
 
-                    <pre class="shell">
-                        def: main
-                        : 1 inc
-                          2 =
+            <pre class="shell">
+                # Returns 3
+                def: main
+                : 2 increment
 
-                        def: inc
-                        : 1 +
+                def: increment
+                : 1 +
+            </pre>
 
-                        def: dec
-                        : 1 -
-                    </pre>
-                </div>
-            </article>
+            <h3>Easy to reason about</h3>
 
-            <article>
-                <h3>Easy to reason about</h3>
+            <p>Play uses a static type system with type inference, which lets you rule out bugs while it staying out of your way. In addition, all data structures are immutable, greatly reducing the number of states your program can be in and which you must account for when writing code.</p>
 
-                <div class="content">
-                    <p>Play uses a static type system with type inference, which lets you rule out bugs while it staying out of your way. In addition, all data structures are immutable, greatly reducing the number of states your program can be in and which you must account for when writing code.</p>
+            <pre class="shell">
+                Compilation failed:
 
-                    <pre class="shell">
-                        Compilation failed:
+                9 | def: some-word
+                10| type: -- Bool
+                11| : 1
 
-                        2 | def: main
-                        3 | type: -- Int
-                        4 | entry: true
-                        5 | : 1 2
+                The type of 'some-word' is specified to be  -- Bool.
+                However, it seems that the actual type is:  -- Int.
+            </pre>
 
-                        The type of 'main' is specified to be  -- Int.
-                        However, it seems that the actual type is:  -- Int Int
-                    </pre>
-                </div>
-            </article>
+            <h3>Portable</h3>
 
-            <article>
-                <h3>Portable</h3>
+            <p>Play is compiled to web assembly. This allows Play programs to execute in a browser in addition to on the command line, and to work the same no matter where it is executed. The alternative to web assembly would be to compile to javascript, but then we'd have to live with a legacy which includes 53-bit integers and six different falsy values.</p>
 
-                <div class="content">
-                    <p>Play is compiled to web assembly. This allows Play programs to execute in a browser in addition to on the command line, and to work the same no matter where it is executed. The alternative to web assembly would be to compile to javascript, but then we'd have to live with a legacy which includes 53-bit integers and six different falsy values.</p>
+            <img alt="Web assembly logo" src="wasm_logo.svg" />
 
-                    <img alt="Web assembly logo" src="wasm_logo.svg" />
-                </div>
-            </article>
+            <h3>In Alpha</h3>
 
-            <article>
-                <h3>In Alpha</h3>
+            <p>Play is still in early development. There are currently no strings, arrays or even garbage collection. All of this will come in time. For more information, take a look at the <a alt="Read the roadmap" href="https://fossils.play-lang.dev/compiler/wiki?name=roadmap">roadmap</a>.</p>
+        </main>
 
-                <p>Play is still in early development. There are currently no strings, arrays or even garbage collection. All of this will come in time. For more information, take a look at the <a alt="Read the roadmap" href="https://fossils.play-lang.dev/compiler/wiki?name=roadmap">roadmap</a>.</p>
-            </article> 
-        </section>
+        <footer>
+            <ul>
+                <li>Created by: Robin Heggelund Hansen</li>
+                <li>Twitter: <a href="https://twitter.com/robheghan" alt="Robin's twitter profile">@robheghan</a></li>
+            </ul>
+        </footer>
     </body>
 </html>
