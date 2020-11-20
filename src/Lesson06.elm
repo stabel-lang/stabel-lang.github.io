@@ -31,7 +31,7 @@ content =
     type: Coordinate [ Int -- Int ] -- Coordinate
     : swap    # bring Coordinate to the top of the stack
       dup x>  # read value of x without loosing the original Coordinate
-      -rotate # rotates the three top stack elements counter-clockwise
+      -rotate # rotates the three top stack elements one space to the left
       !       # execute qutotation
       >x      # set x to whatever was returned by quotation
 

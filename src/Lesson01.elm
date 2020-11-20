@@ -17,6 +17,7 @@ content =
     """
     # Welcome to the playground
     # Here you can learn the Play language by reading and toying around with examples.
+    # You can find more examples in the dropdown above.
 
     # A '#' character marks the beginning of a line comment.
     # Comments are ignored by the compiler, and serves the purpose of making things clearer for a human.

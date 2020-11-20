@@ -28,7 +28,11 @@ content =
     # '>x' and '>y' requires an Int and a Coordinate to be on the stack, and sets the x/y member to the provided Int.
     # 'x>' and 'y>' will return the x/y value of a Coordinate, which must be on the stack.
 
-    # The '>' character can be read as 'into'. '>x' is then read as 'into x' and 'x>' is read as 'x into'. So either you're reading from the stack and into x, or from x into the stack.
+    # The '>' character can be read as 'into'. 
+    # '>x' is then read as 'into x' and 'x>' is read as 'x into'. 
+    # Either you're reading from the stack and into x, or from x into the stack.
+
+    # Do note that '>' and '<' is not special syntax, but can be used in the name of any word.
 
     def: main
     type: -- Int
