@@ -6,15 +6,7 @@ body {
     margin: 0;
     padding: 0;
     font-size: 20px;
-}
-
-a {
-    text-decoration: none;
-    color: #fcfcfd;
-}
-
-a:hover {
-    text-decoration: underline;
+    font-family: helvetica, sans-serif;
 }
 
 a.link-button {
@@ -26,12 +18,12 @@ a.link-button {
     border-color: #fcfcfc;
     padding: .8rem 2rem;
     font-size: 1.25rem;
+    text-decoration: none;
 }
 
 a.link-button:hover {
     color: #ffffff;
     background: #38b772;
-    text-decoration: none;
 }
 
 header {
@@ -64,6 +56,7 @@ header {
     font-size: .6em;
 }
 
+
 #header-content nav ul {
     display: flex;
     align-items: flex-end;
@@ -73,16 +66,22 @@ header {
     padding: 0;
 }
 
-#header-content nav ul li {
-    margin-right: 6px;
-}
-
 #header-content nav ul li a {
+    margin: 0 6px;
+    padding: 0 3px;
     color: rgba(255, 255, 255, .85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .85);
 }
 
 #header-content nav ul li a:hover {
     color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
+#header-content h2 {
+    font-weight: 500;
+    font-size: 3.5rem;
 }
 
 #header-content ul {
