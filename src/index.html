@@ -37,12 +37,13 @@
         </header>
 
         <main>
-            <h3>Minimal, yet flexible, syntax</h3>
+            <h3>Minimal, yet flexible</h3>
 
-            <p>The syntax of Play is based on Forth, resulting in a syntax which could fit on a postcard while still being flexible enough for anything you need. All functions (what we call 'words') are implicitly composable, and so Play programs are a concatination of words just like books.</p>
+            <p>The syntax and semantics of Play is heavily inspired by Forth. This means that the syntax is clean and free of many control characters while the semantics consist of few, but powerful, rules.</p>
 
-            <pre class="shell">
+            <pre class="shell right">
                 # Returns 3
+
                 def: main
                 : 2 increment
 
@@ -50,11 +51,13 @@
                 : 1 +
             </pre>
 
+            <p>Without going into too much detail, code in Play consists of whitespace-separated functions which are called in a left-to-right fashion. The return value, or values, of a function call serve as the input arguments for the next function call. Numbers are functions which return themselves. Technically, this entire paragraph is valid Play syntax.</p>
+
             <h3>Easy to reason about</h3>
 
-            <p>Play uses a static type system with type inference, which lets you rule out bugs while it staying out of your way. In addition, all data structures are immutable, greatly reducing the number of states your program can be in and which you must account for when writing code.</p>
+            <p>Play also improves on Forth in several ways. A strong, static type system helps you prevent bugs and to document your code. Errors and IO are represented in the type system, so that forgettng to deal with a certain error condition is caught at compile time. All data structures in Play are also immutable, which greatly reduces the number of states your program can be in, which again makes your code easy to reason about.</p>
 
-            <pre class="shell">
+            <pre class="shell left">
                 Compilation failed:
 
                 9 | def: some-word
@@ -67,18 +70,16 @@
 
             <h3>Portable</h3>
 
-            <p>Play is compiled to web assembly. This allows Play programs to execute in a browser in addition to on the command line, and to work the same no matter where it is executed. The alternative to web assembly would be to compile to javascript, but then we'd have to live with a legacy which includes 53-bit integers and six different falsy values.</p>
+            <p>As Play is compiled to web assembly, your code can run on the command line, on a server or even in the browser. As Play is compiled to web assembly, you're sure to enjoy the exact same semantics wherever your code is executed.</p>
 
-            <img alt="Web assembly logo" src="wasm_logo.svg" />
-
-            <h3>In Alpha</h3>
+            <h3 class="clear">In Alpha</h3>
 
             <p>Play is still in early development. There are currently no strings, arrays or even garbage collection. All of this will come in time. For more information, take a look at the <a alt="Read the roadmap" href="https://fossils.play-lang.dev/compiler/wiki?name=roadmap">roadmap</a>.</p>
         </main>
 
         <footer>
             <ul>
-                <li>Created by: Robin Heggelund Hansen</li>
+                <li>Robin Heggelund Hansen</li>
                 <li>Twitter: <a href="https://twitter.com/robheghan" alt="Robin's twitter profile">@robheghan</a></li>
             </ul>
         </footer>

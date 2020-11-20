@@ -53,7 +53,7 @@ header {
 }
 
 #header-content nav h1 .small {
-    font-size: .6em;
+    font-size: .5em;
 }
 
 
@@ -88,46 +88,76 @@ header {
     margin-bottom: 40px;
 }
 
-#selling-points {
+main {
     width: 800px;
     margin: 0 auto;
     padding-top: 50px;
-    padding-bottom: 200px;
+    padding-bottom: 50px;
 }
 
-#selling-points article {
-    margin-bottom: 50px;
+main a {
+    color: #36af6d;
 }
 
-#selling-points .content {
-    display: flex;
-    justify-content: space-between;
-}
-
-.shell {
+main .shell {
     margin: 0;
-    padding: 8px;
+    padding: 1em;
+    width: 400px;
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     white-space: pre-line;
     font-family: monospace;
 }
 
-#selling-points .content p {
-    width: 50%;
+main .left {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+main .right {
+    float: right;
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
+
+main .clear {
+    clear: both;
+}
+
+footer {
+    color: rgba(255, 255, 255, .85);
+    background: #36af6d;
+    padding: 1em;
+    font-size: 0.95rem;
+    font-weight: 300;
+}
+
+footer a {
+    color: rgba(255, 255, 255, .85);
+    padding: 0 3px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .85);
+}
+
+footer a:hover {
+    color: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
     margin: 0;
-    padding-right: 25px;
+    text-align: center;
 }
 
-#selling-points .content .shell {
-    width: 50%;
+footer ul li {
+    display: inline;
+    border-right: 1px solid white;
+    padding: 0 0.5em;
 }
 
-#selling-points .content img {
-    width: 50%;
+footer ul li:last-child {
+    border-right: none;
 }
-
-#selling-points a {
-    color: #36af6d;
-}
-
