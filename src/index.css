@@ -38,6 +38,22 @@ header {
     margin: 0 auto;
 }
 
+#rename-info {
+    font-size: 0.85em;
+    padding-bottom: 1.25em;
+}
+
+#rename-info a {
+    color: rgba(255, 255, 255, .85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, .85);
+}
+
+#rename-info a:hover {
+    color: #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
+
 #header-content nav {
     display: flex;
     justify-content: space-between;
@@ -55,7 +71,6 @@ header {
 #header-content nav h1 .small {
     font-size: .5em;
 }
-
 
 #header-content nav ul {
     display: flex;
