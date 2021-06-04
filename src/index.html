@@ -1,25 +1,23 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Play</title>
+        <title>Stabel</title>
 
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <header>
             <div id="header-content">
-                <div id="rename-info">This project is being renamed. Read more <a href="https://fossils.play-lang.dev/compiler/technote/2c86a090f4e1efb80b3b851e15a0eaf1c1c49479" title="Read about renaming of project">here</a>.</div>
-
                 <nav>
                     <h1>
-                        <span class="big">Play</span>
+                        <span class="big">Stabel</span>
                         <span class="small">alpha 1</span>
                     </h1>
 
                     <ul>
-                        <li><a title="Get caught up on the latest news" href="https://fossils.play-lang.dev/compiler/timeline?udc=1&ss=m&n=10&y=e&advm=0">News</a></li>
-                        <li><a title="Join the discussion" href="https://fossils.play-lang.dev/community">Forum</a></li>
-                        <li><a title="Access the source code" href="https://fossils.play-lang.dev">Source</a></li>
+                        <li><a title="Get caught up on the latest news" href="https://fossils.stabel-lang.org/compiler/timeline?udc=1&ss=m&n=10&y=e&advm=0">News</a></li>
+                        <li><a title="Join the discussion" href="https://fossils.stabel-lang.org/community">Forum</a></li>
+                        <li><a title="Access the source code" href="https://fossils.stabel-lang.org">Source</a></li>
                     </ul>
                 </nav>
 
@@ -32,7 +30,7 @@
                     <li>Run your code on a server or in the browser, using web assembly</li>
                 </ul>
 
-                <a class="link-button" alt="Try the Play language" href="/playground.html">
+                <a class="link-button" alt="Try Stabel" href="/playground.html">
                     Try
                 </a>
             </div>
@@ -41,7 +39,7 @@
         <main>
             <h3>Minimal, yet flexible</h3>
 
-            <p>The syntax and semantics of Play is heavily inspired by Forth. This means that the syntax is clean and free of many control characters while the semantics consist of few, but powerful, rules.</p>
+            <p>The syntax and semantics of Stabel is heavily inspired by Forth. This means that the syntax is clean and free of many control characters while the semantics consist of few, but powerful, rules.</p>
 
             <pre class="shell right">
                 # Returns 3
@@ -53,11 +51,11 @@
                 : 1 +
             </pre>
 
-            <p>Without going into too much detail, code in Play consists of whitespace-separated functions which are called in a left-to-right fashion. The return value, or values, of a function call serve as the input arguments for the next function call. Numbers are functions which return themselves. Technically, this entire paragraph is valid Play syntax.</p>
+            <p>Without going into too much detail, code in Stabel consists of whitespace-separated functions which are called in a left-to-right fashion. The return value, or values, of a function call serve as the input arguments for the next function call. Numbers are functions which return themselves. Technically, this entire paragraph is valid Stabel syntax.</p>
 
             <h3>Easy to reason about</h3>
 
-            <p>Play also improves on Forth in several ways. A strong, static type system helps you prevent bugs and to document your code. Errors and IO are represented in the type system, so that forgetting to deal with a certain error condition is caught at compile time. All data structures in Play are also immutable, which greatly reduces the number of states your program can be in, which again makes your code easy to reason about.</p>
+            <p>Stabel also improves on Forth in several ways. A strong, static type system helps you prevent bugs and to document your code. Errors and IO are represented in the type system, so that forgetting to deal with a certain error condition is caught at compile time. All data structures in Stabel are also immutable, which greatly reduces the number of states your program can be in, which again makes your code easy to reason about.</p>
 
             <pre class="shell left">
                 Compilation failed:
@@ -72,11 +70,11 @@
 
             <h3>Portable</h3>
 
-            <p>Your code can run on the command line, on a server or even in the browser. As Play is compiled to web assembly, you're sure to enjoy the exact same semantics wherever your code is executed.</p>
+            <p>Your code can run on the command line, on a server or even in the browser. As Stabel is compiled to web assembly, you're sure to enjoy the exact same semantics wherever your code is executed.</p>
 
             <h3 class="clear">In Alpha</h3>
 
-            <p>Play is still in early development. There are currently no strings, arrays or even garbage collection. All of this will come in time. For more information, take a look at the <a alt="Read the roadmap" href="https://fossils.play-lang.dev/compiler/wiki?name=roadmap">roadmap</a>.</p>
+            <p>Stabel is still in early development. There are currently no strings, arrays or even garbage collection. All of this will come in time. For more information, take a look at the <a alt="Read the roadmap" href="https://fossils.stabel-lang.org/compiler/wiki?name=roadmap">roadmap</a>.</p>
         </main>
 
         <footer>
