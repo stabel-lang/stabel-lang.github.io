@@ -13,6 +13,9 @@ pushd dist
 aws s3 cp ./index.html s3://stabel-website \
     --cache-control max-age=600
 
+aws s3 cp ./community.html s3://stabel-website \
+    --cache-control max-age=600
+
 aws s3 cp ./*.css s3://stabel-website \
     --cache-control immutable
 
