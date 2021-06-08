@@ -15,8 +15,8 @@ contract =
 content : String
 content =
     """
-    # Play is statically typed. 
-    # In most cases, Play is smart enough to infer the types.
+    # Stabel is statically typed. 
+    # In most cases, Stabel is smart enough to infer the types.
     # The word definitions in the previous example are shown here with type annotations.
 
     def: square

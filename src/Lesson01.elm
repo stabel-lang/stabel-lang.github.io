@@ -16,7 +16,7 @@ content : String
 content =
     """
     # Welcome to the playground
-    # Here you can learn the Play language by reading and toying around with examples.
+    # Here you can learn the Stabel language by reading and toying around with examples.
     # You can find more examples in the dropdown above.
 
     # A '#' character marks the beginning of a line comment.
@@ -34,5 +34,5 @@ content =
     # 2. 'main' is an entry point, this is called when your program starts up.
     # 3. A single ':' without any prefix marks the definition of the word. In this word, we're simply returning the number 5 (the last element in a definition is its return value).
 
-    # Hit the 'run' button above to execute this Play program.
+    # Hit the 'run' button above to execute this Stabel program.
     """

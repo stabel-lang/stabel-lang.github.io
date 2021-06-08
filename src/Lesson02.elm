@@ -22,7 +22,7 @@ content =
     : 4 5
 
     # How does this work?
-    # The first thing to understand is that Play is stack oriented. 
+    # The first thing to understand is that Stabel is stack oriented. 
     # What really happens in the word definition above is that, when executed, the numbers 4 and 5 will be put on a stack.
 
     # What happens when a word is placed on the stack? It executes!

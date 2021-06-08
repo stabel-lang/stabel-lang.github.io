@@ -16,7 +16,7 @@ content : String
 content =
     """
     # Sometimes it can be nice to re-arrange values on the stack. 
-    # Play has some built in words for that purpose.
+    # Stabel has some built in words for that purpose.
 
     # 'dup' let's you duplicate a value
 

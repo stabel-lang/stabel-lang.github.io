@@ -15,7 +15,7 @@ contract =
 content : String
 content =
     """
-    # Play supports the concept of a Union type
+    # Stabel supports the concept of a Union type
 
     defunion: State
     : On

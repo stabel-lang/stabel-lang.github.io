@@ -15,7 +15,7 @@ contract =
 content : String
 content =
     """
-    # Play allows you to place word references on the stack, and even construct anonymous words.
+    # Stabel allows you to place word references on the stack, and even construct anonymous words.
     # We call them quotations. Other languages call them anonymous functions.
 
     # For this example, let's bring back the Coordinate type from the previous example.
