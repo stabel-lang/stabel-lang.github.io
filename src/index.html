@@ -21,7 +21,7 @@
                     </ul>
                 </nav>
 
-                <h2>A small, portable language, for making reliable applications</h2>
+                <h2>A small, safe and portable language, for making reliable apps</h2>
 
                 <ul>
                     <li>You can learn the syntax and semantics in an afternoon</li>
@@ -31,7 +31,7 @@
                 </ul>
 
                 <a class="link-button" alt="Try Stabel" href="/playground.html">
-                    Try
+                    Playground
                 </a>
             </div>
         </header>
@@ -39,23 +39,21 @@
         <main>
             <h3>Minimal, yet flexible</h3>
 
-            <p>The syntax and semantics of Stabel is heavily inspired by Forth. This means that the syntax is clean and free of many control characters while the semantics consist of few, but powerful, rules.</p>
+            <p>The syntax and semantics of Stabel uses reverse polish notation, meaning the function name comes <em>after</em> its arguments. This frees the syntax of many control characters while the semantics consist of a few, but powerful, rules.</p>
 
             <pre class="shell right">
-                # Returns 3
-
                 def: main
-                : 2 increment
+                : 2 increment # returns 3
 
                 def: increment
                 : 1 +
             </pre>
 
-            <p>Without going into too much detail, code in Stabel consists of whitespace-separated functions which are called in a left-to-right fashion. The return value, or values, of a function call serve as the input arguments for the next function call. Numbers are functions which return themselves. Technically, this entire paragraph is valid Stabel syntax.</p>
+            <p>Without going into too much detail, code in Stabel consists of whitespace-separated functions which are called in a left-to-right fashion. The return value, or values, of a function call serve as the input arguments for the next function call. Numbers are functions which return themselves.</p>
 
             <h3>Easy to reason about</h3>
 
-            <p>Stabel also improves on Forth in several ways. A strong, static type system helps you prevent bugs and to document your code. Errors and IO are represented in the type system, so that forgetting to deal with a certain error condition is caught at compile time. All data structures in Stabel are also immutable, which greatly reduces the number of states your program can be in, which again makes your code easy to reason about.</p>
+            <p>A strong, static type system helps you prevent bugs and document your code. Errors and IO are represented in the type system, so that forgetting to deal with a certain error condition is caught at compile time. All data structures in Stabel are also immutable, which greatly reduces the number of states your program can be in, which again makes your code easy to reason about.</p>
 
             <pre class="shell left">
                 Compilation failed:
@@ -70,7 +68,7 @@
 
             <h3>Portable</h3>
 
-            <p>Your code can run on the command line, on a server or even in the browser. As Stabel is compiled to web assembly, you're sure to enjoy the exact same semantics wherever your code is executed.</p>
+            <p>Your code can run on the command line, on a server or even in the browser. Stabel is compiled to web assembly, so you're sure to enjoy the same semantics wherever your code is executed.</p>
 
             <h3 class="clear">In Alpha</h3>
 
