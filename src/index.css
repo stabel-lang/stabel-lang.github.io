@@ -14,7 +14,7 @@ body {
 
 a.link-button {
     display: inline-block;
-    background: #36af6d;
+    background: #008638;
     color: #fcfcfc;
     border: 1px solid;
     border-radius: .3rem;
@@ -31,7 +31,7 @@ a.link-button:hover {
 
 header {
     color: #fcfcfd;
-    background: #36af6d;
+    background: #008638;
     padding-top: 16px;
     padding-bottom: 60px;
 }
@@ -158,7 +158,7 @@ main .clear {
 
 footer {
     color: rgba(255, 255, 255, .85);
-    background: #36af6d;
+    background: #008638;
     padding: 1em;
     font-size: 0.95rem;
     font-weight: 300;
