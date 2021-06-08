@@ -41,7 +41,7 @@ header#community {
 }
 
 #header-content {
-    width: 800px;
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -120,7 +120,7 @@ header#community {
 }
 
 main {
-    width: 800px;
+    max-width: 800px;
     margin: 0 auto;
     padding-top: 50px;
     padding-bottom: 50px;
