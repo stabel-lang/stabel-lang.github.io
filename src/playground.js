@@ -12,16 +12,18 @@ app.ports.compileSource.subscribe(source => {
             return execute(val);
         })
         .then(val => {
+            console.log(val);
             return app.ports.compilationResult.send(val);
         })
         .catch(err => {
+            console.log(err);
             return app.ports.compilationResult.send(err);
         });
 });
 
 function compileToWat(source) {
     return new Promise((resolve, reject) => {
-        const compiler = Compiler.Elm.Main.init({});
+        const compiler = Compiler.Elm.TestCompiler.init({});
 
         compiler.ports.compileFinished.subscribe(([ok, output]) => {
             if (ok) {
@@ -31,7 +33,7 @@ function compileToWat(source) {
             }
         });
 
-        compiler.ports.compileString.send(source);
+        compiler.ports.compileString.send(['main', source]);
     });
 }
 
