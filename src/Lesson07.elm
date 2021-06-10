@@ -7,7 +7,7 @@ import String.Extra as String
 contract : LessonContract
 contract =
     { key = "L07"
-    , label = "Unions and multiwords"
+    , label = "Unions and multifunctions"
     , content = String.trim <| String.unindent content
     }
 
@@ -15,28 +15,29 @@ contract =
 content : String
 content =
     """
-    # Stabel supports the concept of a Union type
+    # Stabel supports the concept of a union type
 
     defunion: State
     : On
     : Off
 
-    deftype: On
-    deftype: Off
+    defstruct: On
+    defstruct: Off
 
-    # This defines a Union of On and Off, called State.
+    # This defines a union of On and Off, called State.
     # Whenever you use State as a type, you're saying that it really could be either On or Off.
-    # To handle such types we need to use multi-words.
-    # Multi-words are words with a definition that depends on the type that is actually present on the stack.
+    # To handle such types we need to use multi-functions.
+    # Multi-functions are functions with a definition that depends on the type that is present on the stack.
 
     defmulti: state->int
     type: State -- Int
-    when: On
+    : On
       drop 1
-    when: Off
+    : Off
       drop 0
 
     def: main
-    entry: true
-    : >On state->int
+    : On state->int
+
+    # Notice that when a struct is defined without any members, like On and Off, that the constructor is just the name of the type without the > prefix.
     """

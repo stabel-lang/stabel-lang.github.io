@@ -22,13 +22,13 @@ content =
     : NonEmptyList a
     : EmptyList
 
-    deftype: NonEmptyList a
+    defstruct: NonEmptyList a
     : first a
     : rest (List a)
 
-    deftype: EmptyList
+    defstruct: EmptyList
 
-    # Notice retrieving the first element of a list can only be done if you have a NonEmptyList.
+    # Notice that retrieving the first element of a list can only be done if you have a NonEmptyList.
     # Also notice that a lowercased type acts as a placeholder for any type, a generic type.
 
     def: push
@@ -37,17 +37,16 @@ content =
 
     defmulti: first-or-default
     type: (List a) a -- a
-    when: NonEmptyList
+    : NonEmptyList
       drop first>
-    when: EmptyList
+    : EmptyList
       swap drop
 
     # Here we can specify that the result of adding an element to a List, always result in a NonEmptyList.
     # A NonEmptyList is still a List, though.
 
     def: main
-    entry: true
-    : >EmptyList
+    : EmptyList
       10 push
       0 first-or-default # Could have used 'first>' here.
     """

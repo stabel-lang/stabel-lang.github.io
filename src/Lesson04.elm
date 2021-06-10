@@ -17,7 +17,7 @@ content =
     """
     # Stabel is statically typed. 
     # In most cases, Stabel is smart enough to infer the types.
-    # The word definitions in the previous example are shown here with type annotations.
+    # The function definitions in the previous example are repeated here with type annotations.
 
     def: square
     type: Int -- Int
@@ -29,7 +29,6 @@ content =
 
     def: main
     type: -- Int
-    entry: true
     : 4 5
       drop-first
       square

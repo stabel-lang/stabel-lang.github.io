@@ -16,7 +16,7 @@ content : String
 content =
     """
     # Sometimes it can be nice to re-arrange values on the stack. 
-    # Stabel has some built in words for that purpose.
+    # Stabel has some built in functions for that purpose.
 
     # 'dup' let's you duplicate a value
 
@@ -33,7 +33,6 @@ content =
     # There are more, but the ones listed above are the most common
 
     def: main
-    entry: true
     : 4 5
       drop-first
       square

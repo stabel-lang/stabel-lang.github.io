@@ -15,21 +15,20 @@ contract =
 content : String
 content =
     """
-    # Multi-words allows you to be very specific about when a specific condition applies.
+    # Multi-functions allows you to be very specific about when a specific condition applies.
 
-    deftype: Coordinate
+    defstruct: Coordinate
     : x Int
     : y Int
 
     defmulti: origo?
     type: Coordinate -- Int
-    when: Coordinate( x 0 y 0 )
+    : Coordinate( x 0 y 0 )
       drop 1
-    when: Coordinate
+    : Coordinate
       drop 0
 
     def: main
-    entry: true
     : 1 1 >Coordinate
       origo?
     """
