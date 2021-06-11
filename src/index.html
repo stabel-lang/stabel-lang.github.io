@@ -7,6 +7,7 @@
         <title>Stabel</title>
 
         <link rel="stylesheet" href="index.css">
+        <link rel="shortcut icon" href="/favicon.ico" />
     </head>
     <body>
         <header>
@@ -14,7 +15,7 @@
                 <nav>
                     <h1>
                         <span class="big">Stabel</span>
-                        <span class="small">alpha 1</span>
+                        <span class="small">v0.2.0-alpha</span>
                     </h1>
 
                     <ul>
@@ -24,18 +25,22 @@
                     </ul>
                 </nav>
 
-                <h2>A small, safe and portable language, for making reliable apps</h2>
+                <div id="title">
+                    <img alt="Stabel" src="/logo.png" />
+                    <div>
+                        <h2>Small Safe Portable</h2>
 
-                <ul>
-                    <li>You can learn the syntax and semantics in an afternoon</li>
-                    <li>The compiler helps you find mistakes with a strong static type system</li>
-                    <li>Tightly controlled side effects gives you a better control over third party code</li>
-                    <li>Run your code on a server or in the browser, using web assembly</li>
-                </ul>
+                        <div id="title-links">
+                            <a class="link-button" alt="Try Stabel" href="/playground.html">
+                                Playground
+                            </a>
 
-                <a class="link-button" alt="Try Stabel" href="/playground.html">
-                    Playground
-                </a>
+                            <a class="link-button" alt="How to get started" href="https://fossils.stabel-lang.org/compiler/wiki?name=Getting+started">
+                                Get started
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </header>
 
@@ -52,7 +57,7 @@
                 : 1 +
             </pre>
 
-            <p>Without going into too much detail, code in Stabel consists of whitespace-separated functions which are called in a left-to-right fashion. The return value, or values, of a function call serve as the input arguments for the next function call. Numbers are functions which return themselves. This is known as concatinative programming.</p>
+            <p>Code in Stabel consists of whitespace-separated functions which are called in a left-to-right fashion. The return value, or values, of a function call serve as the input arguments for the next function call. Numbers are functions which return themselves. This is known as concatinative programming.</p>
 
             <h3>Easy to reason about</h3>
 

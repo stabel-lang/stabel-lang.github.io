@@ -110,9 +110,26 @@ header#community {
     border-bottom: 1px solid #ffffff;
 }
 
-#header-content h2 {
+#header-content #title {
+    display: flex;
+    align-items: center;
+}
+
+#header-content #title img {
+    width: 200px;
+    height: 181px;
+    margin-right: 32px;
+}
+
+#header-content #title h2 {
     font-weight: 500;
     font-size: 3.5rem;
+    margin: 1rem 0;
+}
+
+#header-content #title #title-links {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 #header-content ul {
@@ -206,6 +223,19 @@ footer ul li:last-child {
 
     #header-content nav h1 {
         margin-bottom: 8px;
+    }
+
+    #header-content #title {
+        flex-direction: column;
+    }
+
+    #header-content #title img {
+        margin-right: 0;
+    }
+
+    #header-content #title h2 {
+        font-weight: 500;
+        font-size: 2.5rem;
     }
 
     main {
