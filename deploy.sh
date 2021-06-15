@@ -11,16 +11,16 @@ npm run build
 pushd dist
 
 aws s3 cp ./index.html s3://stabel-website \
-    --cache-control max-age=900
+    --cache-control max-age=3600
 
 aws s3 cp ./community.html s3://stabel-website \
-    --cache-control max-age=900
+    --cache-control max-age=3600
 
 aws s3 cp ./playground.html s3://stabel-website \
-    --cache-control max-age=900
+    --cache-control max-age=3600
 
 aws s3 cp ./*.css s3://stabel-website \
-    --cache-control immutable
+    --cache-control max-age=3600
 
 aws s3 cp ./*.js s3://stabel-website \
     --cache-control immutable
