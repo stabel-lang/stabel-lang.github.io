@@ -59,6 +59,6 @@ async function execute(wat) {
 
     main();
 
-    const memView = new Uint32Array(memory.buffer);
+    const memView = new Int32Array(memory.buffer);
     return memView[3].toString(); // First three i32 elements are stack and heap information
 }
