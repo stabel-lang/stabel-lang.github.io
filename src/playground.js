@@ -23,7 +23,13 @@ app.ports.compileSource.subscribe(source => {
 
 function compileToWat(source) {
     return new Promise((resolve, reject) => {
-        const compiler = Compiler.Elm.TestCompiler.init({});
+        const compiler = Compiler.Elm.TestCompiler.init({
+            flags: {
+                __type: 'CompileString',
+                entryPoint: 'main',
+                sourceCode: source
+            }
+        });
 
         compiler.ports.compileFinished.subscribe(([ok, output]) => {
             if (ok) {
@@ -32,8 +38,6 @@ function compileToWat(source) {
                 reject(output);
             }
         });
-
-        compiler.ports.compileString.send(['main', source]);
     });
 }
 

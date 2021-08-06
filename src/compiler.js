@@ -77,14 +77,14 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
   return fun.a === 9 ? fun.f(a, b, c, d, e, f, g, h, i) : fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 }
 
-/*console.warn('Compiled in DEV mode. Follow the advice at https://elm-lang.org/0.19.1/optimize for better performance and smaller assets.');*/
 
 
-var _List_Nil_UNUSED = { $: 0 };
-var _List_Nil = { $: '[]' };
 
-function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
+var _List_Nil = { $: 0 };
+var _List_Nil_UNUSED = { $: '[]' };
+
+function _List_Cons(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons_UNUSED(hd, tl) { return { $: '::', a: hd, b: tl }; }
 
 
 var _List_cons = F2(_List_Cons);
@@ -315,12 +315,12 @@ var _JsArray_appendN = F3(function(n, dest, source)
 
 // LOG
 
-var _Debug_log_UNUSED = F2(function(tag, value)
+var _Debug_log = F2(function(tag, value)
 {
 	return value;
 });
 
-var _Debug_log = F2(function(tag, value)
+var _Debug_log_UNUSED = F2(function(tag, value)
 {
 	console.log(tag + ': ' + _Debug_toString(value));
 	return value;
@@ -346,12 +346,12 @@ function _Debug_todoCase(moduleName, region, value)
 
 // TO STRING
 
-function _Debug_toString_UNUSED(value)
+function _Debug_toString(value)
 {
 	return '<internals>';
 }
 
-function _Debug_toString(value)
+function _Debug_toString_UNUSED(value)
 {
 	return _Debug_toAnsiString(false, value);
 }
@@ -536,13 +536,13 @@ function _Debug_toHexDigit(n)
 // CRASH
 
 
-function _Debug_crash_UNUSED(identifier)
+function _Debug_crash(identifier)
 {
 	throw new Error('https://github.com/elm/core/blob/1.0.0/hints/' + identifier + '.md');
 }
 
 
-function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
+function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 {
 	switch(identifier)
 	{
@@ -600,11 +600,11 @@ function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.start.line === region.end.line)
+	if (region.bJ.O === region.bd.O)
 	{
-		return 'on line ' + region.start.line;
+		return 'on line ' + region.bJ.O;
 	}
-	return 'on lines ' + region.start.line + ' through ' + region.end.line;
+	return 'on lines ' + region.bJ.O + ' through ' + region.bd.O;
 }
 
 
@@ -642,7 +642,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 		return true;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x.$ === 'Set_elm_builtin')
 	{
 		x = $elm$core$Set$toList(x);
@@ -655,7 +655,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (x.$ < 0)
 	{
 		x = $elm$core$Dict$toList(x);
@@ -690,7 +690,7 @@ function _Utils_cmp(x, y, ord)
 		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x instanceof String)
 	{
 		var a = x.valueOf();
@@ -699,10 +699,10 @@ function _Utils_cmp(x, y, ord)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (typeof x.$ === 'undefined')
 	//*/
-	/**/
+	/**_UNUSED/
 	if (x.$[0] === '#')
 	//*/
 	{
@@ -732,17 +732,17 @@ var _Utils_compare = F2(function(x, y)
 
 // COMMON VALUES
 
-var _Utils_Tuple0_UNUSED = 0;
-var _Utils_Tuple0 = { $: '#0' };
+var _Utils_Tuple0 = 0;
+var _Utils_Tuple0_UNUSED = { $: '#0' };
 
-function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2_UNUSED(a, b) { return { $: '#2', a: a, b: b }; }
 
-function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3_UNUSED(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
 
-function _Utils_chr_UNUSED(c) { return c; }
-function _Utils_chr(c) { return new String(c); }
+function _Utils_chr(c) { return c; }
+function _Utils_chr_UNUSED(c) { return new String(c); }
 
 
 // RECORDS
@@ -1212,7 +1212,7 @@ function _Char_toLocaleLower(char)
 
 
 
-/**/
+/**_UNUSED/
 function _Json_errorToString(error)
 {
 	return $elm$json$Json$Decode$errorToString(error);
@@ -1616,11 +1616,11 @@ var _Json_encode = F2(function(indentLevel, value)
 	return JSON.stringify(_Json_unwrap(value), null, indentLevel) + '';
 });
 
-function _Json_wrap(value) { return { $: 0, a: value }; }
-function _Json_unwrap(value) { return value.a; }
+function _Json_wrap_UNUSED(value) { return { $: 0, a: value }; }
+function _Json_unwrap_UNUSED(value) { return value.a; }
 
-function _Json_wrap_UNUSED(value) { return value; }
-function _Json_unwrap_UNUSED(value) { return value; }
+function _Json_wrap(value) { return value; }
+function _Json_unwrap(value) { return value; }
 
 function _Json_emptyArray() { return []; }
 function _Json_emptyObject() { return {}; }
@@ -1641,6 +1641,173 @@ function _Json_addEntry(func)
 }
 
 var _Json_encodeNull = _Json_wrap(null);
+
+
+
+
+// STRINGS
+
+
+var _Parser_isSubString = F5(function(smallString, offset, row, col, bigString)
+{
+	var smallLength = smallString.length;
+	var isGood = offset + smallLength <= bigString.length;
+
+	for (var i = 0; isGood && i < smallLength; )
+	{
+		var code = bigString.charCodeAt(offset);
+		isGood =
+			smallString[i++] === bigString[offset++]
+			&& (
+				code === 0x000A /* \n */
+					? ( row++, col=1 )
+					: ( col++, (code & 0xF800) === 0xD800 ? smallString[i++] === bigString[offset++] : 1 )
+			)
+	}
+
+	return _Utils_Tuple3(isGood ? offset : -1, row, col);
+});
+
+
+
+// CHARS
+
+
+var _Parser_isSubChar = F3(function(predicate, offset, string)
+{
+	return (
+		string.length <= offset
+			? -1
+			:
+		(string.charCodeAt(offset) & 0xF800) === 0xD800
+			? (predicate(_Utils_chr(string.substr(offset, 2))) ? offset + 2 : -1)
+			:
+		(predicate(_Utils_chr(string[offset]))
+			? ((string[offset] === '\n') ? -2 : (offset + 1))
+			: -1
+		)
+	);
+});
+
+
+var _Parser_isAsciiCode = F3(function(code, offset, string)
+{
+	return string.charCodeAt(offset) === code;
+});
+
+
+
+// NUMBERS
+
+
+var _Parser_chompBase10 = F2(function(offset, string)
+{
+	for (; offset < string.length; offset++)
+	{
+		var code = string.charCodeAt(offset);
+		if (code < 0x30 || 0x39 < code)
+		{
+			return offset;
+		}
+	}
+	return offset;
+});
+
+
+var _Parser_consumeBase = F3(function(base, offset, string)
+{
+	for (var total = 0; offset < string.length; offset++)
+	{
+		var digit = string.charCodeAt(offset) - 0x30;
+		if (digit < 0 || base <= digit) break;
+		total = base * total + digit;
+	}
+	return _Utils_Tuple2(offset, total);
+});
+
+
+var _Parser_consumeBase16 = F2(function(offset, string)
+{
+	for (var total = 0; offset < string.length; offset++)
+	{
+		var code = string.charCodeAt(offset);
+		if (0x30 <= code && code <= 0x39)
+		{
+			total = 16 * total + code - 0x30;
+		}
+		else if (0x41 <= code && code <= 0x46)
+		{
+			total = 16 * total + code - 55;
+		}
+		else if (0x61 <= code && code <= 0x66)
+		{
+			total = 16 * total + code - 87;
+		}
+		else
+		{
+			break;
+		}
+	}
+	return _Utils_Tuple2(offset, total);
+});
+
+
+
+// FIND STRING
+
+
+var _Parser_findSubString = F5(function(smallString, offset, row, col, bigString)
+{
+	var newOffset = bigString.indexOf(smallString, offset);
+	var target = newOffset < 0 ? bigString.length : newOffset + smallString.length;
+
+	while (offset < target)
+	{
+		var code = bigString.charCodeAt(offset++);
+		code === 0x000A /* \n */
+			? ( col=1, row++ )
+			: ( col++, (code & 0xF800) === 0xD800 && offset++ )
+	}
+
+	return _Utils_Tuple3(newOffset, row, col);
+});
+
+
+
+var _Bitwise_and = F2(function(a, b)
+{
+	return a & b;
+});
+
+var _Bitwise_or = F2(function(a, b)
+{
+	return a | b;
+});
+
+var _Bitwise_xor = F2(function(a, b)
+{
+	return a ^ b;
+});
+
+function _Bitwise_complement(a)
+{
+	return ~a;
+};
+
+var _Bitwise_shiftLeftBy = F2(function(offset, a)
+{
+	return a << offset;
+});
+
+var _Bitwise_shiftRightBy = F2(function(offset, a)
+{
+	return a >> offset;
+});
+
+var _Bitwise_shiftRightZfBy = F2(function(offset, a)
+{
+	return a >>> offset;
+});
 
 
 
@@ -1857,9 +2024,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.bm,
+		impl.bP,
+		impl.bL,
 		function() { return function() {} }
 	);
 });
@@ -1872,7 +2039,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 function _Platform_initialize(flagDecoder, args, init, update, subscriptions, stepperBuilder)
 {
 	var result = A2(_Json_run, flagDecoder, _Json_wrap(args ? args['flags'] : undefined));
-	$elm$core$Result$isOk(result) || _Debug_crash(2 /**/, _Json_errorToString(result.a) /**/);
+	$elm$core$Result$isOk(result) || _Debug_crash(2 /**_UNUSED/, _Json_errorToString(result.a) /**/);
 	var managers = {};
 	var initPair = init(result.a);
 	var model = initPair.a;
@@ -2316,7 +2483,7 @@ function _Platform_setupIncomingPort(name, sendToApp)
 //
 
 
-function _Platform_export_UNUSED(exports)
+function _Platform_export(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsProd(scope['Elm'], exports)
@@ -2337,7 +2504,7 @@ function _Platform_mergeExportsProd(obj, exports)
 }
 
 
-function _Platform_export(exports)
+function _Platform_export_UNUSED(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsDebug('Elm', scope['Elm'], exports)
@@ -2356,175 +2523,8 @@ function _Platform_mergeExportsDebug(moduleName, obj, exports)
 			: (obj[name] = exports[name]);
 	}
 }
-
-
-
-
-// STRINGS
-
-
-var _Parser_isSubString = F5(function(smallString, offset, row, col, bigString)
-{
-	var smallLength = smallString.length;
-	var isGood = offset + smallLength <= bigString.length;
-
-	for (var i = 0; isGood && i < smallLength; )
-	{
-		var code = bigString.charCodeAt(offset);
-		isGood =
-			smallString[i++] === bigString[offset++]
-			&& (
-				code === 0x000A /* \n */
-					? ( row++, col=1 )
-					: ( col++, (code & 0xF800) === 0xD800 ? smallString[i++] === bigString[offset++] : 1 )
-			)
-	}
-
-	return _Utils_Tuple3(isGood ? offset : -1, row, col);
-});
-
-
-
-// CHARS
-
-
-var _Parser_isSubChar = F3(function(predicate, offset, string)
-{
-	return (
-		string.length <= offset
-			? -1
-			:
-		(string.charCodeAt(offset) & 0xF800) === 0xD800
-			? (predicate(_Utils_chr(string.substr(offset, 2))) ? offset + 2 : -1)
-			:
-		(predicate(_Utils_chr(string[offset]))
-			? ((string[offset] === '\n') ? -2 : (offset + 1))
-			: -1
-		)
-	);
-});
-
-
-var _Parser_isAsciiCode = F3(function(code, offset, string)
-{
-	return string.charCodeAt(offset) === code;
-});
-
-
-
-// NUMBERS
-
-
-var _Parser_chompBase10 = F2(function(offset, string)
-{
-	for (; offset < string.length; offset++)
-	{
-		var code = string.charCodeAt(offset);
-		if (code < 0x30 || 0x39 < code)
-		{
-			return offset;
-		}
-	}
-	return offset;
-});
-
-
-var _Parser_consumeBase = F3(function(base, offset, string)
-{
-	for (var total = 0; offset < string.length; offset++)
-	{
-		var digit = string.charCodeAt(offset) - 0x30;
-		if (digit < 0 || base <= digit) break;
-		total = base * total + digit;
-	}
-	return _Utils_Tuple2(offset, total);
-});
-
-
-var _Parser_consumeBase16 = F2(function(offset, string)
-{
-	for (var total = 0; offset < string.length; offset++)
-	{
-		var code = string.charCodeAt(offset);
-		if (0x30 <= code && code <= 0x39)
-		{
-			total = 16 * total + code - 0x30;
-		}
-		else if (0x41 <= code && code <= 0x46)
-		{
-			total = 16 * total + code - 55;
-		}
-		else if (0x61 <= code && code <= 0x66)
-		{
-			total = 16 * total + code - 87;
-		}
-		else
-		{
-			break;
-		}
-	}
-	return _Utils_Tuple2(offset, total);
-});
-
-
-
-// FIND STRING
-
-
-var _Parser_findSubString = F5(function(smallString, offset, row, col, bigString)
-{
-	var newOffset = bigString.indexOf(smallString, offset);
-	var target = newOffset < 0 ? bigString.length : newOffset + smallString.length;
-
-	while (offset < target)
-	{
-		var code = bigString.charCodeAt(offset++);
-		code === 0x000A /* \n */
-			? ( col=1, row++ )
-			: ( col++, (code & 0xF800) === 0xD800 && offset++ )
-	}
-
-	return _Utils_Tuple3(newOffset, row, col);
-});
-
-
-
-var _Bitwise_and = F2(function(a, b)
-{
-	return a & b;
-});
-
-var _Bitwise_or = F2(function(a, b)
-{
-	return a | b;
-});
-
-var _Bitwise_xor = F2(function(a, b)
-{
-	return a ^ b;
-});
-
-function _Bitwise_complement(a)
-{
-	return ~a;
-};
-
-var _Bitwise_shiftLeftBy = F2(function(offset, a)
-{
-	return a << offset;
-});
-
-var _Bitwise_shiftRightBy = F2(function(offset, a)
-{
-	return a >> offset;
-});
-
-var _Bitwise_shiftRightZfBy = F2(function(offset, a)
-{
-	return a >>> offset;
-});
-var $elm$core$Basics$EQ = {$: 'EQ'};
-var $elm$core$Basics$LT = {$: 'LT'};
+var $elm$core$Basics$EQ = 1;
+var $elm$core$Basics$LT = 0;
 var $elm$core$List$cons = _List_cons;
 var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
 var $elm$core$Array$foldr = F3(
@@ -2533,7 +2533,7 @@ var $elm$core$Array$foldr = F3(
 		var tail = _v0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (node.$ === 'SubTree') {
+				if (!node.$) {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
 				} else {
@@ -2554,7 +2554,7 @@ var $elm$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
 		while (true) {
-			if (t.$ === 'RBEmpty_elm_builtin') {
+			if (t.$ === -2) {
 				return acc;
 			} else {
 				var key = t.b;
@@ -2599,40 +2599,48 @@ var $elm$core$Dict$keys = function (dict) {
 		dict);
 };
 var $elm$core$Set$toList = function (_v0) {
-	var dict = _v0.a;
+	var dict = _v0;
 	return $elm$core$Dict$keys(dict);
 };
-var $elm$core$Basics$GT = {$: 'GT'};
+var $elm$core$Basics$GT = 2;
+var $elm$core$Basics$always = F2(
+	function (a, _v0) {
+		return a;
+	});
+var $elm$core$Basics$apL = F2(
+	function (f, x) {
+		return f(x);
+	});
+var $elm$core$Basics$append = _Utils_append;
+var $elm$core$Basics$False = 1;
 var $elm$core$Result$Err = function (a) {
-	return {$: 'Err', a: a};
+	return {$: 1, a: a};
 };
 var $elm$json$Json$Decode$Failure = F2(
 	function (a, b) {
-		return {$: 'Failure', a: a, b: b};
+		return {$: 3, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Field = F2(
 	function (a, b) {
-		return {$: 'Field', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Index = F2(
 	function (a, b) {
-		return {$: 'Index', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $elm$core$Result$Ok = function (a) {
-	return {$: 'Ok', a: a};
+	return {$: 0, a: a};
 };
 var $elm$json$Json$Decode$OneOf = function (a) {
-	return {$: 'OneOf', a: a};
+	return {$: 2, a: a};
 };
-var $elm$core$Basics$False = {$: 'False'};
 var $elm$core$Basics$add = _Basics_add;
 var $elm$core$Maybe$Just = function (a) {
-	return {$: 'Just', a: a};
+	return {$: 0, a: a};
 };
-var $elm$core$Maybe$Nothing = {$: 'Nothing'};
+var $elm$core$Maybe$Nothing = {$: 1};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
-var $elm$core$Basics$append = _Utils_append;
 var $elm$json$Json$Encode$encode = _Json_encode;
 var $elm$core$String$fromInt = _String_fromNumber;
 var $elm$core$String$join = F2(
@@ -2754,12 +2762,12 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 		errorToStringHelp:
 		while (true) {
 			switch (error.$) {
-				case 'Field':
+				case 0:
 					var f = error.a;
 					var err = error.b;
 					var isSimple = function () {
 						var _v1 = $elm$core$String$uncons(f);
-						if (_v1.$ === 'Nothing') {
+						if (_v1.$ === 1) {
 							return false;
 						} else {
 							var _v2 = _v1.a;
@@ -2774,7 +2782,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'Index':
+				case 1:
 					var i = error.a;
 					var err = error.b;
 					var indexName = '[' + ($elm$core$String$fromInt(i) + ']');
@@ -2783,7 +2791,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'OneOf':
+				case 2:
 					var errors = error.a;
 					if (!errors.b) {
 						return 'Ran into a Json.Decode.oneOf with no possibilities' + function () {
@@ -2847,7 +2855,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 var $elm$core$Array$branchFactor = 32;
 var $elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
-		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
+		return {$: 0, a: a, b: b, c: c, d: d};
 	});
 var $elm$core$Elm$JsArray$empty = _JsArray_empty;
 var $elm$core$Basics$ceiling = _Basics_ceiling;
@@ -2862,12 +2870,8 @@ var $elm$core$Array$shiftStep = $elm$core$Basics$ceiling(
 var $elm$core$Array$empty = A4($elm$core$Array$Array_elm_builtin, 0, $elm$core$Array$shiftStep, $elm$core$Elm$JsArray$empty, $elm$core$Elm$JsArray$empty);
 var $elm$core$Elm$JsArray$initialize = _JsArray_initialize;
 var $elm$core$Array$Leaf = function (a) {
-	return {$: 'Leaf', a: a};
+	return {$: 1, a: a};
 };
-var $elm$core$Basics$apL = F2(
-	function (f, x) {
-		return f(x);
-	});
 var $elm$core$Basics$apR = F2(
 	function (x, f) {
 		return f(x);
@@ -2882,7 +2886,7 @@ var $elm$core$Basics$max = F2(
 	});
 var $elm$core$Basics$mul = _Basics_mul;
 var $elm$core$Array$SubTree = function (a) {
-	return {$: 'SubTree', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Elm$JsArray$initializeFromList = _JsArray_initializeFromList;
 var $elm$core$Array$compressNodes = F2(
@@ -2929,25 +2933,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.nodeListSize) {
+		if (!builder.g) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail),
+				$elm$core$Elm$JsArray$length(builder.h),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.tail);
+				builder.h);
 		} else {
-			var treeLen = builder.nodeListSize * $elm$core$Array$branchFactor;
+			var treeLen = builder.g * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.nodeList) : builder.nodeList;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.nodeListSize);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.i) : builder.i;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.g);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.h) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.tail);
+				builder.h);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -2960,7 +2964,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{nodeList: nodeList, nodeListSize: (len / $elm$core$Array$branchFactor) | 0, tail: tail});
+					{i: nodeList, g: (len / $elm$core$Array$branchFactor) | 0, h: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -2990,679 +2994,47 @@ var $elm$core$Array$initialize = F2(
 			return A5($elm$core$Array$initializeHelp, fn, initialFromIndex, len, _List_Nil, tail);
 		}
 	});
-var $elm$core$Basics$True = {$: 'True'};
+var $elm$core$Basics$True = 0;
 var $elm$core$Result$isOk = function (result) {
-	if (result.$ === 'Ok') {
+	if (!result.$) {
 		return true;
 	} else {
 		return false;
 	}
 };
-var $elm$core$Platform$Cmd$batch = _Platform_batch;
-var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$TestCompiler$init = function (_v0) {
-	return _Utils_Tuple2(_Utils_Tuple0, $elm$core$Platform$Cmd$none);
-};
+var $elm$json$Json$Encode$bool = _Json_wrap;
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
-var $author$project$TestCompiler$CompileString = function (a) {
-	return {$: 'CompileString', a: a};
-};
-var $elm$json$Json$Decode$andThen = _Json_andThen;
-var $elm$json$Json$Decode$index = _Json_decodeIndex;
-var $elm$json$Json$Decode$string = _Json_decodeString;
-var $elm$json$Json$Decode$succeed = _Json_succeed;
-var $author$project$TestCompiler$compileString = _Platform_incomingPort(
-	'compileString',
-	A2(
-		$elm$json$Json$Decode$andThen,
-		function (_v0) {
-			return A2(
-				$elm$json$Json$Decode$andThen,
-				function (_v1) {
-					return $elm$json$Json$Decode$succeed(
-						_Utils_Tuple2(_v0, _v1));
-				},
-				A2($elm$json$Json$Decode$index, 1, $elm$json$Json$Decode$string));
-		},
-		A2($elm$json$Json$Decode$index, 0, $elm$json$Json$Decode$string)));
-var $author$project$TestCompiler$subscriptions = function (_v0) {
-	return $author$project$TestCompiler$compileString($author$project$TestCompiler$CompileString);
-};
-var $author$project$Stabel$Data$Metadata$asEntryPoint = function (meta) {
-	return _Utils_update(
-		meta,
-		{isEntryPoint: true});
-};
-var $author$project$Wasm$Block = function (a) {
-	return {$: 'Block', a: a};
-};
-var $author$project$Wasm$Break = function (a) {
-	return {$: 'Break', a: a};
-};
-var $author$project$Wasm$BreakIf = function (a) {
-	return {$: 'BreakIf', a: a};
-};
-var $author$project$Wasm$Call = function (a) {
-	return {$: 'Call', a: a};
-};
-var $author$project$Wasm$CallIndirect = {$: 'CallIndirect'};
-var $author$project$Wasm$Drop = {$: 'Drop'};
-var $author$project$Wasm$I32_Add = {$: 'I32_Add'};
-var $author$project$Wasm$I32_Const = function (a) {
-	return {$: 'I32_Const', a: a};
-};
-var $author$project$Wasm$I32_Div = {$: 'I32_Div'};
-var $author$project$Wasm$I32_Eq = {$: 'I32_Eq'};
-var $author$project$Wasm$I32_EqZero = {$: 'I32_EqZero'};
-var $author$project$Wasm$I32_Load = {$: 'I32_Load'};
-var $author$project$Wasm$I32_Mul = {$: 'I32_Mul'};
-var $author$project$Wasm$I32_Store = {$: 'I32_Store'};
-var $author$project$Wasm$I32_Sub = {$: 'I32_Sub'};
-var $author$project$Wasm$Int32 = {$: 'Int32'};
-var $author$project$Wasm$Local_Get = function (a) {
-	return {$: 'Local_Get', a: a};
-};
-var $author$project$Wasm$Local_Set = function (a) {
-	return {$: 'Local_Set', a: a};
-};
-var $author$project$Wasm$Local_Tee = function (a) {
-	return {$: 'Local_Tee', a: a};
-};
-var $author$project$Wasm$Loop = function (a) {
-	return {$: 'Loop', a: a};
-};
-var $author$project$Wasm$Memory = F2(
-	function (a, b) {
-		return {$: 'Memory', a: a, b: b};
+var $elm$json$Json$Encode$list = F2(
+	function (func, entries) {
+		return _Json_wrap(
+			A3(
+				$elm$core$List$foldl,
+				_Json_addEntry(func),
+				_Json_emptyArray(0),
+				entries));
 	});
-var $author$project$Stabel$Codegen$BaseModule$addIntFn = '__add_i32';
-var $author$project$Stabel$Codegen$BaseModule$allocFn = '__alloc';
-var $author$project$Stabel$Codegen$BaseModule$boxFn = '__box';
-var $author$project$Stabel$Codegen$BaseModule$callQuoteFn = '__call_quote';
-var $author$project$Stabel$Codegen$BaseModule$copyStructFn = '__copy_str';
-var $author$project$Stabel$Codegen$BaseModule$defaultStackSize = 1024;
-var $author$project$Stabel$Codegen$BaseModule$divIntFn = '__div_i32';
-var $author$project$Stabel$Codegen$BaseModule$dropFn = '__drop';
-var $author$project$Stabel$Codegen$BaseModule$dupFn = '__duplicate';
-var $author$project$Stabel$Codegen$BaseModule$eqIntFn = '__eq_i32';
-var $author$project$Wasm$Module = function (a) {
-	return {$: 'Module', a: a};
-};
-var $author$project$Wasm$initModule = $author$project$Wasm$Module(
-	{exports: _List_Nil, functions: _List_Nil, imports: _List_Nil, nextFunctionIndex: 0, quotables: _List_Nil, start: $elm$core$Maybe$Nothing, typeSignatures: _List_Nil});
-var $author$project$Stabel$Codegen$BaseModule$wasmPtrSize = 4;
-var $author$project$Stabel$Codegen$BaseModule$stackPositionOffset = $author$project$Stabel$Codegen$BaseModule$wasmPtrSize;
-var $author$project$Stabel$Codegen$BaseModule$initialHeapPositionOffset = $author$project$Stabel$Codegen$BaseModule$stackPositionOffset + $author$project$Stabel$Codegen$BaseModule$wasmPtrSize;
-var $author$project$Stabel$Codegen$BaseModule$leftRotFn = '__left_rotate';
-var $author$project$Stabel$Codegen$BaseModule$mulIntFn = '__mul_i32';
-var $author$project$Stabel$Codegen$BaseModule$rotFn = '__rotate';
-var $author$project$Stabel$Codegen$BaseModule$stackCapacityOffset = 0;
-var $author$project$Stabel$Codegen$BaseModule$stackGetElementFn = '__stack_get';
-var $author$project$Stabel$Codegen$BaseModule$stackPopFn = '__stack_pop';
-var $author$project$Stabel$Codegen$BaseModule$stackPushFn = '__stack_push';
-var $author$project$Stabel$Codegen$BaseModule$stackReplaceElementFn = '__stack_replace';
-var $author$project$Stabel$Codegen$BaseModule$subIntFn = '__sub_i32';
-var $author$project$Stabel$Codegen$BaseModule$swapFn = '__swap';
-var $author$project$Stabel$Codegen$BaseModule$unboxFn = '__unbox';
-var $elm_community$list_extra$List$Extra$findIndexHelp = F3(
-	function (index, predicate, list) {
-		findIndexHelp:
-		while (true) {
-			if (!list.b) {
-				return $elm$core$Maybe$Nothing;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (predicate(x)) {
-					return $elm$core$Maybe$Just(index);
-				} else {
-					var $temp$index = index + 1,
-						$temp$predicate = predicate,
-						$temp$list = xs;
-					index = $temp$index;
-					predicate = $temp$predicate;
-					list = $temp$list;
-					continue findIndexHelp;
-				}
-			}
-		}
-	});
-var $elm_community$list_extra$List$Extra$findIndex = $elm_community$list_extra$List$Extra$findIndexHelp(0);
-var $elm_community$list_extra$List$Extra$elemIndex = function (x) {
-	return $elm_community$list_extra$List$Extra$findIndex(
-		$elm$core$Basics$eq(x));
-};
-var $author$project$Wasm$withFunction = F2(
-	function (funcDef, _v0) {
-		var module_ = _v0.a;
-		var typeSignature = {inputs: funcDef.args, outputs: funcDef.results};
-		var _v1 = function () {
-			var _v2 = A2($elm_community$list_extra$List$Extra$elemIndex, typeSignature, module_.typeSignatures);
-			if (_v2.$ === 'Just') {
-				var idx = _v2.a;
-				return _Utils_Tuple2(idx, module_);
-			} else {
-				return _Utils_Tuple2(
-					$elm$core$List$length(module_.typeSignatures),
-					_Utils_update(
-						module_,
-						{
-							typeSignatures: _Utils_ap(
-								module_.typeSignatures,
-								_List_fromArray(
-									[typeSignature]))
-						}));
-			}
-		}();
-		var tsIndex = _v1.a;
-		var updatedModule = _v1.b;
-		var newFunction = {instructions: funcDef.instructions, locals: funcDef.locals, name: funcDef.name, typeSignatureIndex: tsIndex};
-		return $author$project$Wasm$Module(
-			_Utils_update(
-				updatedModule,
-				{
-					exports: funcDef.exported ? _Utils_ap(
-						updatedModule.exports,
-						_List_fromArray(
-							[updatedModule.nextFunctionIndex])) : updatedModule.exports,
-					functions: _Utils_ap(
-						updatedModule.functions,
-						_List_fromArray(
-							[newFunction])),
-					nextFunctionIndex: updatedModule.nextFunctionIndex + 1,
-					quotables: funcDef.isIndirectlyCalled ? _Utils_ap(
-						updatedModule.quotables,
-						_List_fromArray(
-							[updatedModule.nextFunctionIndex])) : updatedModule.quotables
-				}));
-	});
-var $author$project$Wasm$withImport = F4(
-	function (importModule, entityName, typeToImport, _v0) {
-		var module_ = _v0.a;
-		return $author$project$Wasm$Module(
-			_Utils_update(
-				module_,
-				{
-					imports: _Utils_ap(
-						module_.imports,
-						_List_fromArray(
-							[
-								{entityName: entityName, moduleName: importModule, type_: typeToImport}
-							]))
-				}));
-	});
-var $author$project$Wasm$withStartFunction = F2(
-	function (funcDef, module_) {
-		var _v0 = A2($author$project$Wasm$withFunction, funcDef, module_);
-		var moduleWithFunction = _v0.a;
-		var startIdx = $elm$core$List$length(moduleWithFunction.functions) - 1;
-		return $author$project$Wasm$Module(
-			_Utils_update(
-				moduleWithFunction,
-				{
-					start: $elm$core$Maybe$Just(startIdx)
-				}));
-	});
-var $author$project$Stabel$Codegen$BaseModule$baseModule = A2(
-	$author$project$Wasm$withFunction,
-	{
-		args: _List_Nil,
-		exported: false,
-		instructions: _List_fromArray(
-			[
-				$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-				$author$project$Wasm$CallIndirect
-			]),
-		isIndirectlyCalled: false,
-		locals: _List_Nil,
-		name: $author$project$Stabel$Codegen$BaseModule$callQuoteFn,
-		results: _List_Nil
-	},
-	A2(
-		$author$project$Wasm$withFunction,
-		{
-			args: _List_fromArray(
-				[$author$project$Wasm$Int32]),
-			exported: false,
-			instructions: _List_fromArray(
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $author$project$TestCompiler$compileFinished = _Platform_outgoingPort(
+	'compileFinished',
+	function ($) {
+		var a = $.a;
+		var b = $.b;
+		return A2(
+			$elm$json$Json$Encode$list,
+			$elm$core$Basics$identity,
+			_List_fromArray(
 				[
-					$author$project$Wasm$Local_Get(0),
-					$author$project$Wasm$Local_Get(0),
-					$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackGetElementFn),
-					$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-					$author$project$Wasm$I32_Add,
-					$author$project$Wasm$I32_Load,
-					$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackReplaceElementFn)
-				]),
-			isIndirectlyCalled: false,
-			locals: _List_Nil,
-			name: $author$project$Stabel$Codegen$BaseModule$unboxFn,
-			results: _List_Nil
-		},
-		A2(
-			$author$project$Wasm$withFunction,
-			{
-				args: _List_fromArray(
-					[$author$project$Wasm$Int32, $author$project$Wasm$Int32]),
-				exported: false,
-				instructions: function () {
-					var typeSize = $author$project$Stabel$Codegen$BaseModule$wasmPtrSize * 2;
-					return _List_fromArray(
-						[
-							$author$project$Wasm$I32_Const(typeSize),
-							$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$allocFn),
-							$author$project$Wasm$Local_Tee(2),
-							$author$project$Wasm$Local_Get(1),
-							$author$project$Wasm$I32_Store,
-							$author$project$Wasm$Local_Get(2),
-							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-							$author$project$Wasm$I32_Add,
-							$author$project$Wasm$Local_Get(0),
-							$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackGetElementFn),
-							$author$project$Wasm$I32_Store,
-							$author$project$Wasm$Local_Get(0),
-							$author$project$Wasm$Local_Get(2),
-							$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackReplaceElementFn)
-						]);
-				}(),
-				isIndirectlyCalled: false,
-				locals: _List_fromArray(
-					[$author$project$Wasm$Int32]),
-				name: $author$project$Stabel$Codegen$BaseModule$boxFn,
-				results: _List_Nil
-			},
-			A2(
-				$author$project$Wasm$withFunction,
-				{
-					args: _List_fromArray(
-						[$author$project$Wasm$Int32, $author$project$Wasm$Int32]),
-					exported: false,
-					instructions: _List_fromArray(
-						[
-							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
-							$author$project$Wasm$I32_Load,
-							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-							$author$project$Wasm$Local_Get(0),
-							$author$project$Wasm$I32_Const(1),
-							$author$project$Wasm$I32_Add,
-							$author$project$Wasm$I32_Mul,
-							$author$project$Wasm$I32_Sub,
-							$author$project$Wasm$Local_Get(1),
-							$author$project$Wasm$I32_Store
-						]),
-					isIndirectlyCalled: false,
-					locals: _List_Nil,
-					name: $author$project$Stabel$Codegen$BaseModule$stackReplaceElementFn,
-					results: _List_Nil
-				},
-				A2(
-					$author$project$Wasm$withFunction,
-					{
-						args: _List_fromArray(
-							[$author$project$Wasm$Int32]),
-						exported: false,
-						instructions: _List_fromArray(
-							[
-								$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
-								$author$project$Wasm$I32_Load,
-								$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-								$author$project$Wasm$Local_Get(0),
-								$author$project$Wasm$I32_Const(1),
-								$author$project$Wasm$I32_Add,
-								$author$project$Wasm$I32_Mul,
-								$author$project$Wasm$I32_Sub,
-								$author$project$Wasm$I32_Load
-							]),
-						isIndirectlyCalled: false,
-						locals: _List_Nil,
-						name: $author$project$Stabel$Codegen$BaseModule$stackGetElementFn,
-						results: _List_fromArray(
-							[$author$project$Wasm$Int32])
-					},
-					A2(
-						$author$project$Wasm$withFunction,
-						{
-							args: _List_Nil,
-							exported: false,
-							instructions: _List_fromArray(
-								[
-									$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-									$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-									$author$project$Wasm$I32_Eq,
-									$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-								]),
-							isIndirectlyCalled: false,
-							locals: _List_Nil,
-							name: $author$project$Stabel$Codegen$BaseModule$eqIntFn,
-							results: _List_Nil
-						},
-						A2(
-							$author$project$Wasm$withFunction,
-							{
-								args: _List_Nil,
-								exported: false,
-								instructions: _List_fromArray(
-									[
-										$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$swapFn),
-										$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-										$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-										$author$project$Wasm$I32_Div,
-										$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-									]),
-								isIndirectlyCalled: false,
-								locals: _List_Nil,
-								name: $author$project$Stabel$Codegen$BaseModule$divIntFn,
-								results: _List_Nil
-							},
-							A2(
-								$author$project$Wasm$withFunction,
-								{
-									args: _List_Nil,
-									exported: false,
-									instructions: _List_fromArray(
-										[
-											$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$swapFn),
-											$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-											$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-											$author$project$Wasm$I32_Mul,
-											$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-										]),
-									isIndirectlyCalled: false,
-									locals: _List_Nil,
-									name: $author$project$Stabel$Codegen$BaseModule$mulIntFn,
-									results: _List_Nil
-								},
-								A2(
-									$author$project$Wasm$withFunction,
-									{
-										args: _List_Nil,
-										exported: false,
-										instructions: _List_fromArray(
-											[
-												$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$swapFn),
-												$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-												$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-												$author$project$Wasm$I32_Sub,
-												$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-											]),
-										isIndirectlyCalled: false,
-										locals: _List_Nil,
-										name: $author$project$Stabel$Codegen$BaseModule$subIntFn,
-										results: _List_Nil
-									},
-									A2(
-										$author$project$Wasm$withFunction,
-										{
-											args: _List_Nil,
-											exported: false,
-											instructions: _List_fromArray(
-												[
-													$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$swapFn),
-													$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-													$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-													$author$project$Wasm$I32_Add,
-													$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-												]),
-											isIndirectlyCalled: false,
-											locals: _List_Nil,
-											name: $author$project$Stabel$Codegen$BaseModule$addIntFn,
-											results: _List_Nil
-										},
-										A2(
-											$author$project$Wasm$withFunction,
-											{
-												args: _List_Nil,
-												exported: false,
-												instructions: _List_fromArray(
-													[
-														$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-														$author$project$Wasm$Local_Set(0),
-														$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-														$author$project$Wasm$Local_Set(1),
-														$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-														$author$project$Wasm$Local_Set(2),
-														$author$project$Wasm$Local_Get(1),
-														$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-														$author$project$Wasm$Local_Get(0),
-														$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-														$author$project$Wasm$Local_Get(2),
-														$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-													]),
-												isIndirectlyCalled: false,
-												locals: _List_fromArray(
-													[$author$project$Wasm$Int32, $author$project$Wasm$Int32, $author$project$Wasm$Int32]),
-												name: $author$project$Stabel$Codegen$BaseModule$leftRotFn,
-												results: _List_Nil
-											},
-											A2(
-												$author$project$Wasm$withFunction,
-												{
-													args: _List_Nil,
-													exported: false,
-													instructions: _List_fromArray(
-														[
-															$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-															$author$project$Wasm$Local_Set(0),
-															$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-															$author$project$Wasm$Local_Set(1),
-															$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-															$author$project$Wasm$Local_Set(2),
-															$author$project$Wasm$Local_Get(0),
-															$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-															$author$project$Wasm$Local_Get(2),
-															$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-															$author$project$Wasm$Local_Get(1),
-															$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-														]),
-													isIndirectlyCalled: false,
-													locals: _List_fromArray(
-														[$author$project$Wasm$Int32, $author$project$Wasm$Int32, $author$project$Wasm$Int32]),
-													name: $author$project$Stabel$Codegen$BaseModule$rotFn,
-													results: _List_Nil
-												},
-												A2(
-													$author$project$Wasm$withFunction,
-													{
-														args: _List_Nil,
-														exported: false,
-														instructions: _List_fromArray(
-															[
-																$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-																$author$project$Wasm$Local_Set(0),
-																$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-																$author$project$Wasm$Local_Get(0),
-																$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-																$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-															]),
-														isIndirectlyCalled: false,
-														locals: _List_fromArray(
-															[$author$project$Wasm$Int32]),
-														name: $author$project$Stabel$Codegen$BaseModule$swapFn,
-														results: _List_Nil
-													},
-													A2(
-														$author$project$Wasm$withFunction,
-														{
-															args: _List_Nil,
-															exported: false,
-															instructions: _List_fromArray(
-																[
-																	$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-																	$author$project$Wasm$Drop
-																]),
-															isIndirectlyCalled: false,
-															locals: _List_Nil,
-															name: $author$project$Stabel$Codegen$BaseModule$dropFn,
-															results: _List_Nil
-														},
-														A2(
-															$author$project$Wasm$withFunction,
-															{
-																args: _List_Nil,
-																exported: false,
-																instructions: _List_fromArray(
-																	[
-																		$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-																		$author$project$Wasm$Local_Tee(0),
-																		$author$project$Wasm$Local_Get(0),
-																		$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-																		$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-																	]),
-																isIndirectlyCalled: false,
-																locals: _List_fromArray(
-																	[$author$project$Wasm$Int32]),
-																name: $author$project$Stabel$Codegen$BaseModule$dupFn,
-																results: _List_Nil
-															},
-															A2(
-																$author$project$Wasm$withFunction,
-																{
-																	args: _List_Nil,
-																	exported: false,
-																	instructions: _List_fromArray(
-																		[
-																			$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
-																			$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
-																			$author$project$Wasm$I32_Load,
-																			$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-																			$author$project$Wasm$I32_Sub,
-																			$author$project$Wasm$Local_Tee(0),
-																			$author$project$Wasm$I32_Store,
-																			$author$project$Wasm$Local_Get(0),
-																			$author$project$Wasm$I32_Load
-																		]),
-																	isIndirectlyCalled: false,
-																	locals: _List_fromArray(
-																		[$author$project$Wasm$Int32]),
-																	name: $author$project$Stabel$Codegen$BaseModule$stackPopFn,
-																	results: _List_fromArray(
-																		[$author$project$Wasm$Int32])
-																},
-																A2(
-																	$author$project$Wasm$withFunction,
-																	{
-																		args: _List_fromArray(
-																			[$author$project$Wasm$Int32]),
-																		exported: false,
-																		instructions: _List_fromArray(
-																			[
-																				$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
-																				$author$project$Wasm$I32_Load,
-																				$author$project$Wasm$Local_Tee(1),
-																				$author$project$Wasm$Local_Get(0),
-																				$author$project$Wasm$I32_Store,
-																				$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
-																				$author$project$Wasm$Local_Get(1),
-																				$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-																				$author$project$Wasm$I32_Add,
-																				$author$project$Wasm$I32_Store
-																			]),
-																		isIndirectlyCalled: false,
-																		locals: _List_fromArray(
-																			[$author$project$Wasm$Int32]),
-																		name: $author$project$Stabel$Codegen$BaseModule$stackPushFn,
-																		results: _List_Nil
-																	},
-																	A2(
-																		$author$project$Wasm$withFunction,
-																		{
-																			args: _List_fromArray(
-																				[$author$project$Wasm$Int32, $author$project$Wasm$Int32]),
-																			exported: false,
-																			instructions: _List_fromArray(
-																				[
-																					$author$project$Wasm$Local_Get(1),
-																					$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$allocFn),
-																					$author$project$Wasm$Local_Set(2),
-																					$author$project$Wasm$Block(
-																					_List_fromArray(
-																						[
-																							$author$project$Wasm$Loop(
-																							_List_fromArray(
-																								[
-																									$author$project$Wasm$Local_Get(1),
-																									$author$project$Wasm$I32_EqZero,
-																									$author$project$Wasm$BreakIf(1),
-																									$author$project$Wasm$Local_Get(1),
-																									$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-																									$author$project$Wasm$I32_Sub,
-																									$author$project$Wasm$Local_Set(1),
-																									$author$project$Wasm$Local_Get(0),
-																									$author$project$Wasm$Local_Get(1),
-																									$author$project$Wasm$I32_Add,
-																									$author$project$Wasm$I32_Load,
-																									$author$project$Wasm$Local_Set(3),
-																									$author$project$Wasm$Local_Get(2),
-																									$author$project$Wasm$Local_Get(1),
-																									$author$project$Wasm$I32_Add,
-																									$author$project$Wasm$Local_Get(3),
-																									$author$project$Wasm$I32_Store,
-																									$author$project$Wasm$Break(0)
-																								]))
-																						])),
-																					$author$project$Wasm$Local_Get(2)
-																				]),
-																			isIndirectlyCalled: false,
-																			locals: _List_fromArray(
-																				[$author$project$Wasm$Int32, $author$project$Wasm$Int32]),
-																			name: $author$project$Stabel$Codegen$BaseModule$copyStructFn,
-																			results: _List_fromArray(
-																				[$author$project$Wasm$Int32])
-																		},
-																		A2(
-																			$author$project$Wasm$withFunction,
-																			{
-																				args: _List_fromArray(
-																					[$author$project$Wasm$Int32]),
-																				exported: false,
-																				instructions: _List_fromArray(
-																					[
-																						$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$initialHeapPositionOffset),
-																						$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$initialHeapPositionOffset),
-																						$author$project$Wasm$I32_Load,
-																						$author$project$Wasm$Local_Tee(1),
-																						$author$project$Wasm$Local_Get(0),
-																						$author$project$Wasm$I32_Add,
-																						$author$project$Wasm$I32_Store,
-																						$author$project$Wasm$Local_Get(1)
-																					]),
-																				isIndirectlyCalled: false,
-																				locals: _List_fromArray(
-																					[$author$project$Wasm$Int32]),
-																				name: $author$project$Stabel$Codegen$BaseModule$allocFn,
-																				results: _List_fromArray(
-																					[$author$project$Wasm$Int32])
-																			},
-																			A2(
-																				$author$project$Wasm$withStartFunction,
-																				{
-																					args: _List_Nil,
-																					exported: false,
-																					instructions: _List_fromArray(
-																						[
-																							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackCapacityOffset),
-																							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$defaultStackSize),
-																							$author$project$Wasm$I32_Store,
-																							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
-																							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize * 3),
-																							$author$project$Wasm$I32_Store,
-																							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$initialHeapPositionOffset),
-																							$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$defaultStackSize + $author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-																							$author$project$Wasm$I32_Store
-																						]),
-																					isIndirectlyCalled: false,
-																					locals: _List_Nil,
-																					name: '__initialize',
-																					results: _List_Nil
-																				},
-																				A4(
-																					$author$project$Wasm$withImport,
-																					'host',
-																					'memory',
-																					A2($author$project$Wasm$Memory, 1, $elm$core$Maybe$Nothing),
-																					$author$project$Wasm$initModule)))))))))))))))))))));
+					$elm$json$Json$Encode$bool(a),
+					$elm$json$Json$Encode$string(b)
+				]));
+	});
+var $author$project$TestCompiler$compileFailed = function (err) {
+	return $author$project$TestCompiler$compileFinished(
+		_Utils_Tuple2(false, 'Compilation failed:\n\n' + err));
+};
+var $author$project$Stabel$Parser$ModuleDefinition$Undefined = {$: 0};
 var $elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -3718,6 +3090,32 @@ var $elm$core$List$foldr = F3(
 	function (fn, acc, ls) {
 		return A4($elm$core$List$foldrHelper, fn, acc, 0, ls);
 	});
+var $elm$core$Result$map2 = F3(
+	function (func, ra, rb) {
+		if (ra.$ === 1) {
+			var x = ra.a;
+			return $elm$core$Result$Err(x);
+		} else {
+			var a = ra.a;
+			if (rb.$ === 1) {
+				var x = rb.a;
+				return $elm$core$Result$Err(x);
+			} else {
+				var b = rb.a;
+				return $elm$core$Result$Ok(
+					A2(func, a, b));
+			}
+		}
+	});
+var $elm_community$result_extra$Result$Extra$combine = A2(
+	$elm$core$List$foldr,
+	$elm$core$Result$map2($elm$core$List$cons),
+	$elm$core$Result$Ok(_List_Nil));
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
+var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
+var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
+var $elm$core$Set$empty = $elm$core$Dict$empty;
+var $author$project$TestCompiler$emptyQualifierAst = {bj: $elm$core$Dict$empty, aW: $elm$core$Set$empty, I: $elm$core$Dict$empty};
 var $elm$core$List$map = F2(
 	function (f, xs) {
 		return A3(
@@ -3732,47 +3130,339 @@ var $elm$core$List$map = F2(
 			_List_Nil,
 			xs);
 	});
-var $author$project$Stabel$Codegen$Box = F2(
-	function (a, b) {
-		return {$: 'Box', a: a, b: b};
+var $author$project$TestCompiler$formatErrors = F2(
+	function (fn, problems) {
+		return $elm$core$Result$Err(
+			A2(
+				$elm$core$String$join,
+				'\n\n',
+				A2(
+					$elm$core$List$map,
+					function (_v0) {
+						var source = _v0.a;
+						var err = _v0.b;
+						return A2(fn, source, err);
+					},
+					problems)));
 	});
-var $author$project$Stabel$Codegen$Builtin = function (a) {
-	return {$: 'Builtin', a: a};
-};
-var $author$project$Stabel$Codegen$ConstructType = function (a) {
-	return {$: 'ConstructType', a: a};
-};
-var $author$project$Stabel$Data$Type$Custom = function (a) {
-	return {$: 'Custom', a: a};
-};
-var $author$project$Stabel$Data$Type$CustomGeneric = F2(
-	function (a, b) {
-		return {$: 'CustomGeneric', a: a, b: b};
+var $author$project$TestCompiler$formatParserErrors = F2(
+	function (fn, problems) {
+		return $elm$core$Result$Err(
+			A2(
+				$elm$core$String$join,
+				'\n\n',
+				A2(
+					$elm$core$List$map,
+					function (_v0) {
+						var ref = _v0.a;
+						var source = _v0.b;
+						var err = _v0.c;
+						return A3(fn, ref, source, err);
+					},
+					problems)));
 	});
-var $author$project$Stabel$Data$Type$Generic = function (a) {
-	return {$: 'Generic', a: a};
+var $elm$core$Dict$Black = 1;
+var $elm$core$Dict$RBNode_elm_builtin = F5(
+	function (a, b, c, d, e) {
+		return {$: -1, a: a, b: b, c: c, d: d, e: e};
+	});
+var $elm$core$Dict$Red = 0;
+var $elm$core$Dict$balance = F5(
+	function (color, key, value, left, right) {
+		if ((right.$ === -1) && (!right.a)) {
+			var _v1 = right.a;
+			var rK = right.b;
+			var rV = right.c;
+			var rLeft = right.d;
+			var rRight = right.e;
+			if ((left.$ === -1) && (!left.a)) {
+				var _v3 = left.a;
+				var lK = left.b;
+				var lV = left.c;
+				var lLeft = left.d;
+				var lRight = left.e;
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					0,
+					key,
+					value,
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rLeft, rRight));
+			} else {
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					color,
+					rK,
+					rV,
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, left, rLeft),
+					rRight);
+			}
+		} else {
+			if ((((left.$ === -1) && (!left.a)) && (left.d.$ === -1)) && (!left.d.a)) {
+				var _v5 = left.a;
+				var lK = left.b;
+				var lV = left.c;
+				var _v6 = left.d;
+				var _v7 = _v6.a;
+				var llK = _v6.b;
+				var llV = _v6.c;
+				var llLeft = _v6.d;
+				var llRight = _v6.e;
+				var lRight = left.e;
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					0,
+					lK,
+					lV,
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, lRight, right));
+			} else {
+				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
+			}
+		}
+	});
+var $elm$core$Basics$compare = _Utils_compare;
+var $elm$core$Dict$insertHelp = F3(
+	function (key, value, dict) {
+		if (dict.$ === -2) {
+			return A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
+		} else {
+			var nColor = dict.a;
+			var nKey = dict.b;
+			var nValue = dict.c;
+			var nLeft = dict.d;
+			var nRight = dict.e;
+			var _v1 = A2($elm$core$Basics$compare, key, nKey);
+			switch (_v1) {
+				case 0:
+					return A5(
+						$elm$core$Dict$balance,
+						nColor,
+						nKey,
+						nValue,
+						A3($elm$core$Dict$insertHelp, key, value, nLeft),
+						nRight);
+				case 1:
+					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
+				default:
+					return A5(
+						$elm$core$Dict$balance,
+						nColor,
+						nKey,
+						nValue,
+						nLeft,
+						A3($elm$core$Dict$insertHelp, key, value, nRight));
+			}
+		}
+	});
+var $elm$core$Dict$insert = F3(
+	function (key, value, dict) {
+		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
+		if ((_v0.$ === -1) && (!_v0.a)) {
+			var _v1 = _v0.a;
+			var k = _v0.b;
+			var v = _v0.c;
+			var l = _v0.d;
+			var r = _v0.e;
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
+		} else {
+			var x = _v0;
+			return x;
+		}
+	});
+var $elm$core$Dict$fromList = function (assocs) {
+	return A3(
+		$elm$core$List$foldl,
+		F2(
+			function (_v0, dict) {
+				var key = _v0.a;
+				var value = _v0.b;
+				return A3($elm$core$Dict$insert, key, value, dict);
+			}),
+		$elm$core$Dict$empty,
+		assocs);
 };
-var $author$project$Stabel$Codegen$GetMember = F3(
+var $elm$core$Dict$get = F2(
+	function (targetKey, dict) {
+		get:
+		while (true) {
+			if (dict.$ === -2) {
+				return $elm$core$Maybe$Nothing;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
+				switch (_v1) {
+					case 0:
+						var $temp$targetKey = targetKey,
+							$temp$dict = left;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+					case 1:
+						return $elm$core$Maybe$Just(value);
+					default:
+						var $temp$targetKey = targetKey,
+							$temp$dict = right;
+						targetKey = $temp$targetKey;
+						dict = $temp$dict;
+						continue get;
+				}
+			}
+		}
+	});
+var $elm$core$Dict$foldl = F3(
+	function (func, acc, dict) {
+		foldl:
+		while (true) {
+			if (dict.$ === -2) {
+				return acc;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var $temp$func = func,
+					$temp$acc = A3(
+					func,
+					key,
+					value,
+					A3($elm$core$Dict$foldl, func, acc, left)),
+					$temp$dict = right;
+				func = $temp$func;
+				acc = $temp$acc;
+				dict = $temp$dict;
+				continue foldl;
+			}
+		}
+	});
+var $elm$core$Dict$map = F2(
+	function (func, dict) {
+		if (dict.$ === -2) {
+			return $elm$core$Dict$RBEmpty_elm_builtin;
+		} else {
+			var color = dict.a;
+			var key = dict.b;
+			var value = dict.c;
+			var left = dict.d;
+			var right = dict.e;
+			return A5(
+				$elm$core$Dict$RBNode_elm_builtin,
+				color,
+				key,
+				A2(func, key, value),
+				A2($elm$core$Dict$map, func, left),
+				A2($elm$core$Dict$map, func, right));
+		}
+	});
+var $elm$core$Tuple$mapSecond = F2(
+	function (func, _v0) {
+		var x = _v0.a;
+		var y = _v0.b;
+		return _Utils_Tuple2(
+			x,
+			func(y));
+	});
+var $author$project$Stabel$Qualifier$Builtin = F2(
+	function (a, b) {
+		return {$: 5, a: a, b: b};
+	});
+var $author$project$Stabel$Qualifier$ConstructType = function (a) {
+	return {$: 6, a: a};
+};
+var $author$project$Stabel$Qualifier$Cycle = F2(
+	function (a, b) {
+		return {$: 4, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$ExternalFunction = F3(
 	function (a, b, c) {
-		return {$: 'GetMember', a: a, b: b, c: c};
+		return {$: 3, a: a, b: b, c: c};
 	});
-var $author$project$Stabel$Data$Type$Int = {$: 'Int'};
-var $author$project$Stabel$Codegen$IntLiteral = function (a) {
-	return {$: 'IntLiteral', a: a};
-};
-var $author$project$Stabel$Data$Type$Quotation = function (a) {
-	return {$: 'Quotation', a: a};
-};
-var $author$project$Stabel$Codegen$SetMember = F3(
-	function (a, b, c) {
-		return {$: 'SetMember', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$Codegen$Word = F2(
+var $author$project$Stabel$Qualifier$Function = F2(
 	function (a, b) {
-		return {$: 'Word', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
-var $author$project$Stabel$Codegen$WordRef = function (a) {
-	return {$: 'WordRef', a: a};
+var $author$project$Stabel$Qualifier$Problem$FunctionNotExposed = F2(
+	function (a, b) {
+		return {$: 5, a: a, b: b};
+	});
+var $author$project$Stabel$Qualifier$FunctionRef = F2(
+	function (a, b) {
+		return {$: 2, a: a, b: b};
+	});
+var $author$project$Stabel$Qualifier$GetMember = F4(
+	function (a, b, c, d) {
+		return {$: 7, a: a, b: b, c: c, d: d};
+	});
+var $author$project$Stabel$Qualifier$Integer = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $author$project$Stabel$Qualifier$MultiImpl = F2(
+	function (a, b) {
+		return {$: 1, a: a, b: b};
+	});
+var $author$project$Stabel$Qualifier$Problem$NoSuchMemberOnType = F3(
+	function (a, b, c) {
+		return {$: 4, a: a, b: b, c: c};
+	});
+var $author$project$Stabel$Data$TypeSignature$NotProvided = {$: 0};
+var $author$project$Stabel$Parser$PackageFunction = F3(
+	function (a, b, c) {
+		return {$: 2, a: a, b: b, c: c};
+	});
+var $author$project$Stabel$Qualifier$Recurse = function (a) {
+	return {$: 3, a: a};
+};
+var $author$project$Stabel$Qualifier$SetMember = F4(
+	function (a, b, c, d) {
+		return {$: 8, a: a, b: b, c: c, d: d};
+	});
+var $author$project$Stabel$Qualifier$SoloImpl = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Stabel$Data$SourceLocation$SourceLocationRange = F3(
+	function (source, start, end) {
+		return {bd: end, bI: source, bJ: start};
+	});
+var $author$project$Stabel$Qualifier$Problem$UnknownFunctionRef = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $author$project$Stabel$Qualifier$Problem$UnknownTypeRef = F2(
+	function (a, b) {
+		return {$: 1, a: a, b: b};
+	});
+var $author$project$Stabel$Data$Builtin$Apply = 10;
+var $author$project$Stabel$Data$Builtin$Divide = 3;
+var $author$project$Stabel$Data$Builtin$Equal = 4;
+var $author$project$Stabel$Data$Builtin$Minus = 1;
+var $author$project$Stabel$Data$Builtin$Multiply = 2;
+var $author$project$Stabel$Data$Builtin$Plus = 0;
+var $author$project$Stabel$Data$Builtin$StackDrop = 6;
+var $author$project$Stabel$Data$Builtin$StackDuplicate = 5;
+var $author$project$Stabel$Data$Builtin$StackLeftRotate = 9;
+var $author$project$Stabel$Data$Builtin$StackRightRotate = 8;
+var $author$project$Stabel$Data$Builtin$StackSwap = 7;
+var $author$project$Stabel$Qualifier$builtinDict = $elm$core$Dict$fromList(
+	_List_fromArray(
+		[
+			_Utils_Tuple2('+', 0),
+			_Utils_Tuple2('-', 1),
+			_Utils_Tuple2('*', 2),
+			_Utils_Tuple2('div', 3),
+			_Utils_Tuple2('=', 4),
+			_Utils_Tuple2('swap', 7),
+			_Utils_Tuple2('dup', 5),
+			_Utils_Tuple2('drop', 6),
+			_Utils_Tuple2('rotate', 8),
+			_Utils_Tuple2('-rotate', 9),
+			_Utils_Tuple2('!', 10)
+		]));
+var $elm$core$String$concat = function (strings) {
+	return A2($elm$core$String$join, '', strings);
 };
 var $elm$core$List$drop = F2(
 	function (n, list) {
@@ -3795,24 +3485,15 @@ var $elm$core$List$drop = F2(
 			}
 		}
 	});
-var $elm$core$List$maybeCons = F3(
-	function (f, mx, xs) {
-		var _v0 = f(mx);
-		if (_v0.$ === 'Just') {
-			var x = _v0.a;
-			return A2($elm$core$List$cons, x, xs);
-		} else {
-			return xs;
-		}
+var $author$project$Stabel$Data$SourceLocation$SourceLocation = F2(
+	function (row, col) {
+		return {aD: col, S: row};
 	});
-var $elm$core$List$filterMap = F2(
-	function (f, xs) {
-		return A3(
-			$elm$core$List$foldr,
-			$elm$core$List$maybeCons(f),
-			_List_Nil,
-			xs);
-	});
+var $author$project$Stabel$Data$SourceLocation$emptyRange = A3(
+	$author$project$Stabel$Data$SourceLocation$SourceLocationRange,
+	'',
+	A2($author$project$Stabel$Data$SourceLocation$SourceLocation, 0, 0),
+	A2($author$project$Stabel$Data$SourceLocation$SourceLocation, 0, 0));
 var $elm_community$list_extra$List$Extra$find = F2(
 	function (predicate, list) {
 		find:
@@ -3834,37 +3515,295 @@ var $elm_community$list_extra$List$Extra$find = F2(
 			}
 		}
 	});
-var $elm$core$Basics$compare = _Utils_compare;
-var $elm$core$Dict$get = F2(
-	function (targetKey, dict) {
-		get:
-		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
-				return $elm$core$Maybe$Nothing;
-			} else {
-				var key = dict.b;
-				var value = dict.c;
-				var left = dict.d;
-				var right = dict.e;
-				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
-						var $temp$targetKey = targetKey,
-							$temp$dict = left;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-					case 'EQ':
-						return $elm$core$Maybe$Just(value);
-					default:
-						var $temp$targetKey = targetKey,
-							$temp$dict = right;
-						targetKey = $temp$targetKey;
-						dict = $temp$dict;
-						continue get;
-				}
-			}
+var $elm$core$Maybe$map = F2(
+	function (f, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return $elm$core$Maybe$Just(
+				f(value));
+		} else {
+			return $elm$core$Maybe$Nothing;
 		}
+	});
+var $elm$core$Tuple$pair = F2(
+	function (a, b) {
+		return _Utils_Tuple2(a, b);
+	});
+var $author$project$Stabel$Qualifier$getMemberType = F2(
+	function (typeDef, memberName) {
+		var members = function () {
+			var _v4 = typeDef.aQ;
+			if (!_v4.$) {
+				var mems = _v4.a;
+				return mems;
+			} else {
+				return _List_Nil;
+			}
+		}();
+		return A2(
+			$elm$core$Maybe$map,
+			function (_v2) {
+				var idx = _v2.a;
+				var _v3 = _v2.b;
+				var t = _v3.b;
+				return _Utils_Tuple2(idx, t);
+			},
+			A2(
+				$elm_community$list_extra$List$Extra$find,
+				function (_v0) {
+					var _v1 = _v0.b;
+					var name = _v1.a;
+					return _Utils_eq(name, memberName);
+				},
+				A2($elm$core$List$indexedMap, $elm$core$Tuple$pair, members)));
+	});
+var $author$project$Stabel$Qualifier$initQualifyNodeAccumulator = F4(
+	function (qualifiedTypes, qualifiedFunctions, modRefs, currentlyParsing) {
+		return {J: 1, A: currentlyParsing, aa: $elm$core$Set$empty, P: modRefs, d: qualifiedFunctions, a: _List_Nil, D: qualifiedTypes};
+	});
+var $elm$core$Set$insert = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A3($elm$core$Dict$insert, key, 0, dict);
+	});
+var $elm$core$List$isEmpty = function (xs) {
+	if (!xs.b) {
+		return true;
+	} else {
+		return false;
+	}
+};
+var $author$project$Stabel$Qualifier$isMultiFunction = function (def) {
+	var _v0 = def.aL;
+	if (!_v0.$) {
+		return false;
+	} else {
+		return true;
+	}
+};
+var $elm$core$Dict$member = F2(
+	function (key, dict) {
+		var _v0 = A2($elm$core$Dict$get, key, dict);
+		if (!_v0.$) {
+			return true;
+		} else {
+			return false;
+		}
+	});
+var $elm$core$Set$member = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A2($elm$core$Dict$member, key, dict);
+	});
+var $author$project$Stabel$Parser$ModuleDefinition$emptyDefinition = {q: $elm$core$Dict$empty, bg: $elm$core$Set$empty, t: $elm$core$Dict$empty};
+var $author$project$Stabel$Parser$ModuleDefinition$definition = function (mod) {
+	if (!mod.$) {
+		return $author$project$Stabel$Parser$ModuleDefinition$emptyDefinition;
+	} else {
+		var def = mod.a;
+		return def;
+	}
+};
+var $elm$core$Dict$union = F2(
+	function (t1, t2) {
+		return A3($elm$core$Dict$foldl, $elm$core$Dict$insert, t2, t1);
+	});
+var $author$project$Stabel$Qualifier$moduleDefinition = function (config) {
+	var defaultImports = _Utils_eq(
+		A2($elm$core$Dict$get, '/core', config.B),
+		$elm$core$Maybe$Just('stabel/standard_library')) ? $elm$core$Dict$fromList(
+		_List_fromArray(
+			[
+				_Utils_Tuple2('/core', _List_Nil)
+			])) : $elm$core$Dict$empty;
+	var def = $author$project$Stabel$Parser$ModuleDefinition$definition(config.k.aq);
+	return {
+		q: def.q,
+		bg: def.bg,
+		t: A2($elm$core$Dict$union, def.t, defaultImports)
+	};
+};
+var $author$project$Stabel$Data$Type$Custom = function (a) {
+	return {$: 2, a: a};
+};
+var $author$project$Stabel$Data$Type$CustomGeneric = F2(
+	function (a, b) {
+		return {$: 3, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$Type$ExternalRef = F3(
+	function (a, b, c) {
+		return {$: 2, a: a, b: b, c: c};
+	});
+var $author$project$Stabel$Data$Type$Generic = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Stabel$Data$Type$Int = {$: 0};
+var $author$project$Stabel$Qualifier$Problem$InvalidTypeMatch = function (a) {
+	return {$: 3, a: a};
+};
+var $author$project$Stabel$Qualifier$LiteralInt = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Stabel$Qualifier$LiteralType = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Stabel$Qualifier$RecursiveMatch = function (a) {
+	return {$: 2, a: a};
+};
+var $author$project$Stabel$Parser$TypeMatch = F3(
+	function (a, b, c) {
+		return {$: 0, a: a, b: b, c: c};
+	});
+var $author$project$Stabel$Qualifier$TypeMatch = F3(
+	function (a, b, c) {
+		return {$: 0, a: a, b: b, c: c};
+	});
+var $author$project$Stabel$Qualifier$TypeMatchCond = F3(
+	function (a, b, c) {
+		return {$: 0, a: a, b: b, c: c};
+	});
+var $author$project$Stabel$Qualifier$Problem$TypeNotExposed = F2(
+	function (a, b) {
+		return {$: 6, a: a, b: b};
+	});
+var $author$project$Stabel$Data$Type$Union = F2(
+	function (a, b) {
+		return {$: 4, a: a, b: b};
+	});
+var $author$project$Stabel$Qualifier$Problem$UnionTypeMatchWithPatterns = function (a) {
+	return {$: 2, a: a};
+};
+var $elm$core$Basics$composeL = F3(
+	function (g, f, x) {
+		return g(
+			f(x));
+	});
+var $elm$core$Result$map = F2(
+	function (func, ra) {
+		if (!ra.$) {
+			var a = ra.a;
+			return $elm$core$Result$Ok(
+				func(a));
+		} else {
+			var e = ra.a;
+			return $elm$core$Result$Err(e);
+		}
+	});
+var $elm$core$Basics$not = _Basics_not;
+var $author$project$Stabel$Data$Type$FunctionSignature = function (a) {
+	return {$: 5, a: a};
+};
+var $author$project$Stabel$Parser$Type$InternalRef = F3(
+	function (a, b, c) {
+		return {$: 1, a: a, b: b, c: c};
+	});
+var $author$project$Stabel$Data$Type$StackRange = function (a) {
+	return {$: 6, a: a};
+};
+var $author$project$Stabel$Qualifier$qualifyName = F2(
+	function (config, name) {
+		return (config.x === '') ? name : $elm$core$String$concat(
+			_List_fromArray(
+				['/', config.x, '/', config.aR, '/', name]));
+	});
+var $author$project$Stabel$Qualifier$qualifyPackageModule = F2(
+	function (packageName, path) {
+		return (packageName === '') ? path : $elm$core$String$concat(
+			_List_fromArray(
+				['/', packageName, '/', path]));
+	});
+var $elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
+	});
+var $author$project$Stabel$Qualifier$rebindGenerics = F3(
+	function (genericNames, types, members) {
+		var genericsMap = $elm$core$Dict$fromList(
+			A3($elm$core$List$map2, $elm$core$Tuple$pair, genericNames, types));
+		var rebindGenericsHelper = function (t) {
+			switch (t.$) {
+				case 1:
+					var val = t.a;
+					return A2(
+						$elm$core$Maybe$withDefault,
+						t,
+						A2($elm$core$Dict$get, val, genericsMap));
+				case 3:
+					var cgName = t.a;
+					var cgMembers = t.b;
+					return A2(
+						$author$project$Stabel$Data$Type$CustomGeneric,
+						cgName,
+						A2($elm$core$List$map, rebindGenericsHelper, cgMembers));
+				case 4:
+					var uName = t.a;
+					var uMembers = t.b;
+					return A2(
+						$author$project$Stabel$Data$Type$Union,
+						uName,
+						A2($elm$core$List$map, rebindGenericsHelper, uMembers));
+				default:
+					return t;
+			}
+		};
+		return A2($elm$core$List$map, rebindGenericsHelper, members);
+	});
+var $elm$core$String$startsWith = _String_startsWith;
+var $author$project$Stabel$Qualifier$representsExternalModule = function (path) {
+	return A2($elm$core$String$startsWith, '/', path);
+};
+var $elm$core$Maybe$andThen = F2(
+	function (callback, maybeValue) {
+		if (!maybeValue.$) {
+			var value = maybeValue.a;
+			return callback(value);
+		} else {
+			return $elm$core$Maybe$Nothing;
+		}
+	});
+var $elm$core$String$length = _String_length;
+var $elm$core$String$slice = _String_slice;
+var $elm$core$String$dropLeft = F2(
+	function (n, string) {
+		return (n < 1) ? string : A3(
+			$elm$core$String$slice,
+			n,
+			$elm$core$String$length(string),
+			string);
+	});
+var $elm$core$Dict$filter = F2(
+	function (isGood, dict) {
+		return A3(
+			$elm$core$Dict$foldl,
+			F3(
+				function (k, v, d) {
+					return A2(isGood, k, v) ? A3($elm$core$Dict$insert, k, v, d) : d;
+				}),
+			$elm$core$Dict$empty,
+			dict);
+	});
+var $elm$core$List$maybeCons = F3(
+	function (f, mx, xs) {
+		var _v0 = f(mx);
+		if (!_v0.$) {
+			var x = _v0.a;
+			return A2($elm$core$List$cons, x, xs);
+		} else {
+			return xs;
+		}
+	});
+var $elm$core$List$filterMap = F2(
+	function (f, xs) {
+		return A3(
+			$elm$core$List$foldr,
+			$elm$core$List$maybeCons(f),
+			_List_Nil,
+			xs);
 	});
 var $elm$core$List$head = function (list) {
 	if (list.b) {
@@ -3875,34 +3814,731 @@ var $elm$core$List$head = function (list) {
 		return $elm$core$Maybe$Nothing;
 	}
 };
-var $elm$core$List$isEmpty = function (xs) {
-	if (!xs.b) {
-		return true;
-	} else {
-		return false;
-	}
-};
-var $elm$core$Basics$negate = function (n) {
-	return -n;
-};
-var $elm$core$Tuple$pair = F2(
-	function (a, b) {
-		return _Utils_Tuple2(a, b);
+var $elm$core$List$any = F2(
+	function (isOkay, list) {
+		any:
+		while (true) {
+			if (!list.b) {
+				return false;
+			} else {
+				var x = list.a;
+				var xs = list.b;
+				if (isOkay(x)) {
+					return true;
+				} else {
+					var $temp$isOkay = isOkay,
+						$temp$list = xs;
+					isOkay = $temp$isOkay;
+					list = $temp$list;
+					continue any;
+				}
+			}
+		}
 	});
-var $author$project$Stabel$Codegen$requiresBoxingInPatternMatch = function (type_) {
-	switch (type_.$) {
-		case 'Int':
-			return true;
-		case 'Generic':
-			return true;
-		default:
-			return false;
-	}
+var $elm$core$List$member = F2(
+	function (x, xs) {
+		return A2(
+			$elm$core$List$any,
+			function (a) {
+				return _Utils_eq(a, x);
+			},
+			xs);
+	});
+var $author$project$Stabel$Qualifier$resolveImported = F4(
+	function (config, modRefs, lookupTable, name) {
+		var resolveMod = function (mod) {
+			return $author$project$Stabel$Qualifier$representsExternalModule(mod) ? A2(
+				$elm$core$Maybe$map,
+				function (_package) {
+					return A2(
+						$author$project$Stabel$Qualifier$qualifyPackageModule,
+						_package,
+						A2($elm$core$String$dropLeft, 1, mod));
+				},
+				A2($elm$core$Dict$get, mod, config.B)) : $elm$core$Maybe$Just(
+				A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.x, mod));
+		};
+		var potentialCandidates = A2(
+			$elm$core$List$map,
+			function (mod) {
+				return _Utils_Tuple2(mod, mod + ('/' + name));
+			},
+			A2(
+				$elm$core$List$filterMap,
+				resolveMod,
+				$elm$core$Dict$keys(
+					A2(
+						$elm$core$Dict$filter,
+						F2(
+							function (_v3, v) {
+								return $elm$core$List$isEmpty(v);
+							}),
+						modRefs.t))));
+		var explicitImports = A2(
+			$elm$core$Maybe$andThen,
+			resolveMod,
+			A2(
+				$elm$core$Maybe$map,
+				$elm$core$Tuple$first,
+				A2(
+					$elm_community$list_extra$List$Extra$find,
+					function (_v2) {
+						var v = _v2.b;
+						return A2($elm$core$List$member, name, v);
+					},
+					$elm$core$Dict$toList(modRefs.t))));
+		if (!explicitImports.$) {
+			return explicitImports;
+		} else {
+			return $elm$core$List$head(
+				A2(
+					$elm$core$List$filterMap,
+					function (_v1) {
+						var mod = _v1.a;
+						var qName = _v1.b;
+						return A2(
+							$elm$core$Maybe$map,
+							$elm$core$Basics$always(mod),
+							A2($elm$core$Dict$get, qName, lookupTable));
+					},
+					potentialCandidates));
+		}
+	});
+var $author$project$Stabel$Qualifier$resolveImportedType = F3(
+	function (config, modRefs, name) {
+		return A4($author$project$Stabel$Qualifier$resolveImported, config, modRefs, config.G.I, name);
+	});
+var $author$project$Stabel$Qualifier$splitExternalPackagePath = function (path) {
+	return A2(
+		$elm$core$List$drop,
+		1,
+		A2($elm$core$String$split, '/', path));
 };
-var $elm$core$Tuple$second = function (_v0) {
-	var y = _v0.b;
-	return y;
+var $author$project$Stabel$Qualifier$qualifyFunctionType = F4(
+	function (config, modRefs, range, type_) {
+		if (!type_.$) {
+			var sym = type_.a;
+			return $elm$core$Result$Ok(
+				$author$project$Stabel$Data$Type$StackRange(sym));
+		} else {
+			var pqt = type_.a;
+			return A4($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range, pqt);
+		}
+	});
+var $author$project$Stabel$Qualifier$qualifyMemberType = F4(
+	function (config, modRefs, range, type_) {
+		var refLookup = F2(
+			function (name, binds) {
+				var maybeType = A2($elm$core$Dict$get, name, config.G.I);
+				var maybeMembers = A2(
+					$elm$core$Maybe$map,
+					function ($) {
+						return $.aQ;
+					},
+					maybeType);
+				var genericNames = A2(
+					$elm$core$Maybe$withDefault,
+					_List_Nil,
+					A2(
+						$elm$core$Maybe$map,
+						function ($) {
+							return $._;
+						},
+						maybeType));
+				var exposed = A2(
+					$elm$core$Maybe$withDefault,
+					false,
+					A2(
+						$elm$core$Maybe$map,
+						function ($) {
+							return $.s;
+						},
+						maybeType));
+				var bindResult = $elm_community$result_extra$Result$Extra$combine(
+					A2(
+						$elm$core$List$map,
+						A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range),
+						binds));
+				var _v7 = _Utils_Tuple3(exposed, maybeMembers, bindResult);
+				if (_v7.b.$ === 1) {
+					var _v8 = _v7.b;
+					return $elm$core$Result$Err(
+						A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, range, name));
+				} else {
+					if (!_v7.a) {
+						return $elm$core$Result$Err(
+							A2($author$project$Stabel$Qualifier$Problem$TypeNotExposed, range, name));
+					} else {
+						if (_v7.c.$ === 1) {
+							var err = _v7.c.a;
+							return $elm$core$Result$Err(err);
+						} else {
+							if (!_v7.b.a.$) {
+								if (!_v7.c.a.b) {
+									return $elm$core$Result$Ok(
+										$author$project$Stabel$Data$Type$Custom(name));
+								} else {
+									var qualifiedBinds = _v7.c.a;
+									return $elm$core$Result$Ok(
+										A2($author$project$Stabel$Data$Type$CustomGeneric, name, qualifiedBinds));
+								}
+							} else {
+								var members = _v7.b.a.a;
+								var qualifiedBinds = _v7.c.a;
+								return $elm$core$Result$Ok(
+									A2(
+										$author$project$Stabel$Data$Type$Union,
+										$elm$core$Maybe$Just(name),
+										A3($author$project$Stabel$Qualifier$rebindGenerics, genericNames, qualifiedBinds, members)));
+							}
+						}
+					}
+				}
+			});
+		var internalRefLookup = F3(
+			function (path, name, binds) {
+				var qualifiedName = A2(
+					$author$project$Stabel$Qualifier$qualifyPackageModule,
+					config.x,
+					A2(
+						$elm$core$String$join,
+						'/',
+						_Utils_ap(
+							path,
+							_List_fromArray(
+								[name]))));
+				return A2(refLookup, qualifiedName, binds);
+			});
+		var importsLookup = F2(
+			function (name, binds) {
+				var _v6 = A3($author$project$Stabel$Qualifier$resolveImportedType, config, modRefs, name);
+				if (!_v6.$) {
+					var importedModule = _v6.a;
+					if ($author$project$Stabel$Qualifier$representsExternalModule(importedModule)) {
+						var nextPath = A2(
+							$elm$core$List$drop,
+							2,
+							$author$project$Stabel$Qualifier$splitExternalPackagePath(importedModule));
+						return A4(
+							$author$project$Stabel$Qualifier$qualifyMemberType,
+							config,
+							modRefs,
+							range,
+							A3($author$project$Stabel$Parser$Type$ExternalRef, nextPath, name, binds));
+					} else {
+						return A4(
+							$author$project$Stabel$Qualifier$qualifyMemberType,
+							config,
+							modRefs,
+							range,
+							A3(
+								$author$project$Stabel$Parser$Type$InternalRef,
+								A2($elm$core$String$split, '/', importedModule),
+								name,
+								binds));
+					}
+				} else {
+					return $elm$core$Result$Err(
+						A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, range, name));
+				}
+			});
+		switch (type_.$) {
+			case 0:
+				if (!type_.b.b) {
+					if (type_.a === 'Int') {
+						return $elm$core$Result$Ok($author$project$Stabel$Data$Type$Int);
+					} else {
+						var name = type_.a;
+						var _v1 = A2($elm$core$Dict$get, name, config.k.I);
+						if (!_v1.$) {
+							return $elm$core$Result$Ok(
+								$author$project$Stabel$Data$Type$Custom(
+									A2($author$project$Stabel$Qualifier$qualifyName, config, name)));
+						} else {
+							return A2(importsLookup, name, _List_Nil);
+						}
+					}
+				} else {
+					var name = type_.a;
+					var binds = type_.b;
+					var _v2 = A2($elm$core$Dict$get, name, config.k.I);
+					if (!_v2.$) {
+						var bindResult = $elm_community$result_extra$Result$Extra$combine(
+							A2(
+								$elm$core$List$map,
+								A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range),
+								binds));
+						if (!bindResult.$) {
+							var convertedBindings = bindResult.a;
+							return $elm$core$Result$Ok(
+								A2(
+									$author$project$Stabel$Data$Type$CustomGeneric,
+									A2($author$project$Stabel$Qualifier$qualifyName, config, name),
+									convertedBindings));
+						} else {
+							var err = bindResult.a;
+							return $elm$core$Result$Err(err);
+						}
+					} else {
+						return A2(importsLookup, name, binds);
+					}
+				}
+			case 1:
+				if (type_.a.b && (!type_.a.b.b)) {
+					var path = type_.a;
+					var possibleAlias = path.a;
+					var name = type_.b;
+					var binds = type_.c;
+					var _v4 = A2($elm$core$Dict$get, possibleAlias, modRefs.q);
+					if (!_v4.$) {
+						var val = _v4.a;
+						if ($author$project$Stabel$Qualifier$representsExternalModule(val)) {
+							var newPath = $author$project$Stabel$Qualifier$splitExternalPackagePath(val);
+							return A4(
+								$author$project$Stabel$Qualifier$qualifyMemberType,
+								config,
+								modRefs,
+								range,
+								A3($author$project$Stabel$Parser$Type$ExternalRef, newPath, name, binds));
+						} else {
+							return A3(
+								internalRefLookup,
+								A2($elm$core$String$split, '/', val),
+								name,
+								binds);
+						}
+					} else {
+						return A3(internalRefLookup, path, name, binds);
+					}
+				} else {
+					var path = type_.a;
+					var name = type_.b;
+					var binds = type_.c;
+					return A3(internalRefLookup, path, name, binds);
+				}
+			case 2:
+				var path = type_.a;
+				var name = type_.b;
+				var binds = type_.c;
+				var pathString = '/' + A2($elm$core$String$join, '/', path);
+				var qualifiedName = A2(
+					$elm$core$Maybe$withDefault,
+					'',
+					A2(
+						$elm$core$Maybe$map,
+						function (prefix) {
+							return '/' + (prefix + (pathString + ('/' + name)));
+						},
+						A2($elm$core$Dict$get, pathString, config.B)));
+				return A2(refLookup, qualifiedName, binds);
+			case 3:
+				var sym = type_.a;
+				return $elm$core$Result$Ok(
+					$author$project$Stabel$Data$Type$Generic(sym));
+			default:
+				var sign = type_.a;
+				var outputResult = $elm_community$result_extra$Result$Extra$combine(
+					A2(
+						$elm$core$List$map,
+						A3($author$project$Stabel$Qualifier$qualifyFunctionType, config, modRefs, range),
+						sign.H));
+				var inputResult = $elm_community$result_extra$Result$Extra$combine(
+					A2(
+						$elm$core$List$map,
+						A3($author$project$Stabel$Qualifier$qualifyFunctionType, config, modRefs, range),
+						sign.o));
+				var _v5 = _Utils_Tuple2(inputResult, outputResult);
+				if (!_v5.a.$) {
+					if (!_v5.b.$) {
+						var input = _v5.a.a;
+						var output = _v5.b.a;
+						return $elm$core$Result$Ok(
+							$author$project$Stabel$Data$Type$FunctionSignature(
+								{o: input, H: output}));
+					} else {
+						var output = _v5.b.a;
+						return $elm$core$Result$Err(output);
+					}
+				} else {
+					var input = _v5.a.a;
+					return $elm$core$Result$Err(input);
+				}
+		}
+	});
+var $author$project$Stabel$Qualifier$qualifyMatch = F4(
+	function (config, qualifiedTypes, modRefs, typeMatch) {
+		var qualifiedRange = function (range) {
+			return A3($author$project$Stabel$Data$SourceLocation$SourceLocationRange, config.k.a$, range.bJ, range.bd);
+		};
+		var qualifiedNameToMatch = F3(
+			function (range, name, patterns) {
+				var _v18 = A2($elm$core$Dict$get, name, qualifiedTypes);
+				if (!_v18.$) {
+					var typeDef = _v18.a;
+					if (!typeDef.s) {
+						return $elm$core$Result$Err(
+							A2($author$project$Stabel$Qualifier$Problem$TypeNotExposed, range, name));
+					} else {
+						var _v19 = typeDef.aQ;
+						if (!_v19.$) {
+							var members = _v19.a;
+							var qualifiedPatternsResult = $elm_community$result_extra$Result$Extra$combine(
+								A2(
+									$elm$core$List$map,
+									A6($author$project$Stabel$Qualifier$qualifyMatchValue, config, qualifiedTypes, modRefs, range, name, members),
+									patterns));
+							var actualType = function () {
+								var _v21 = typeDef._;
+								if (!_v21.b) {
+									return $author$project$Stabel$Data$Type$Custom(name);
+								} else {
+									return A2(
+										$author$project$Stabel$Data$Type$CustomGeneric,
+										name,
+										A2($elm$core$List$map, $author$project$Stabel$Data$Type$Generic, typeDef._));
+								}
+							}();
+							if (!qualifiedPatternsResult.$) {
+								var qualifiedPatterns = qualifiedPatternsResult.a;
+								return $elm$core$Result$Ok(
+									A3($author$project$Stabel$Qualifier$TypeMatch, range, actualType, qualifiedPatterns));
+							} else {
+								var err = qualifiedPatternsResult.a;
+								return $elm$core$Result$Err(err);
+							}
+						} else {
+							var types = _v19.a;
+							return $elm$core$List$isEmpty(patterns) ? $elm$core$Result$Ok(
+								A3(
+									$author$project$Stabel$Qualifier$TypeMatch,
+									range,
+									A2(
+										$author$project$Stabel$Data$Type$Union,
+										$elm$core$Maybe$Just(name),
+										types),
+									_List_Nil)) : $elm$core$Result$Err(
+								$author$project$Stabel$Qualifier$Problem$UnionTypeMatchWithPatterns(range));
+						}
+					}
+				} else {
+					return $elm$core$Result$Err(
+						A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, range, name));
+				}
+			});
+		_v4$3:
+		while (true) {
+			_v4$7:
+			while (true) {
+				switch (typeMatch.b.$) {
+					case 3:
+						if (!typeMatch.c.b) {
+							var range = typeMatch.a;
+							var sym = typeMatch.b.a;
+							return $elm$core$Result$Ok(
+								A3(
+									$author$project$Stabel$Qualifier$TypeMatch,
+									qualifiedRange(range),
+									$author$project$Stabel$Data$Type$Generic(sym),
+									_List_Nil));
+						} else {
+							break _v4$7;
+						}
+					case 0:
+						if (!typeMatch.b.b.b) {
+							if (typeMatch.b.a === 'Int') {
+								if (!typeMatch.c.b) {
+									var range = typeMatch.a;
+									var _v5 = typeMatch.b;
+									return $elm$core$Result$Ok(
+										A3(
+											$author$project$Stabel$Qualifier$TypeMatch,
+											qualifiedRange(range),
+											$author$project$Stabel$Data$Type$Int,
+											_List_Nil));
+								} else {
+									if (((typeMatch.c.a.a === 'value') && (!typeMatch.c.a.b.$)) && (!typeMatch.c.b.b)) {
+										var range = typeMatch.a;
+										var _v6 = typeMatch.b;
+										var _v7 = typeMatch.c;
+										var _v8 = _v7.a;
+										var val = _v8.b.a;
+										return $elm$core$Result$Ok(
+											A3(
+												$author$project$Stabel$Qualifier$TypeMatch,
+												qualifiedRange(range),
+												$author$project$Stabel$Data$Type$Int,
+												_List_fromArray(
+													[
+														A3(
+														$author$project$Stabel$Qualifier$TypeMatchCond,
+														'value',
+														$author$project$Stabel$Data$Type$Int,
+														$author$project$Stabel$Qualifier$LiteralInt(val))
+													])));
+									} else {
+										break _v4$3;
+									}
+								}
+							} else {
+								break _v4$3;
+							}
+						} else {
+							break _v4$7;
+						}
+					case 1:
+						if (typeMatch.b.a.b && (!typeMatch.b.a.b.b)) {
+							var range = typeMatch.a;
+							var _v13 = typeMatch.b;
+							var _v14 = _v13.a;
+							var possibleAlias = _v14.a;
+							var name = _v13.b;
+							var patterns = typeMatch.c;
+							var _v15 = A2($elm$core$Dict$get, possibleAlias, modRefs.q);
+							if (!_v15.$) {
+								var actualPath = _v15.a;
+								if ($author$project$Stabel$Qualifier$representsExternalModule(actualPath)) {
+									var extPath = $author$project$Stabel$Qualifier$splitExternalPackagePath(actualPath);
+									return A4(
+										$author$project$Stabel$Qualifier$qualifyMatch,
+										config,
+										qualifiedTypes,
+										modRefs,
+										A3(
+											$author$project$Stabel$Parser$TypeMatch,
+											range,
+											A3($author$project$Stabel$Parser$Type$ExternalRef, extPath, name, _List_Nil),
+											patterns));
+								} else {
+									var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.x, actualPath + ('/' + name));
+									return A3(
+										qualifiedNameToMatch,
+										qualifiedRange(range),
+										qualifiedName,
+										patterns);
+								}
+							} else {
+								var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.x, possibleAlias + ('/' + name));
+								return A3(
+									qualifiedNameToMatch,
+									qualifiedRange(range),
+									qualifiedName,
+									patterns);
+							}
+						} else {
+							var range = typeMatch.a;
+							var _v16 = typeMatch.b;
+							var path = _v16.a;
+							var name = _v16.b;
+							var patterns = typeMatch.c;
+							var qualifiedName = A2(
+								$author$project$Stabel$Qualifier$qualifyPackageModule,
+								config.x,
+								A2(
+									$elm$core$String$join,
+									'/',
+									_Utils_ap(
+										path,
+										_List_fromArray(
+											[name]))));
+							return A3(
+								qualifiedNameToMatch,
+								qualifiedRange(range),
+								qualifiedName,
+								patterns);
+						}
+					case 2:
+						var range = typeMatch.a;
+						var _v17 = typeMatch.b;
+						var path = _v17.a;
+						var name = _v17.b;
+						var patterns = typeMatch.c;
+						var pathString = '/' + A2($elm$core$String$join, '/', path);
+						var qualifiedName = A2(
+							$elm$core$Maybe$withDefault,
+							'',
+							A2(
+								$elm$core$Maybe$map,
+								function (prefix) {
+									return '/' + (prefix + (pathString + ('/' + name)));
+								},
+								A2($elm$core$Dict$get, pathString, config.B)));
+						return A3(
+							qualifiedNameToMatch,
+							qualifiedRange(range),
+							qualifiedName,
+							patterns);
+					default:
+						break _v4$7;
+				}
+			}
+			var range = typeMatch.a;
+			return $elm$core$Result$Err(
+				$author$project$Stabel$Qualifier$Problem$InvalidTypeMatch(
+					qualifiedRange(range)));
+		}
+		var range = typeMatch.a;
+		var _v9 = typeMatch.b;
+		var name = _v9.a;
+		var patterns = typeMatch.c;
+		var _v10 = A3(
+			qualifiedNameToMatch,
+			qualifiedRange(range),
+			A2($author$project$Stabel$Qualifier$qualifyName, config, name),
+			patterns);
+		if ((_v10.$ === 1) && (_v10.a.$ === 1)) {
+			var errMsg = _v10;
+			var _v11 = errMsg.a;
+			var _v12 = A3($author$project$Stabel$Qualifier$resolveImportedType, config, modRefs, name);
+			if (!_v12.$) {
+				var importedModule = _v12.a;
+				return A3(
+					qualifiedNameToMatch,
+					qualifiedRange(range),
+					importedModule + ('/' + name),
+					patterns);
+			} else {
+				return errMsg;
+			}
+		} else {
+			var result = _v10;
+			return result;
+		}
+	});
+var $author$project$Stabel$Qualifier$qualifyMatchValue = F7(
+	function (config, qualifiedTypes, modRefs, range, typeName, members, _v0) {
+		var fieldName = _v0.a;
+		var matchValue = _v0.b;
+		var _v1 = A2(
+			$elm_community$list_extra$List$Extra$find,
+			A2(
+				$elm$core$Basics$composeL,
+				$elm$core$Basics$eq(fieldName),
+				$elm$core$Tuple$first),
+			members);
+		if (!_v1.$) {
+			var _v2 = _v1.a;
+			var fieldType = _v2.b;
+			switch (matchValue.$) {
+				case 0:
+					var val = matchValue.a;
+					return $elm$core$Result$Ok(
+						A3(
+							$author$project$Stabel$Qualifier$TypeMatchCond,
+							fieldName,
+							fieldType,
+							$author$project$Stabel$Qualifier$LiteralInt(val)));
+				case 1:
+					var type_ = matchValue.a;
+					return A2(
+						$elm$core$Result$map,
+						function (qualifiedType) {
+							return A3(
+								$author$project$Stabel$Qualifier$TypeMatchCond,
+								fieldName,
+								fieldType,
+								$author$project$Stabel$Qualifier$LiteralType(qualifiedType));
+						},
+						A4($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range, type_));
+				default:
+					var typeMatch = matchValue.a;
+					return A2(
+						$elm$core$Result$map,
+						function (match) {
+							return A3(
+								$author$project$Stabel$Qualifier$TypeMatchCond,
+								fieldName,
+								fieldType,
+								$author$project$Stabel$Qualifier$RecursiveMatch(match));
+						},
+						A4($author$project$Stabel$Qualifier$qualifyMatch, config, qualifiedTypes, modRefs, typeMatch));
+			}
+		} else {
+			return $elm$core$Result$Err(
+				A3($author$project$Stabel$Qualifier$Problem$NoSuchMemberOnType, range, typeName, fieldName));
+		}
+	});
+var $author$project$Stabel$Data$TypeSignature$CompilerProvided = function (a) {
+	return {$: 2, a: a};
 };
+var $author$project$Stabel$Data$TypeSignature$UserProvided = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$core$Basics$composeR = F3(
+	function (f, g, x) {
+		return g(
+			f(x));
+	});
+var $author$project$Stabel$Data$TypeSignature$map = F2(
+	function (fn, ts) {
+		switch (ts.$) {
+			case 0:
+				return $author$project$Stabel$Data$TypeSignature$NotProvided;
+			case 1:
+				var wt = ts.a;
+				return $author$project$Stabel$Data$TypeSignature$UserProvided(
+					fn(wt));
+			default:
+				var wt = ts.a;
+				return $author$project$Stabel$Data$TypeSignature$CompilerProvided(
+					fn(wt));
+		}
+	});
+var $author$project$Stabel$Qualifier$resolveUnion = F2(
+	function (typeDefs, type_) {
+		switch (type_.$) {
+			case 2:
+				var typeName = type_.a;
+				var _v1 = A2(
+					$elm$core$Maybe$map,
+					function ($) {
+						return $.aQ;
+					},
+					A2($elm$core$Dict$get, typeName, typeDefs));
+				if ((!_v1.$) && (_v1.a.$ === 1)) {
+					var members = _v1.a.a;
+					return A2(
+						$author$project$Stabel$Data$Type$Union,
+						$elm$core$Maybe$Just(typeName),
+						members);
+				} else {
+					return type_;
+				}
+			case 3:
+				var typeName = type_.a;
+				var types = type_.b;
+				var _v2 = A2($elm$core$Dict$get, typeName, typeDefs);
+				if (!_v2.$) {
+					var result = _v2.a;
+					var _v3 = result.aQ;
+					if (_v3.$ === 1) {
+						var members = _v3.a;
+						return A2(
+							$author$project$Stabel$Data$Type$Union,
+							$elm$core$Maybe$Just(typeName),
+							A3($author$project$Stabel$Qualifier$rebindGenerics, result._, types, members));
+					} else {
+						return type_;
+					}
+				} else {
+					return type_;
+				}
+			default:
+				return type_;
+		}
+	});
+var $author$project$Stabel$Qualifier$resolveUnions = F2(
+	function (typeDefs, wt) {
+		return {
+			o: A2(
+				$elm$core$List$map,
+				$author$project$Stabel$Qualifier$resolveUnion(typeDefs),
+				wt.o),
+			H: A2(
+				$elm$core$List$map,
+				$author$project$Stabel$Qualifier$resolveUnion(typeDefs),
+				wt.H)
+		};
+	});
 var $elm$core$List$takeReverse = F3(
 	function (n, list, kept) {
 		takeReverse:
@@ -4029,7 +4665,2118 @@ var $elm$core$List$take = F2(
 	function (n, list) {
 		return A3($elm$core$List$takeFast, 0, n, list);
 	});
-var $elm$core$Debug$todo = _Debug_todo;
+var $author$project$Stabel$Parser$AssociatedFunctionSignature$toMaybe = function (ts) {
+	switch (ts.$) {
+		case 0:
+			return $elm$core$Maybe$Nothing;
+		case 1:
+			var wt = ts.a;
+			return $elm$core$Maybe$Just(wt);
+		default:
+			var wt = ts.a;
+			return $elm$core$Maybe$Just(wt);
+	}
+};
+var $author$project$Stabel$Qualifier$qualifyMetadata = F3(
+	function (config, qualifiedTypes, _function) {
+		var modDef = $author$project$Stabel$Qualifier$moduleDefinition(config);
+		var modRefs = {
+			q: A2($elm$core$Dict$union, modDef.q, _function.q),
+			t: A2($elm$core$Dict$union, modDef.t, _function.t)
+		};
+		var inputLength = A2(
+			$elm$core$Maybe$withDefault,
+			0,
+			A2(
+				$elm$core$Maybe$map,
+				A2(
+					$elm$core$Basics$composeR,
+					function ($) {
+						return $.o;
+					},
+					$elm$core$List$length),
+				$author$project$Stabel$Parser$AssociatedFunctionSignature$toMaybe(_function.bO)));
+		var functionRange = A2(
+			$elm$core$Maybe$withDefault,
+			$author$project$Stabel$Data$SourceLocation$emptyRange,
+			A2(
+				$elm$core$Maybe$map,
+				function (r) {
+					return A3($author$project$Stabel$Data$SourceLocation$SourceLocationRange, config.k.a$, r.bJ, r.bd);
+				},
+				_function.w));
+		return A2(
+			$elm$core$Result$map,
+			function (qualifiedFlatTypeSignature) {
+				var functionType = {
+					o: A2($elm$core$List$take, inputLength, qualifiedFlatTypeSignature),
+					H: A2($elm$core$List$drop, inputLength, qualifiedFlatTypeSignature)
+				};
+				var ts = function () {
+					var _v1 = _function.bO;
+					switch (_v1.$) {
+						case 0:
+							return $author$project$Stabel$Data$TypeSignature$NotProvided;
+						case 1:
+							return $author$project$Stabel$Data$TypeSignature$UserProvided(functionType);
+						default:
+							return $author$project$Stabel$Data$TypeSignature$CompilerProvided(functionType);
+					}
+				}();
+				return _Utils_Tuple2(
+					A2(
+						$author$project$Stabel$Data$TypeSignature$map,
+						$author$project$Stabel$Qualifier$resolveUnions(qualifiedTypes),
+						ts),
+					function () {
+						var _v0 = config.k.aq;
+						if (!_v0.$) {
+							return true;
+						} else {
+							var def = _v0.a;
+							return A2($elm$core$Set$member, _function.m, def.bg);
+						}
+					}());
+			},
+			$elm_community$result_extra$Result$Extra$combine(
+				A2(
+					$elm$core$List$map,
+					A3($author$project$Stabel$Qualifier$qualifyFunctionType, config, modRefs, functionRange),
+					A2(
+						$elm$core$Maybe$withDefault,
+						_List_Nil,
+						A2(
+							$elm$core$Maybe$map,
+							function (ts) {
+								return _Utils_ap(ts.o, ts.H);
+							},
+							$author$project$Stabel$Parser$AssociatedFunctionSignature$toMaybe(_function.bO))))));
+	});
+var $elm$core$Dict$getMin = function (dict) {
+	getMin:
+	while (true) {
+		if ((dict.$ === -1) && (dict.d.$ === -1)) {
+			var left = dict.d;
+			var $temp$dict = left;
+			dict = $temp$dict;
+			continue getMin;
+		} else {
+			return dict;
+		}
+	}
+};
+var $elm$core$Dict$moveRedLeft = function (dict) {
+	if (((dict.$ === -1) && (dict.d.$ === -1)) && (dict.e.$ === -1)) {
+		if ((dict.e.d.$ === -1) && (!dict.e.d.a)) {
+			var clr = dict.a;
+			var k = dict.b;
+			var v = dict.c;
+			var _v1 = dict.d;
+			var lClr = _v1.a;
+			var lK = _v1.b;
+			var lV = _v1.c;
+			var lLeft = _v1.d;
+			var lRight = _v1.e;
+			var _v2 = dict.e;
+			var rClr = _v2.a;
+			var rK = _v2.b;
+			var rV = _v2.c;
+			var rLeft = _v2.d;
+			var _v3 = rLeft.a;
+			var rlK = rLeft.b;
+			var rlV = rLeft.c;
+			var rlL = rLeft.d;
+			var rlR = rLeft.e;
+			var rRight = _v2.e;
+			return A5(
+				$elm$core$Dict$RBNode_elm_builtin,
+				0,
+				rlK,
+				rlV,
+				A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					1,
+					k,
+					v,
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					rlL),
+				A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rlR, rRight));
+		} else {
+			var clr = dict.a;
+			var k = dict.b;
+			var v = dict.c;
+			var _v4 = dict.d;
+			var lClr = _v4.a;
+			var lK = _v4.b;
+			var lV = _v4.c;
+			var lLeft = _v4.d;
+			var lRight = _v4.e;
+			var _v5 = dict.e;
+			var rClr = _v5.a;
+			var rK = _v5.b;
+			var rV = _v5.c;
+			var rLeft = _v5.d;
+			var rRight = _v5.e;
+			if (clr === 1) {
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					1,
+					k,
+					v,
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
+			} else {
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					1,
+					k,
+					v,
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
+			}
+		}
+	} else {
+		return dict;
+	}
+};
+var $elm$core$Dict$moveRedRight = function (dict) {
+	if (((dict.$ === -1) && (dict.d.$ === -1)) && (dict.e.$ === -1)) {
+		if ((dict.d.d.$ === -1) && (!dict.d.d.a)) {
+			var clr = dict.a;
+			var k = dict.b;
+			var v = dict.c;
+			var _v1 = dict.d;
+			var lClr = _v1.a;
+			var lK = _v1.b;
+			var lV = _v1.c;
+			var _v2 = _v1.d;
+			var _v3 = _v2.a;
+			var llK = _v2.b;
+			var llV = _v2.c;
+			var llLeft = _v2.d;
+			var llRight = _v2.e;
+			var lRight = _v1.e;
+			var _v4 = dict.e;
+			var rClr = _v4.a;
+			var rK = _v4.b;
+			var rV = _v4.c;
+			var rLeft = _v4.d;
+			var rRight = _v4.e;
+			return A5(
+				$elm$core$Dict$RBNode_elm_builtin,
+				0,
+				lK,
+				lV,
+				A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+				A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					1,
+					k,
+					v,
+					lRight,
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight)));
+		} else {
+			var clr = dict.a;
+			var k = dict.b;
+			var v = dict.c;
+			var _v5 = dict.d;
+			var lClr = _v5.a;
+			var lK = _v5.b;
+			var lV = _v5.c;
+			var lLeft = _v5.d;
+			var lRight = _v5.e;
+			var _v6 = dict.e;
+			var rClr = _v6.a;
+			var rK = _v6.b;
+			var rV = _v6.c;
+			var rLeft = _v6.d;
+			var rRight = _v6.e;
+			if (clr === 1) {
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					1,
+					k,
+					v,
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
+			} else {
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					1,
+					k,
+					v,
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
+			}
+		}
+	} else {
+		return dict;
+	}
+};
+var $elm$core$Dict$removeHelpPrepEQGT = F7(
+	function (targetKey, dict, color, key, value, left, right) {
+		if ((left.$ === -1) && (!left.a)) {
+			var _v1 = left.a;
+			var lK = left.b;
+			var lV = left.c;
+			var lLeft = left.d;
+			var lRight = left.e;
+			return A5(
+				$elm$core$Dict$RBNode_elm_builtin,
+				color,
+				lK,
+				lV,
+				lLeft,
+				A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, lRight, right));
+		} else {
+			_v2$2:
+			while (true) {
+				if ((right.$ === -1) && (right.a === 1)) {
+					if (right.d.$ === -1) {
+						if (right.d.a === 1) {
+							var _v3 = right.a;
+							var _v4 = right.d;
+							var _v5 = _v4.a;
+							return $elm$core$Dict$moveRedRight(dict);
+						} else {
+							break _v2$2;
+						}
+					} else {
+						var _v6 = right.a;
+						var _v7 = right.d;
+						return $elm$core$Dict$moveRedRight(dict);
+					}
+				} else {
+					break _v2$2;
+				}
+			}
+			return dict;
+		}
+	});
+var $elm$core$Dict$removeMin = function (dict) {
+	if ((dict.$ === -1) && (dict.d.$ === -1)) {
+		var color = dict.a;
+		var key = dict.b;
+		var value = dict.c;
+		var left = dict.d;
+		var lColor = left.a;
+		var lLeft = left.d;
+		var right = dict.e;
+		if (lColor === 1) {
+			if ((lLeft.$ === -1) && (!lLeft.a)) {
+				var _v3 = lLeft.a;
+				return A5(
+					$elm$core$Dict$RBNode_elm_builtin,
+					color,
+					key,
+					value,
+					$elm$core$Dict$removeMin(left),
+					right);
+			} else {
+				var _v4 = $elm$core$Dict$moveRedLeft(dict);
+				if (_v4.$ === -1) {
+					var nColor = _v4.a;
+					var nKey = _v4.b;
+					var nValue = _v4.c;
+					var nLeft = _v4.d;
+					var nRight = _v4.e;
+					return A5(
+						$elm$core$Dict$balance,
+						nColor,
+						nKey,
+						nValue,
+						$elm$core$Dict$removeMin(nLeft),
+						nRight);
+				} else {
+					return $elm$core$Dict$RBEmpty_elm_builtin;
+				}
+			}
+		} else {
+			return A5(
+				$elm$core$Dict$RBNode_elm_builtin,
+				color,
+				key,
+				value,
+				$elm$core$Dict$removeMin(left),
+				right);
+		}
+	} else {
+		return $elm$core$Dict$RBEmpty_elm_builtin;
+	}
+};
+var $elm$core$Dict$removeHelp = F2(
+	function (targetKey, dict) {
+		if (dict.$ === -2) {
+			return $elm$core$Dict$RBEmpty_elm_builtin;
+		} else {
+			var color = dict.a;
+			var key = dict.b;
+			var value = dict.c;
+			var left = dict.d;
+			var right = dict.e;
+			if (_Utils_cmp(targetKey, key) < 0) {
+				if ((left.$ === -1) && (left.a === 1)) {
+					var _v4 = left.a;
+					var lLeft = left.d;
+					if ((lLeft.$ === -1) && (!lLeft.a)) {
+						var _v6 = lLeft.a;
+						return A5(
+							$elm$core$Dict$RBNode_elm_builtin,
+							color,
+							key,
+							value,
+							A2($elm$core$Dict$removeHelp, targetKey, left),
+							right);
+					} else {
+						var _v7 = $elm$core$Dict$moveRedLeft(dict);
+						if (_v7.$ === -1) {
+							var nColor = _v7.a;
+							var nKey = _v7.b;
+							var nValue = _v7.c;
+							var nLeft = _v7.d;
+							var nRight = _v7.e;
+							return A5(
+								$elm$core$Dict$balance,
+								nColor,
+								nKey,
+								nValue,
+								A2($elm$core$Dict$removeHelp, targetKey, nLeft),
+								nRight);
+						} else {
+							return $elm$core$Dict$RBEmpty_elm_builtin;
+						}
+					}
+				} else {
+					return A5(
+						$elm$core$Dict$RBNode_elm_builtin,
+						color,
+						key,
+						value,
+						A2($elm$core$Dict$removeHelp, targetKey, left),
+						right);
+				}
+			} else {
+				return A2(
+					$elm$core$Dict$removeHelpEQGT,
+					targetKey,
+					A7($elm$core$Dict$removeHelpPrepEQGT, targetKey, dict, color, key, value, left, right));
+			}
+		}
+	});
+var $elm$core$Dict$removeHelpEQGT = F2(
+	function (targetKey, dict) {
+		if (dict.$ === -1) {
+			var color = dict.a;
+			var key = dict.b;
+			var value = dict.c;
+			var left = dict.d;
+			var right = dict.e;
+			if (_Utils_eq(targetKey, key)) {
+				var _v1 = $elm$core$Dict$getMin(right);
+				if (_v1.$ === -1) {
+					var minKey = _v1.b;
+					var minValue = _v1.c;
+					return A5(
+						$elm$core$Dict$balance,
+						color,
+						minKey,
+						minValue,
+						left,
+						$elm$core$Dict$removeMin(right));
+				} else {
+					return $elm$core$Dict$RBEmpty_elm_builtin;
+				}
+			} else {
+				return A5(
+					$elm$core$Dict$balance,
+					color,
+					key,
+					value,
+					left,
+					A2($elm$core$Dict$removeHelp, targetKey, right));
+			}
+		} else {
+			return $elm$core$Dict$RBEmpty_elm_builtin;
+		}
+	});
+var $elm$core$Dict$remove = F2(
+	function (key, dict) {
+		var _v0 = A2($elm$core$Dict$removeHelp, key, dict);
+		if ((_v0.$ === -1) && (!_v0.a)) {
+			var _v1 = _v0.a;
+			var k = _v0.b;
+			var v = _v0.c;
+			var l = _v0.d;
+			var r = _v0.e;
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
+		} else {
+			var x = _v0;
+			return x;
+		}
+	});
+var $elm$core$Set$remove = F2(
+	function (key, _v0) {
+		var dict = _v0;
+		return A2($elm$core$Dict$remove, key, dict);
+	});
+var $author$project$Stabel$Qualifier$resolveImportedFunction = F3(
+	function (config, modRefs, name) {
+		return A4($author$project$Stabel$Qualifier$resolveImported, config, modRefs, config.G.bj, name);
+	});
+var $author$project$Stabel$Qualifier$splitInternalPackagePath = $elm$core$String$split('/');
+var $elm$core$Set$union = F2(
+	function (_v0, _v1) {
+		var dict1 = _v0;
+		var dict2 = _v1;
+		return A2($elm$core$Dict$union, dict1, dict2);
+	});
+var $author$project$Stabel$Qualifier$initQualifyNode = F7(
+	function (config, qualifiedTypes, qualifiedFunctions, currentDefName, modRefs, currentlyParsing, impl) {
+		return function (acc) {
+			return {
+				aa: acc.aa,
+				d: acc.d,
+				a: $elm_community$result_extra$Result$Extra$combine(acc.a)
+			};
+		}(
+			A3(
+				$elm$core$List$foldr,
+				A2($author$project$Stabel$Qualifier$qualifyNode, config, currentDefName),
+				A4(
+					$author$project$Stabel$Qualifier$initQualifyNodeAccumulator,
+					qualifiedTypes,
+					qualifiedFunctions,
+					modRefs,
+					A2($elm$core$Set$insert, currentDefName, currentlyParsing)),
+				impl));
+	});
+var $author$project$Stabel$Qualifier$qualifyDefinitionHelp = F5(
+	function (config, qualifiedTypes, qualifiedFunctions, currentlyParsing, unqualifiedFunction) {
+		var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, unqualifiedFunction.m);
+		var qualifiedMetadataResult = A3($author$project$Stabel$Qualifier$qualifyMetadata, config, qualifiedTypes, unqualifiedFunction);
+		var modDef = $author$project$Stabel$Qualifier$moduleDefinition(config);
+		var moduleReferences = {
+			q: A2($elm$core$Dict$union, unqualifiedFunction.q, modDef.q),
+			t: A2($elm$core$Dict$union, unqualifiedFunction.t, modDef.t)
+		};
+		var mapLoc = function (loc) {
+			return A3($author$project$Stabel$Data$SourceLocation$SourceLocationRange, config.k.a$, loc.bJ, loc.bd);
+		};
+		var _v24 = function () {
+			var _v25 = unqualifiedFunction.aL;
+			if (!_v25.$) {
+				var defImpl = _v25.a;
+				return _Utils_Tuple2(_List_Nil, defImpl);
+			} else {
+				var whenImpl = _v25.a;
+				var defImpl = _v25.b;
+				return _Utils_Tuple2(whenImpl, defImpl);
+			}
+		}();
+		var whens = _v24.a;
+		var impl = _v24.b;
+		var _v26 = function (_v27) {
+			var a = _v27.a;
+			var b = _v27.b;
+			var c = _v27.c;
+			return _Utils_Tuple3(
+				a,
+				b,
+				$elm_community$result_extra$Result$Extra$combine(c));
+		}(
+			A3(
+				$elm$core$List$foldr,
+				A5($author$project$Stabel$Qualifier$qualifyWhen, config, qualifiedTypes, unqualifiedFunction.m, moduleReferences, currentlyParsing),
+				_Utils_Tuple3(qualifiedFunctions, $elm$core$Set$empty, _List_Nil),
+				whens));
+		var newFunctionsAfterWhens = _v26.a;
+		var inlineFunctionNamesAfterWhens = _v26.b;
+		var qualifiedWhensResult = _v26.c;
+		var implQualifyResult = A7($author$project$Stabel$Qualifier$initQualifyNode, config, qualifiedTypes, newFunctionsAfterWhens, unqualifiedFunction.m, moduleReferences, currentlyParsing, impl);
+		var newInlineFuncs = A2($elm$core$Set$union, implQualifyResult.aa, inlineFunctionNamesAfterWhens);
+		var _v28 = _Utils_Tuple3(qualifiedWhensResult, implQualifyResult.a, qualifiedMetadataResult);
+		if (!_v28.a.$) {
+			if (!_v28.b.$) {
+				if (!_v28.c.$) {
+					var qualifiedWhens = _v28.a.a;
+					var qualifiedImplementation = _v28.b.a;
+					var _v29 = _v28.c.a;
+					var typeSignature = _v29.a;
+					var exposed = _v29.b;
+					var qualifiedFunc = {
+						s: exposed,
+						aL: $elm$core$List$isEmpty(qualifiedWhens) ? $author$project$Stabel$Qualifier$SoloImpl(qualifiedImplementation) : A2($author$project$Stabel$Qualifier$MultiImpl, qualifiedWhens, qualifiedImplementation),
+						m: qualifiedName,
+						U: A2($elm$core$Maybe$map, mapLoc, unqualifiedFunction.w),
+						bO: typeSignature
+					};
+					return {
+						aa: newInlineFuncs,
+						C: $elm$core$Result$Ok(qualifiedFunc),
+						d: A3($elm$core$Dict$insert, qualifiedFunc.m, qualifiedFunc, implQualifyResult.d)
+					};
+				} else {
+					var metaError = _v28.c.a;
+					return {
+						aa: newInlineFuncs,
+						C: $elm$core$Result$Err(metaError),
+						d: implQualifyResult.d
+					};
+				}
+			} else {
+				var implError = _v28.b.a;
+				return {
+					aa: newInlineFuncs,
+					C: $elm$core$Result$Err(implError),
+					d: implQualifyResult.d
+				};
+			}
+		} else {
+			var whenError = _v28.a.a;
+			return {
+				aa: newInlineFuncs,
+				C: $elm$core$Result$Err(whenError),
+				d: implQualifyResult.d
+			};
+		}
+	});
+var $author$project$Stabel$Qualifier$qualifyNode = F4(
+	function (config, currentDefName, node, acc) {
+		qualifyNode:
+		while (true) {
+			var mapLoc = function (loc) {
+				return A3($author$project$Stabel$Data$SourceLocation$SourceLocationRange, config.k.a$, loc.bJ, loc.bd);
+			};
+			switch (node.$) {
+				case 0:
+					var loc = node.a;
+					var value = node.b;
+					return _Utils_update(
+						acc,
+						{
+							a: A2(
+								$elm$core$List$cons,
+								$elm$core$Result$Ok(
+									A2(
+										$author$project$Stabel$Qualifier$Integer,
+										mapLoc(loc),
+										value)),
+								acc.a)
+						});
+				case 1:
+					var loc = node.a;
+					var value = node.b;
+					var qLoc = mapLoc(loc);
+					var _v4 = A2($elm$core$Dict$get, value, $author$project$Stabel$Qualifier$builtinDict);
+					if (!_v4.$) {
+						var builtin = _v4.a;
+						return _Utils_update(
+							acc,
+							{
+								a: A2(
+									$elm$core$List$cons,
+									$elm$core$Result$Ok(
+										A2($author$project$Stabel$Qualifier$Builtin, qLoc, builtin)),
+									acc.a)
+							});
+					} else {
+						var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, value);
+						var _v5 = A2($elm$core$Dict$get, qualifiedName, acc.d);
+						if (!_v5.$) {
+							var func = _v5.a;
+							return _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Ok(
+											A2($author$project$Stabel$Qualifier$Function, qLoc, func)),
+										acc.a)
+								});
+						} else {
+							var _v6 = A3($author$project$Stabel$Qualifier$resolveImportedFunction, config, acc.P, value);
+							if (!_v6.$) {
+								var mod = _v6.a;
+								if ($author$project$Stabel$Qualifier$representsExternalModule(mod)) {
+									var path = A2(
+										$elm$core$List$drop,
+										2,
+										$author$project$Stabel$Qualifier$splitExternalPackagePath(mod));
+									var $temp$config = config,
+										$temp$currentDefName = currentDefName,
+										$temp$node = A3($author$project$Stabel$Parser$ExternalFunction, loc, path, value),
+										$temp$acc = acc;
+									config = $temp$config;
+									currentDefName = $temp$currentDefName;
+									node = $temp$node;
+									acc = $temp$acc;
+									continue qualifyNode;
+								} else {
+									var path = $author$project$Stabel$Qualifier$splitInternalPackagePath(mod);
+									var $temp$config = config,
+										$temp$currentDefName = currentDefName,
+										$temp$node = A3($author$project$Stabel$Parser$PackageFunction, loc, path, value),
+										$temp$acc = acc;
+									config = $temp$config;
+									currentDefName = $temp$currentDefName;
+									node = $temp$node;
+									acc = $temp$acc;
+									continue qualifyNode;
+								}
+							} else {
+								if (_Utils_eq(value, currentDefName)) {
+									return _Utils_update(
+										acc,
+										{
+											a: A2(
+												$elm$core$List$cons,
+												$elm$core$Result$Ok(
+													$author$project$Stabel$Qualifier$Recurse(qLoc)),
+												acc.a)
+										});
+								} else {
+									var _v7 = A2($elm$core$Dict$get, value, config.k.bj);
+									if (!_v7.$) {
+										var fn = _v7.a;
+										if (A2($elm$core$Set$member, value, acc.A)) {
+											var _v8 = A3($author$project$Stabel$Qualifier$qualifyMetadata, config, acc.D, fn);
+											if (!_v8.$) {
+												var _v9 = _v8.a;
+												var typeSignature = _v9.a;
+												var exposed = _v9.b;
+												return _Utils_update(
+													acc,
+													{
+														a: A2(
+															$elm$core$List$cons,
+															$elm$core$Result$Ok(
+																A2(
+																	$author$project$Stabel$Qualifier$Cycle,
+																	qLoc,
+																	{
+																		s: exposed,
+																		bp: $author$project$Stabel$Qualifier$isMultiFunction(fn),
+																		m: value,
+																		U: A2($elm$core$Maybe$map, mapLoc, fn.w),
+																		bO: typeSignature
+																	})),
+															acc.a)
+													});
+											} else {
+												var err = _v8.a;
+												return _Utils_update(
+													acc,
+													{
+														a: A2(
+															$elm$core$List$cons,
+															$elm$core$Result$Err(err),
+															acc.a)
+													});
+											}
+										} else {
+											var qualifyDefinitionResult = A5(
+												$author$project$Stabel$Qualifier$qualifyDefinitionHelp,
+												config,
+												acc.D,
+												acc.d,
+												A2($elm$core$Set$insert, fn.m, acc.A),
+												fn);
+											var _v10 = qualifyDefinitionResult.C;
+											if (!_v10.$) {
+												var qualifiedFunction = _v10.a;
+												return _Utils_update(
+													acc,
+													{
+														A: A2($elm$core$Set$remove, fn.m, acc.A),
+														aa: A2($elm$core$Set$union, qualifyDefinitionResult.aa, acc.aa),
+														d: qualifyDefinitionResult.d,
+														a: A2(
+															$elm$core$List$cons,
+															$elm$core$Result$Ok(
+																A2($author$project$Stabel$Qualifier$Function, qLoc, qualifiedFunction)),
+															acc.a)
+													});
+											} else {
+												var err = _v10.a;
+												return _Utils_update(
+													acc,
+													{
+														A: A2($elm$core$Set$remove, fn.m, acc.A),
+														a: A2(
+															$elm$core$List$cons,
+															$elm$core$Result$Err(err),
+															acc.a)
+													});
+											}
+										}
+									} else {
+										return _Utils_update(
+											acc,
+											{
+												a: A2(
+													$elm$core$List$cons,
+													$elm$core$Result$Err(
+														A2($author$project$Stabel$Qualifier$Problem$UnknownFunctionRef, qLoc, value)),
+													acc.a)
+											});
+									}
+								}
+							}
+						}
+					}
+				case 2:
+					var loc = node.a;
+					var path = node.b;
+					var value = node.c;
+					var qLoc = mapLoc(loc);
+					var normalizedPathPreAliasCheck = A2($elm$core$String$join, '/', path);
+					var normalizedPath = A2(
+						$elm$core$Maybe$withDefault,
+						normalizedPathPreAliasCheck,
+						A2($elm$core$Dict$get, normalizedPathPreAliasCheck, acc.P.q));
+					if ($author$project$Stabel$Qualifier$representsExternalModule(normalizedPath)) {
+						var externalFunctionNode = A3(
+							$author$project$Stabel$Parser$ExternalFunction,
+							loc,
+							$author$project$Stabel$Qualifier$splitExternalPackagePath(normalizedPath),
+							value);
+						var $temp$config = config,
+							$temp$currentDefName = currentDefName,
+							$temp$node = externalFunctionNode,
+							$temp$acc = acc;
+						config = $temp$config;
+						currentDefName = $temp$currentDefName;
+						node = $temp$node;
+						acc = $temp$acc;
+						continue qualifyNode;
+					} else {
+						var qualifiedPath = A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.x, normalizedPath);
+						var qualifiedName = A2(
+							$elm$core$String$join,
+							'/',
+							_List_fromArray(
+								[qualifiedPath, value]));
+						var _v11 = A2($elm$core$Dict$get, qualifiedName, config.G.bj);
+						if (_v11.$ === 1) {
+							return _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Err(
+											A2($author$project$Stabel$Qualifier$Problem$UnknownFunctionRef, qLoc, qualifiedName)),
+										acc.a)
+								});
+						} else {
+							var _function = _v11.a;
+							return _function.s ? _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Ok(
+											A2($author$project$Stabel$Qualifier$Function, qLoc, _function)),
+										acc.a)
+								}) : _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Err(
+											A2($author$project$Stabel$Qualifier$Problem$FunctionNotExposed, qLoc, qualifiedName)),
+										acc.a)
+								});
+						}
+					}
+				case 3:
+					var loc = node.a;
+					var path = node.b;
+					var value = node.c;
+					var qLoc = mapLoc(loc);
+					var normalizedPath = '/' + A2($elm$core$String$join, '/', path);
+					var _v12 = A2($elm$core$Dict$get, normalizedPath, config.B);
+					if (_v12.$ === 1) {
+						return _Utils_update(
+							acc,
+							{
+								a: A2(
+									$elm$core$List$cons,
+									$elm$core$Result$Err(
+										A2($author$project$Stabel$Qualifier$Problem$UnknownFunctionRef, qLoc, normalizedPath + ('/' + value))),
+									acc.a)
+							});
+					} else {
+						var _package = _v12.a;
+						var fullReference = $elm$core$String$concat(
+							_List_fromArray(
+								['/', _package, normalizedPath, '/', value]));
+						var _v13 = A2($elm$core$Dict$get, fullReference, config.G.bj);
+						if (_v13.$ === 1) {
+							return _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Err(
+											A2($author$project$Stabel$Qualifier$Problem$UnknownFunctionRef, qLoc, fullReference)),
+										acc.a)
+								});
+						} else {
+							var def = _v13.a;
+							return def.s ? _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Ok(
+											A2($author$project$Stabel$Qualifier$Function, qLoc, def)),
+										acc.a)
+								}) : _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Err(
+											A2($author$project$Stabel$Qualifier$Problem$FunctionNotExposed, qLoc, fullReference)),
+										acc.a)
+								});
+						}
+					}
+				case 5:
+					var typeName = node.a;
+					var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, typeName);
+					var _v14 = A2($elm$core$Dict$get, qualifiedName, acc.D);
+					if (!_v14.$) {
+						var t = _v14.a;
+						return _Utils_update(
+							acc,
+							{
+								a: A2(
+									$elm$core$List$cons,
+									$elm$core$Result$Ok(
+										$author$project$Stabel$Qualifier$ConstructType(t)),
+									acc.a)
+							});
+					} else {
+						return _Utils_update(
+							acc,
+							{
+								a: A2(
+									$elm$core$List$cons,
+									$elm$core$Result$Err(
+										A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, $author$project$Stabel$Data$SourceLocation$emptyRange, qualifiedName)),
+									acc.a)
+							});
+					}
+				case 7:
+					var typeName = node.a;
+					var memberName = node.b;
+					var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, typeName);
+					var _v15 = A2($elm$core$Dict$get, qualifiedName, acc.D);
+					if (!_v15.$) {
+						var t = _v15.a;
+						var _v16 = A2($author$project$Stabel$Qualifier$getMemberType, t, memberName);
+						if (!_v16.$) {
+							var _v17 = _v16.a;
+							var memberIndex = _v17.a;
+							var memberType = _v17.b;
+							return _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Ok(
+											A4($author$project$Stabel$Qualifier$SetMember, t, memberName, memberIndex, memberType)),
+										acc.a)
+								});
+						} else {
+							return _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Err(
+											A3($author$project$Stabel$Qualifier$Problem$NoSuchMemberOnType, $author$project$Stabel$Data$SourceLocation$emptyRange, qualifiedName, memberName)),
+										acc.a)
+								});
+						}
+					} else {
+						return _Utils_update(
+							acc,
+							{
+								a: A2(
+									$elm$core$List$cons,
+									$elm$core$Result$Err(
+										A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, $author$project$Stabel$Data$SourceLocation$emptyRange, qualifiedName)),
+									acc.a)
+							});
+					}
+				case 6:
+					var typeName = node.a;
+					var memberName = node.b;
+					var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, typeName);
+					var _v18 = A2($elm$core$Dict$get, qualifiedName, acc.D);
+					if (!_v18.$) {
+						var t = _v18.a;
+						var _v19 = A2($author$project$Stabel$Qualifier$getMemberType, t, memberName);
+						if (!_v19.$) {
+							var _v20 = _v19.a;
+							var memberIndex = _v20.a;
+							var memberType = _v20.b;
+							return _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Ok(
+											A4($author$project$Stabel$Qualifier$GetMember, t, memberName, memberIndex, memberType)),
+										acc.a)
+								});
+						} else {
+							return _Utils_update(
+								acc,
+								{
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Err(
+											A3($author$project$Stabel$Qualifier$Problem$NoSuchMemberOnType, $author$project$Stabel$Data$SourceLocation$emptyRange, qualifiedName, memberName)),
+										acc.a)
+								});
+						}
+					} else {
+						return _Utils_update(
+							acc,
+							{
+								a: A2(
+									$elm$core$List$cons,
+									$elm$core$Result$Err(
+										A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, $author$project$Stabel$Data$SourceLocation$emptyRange, qualifiedName)),
+									acc.a)
+							});
+					}
+				default:
+					var sourceLocation = node.a;
+					var quotImpl = node.b;
+					var inlineFuncName = A2($elm$core$String$startsWith, 'inlinefn:', currentDefName) ? (currentDefName + ('/' + $elm$core$String$fromInt(acc.J))) : ('inlinefn:' + (A2($author$project$Stabel$Qualifier$qualifyName, config, currentDefName) + ('/' + $elm$core$String$fromInt(acc.J))));
+					var qualifyNodeResult = A7($author$project$Stabel$Qualifier$initQualifyNode, config, acc.D, acc.d, inlineFuncName, acc.P, acc.A, quotImpl);
+					var _v21 = qualifyNodeResult.a;
+					if (!_v21.$) {
+						if ((_v21.a.b && (_v21.a.a.$ === 1)) && (!_v21.a.b.b)) {
+							var _v22 = _v21.a;
+							var _v23 = _v22.a;
+							var qualifiedFunction = _v23.b;
+							return _Utils_update(
+								acc,
+								{
+									aa: A2(
+										$elm$core$Set$insert,
+										qualifiedFunction.m,
+										A2($elm$core$Set$union, qualifyNodeResult.aa, acc.aa)),
+									d: A2($elm$core$Dict$union, acc.d, qualifyNodeResult.d),
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Ok(
+											A2(
+												$author$project$Stabel$Qualifier$FunctionRef,
+												mapLoc(sourceLocation),
+												qualifiedFunction)),
+										acc.a)
+								});
+						} else {
+							var qualifiedQuotImpl = _v21.a;
+							var qualifiedFunction = {
+								s: false,
+								aL: $author$project$Stabel$Qualifier$SoloImpl(qualifiedQuotImpl),
+								m: inlineFuncName,
+								U: $elm$core$Maybe$Nothing,
+								bO: $author$project$Stabel$Data$TypeSignature$NotProvided
+							};
+							return _Utils_update(
+								acc,
+								{
+									J: acc.J + 1,
+									aa: A2(
+										$elm$core$Set$insert,
+										inlineFuncName,
+										A2($elm$core$Set$union, qualifyNodeResult.aa, acc.aa)),
+									d: A3(
+										$elm$core$Dict$insert,
+										qualifiedFunction.m,
+										qualifiedFunction,
+										A2($elm$core$Dict$union, acc.d, qualifyNodeResult.d)),
+									a: A2(
+										$elm$core$List$cons,
+										$elm$core$Result$Ok(
+											A2(
+												$author$project$Stabel$Qualifier$FunctionRef,
+												mapLoc(sourceLocation),
+												qualifiedFunction)),
+										acc.a)
+								});
+						}
+					} else {
+						var err = _v21.a;
+						return _Utils_update(
+							acc,
+							{
+								a: A2(
+									$elm$core$List$cons,
+									$elm$core$Result$Err(err),
+									acc.a)
+							});
+					}
+			}
+		}
+	});
+var $author$project$Stabel$Qualifier$qualifyWhen = F7(
+	function (config, qualifiedTypes, functionName, modRefs, currentlyParsing, _v0, _v1) {
+		var typeMatch = _v0.a;
+		var impl = _v0.b;
+		var qualifiedFunctions = _v1.a;
+		var inlineFunctionNames = _v1.b;
+		var result = _v1.c;
+		var qualifyNodeResult = A7($author$project$Stabel$Qualifier$initQualifyNode, config, qualifiedTypes, qualifiedFunctions, functionName, modRefs, currentlyParsing, impl);
+		var qualifiedMatchResult = A4($author$project$Stabel$Qualifier$qualifyMatch, config, qualifiedTypes, modRefs, typeMatch);
+		return _Utils_Tuple3(
+			qualifyNodeResult.d,
+			A2($elm$core$Set$union, inlineFunctionNames, qualifyNodeResult.aa),
+			function () {
+				var _v2 = _Utils_Tuple2(qualifyNodeResult.a, qualifiedMatchResult);
+				if (_v2.a.$ === 1) {
+					var err = _v2.a.a;
+					return A2(
+						$elm$core$List$cons,
+						$elm$core$Result$Err(err),
+						result);
+				} else {
+					if (_v2.b.$ === 1) {
+						var err = _v2.b.a;
+						return A2(
+							$elm$core$List$cons,
+							$elm$core$Result$Err(err),
+							result);
+					} else {
+						var qualifiedImplementation = _v2.a.a;
+						var qualifiedMatch = _v2.b.a;
+						return A2(
+							$elm$core$List$cons,
+							$elm$core$Result$Ok(
+								_Utils_Tuple2(qualifiedMatch, qualifiedImplementation)),
+							result);
+					}
+				}
+			}());
+	});
+var $author$project$Stabel$Qualifier$qualifyDefinition = F5(
+	function (config, qualifiedTypes, qualifiedFunctions, currentlyParsing, unqualifiedFunction) {
+		var _v0 = A2($elm$core$Dict$get, unqualifiedFunction.m, qualifiedFunctions);
+		if (!_v0.$) {
+			var qualifiedFunction = _v0.a;
+			return {
+				aa: $elm$core$Set$empty,
+				C: $elm$core$Result$Ok(qualifiedFunction),
+				d: qualifiedFunctions
+			};
+		} else {
+			return A5($author$project$Stabel$Qualifier$qualifyDefinitionHelp, config, qualifiedTypes, qualifiedFunctions, currentlyParsing, unqualifiedFunction);
+		}
+	});
+var $author$project$Stabel$Qualifier$qualifyDefinitionFoldHelper = F4(
+	function (config, qualifiedTypes, functionDef, _v0) {
+		var errors = _v0.a;
+		var qualifiedFunctions = _v0.b;
+		var inlineFunctionNames = _v0.c;
+		var qualificationResult = A5($author$project$Stabel$Qualifier$qualifyDefinition, config, qualifiedTypes, qualifiedFunctions, $elm$core$Set$empty, functionDef);
+		var _v1 = qualificationResult.C;
+		if (_v1.$ === 1) {
+			var err = _v1.a;
+			return _Utils_Tuple3(
+				A2($elm$core$List$cons, err, errors),
+				qualificationResult.d,
+				A2($elm$core$Set$union, qualificationResult.aa, inlineFunctionNames));
+		} else {
+			return _Utils_Tuple3(
+				errors,
+				qualificationResult.d,
+				A2($elm$core$Set$union, qualificationResult.aa, inlineFunctionNames));
+		}
+	});
+var $author$project$Stabel$Qualifier$StructMembers = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Stabel$Qualifier$UnionMembers = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$core$Dict$isEmpty = function (dict) {
+	if (dict.$ === -2) {
+		return true;
+	} else {
+		return false;
+	}
+};
+var $elm$core$Set$isEmpty = function (_v0) {
+	var dict = _v0;
+	return $elm$core$Dict$isEmpty(dict);
+};
+var $author$project$Stabel$Qualifier$qualifyType = F3(
+	function (config, typeDef, _v0) {
+		var errors = _v0.a;
+		var acc = _v0.b;
+		var qualifiedRange = A3($author$project$Stabel$Data$SourceLocation$SourceLocationRange, config.k.a$, typeDef.U.bJ, typeDef.U.bd);
+		var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, typeDef.m);
+		var modDef = $author$project$Stabel$Qualifier$moduleDefinition(config);
+		var _v1 = _Utils_Tuple2(
+			{q: modDef.q, t: modDef.t},
+			modDef.bg);
+		var modRefs = _v1.a;
+		var exposes = _v1.b;
+		var exposed = $elm$core$Set$isEmpty(exposes) || A2($elm$core$Set$member, typeDef.m, exposes);
+		var _v2 = typeDef.aQ;
+		if (!_v2.$) {
+			var members = _v2.a;
+			var raiseTupleError = function (_v5) {
+				var label = _v5.a;
+				var result = _v5.b;
+				if (!result.$) {
+					var value = result.a;
+					return $elm$core$Result$Ok(
+						_Utils_Tuple2(label, value));
+				} else {
+					var err = result.a;
+					return $elm$core$Result$Err(err);
+				}
+			};
+			var qualifiedMemberResult = $elm_community$result_extra$Result$Extra$combine(
+				A2(
+					$elm$core$List$map,
+					raiseTupleError,
+					A2(
+						$elm$core$List$map,
+						$elm$core$Tuple$mapSecond(
+							A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, qualifiedRange)),
+						members)));
+			if (qualifiedMemberResult.$ === 1) {
+				var err = qualifiedMemberResult.a;
+				return _Utils_Tuple2(
+					A2($elm$core$List$cons, err, errors),
+					acc);
+			} else {
+				var qualifiedMembers = qualifiedMemberResult.a;
+				return _Utils_Tuple2(
+					errors,
+					A3(
+						$elm$core$Dict$insert,
+						qualifiedName,
+						{
+							s: exposed,
+							_: typeDef._,
+							aQ: $author$project$Stabel$Qualifier$StructMembers(qualifiedMembers),
+							m: qualifiedName,
+							U: qualifiedRange
+						},
+						acc));
+			}
+		} else {
+			var memberTypes = _v2.a;
+			var qualifiedMemberTypesResult = $elm_community$result_extra$Result$Extra$combine(
+				A2(
+					$elm$core$List$map,
+					A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, qualifiedRange),
+					memberTypes));
+			if (qualifiedMemberTypesResult.$ === 1) {
+				var err = qualifiedMemberTypesResult.a;
+				return _Utils_Tuple2(
+					A2($elm$core$List$cons, err, errors),
+					acc);
+			} else {
+				var qualifiedMemberTypes = qualifiedMemberTypesResult.a;
+				return _Utils_Tuple2(
+					errors,
+					A3(
+						$elm$core$Dict$insert,
+						qualifiedName,
+						{
+							s: exposed,
+							_: typeDef._,
+							aQ: $author$project$Stabel$Qualifier$UnionMembers(qualifiedMemberTypes),
+							m: qualifiedName,
+							U: qualifiedRange
+						},
+						acc));
+			}
+		}
+	});
+var $author$project$Stabel$Qualifier$resolveUnionInTypeDefs = F2(
+	function (qt, td) {
+		return _Utils_update(
+			td,
+			{
+				aQ: function () {
+					var _v0 = td.aQ;
+					if (!_v0.$) {
+						var members = _v0.a;
+						return $author$project$Stabel$Qualifier$StructMembers(
+							A2(
+								$elm$core$List$map,
+								$elm$core$Tuple$mapSecond(
+									$author$project$Stabel$Qualifier$resolveUnion(qt)),
+								members));
+					} else {
+						var members = _v0.a;
+						return $author$project$Stabel$Qualifier$UnionMembers(
+							A2(
+								$elm$core$List$map,
+								$author$project$Stabel$Qualifier$resolveUnion(qt),
+								members));
+					}
+				}()
+			});
+	});
+var $author$project$Stabel$Qualifier$run = function (config) {
+	var _v0 = A2(
+		$elm$core$Tuple$mapSecond,
+		function (qt) {
+			return A2(
+				$elm$core$Dict$map,
+				F2(
+					function (_v2, v) {
+						return A2($author$project$Stabel$Qualifier$resolveUnionInTypeDefs, qt, v);
+					}),
+				qt);
+		},
+		A3(
+			$elm$core$Dict$foldl,
+			F3(
+				function (_v1, val, acc) {
+					return A3($author$project$Stabel$Qualifier$qualifyType, config, val, acc);
+				}),
+			_Utils_Tuple2(_List_Nil, $elm$core$Dict$empty),
+			config.k.I));
+	var typeErrors = _v0.a;
+	var qualifiedTypes = _v0.b;
+	var allQualifiedTypes = A2($elm$core$Dict$union, qualifiedTypes, config.G.I);
+	var _v3 = A3(
+		$elm$core$Dict$foldl,
+		F3(
+			function (_v4, val, acc) {
+				return A4($author$project$Stabel$Qualifier$qualifyDefinitionFoldHelper, config, allQualifiedTypes, val, acc);
+			}),
+		_Utils_Tuple3(_List_Nil, $elm$core$Dict$empty, $elm$core$Set$empty),
+		config.k.bj);
+	var functionErrors = _v3.a;
+	var qualifiedFunctions = _v3.b;
+	var inlineFunctionNames = _v3.c;
+	var _v5 = _Utils_Tuple2(typeErrors, functionErrors);
+	if ((!_v5.a.b) && (!_v5.b.b)) {
+		return $elm$core$Result$Ok(
+			{bj: qualifiedFunctions, aW: inlineFunctionNames, I: qualifiedTypes});
+	} else {
+		return $elm$core$Result$Err(
+			_Utils_ap(typeErrors, functionErrors));
+	}
+};
+var $author$project$TestCompiler$qualifyTestTuples = F2(
+	function (_v0, _v1) {
+		var packageName = _v0.a;
+		var modulePath = _v0.b;
+		var parserAst = _v0.c;
+		var problems = _v1.a;
+		var config = _v1.b;
+		var updatedConfig = _Utils_update(
+			config,
+			{k: parserAst, aR: modulePath, x: packageName});
+		var _v2 = $author$project$Stabel$Qualifier$run(updatedConfig);
+		if (_v2.$ === 1) {
+			var errs = _v2.a;
+			return _Utils_Tuple2(
+				_Utils_ap(errs, problems),
+				updatedConfig);
+		} else {
+			var qualifiedAST = _v2.a;
+			var inProgressAST = updatedConfig.G;
+			var updatedInProgressAst = _Utils_update(
+				inProgressAST,
+				{
+					bj: A2($elm$core$Dict$union, qualifiedAST.bj, inProgressAST.bj),
+					aW: A2($elm$core$Set$union, qualifiedAST.aW, inProgressAST.aW),
+					I: A2($elm$core$Dict$union, qualifiedAST.I, inProgressAST.I)
+				});
+			var configWithQualifiedAst = _Utils_update(
+				updatedConfig,
+				{
+					B: A3($elm$core$Dict$insert, '/' + modulePath, packageName, updatedConfig.B),
+					G: updatedInProgressAst
+				});
+			return _Utils_Tuple2(problems, configWithQualifiedAst);
+		}
+	});
+var $author$project$Stabel$Wasm$Memory = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $author$project$Stabel$Wasm$Block = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Stabel$Wasm$Break = function (a) {
+	return {$: 3, a: a};
+};
+var $author$project$Stabel$Wasm$BreakIf = function (a) {
+	return {$: 4, a: a};
+};
+var $author$project$Stabel$Wasm$Call = F2(
+	function (a, b) {
+		return {$: 6, a: a, b: b};
+	});
+var $author$project$Stabel$Wasm$CallIndirect = {$: 7};
+var $author$project$Stabel$Wasm$Drop = {$: 21};
+var $author$project$Stabel$Wasm$I32_Add = {$: 12};
+var $author$project$Stabel$Wasm$I32_Const = function (a) {
+	return {$: 11, a: a};
+};
+var $author$project$Stabel$Wasm$I32_Div = {$: 15};
+var $author$project$Stabel$Wasm$I32_Eq = {$: 16};
+var $author$project$Stabel$Wasm$I32_EqZero = {$: 18};
+var $author$project$Stabel$Wasm$I32_Load = {$: 20};
+var $author$project$Stabel$Wasm$I32_Mul = {$: 14};
+var $author$project$Stabel$Wasm$I32_Store = {$: 19};
+var $author$project$Stabel$Wasm$I32_Sub = {$: 13};
+var $author$project$Stabel$Wasm$Int32 = 0;
+var $author$project$Stabel$Wasm$Local_Get = function (a) {
+	return {$: 8, a: a};
+};
+var $author$project$Stabel$Wasm$Local_Set = function (a) {
+	return {$: 9, a: a};
+};
+var $author$project$Stabel$Wasm$Local_Tee = function (a) {
+	return {$: 10, a: a};
+};
+var $author$project$Stabel$Wasm$Loop = function (a) {
+	return {$: 2, a: a};
+};
+var $author$project$Stabel$Codegen$BaseModule$addIntFn = '__add_i32';
+var $author$project$Stabel$Codegen$BaseModule$allocFn = '__alloc';
+var $author$project$Stabel$Codegen$BaseModule$boxFn = '__box';
+var $author$project$Stabel$Codegen$BaseModule$callAllocFn = A2($author$project$Stabel$Wasm$Call, 1, $author$project$Stabel$Codegen$BaseModule$allocFn);
+var $author$project$Stabel$Codegen$BaseModule$stackGetElementFn = '__stack_get';
+var $author$project$Stabel$Codegen$BaseModule$callStackGetElementFn = A2($author$project$Stabel$Wasm$Call, 15, $author$project$Stabel$Codegen$BaseModule$stackGetElementFn);
+var $author$project$Stabel$Codegen$BaseModule$stackPopFn = '__stack_pop';
+var $author$project$Stabel$Codegen$BaseModule$callStackPopFn = A2($author$project$Stabel$Wasm$Call, 4, $author$project$Stabel$Codegen$BaseModule$stackPopFn);
+var $author$project$Stabel$Codegen$BaseModule$stackPushFn = '__stack_push';
+var $author$project$Stabel$Codegen$BaseModule$callStackPushFn = A2($author$project$Stabel$Wasm$Call, 3, $author$project$Stabel$Codegen$BaseModule$stackPushFn);
+var $author$project$Stabel$Codegen$BaseModule$stackReplaceElementFn = '__stack_replace';
+var $author$project$Stabel$Codegen$BaseModule$callStackReplaceElementFn = A2($author$project$Stabel$Wasm$Call, 16, $author$project$Stabel$Codegen$BaseModule$stackReplaceElementFn);
+var $author$project$Stabel$Codegen$BaseModule$swapFn = '__swap';
+var $author$project$Stabel$Codegen$BaseModule$callSwapFn = A2($author$project$Stabel$Wasm$Call, 7, $author$project$Stabel$Codegen$BaseModule$swapFn);
+var $author$project$Stabel$Codegen$BaseModule$copyStructFn = '__copy_struct';
+var $author$project$Stabel$Codegen$BaseModule$defaultStackSize = 1024;
+var $author$project$Stabel$Codegen$BaseModule$divIntFn = '__div_i32';
+var $author$project$Stabel$Codegen$BaseModule$dropFn = '__drop';
+var $author$project$Stabel$Codegen$BaseModule$dupFn = '__duplicate';
+var $author$project$Stabel$Codegen$BaseModule$eqIntFn = '__eq_i32';
+var $author$project$Stabel$Codegen$BaseModule$execInlineFn = '__exec_inline';
+var $author$project$Stabel$Codegen$BaseModule$wasmPtrSize = 4;
+var $author$project$Stabel$Codegen$BaseModule$stackPositionOffset = $author$project$Stabel$Codegen$BaseModule$wasmPtrSize;
+var $author$project$Stabel$Codegen$BaseModule$initialHeapPositionOffset = $author$project$Stabel$Codegen$BaseModule$stackPositionOffset + $author$project$Stabel$Codegen$BaseModule$wasmPtrSize;
+var $author$project$Stabel$Codegen$BaseModule$leftRotFn = '__left_rotate';
+var $author$project$Stabel$Codegen$BaseModule$mulIntFn = '__mul_i32';
+var $author$project$Stabel$Codegen$BaseModule$rotFn = '__rotate';
+var $author$project$Stabel$Codegen$BaseModule$stackCapacityOffset = 0;
+var $author$project$Stabel$Codegen$BaseModule$subIntFn = '__sub_i32';
+var $author$project$Stabel$Codegen$BaseModule$unboxFn = '__unbox';
+var $author$project$Stabel$Codegen$BaseModule$baseFunctions = _List_fromArray(
+	[
+		{
+		a8: _List_Nil,
+		bk: 0,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackCapacityOffset),
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$defaultStackSize),
+				$author$project$Stabel$Wasm$I32_Store,
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize * 3),
+				$author$project$Stabel$Wasm$I32_Store,
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$initialHeapPositionOffset),
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$defaultStackSize + $author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+				$author$project$Stabel$Wasm$I32_Store
+			]),
+		bq: _List_Nil,
+		m: '__initialize',
+		bH: _List_Nil
+	},
+		{
+		a8: _List_fromArray(
+			[0]),
+		bk: 1,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$initialHeapPositionOffset),
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$initialHeapPositionOffset),
+				$author$project$Stabel$Wasm$I32_Load,
+				$author$project$Stabel$Wasm$Local_Tee(1),
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Wasm$I32_Add,
+				$author$project$Stabel$Wasm$I32_Store,
+				$author$project$Stabel$Wasm$Local_Get(1)
+			]),
+		bq: _List_fromArray(
+			[0]),
+		m: $author$project$Stabel$Codegen$BaseModule$allocFn,
+		bH: _List_fromArray(
+			[0])
+	},
+		{
+		a8: _List_fromArray(
+			[0, 0]),
+		bk: 2,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$Local_Get(1),
+				$author$project$Stabel$Codegen$BaseModule$callAllocFn,
+				$author$project$Stabel$Wasm$Local_Set(2),
+				$author$project$Stabel$Wasm$Block(
+				_List_fromArray(
+					[
+						$author$project$Stabel$Wasm$Loop(
+						_List_fromArray(
+							[
+								$author$project$Stabel$Wasm$Local_Get(1),
+								$author$project$Stabel$Wasm$I32_EqZero,
+								$author$project$Stabel$Wasm$BreakIf(1),
+								$author$project$Stabel$Wasm$Local_Get(1),
+								$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+								$author$project$Stabel$Wasm$I32_Sub,
+								$author$project$Stabel$Wasm$Local_Set(1),
+								$author$project$Stabel$Wasm$Local_Get(0),
+								$author$project$Stabel$Wasm$Local_Get(1),
+								$author$project$Stabel$Wasm$I32_Add,
+								$author$project$Stabel$Wasm$I32_Load,
+								$author$project$Stabel$Wasm$Local_Set(3),
+								$author$project$Stabel$Wasm$Local_Get(2),
+								$author$project$Stabel$Wasm$Local_Get(1),
+								$author$project$Stabel$Wasm$I32_Add,
+								$author$project$Stabel$Wasm$Local_Get(3),
+								$author$project$Stabel$Wasm$I32_Store,
+								$author$project$Stabel$Wasm$Break(0)
+							]))
+					])),
+				$author$project$Stabel$Wasm$Local_Get(2)
+			]),
+		bq: _List_fromArray(
+			[0, 0]),
+		m: $author$project$Stabel$Codegen$BaseModule$copyStructFn,
+		bH: _List_fromArray(
+			[0])
+	},
+		{
+		a8: _List_fromArray(
+			[0]),
+		bk: 3,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
+				$author$project$Stabel$Wasm$I32_Load,
+				$author$project$Stabel$Wasm$Local_Tee(1),
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Wasm$I32_Store,
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
+				$author$project$Stabel$Wasm$Local_Get(1),
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+				$author$project$Stabel$Wasm$I32_Add,
+				$author$project$Stabel$Wasm$I32_Store
+			]),
+		bq: _List_fromArray(
+			[0]),
+		m: $author$project$Stabel$Codegen$BaseModule$stackPushFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 4,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
+				$author$project$Stabel$Wasm$I32_Load,
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+				$author$project$Stabel$Wasm$I32_Sub,
+				$author$project$Stabel$Wasm$Local_Tee(0),
+				$author$project$Stabel$Wasm$I32_Store,
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Wasm$I32_Load
+			]),
+		bq: _List_fromArray(
+			[0]),
+		m: $author$project$Stabel$Codegen$BaseModule$stackPopFn,
+		bH: _List_fromArray(
+			[0])
+	},
+		{
+		a8: _List_Nil,
+		bk: 5,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Tee(0),
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn
+			]),
+		bq: _List_fromArray(
+			[0]),
+		m: $author$project$Stabel$Codegen$BaseModule$dupFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 6,
+		bn: _List_fromArray(
+			[$author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Wasm$Drop]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$dropFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 7,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Set(0),
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn
+			]),
+		bq: _List_fromArray(
+			[0]),
+		m: $author$project$Stabel$Codegen$BaseModule$swapFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 8,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Set(0),
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Set(1),
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Set(2),
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+				$author$project$Stabel$Wasm$Local_Get(2),
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+				$author$project$Stabel$Wasm$Local_Get(1),
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn
+			]),
+		bq: _List_fromArray(
+			[0, 0, 0]),
+		m: $author$project$Stabel$Codegen$BaseModule$rotFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 9,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Set(0),
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Set(1),
+				$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+				$author$project$Stabel$Wasm$Local_Set(2),
+				$author$project$Stabel$Wasm$Local_Get(1),
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+				$author$project$Stabel$Wasm$Local_Get(2),
+				$author$project$Stabel$Codegen$BaseModule$callStackPushFn
+			]),
+		bq: _List_fromArray(
+			[0, 0, 0]),
+		m: $author$project$Stabel$Codegen$BaseModule$leftRotFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 10,
+		bn: _List_fromArray(
+			[$author$project$Stabel$Codegen$BaseModule$callSwapFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Wasm$I32_Add, $author$project$Stabel$Codegen$BaseModule$callStackPushFn]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$addIntFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 11,
+		bn: _List_fromArray(
+			[$author$project$Stabel$Codegen$BaseModule$callSwapFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Wasm$I32_Sub, $author$project$Stabel$Codegen$BaseModule$callStackPushFn]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$subIntFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 12,
+		bn: _List_fromArray(
+			[$author$project$Stabel$Codegen$BaseModule$callSwapFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Wasm$I32_Mul, $author$project$Stabel$Codegen$BaseModule$callStackPushFn]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$mulIntFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 13,
+		bn: _List_fromArray(
+			[$author$project$Stabel$Codegen$BaseModule$callSwapFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Wasm$I32_Div, $author$project$Stabel$Codegen$BaseModule$callStackPushFn]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$divIntFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 14,
+		bn: _List_fromArray(
+			[$author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Wasm$I32_Eq, $author$project$Stabel$Codegen$BaseModule$callStackPushFn]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$eqIntFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_fromArray(
+			[0]),
+		bk: 15,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
+				$author$project$Stabel$Wasm$I32_Load,
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Wasm$I32_Const(1),
+				$author$project$Stabel$Wasm$I32_Add,
+				$author$project$Stabel$Wasm$I32_Mul,
+				$author$project$Stabel$Wasm$I32_Sub,
+				$author$project$Stabel$Wasm$I32_Load
+			]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$stackGetElementFn,
+		bH: _List_fromArray(
+			[0])
+	},
+		{
+		a8: _List_fromArray(
+			[0, 0]),
+		bk: 16,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$stackPositionOffset),
+				$author$project$Stabel$Wasm$I32_Load,
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Wasm$I32_Const(1),
+				$author$project$Stabel$Wasm$I32_Add,
+				$author$project$Stabel$Wasm$I32_Mul,
+				$author$project$Stabel$Wasm$I32_Sub,
+				$author$project$Stabel$Wasm$Local_Get(1),
+				$author$project$Stabel$Wasm$I32_Store
+			]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$stackReplaceElementFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_fromArray(
+			[0, 0]),
+		bk: 17,
+		bn: function () {
+			var typeSize = $author$project$Stabel$Codegen$BaseModule$wasmPtrSize * 2;
+			return _List_fromArray(
+				[
+					$author$project$Stabel$Wasm$I32_Const(typeSize),
+					A2($author$project$Stabel$Wasm$Call, 1, $author$project$Stabel$Codegen$BaseModule$allocFn),
+					$author$project$Stabel$Wasm$Local_Tee(2),
+					$author$project$Stabel$Wasm$Local_Get(1),
+					$author$project$Stabel$Wasm$I32_Store,
+					$author$project$Stabel$Wasm$Local_Get(2),
+					$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+					$author$project$Stabel$Wasm$I32_Add,
+					$author$project$Stabel$Wasm$Local_Get(0),
+					$author$project$Stabel$Codegen$BaseModule$callStackGetElementFn,
+					$author$project$Stabel$Wasm$I32_Store,
+					$author$project$Stabel$Wasm$Local_Get(0),
+					$author$project$Stabel$Wasm$Local_Get(2),
+					$author$project$Stabel$Codegen$BaseModule$callStackReplaceElementFn
+				]);
+		}(),
+		bq: _List_fromArray(
+			[0]),
+		m: $author$project$Stabel$Codegen$BaseModule$boxFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_fromArray(
+			[0]),
+		bk: 18,
+		bn: _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Wasm$Local_Get(0),
+				$author$project$Stabel$Codegen$BaseModule$callStackGetElementFn,
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+				$author$project$Stabel$Wasm$I32_Add,
+				$author$project$Stabel$Wasm$I32_Load,
+				$author$project$Stabel$Codegen$BaseModule$callStackReplaceElementFn
+			]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$unboxFn,
+		bH: _List_Nil
+	},
+		{
+		a8: _List_Nil,
+		bk: 19,
+		bn: _List_fromArray(
+			[$author$project$Stabel$Codegen$BaseModule$callStackPopFn, $author$project$Stabel$Wasm$CallIndirect]),
+		bq: _List_Nil,
+		m: $author$project$Stabel$Codegen$BaseModule$execInlineFn,
+		bH: _List_Nil
+	}
+	]);
+var $author$project$Stabel$Wasm$Module = $elm$core$Basics$identity;
+var $author$project$Stabel$Wasm$initModule = {ao: _List_Nil, bj: _List_Nil, t: _List_Nil, bF: _List_Nil, bJ: $elm$core$Maybe$Nothing, M: _List_Nil};
+var $elm_community$list_extra$List$Extra$findIndexHelp = F3(
+	function (index, predicate, list) {
+		findIndexHelp:
+		while (true) {
+			if (!list.b) {
+				return $elm$core$Maybe$Nothing;
+			} else {
+				var x = list.a;
+				var xs = list.b;
+				if (predicate(x)) {
+					return $elm$core$Maybe$Just(index);
+				} else {
+					var $temp$index = index + 1,
+						$temp$predicate = predicate,
+						$temp$list = xs;
+					index = $temp$index;
+					predicate = $temp$predicate;
+					list = $temp$list;
+					continue findIndexHelp;
+				}
+			}
+		}
+	});
+var $elm_community$list_extra$List$Extra$findIndex = $elm_community$list_extra$List$Extra$findIndexHelp(0);
+var $elm_community$list_extra$List$Extra$elemIndex = function (x) {
+	return $elm_community$list_extra$List$Extra$findIndex(
+		$elm$core$Basics$eq(x));
+};
+var $author$project$Stabel$Wasm$withFunction = F2(
+	function (funcDef, _v0) {
+		var module_ = _v0;
+		var typeSignature = {ac: funcDef.a8, af: funcDef.bH};
+		var _v1 = function () {
+			var _v2 = A2($elm_community$list_extra$List$Extra$elemIndex, typeSignature, module_.M);
+			if (!_v2.$) {
+				var idx = _v2.a;
+				return _Utils_Tuple2(idx, module_);
+			} else {
+				return _Utils_Tuple2(
+					$elm$core$List$length(module_.M),
+					_Utils_update(
+						module_,
+						{
+							M: _Utils_ap(
+								module_.M,
+								_List_fromArray(
+									[typeSignature]))
+						}));
+			}
+		}();
+		var tsIndex = _v1.a;
+		var updatedModule = _v1.b;
+		var newFunction = {bk: funcDef.bk, bn: funcDef.bn, bq: funcDef.bq, m: funcDef.m, ay: tsIndex};
+		return _Utils_update(
+			updatedModule,
+			{
+				bj: A2($elm$core$List$cons, newFunction, updatedModule.bj)
+			});
+	});
+var $author$project$Stabel$Wasm$withImport = F4(
+	function (importModule, entityName, typeToImport, _v0) {
+		var module_ = _v0;
+		return _Utils_update(
+			module_,
+			{
+				t: A2(
+					$elm$core$List$cons,
+					{an: entityName, ar: importModule, V: typeToImport},
+					module_.t)
+			});
+	});
+var $author$project$Stabel$Wasm$withStartFunction = F2(
+	function (startIdx, _v0) {
+		var fields = _v0;
+		return _Utils_update(
+			fields,
+			{
+				bJ: $elm$core$Maybe$Just(startIdx)
+			});
+	});
+var $author$project$Stabel$Codegen$BaseModule$baseModule = function () {
+	var withoutFunctions = A2(
+		$author$project$Stabel$Wasm$withStartFunction,
+		0,
+		A4(
+			$author$project$Stabel$Wasm$withImport,
+			'host',
+			'memory',
+			A2($author$project$Stabel$Wasm$Memory, 1, $elm$core$Maybe$Nothing),
+			$author$project$Stabel$Wasm$initModule));
+	return A3($elm$core$List$foldl, $author$project$Stabel$Wasm$withFunction, withoutFunctions, $author$project$Stabel$Codegen$BaseModule$baseFunctions);
+}();
+var $author$project$Stabel$Codegen$IdAssigner$empty = function (startingId) {
+	return {aC: $elm$core$Dict$empty, L: startingId};
+};
+var $author$project$Stabel$Codegen$BaseModule$firstAvailableFunctionId = 20;
+var $author$project$Stabel$Codegen$emptyContext = {
+	K: $author$project$Stabel$Codegen$IdAssigner$empty($author$project$Stabel$Codegen$BaseModule$firstAvailableFunctionId),
+	aa: _List_Nil,
+	ak: $author$project$Stabel$Codegen$IdAssigner$empty(0)
+};
+var $elm$core$Set$foldr = F3(
+	function (func, initialState, _v0) {
+		var dict = _v0;
+		return A3(
+			$elm$core$Dict$foldr,
+			F3(
+				function (key, _v1, state) {
+					return A2(func, key, state);
+				}),
+			initialState,
+			dict);
+	});
+var $author$project$Stabel$Codegen$Box = F2(
+	function (a, b) {
+		return {$: 7, a: a, b: b};
+	});
+var $author$project$Stabel$Codegen$Builtin = function (a) {
+	return {$: 6, a: a};
+};
+var $author$project$Stabel$Codegen$ConstructType = F2(
+	function (a, b) {
+		return {$: 3, a: a, b: b};
+	});
+var $author$project$Stabel$Codegen$Function = F2(
+	function (a, b) {
+		return {$: 1, a: a, b: b};
+	});
+var $author$project$Stabel$Codegen$FunctionRef = F2(
+	function (a, b) {
+		return {$: 2, a: a, b: b};
+	});
+var $author$project$Stabel$Codegen$GetMember = function (a) {
+	return {$: 5, a: a};
+};
+var $author$project$Stabel$Codegen$IntLiteral = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Stabel$Codegen$SetMember = F2(
+	function (a, b) {
+		return {$: 4, a: a, b: b};
+	});
+var $author$project$Stabel$Data$Builtin$functionType = function (builtin) {
+	switch (builtin) {
+		case 0:
+			return {
+				o: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
+				H: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int])
+			};
+		case 1:
+			return {
+				o: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
+				H: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int])
+			};
+		case 2:
+			return {
+				o: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
+				H: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int])
+			};
+		case 3:
+			return {
+				o: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
+				H: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int])
+			};
+		case 4:
+			return {
+				o: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
+				H: _List_fromArray(
+					[$author$project$Stabel$Data$Type$Int])
+			};
+		case 5:
+			return {
+				o: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('a')
+					]),
+				H: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('a'),
+						$author$project$Stabel$Data$Type$Generic('a')
+					])
+			};
+		case 6:
+			return {
+				o: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('a')
+					]),
+				H: _List_Nil
+			};
+		case 7:
+			return {
+				o: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('a'),
+						$author$project$Stabel$Data$Type$Generic('b')
+					]),
+				H: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('b'),
+						$author$project$Stabel$Data$Type$Generic('a')
+					])
+			};
+		case 8:
+			return {
+				o: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('a'),
+						$author$project$Stabel$Data$Type$Generic('b'),
+						$author$project$Stabel$Data$Type$Generic('c')
+					]),
+				H: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('c'),
+						$author$project$Stabel$Data$Type$Generic('a'),
+						$author$project$Stabel$Data$Type$Generic('b')
+					])
+			};
+		case 9:
+			return {
+				o: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('a'),
+						$author$project$Stabel$Data$Type$Generic('b'),
+						$author$project$Stabel$Data$Type$Generic('c')
+					]),
+				H: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$Generic('b'),
+						$author$project$Stabel$Data$Type$Generic('c'),
+						$author$project$Stabel$Data$Type$Generic('a')
+					])
+			};
+		default:
+			return {
+				o: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$StackRange('a'),
+						$author$project$Stabel$Data$Type$FunctionSignature(
+						{
+							o: _List_fromArray(
+								[
+									$author$project$Stabel$Data$Type$StackRange('a')
+								]),
+							H: _List_fromArray(
+								[
+									$author$project$Stabel$Data$Type$StackRange('b')
+								])
+						})
+					]),
+				H: _List_fromArray(
+					[
+						$author$project$Stabel$Data$Type$StackRange('b')
+					])
+			};
+	}
+};
+var $author$project$Stabel$Codegen$IdAssigner$assignId = F2(
+	function (name, assign) {
+		var _v0 = A2($elm$core$Dict$get, name, assign.aC);
+		if (!_v0.$) {
+			var id = _v0.a;
+			return _Utils_Tuple2(id, assign);
+		} else {
+			return _Utils_Tuple2(
+				assign.L,
+				_Utils_update(
+					assign,
+					{
+						aC: A3($elm$core$Dict$insert, name, assign.L, assign.aC),
+						L: assign.L + 1
+					}));
+		}
+	});
+var $author$project$Stabel$Codegen$idForFunction = F2(
+	function (funcName, context) {
+		var _v0 = A2($author$project$Stabel$Codegen$IdAssigner$assignId, funcName, context.K);
+		var id = _v0.a;
+		var assign = _v0.b;
+		return _Utils_Tuple2(
+			id,
+			_Utils_update(
+				context,
+				{K: assign}));
+	});
+var $author$project$Stabel$Codegen$idForType = F2(
+	function (typeName, context) {
+		var _v0 = A2($author$project$Stabel$Codegen$IdAssigner$assignId, typeName, context.ak);
+		var id = _v0.a;
+		var assign = _v0.b;
+		return _Utils_Tuple2(
+			id,
+			_Utils_update(
+				context,
+				{ak: assign}));
+	});
+var $author$project$Stabel$Codegen$memberSize = function (def) {
+	var _v0 = def.aQ;
+	if (!_v0.$) {
+		var members = _v0.a;
+		return $elm$core$List$length(members);
+	} else {
+		var members = _v0.a;
+		return $elm$core$List$length(members);
+	}
+};
+var $elm$core$Basics$negate = function (n) {
+	return -n;
+};
+var $author$project$Stabel$Codegen$requiresBoxingInPatternMatch = function (type_) {
+	switch (type_.$) {
+		case 0:
+			return true;
+		case 1:
+			return true;
+		default:
+			return false;
+	}
+};
+var $elm$core$Tuple$second = function (_v0) {
+	var y = _v0.b;
+	return y;
+};
 var $author$project$Stabel$Codegen$unionBoxMap = function (union) {
 	var helper = F2(
 		function (t, _v0) {
@@ -4048,137 +6795,11 @@ var $author$project$Stabel$Codegen$unionBoxMap = function (union) {
 		_Utils_Tuple2(-1, _List_Nil),
 		union).b;
 };
-var $author$project$Stabel$Data$Type$StackRange = function (a) {
-	return {$: 'StackRange', a: a};
-};
-var $author$project$Stabel$Data$Builtin$wordType = function (builtin) {
-	switch (builtin.$) {
-		case 'Plus':
-			return {
-				input: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
-				output: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int])
-			};
-		case 'Minus':
-			return {
-				input: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
-				output: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int])
-			};
-		case 'Multiply':
-			return {
-				input: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
-				output: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int])
-			};
-		case 'Divide':
-			return {
-				input: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
-				output: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int])
-			};
-		case 'Equal':
-			return {
-				input: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int, $author$project$Stabel$Data$Type$Int]),
-				output: _List_fromArray(
-					[$author$project$Stabel$Data$Type$Int])
-			};
-		case 'StackDuplicate':
-			return {
-				input: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('a')
-					]),
-				output: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('a'),
-						$author$project$Stabel$Data$Type$Generic('a')
-					])
-			};
-		case 'StackDrop':
-			return {
-				input: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('a')
-					]),
-				output: _List_Nil
-			};
-		case 'StackSwap':
-			return {
-				input: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('a'),
-						$author$project$Stabel$Data$Type$Generic('b')
-					]),
-				output: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('b'),
-						$author$project$Stabel$Data$Type$Generic('a')
-					])
-			};
-		case 'StackRightRotate':
-			return {
-				input: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('a'),
-						$author$project$Stabel$Data$Type$Generic('b'),
-						$author$project$Stabel$Data$Type$Generic('c')
-					]),
-				output: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('c'),
-						$author$project$Stabel$Data$Type$Generic('a'),
-						$author$project$Stabel$Data$Type$Generic('b')
-					])
-			};
-		case 'StackLeftRotate':
-			return {
-				input: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('a'),
-						$author$project$Stabel$Data$Type$Generic('b'),
-						$author$project$Stabel$Data$Type$Generic('c')
-					]),
-				output: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$Generic('b'),
-						$author$project$Stabel$Data$Type$Generic('c'),
-						$author$project$Stabel$Data$Type$Generic('a')
-					])
-			};
-		default:
-			return {
-				input: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$StackRange('a'),
-						$author$project$Stabel$Data$Type$Quotation(
-						{
-							input: _List_fromArray(
-								[
-									$author$project$Stabel$Data$Type$StackRange('a')
-								]),
-							output: _List_fromArray(
-								[
-									$author$project$Stabel$Data$Type$StackRange('b')
-								])
-						})
-					]),
-				output: _List_fromArray(
-					[
-						$author$project$Stabel$Data$Type$StackRange('b')
-					])
-			};
-	}
-};
 var $author$project$Stabel$Codegen$astNodeToCodegenNode = F3(
-	function (ast, node, _v0) {
+	function (def, node, _v0) {
 		var stack = _v0.a;
 		var result = _v0.b;
+		var context = _v0.c;
 		var typeFromTypeDef = F2(
 			function (typeName, gens) {
 				return $elm$core$List$isEmpty(gens) ? $author$project$Stabel$Data$Type$Custom(typeName) : A2(
@@ -4188,221 +6809,158 @@ var $author$project$Stabel$Codegen$astNodeToCodegenNode = F3(
 			});
 		var nodeType = function () {
 			switch (node.$) {
-				case 'IntLiteral':
+				case 0:
 					return {
-						input: _List_Nil,
-						output: _List_fromArray(
+						o: _List_Nil,
+						H: _List_fromArray(
 							[$author$project$Stabel$Data$Type$Int])
 					};
-				case 'Word':
-					var name = node.b;
+				case 1:
 					var type_ = node.c;
 					return type_;
-				case 'WordRef':
-					var name = node.b;
-					var _v14 = A2($elm$core$Dict$get, name, ast.words);
-					if (_v14.$ === 'Just') {
-						var def = _v14.a;
-						return {
-							input: _List_Nil,
-							output: _List_fromArray(
-								[
-									$author$project$Stabel$Data$Type$Quotation(def.type_)
-								])
-						};
-					} else {
-						return _Debug_todo(
-							'Stabel.Codegen',
-							{
-								start: {line: 167, column: 29},
-								end: {line: 167, column: 39}
-							})('help');
-					}
-				case 'ConstructType':
-					var typeName = node.a;
-					var _v15 = A2($elm$core$Dict$get, typeName, ast.types);
-					if ((_v15.$ === 'Just') && (_v15.a.$ === 'CustomTypeDef')) {
-						var _v16 = _v15.a;
-						var gens = _v16.c;
-						var members = _v16.d;
-						return {
-							input: A2($elm$core$List$map, $elm$core$Tuple$second, members),
-							output: _List_fromArray(
-								[
-									A2(typeFromTypeDef, typeName, gens)
-								])
-						};
-					} else {
-						return _Debug_todo(
-							'Stabel.Codegen',
-							{
-								start: {line: 177, column: 29},
-								end: {line: 177, column: 39}
-							})('help');
-					}
-				case 'SetMember':
-					var typeName = node.a;
-					var memberType = node.c;
-					var _v17 = A2($elm$core$Dict$get, typeName, ast.types);
-					if ((_v17.$ === 'Just') && (_v17.a.$ === 'CustomTypeDef')) {
-						var _v18 = _v17.a;
-						var gens = _v18.c;
-						var type_ = A2(typeFromTypeDef, typeName, gens);
-						return {
-							input: _List_fromArray(
-								[type_, memberType]),
-							output: _List_fromArray(
-								[type_])
-						};
-					} else {
-						return _Debug_todo(
-							'Stabel.Codegen',
-							{
-								start: {line: 191, column: 29},
-								end: {line: 191, column: 39}
-							})('help');
-					}
-				case 'GetMember':
-					var typeName = node.a;
-					var memberType = node.c;
-					var _v19 = A2($elm$core$Dict$get, typeName, ast.types);
-					if ((_v19.$ === 'Just') && (_v19.a.$ === 'CustomTypeDef')) {
-						var _v20 = _v19.a;
-						var gens = _v20.c;
-						var type_ = A2(typeFromTypeDef, typeName, gens);
-						return {
-							input: _List_fromArray(
-								[type_]),
-							output: _List_fromArray(
-								[memberType])
-						};
-					} else {
-						return _Debug_todo(
-							'Stabel.Codegen',
-							{
-								start: {line: 205, column: 29},
-								end: {line: 205, column: 39}
-							})('help');
-					}
-				default:
+				case 2:
+					var fn = node.b;
+					return {
+						o: _List_Nil,
+						H: _List_fromArray(
+							[
+								$author$project$Stabel$Data$Type$FunctionSignature(fn.V)
+							])
+					};
+				case 3:
+					return def.V;
+				case 4:
+					var data = node.b;
+					return data.bO;
+				case 5:
 					var builtin = node.b;
-					return $author$project$Stabel$Data$Builtin$wordType(builtin);
+					return $author$project$Stabel$Data$Builtin$functionType(builtin);
+				case 6:
+					var typeDef = node.a;
+					var _v19 = typeDef.aQ;
+					if (!_v19.$) {
+						var members = _v19.a;
+						return {
+							o: A2($elm$core$List$map, $elm$core$Tuple$second, members),
+							H: _List_fromArray(
+								[
+									A2(typeFromTypeDef, typeDef.m, typeDef._)
+								])
+						};
+					} else {
+						var members = _v19.a;
+						return {
+							o: members,
+							H: _List_fromArray(
+								[
+									A2(typeFromTypeDef, typeDef.m, typeDef._)
+								])
+						};
+					}
+				case 7:
+					var typeDef = node.a;
+					var memberType = node.d;
+					var type_ = A2(typeFromTypeDef, typeDef.m, typeDef._);
+					return {
+						o: _List_fromArray(
+							[type_, memberType]),
+						H: _List_fromArray(
+							[type_])
+					};
+				default:
+					var typeDef = node.a;
+					var memberType = node.d;
+					var type_ = A2(typeFromTypeDef, typeDef.m, typeDef._);
+					return {
+						o: _List_fromArray(
+							[type_]),
+						H: _List_fromArray(
+							[memberType])
+					};
 			}
 		}();
 		var stackInScope = $elm$core$List$reverse(
 			A2(
 				$elm$core$List$take,
-				$elm$core$List$length(nodeType.input),
+				$elm$core$List$length(nodeType.o),
 				$elm$core$List$reverse(stack)));
 		var newStack = $elm$core$List$reverse(
 			function (s) {
 				return _Utils_ap(
-					$elm$core$List$reverse(nodeType.output),
+					$elm$core$List$reverse(nodeType.H),
 					s);
 			}(
 				A2(
 					$elm$core$List$drop,
-					$elm$core$List$length(nodeType.input),
+					$elm$core$List$length(nodeType.o),
 					$elm$core$List$reverse(stack))));
-		var newNode = function () {
-			switch (node.$) {
-				case 'IntLiteral':
-					var val = node.b;
-					return $author$project$Stabel$Codegen$IntLiteral(val);
-				case 'Word':
-					var name = node.b;
-					var type_ = node.c;
-					return A2($author$project$Stabel$Codegen$Word, name, type_);
-				case 'WordRef':
-					var name = node.b;
-					return $author$project$Stabel$Codegen$WordRef(name);
-				case 'ConstructType':
-					var typeName = node.a;
-					return $author$project$Stabel$Codegen$ConstructType(typeName);
-				case 'SetMember':
-					var typeName = node.a;
-					var memberName = node.b;
-					var type_ = node.c;
-					return A3($author$project$Stabel$Codegen$SetMember, typeName, memberName, type_);
-				case 'GetMember':
-					var typeName = node.a;
-					var memberName = node.b;
-					var type_ = node.c;
-					return A3($author$project$Stabel$Codegen$GetMember, typeName, memberName, type_);
-				default:
-					var builtin = node.b;
-					return $author$project$Stabel$Codegen$Builtin(builtin);
-			}
-		}();
 		var maybeCons = F2(
 			function (maybeBoxElement, list) {
-				if (maybeBoxElement.$ === 'Just') {
+				if (!maybeBoxElement.$) {
 					var value = maybeBoxElement.a;
 					return A2($elm$core$List$cons, value, list);
 				} else {
 					return list;
 				}
 			});
-		var maybeBox = function (_v10) {
-			var idx = _v10.a;
-			var leftType = _v10.b;
-			var rightType = _v10.c;
-			var _v6 = _Utils_Tuple2(leftType, rightType);
-			if (_v6.b.$ === 'Union') {
-				var members = _v6.b.a;
-				var _v7 = A2(
-					$elm_community$list_extra$List$Extra$find,
-					function (_v8) {
-						var t = _v8.a;
-						return _Utils_eq(t, leftType);
-					},
-					$author$project$Stabel$Codegen$unionBoxMap(members));
-				if (_v7.$ === 'Just') {
-					var _v9 = _v7.a;
-					var id = _v9.b;
-					return $elm$core$Maybe$Just(
-						A2($author$project$Stabel$Codegen$Box, idx, id));
-				} else {
-					return $elm$core$Maybe$Nothing;
-				}
+		var maybeBox = function (_v16) {
+			var idx = _v16.a;
+			var leftType = _v16.b;
+			var rightType = _v16.c;
+			var _v13 = _Utils_Tuple2(leftType, rightType);
+			if (_v13.b.$ === 4) {
+				var _v14 = _v13.b;
+				var members = _v14.b;
+				return A2(
+					$elm$core$Maybe$map,
+					$author$project$Stabel$Codegen$Box(idx),
+					A2(
+						$elm$core$Maybe$map,
+						$elm$core$Tuple$second,
+						A2(
+							$elm_community$list_extra$List$Extra$find,
+							function (_v15) {
+								var t = _v15.a;
+								return _Utils_eq(t, leftType);
+							},
+							$author$project$Stabel$Codegen$unionBoxMap(members))));
 			} else {
 				return $elm$core$Maybe$Nothing;
 			}
 		};
-		var isMultiWord = function (possibleMultiWordNode) {
-			if (possibleMultiWordNode.$ === 'Word') {
-				var name = possibleMultiWordNode.a;
-				var _v4 = A2($elm$core$Dict$get, name, ast.words);
-				if (_v4.$ === 'Just') {
-					var def = _v4.a;
-					var _v5 = def.implementation;
-					if (_v5.$ === 'SoloImpl') {
+		var isMultiFunction = function (possibleMultiFunctionNode) {
+			switch (possibleMultiFunctionNode.$) {
+				case 1:
+					var fn = possibleMultiFunctionNode.b;
+					var _v12 = fn.aL;
+					if (!_v12.$) {
 						return false;
 					} else {
 						return true;
 					}
-				} else {
+				case 4:
+					var data = possibleMultiFunctionNode.b;
+					return data.bp;
+				default:
 					return false;
-				}
-			} else {
-				return false;
 			}
 		};
 		var maybeBoxLeadingElement = function () {
-			var _v2 = _Utils_Tuple3(
+			var _v9 = _Utils_Tuple3(
 				$elm$core$List$head(stackInScope),
-				isMultiWord(newNode),
-				$elm$core$List$head(nodeType.input));
-			if (((_v2.a.$ === 'Just') && _v2.b) && (_v2.c.$ === 'Just')) {
-				if (_v2.c.a.$ === 'Union') {
+				isMultiFunction(node),
+				$elm$core$List$head(nodeType.o));
+			if (((!_v9.a.$) && _v9.b) && (!_v9.c.$)) {
+				if (_v9.c.a.$ === 4) {
+					var _v10 = _v9.c.a;
 					return $elm$core$Maybe$Nothing;
 				} else {
-					var nodeLeadingType = _v2.c.a;
+					var nodeLeadingType = _v9.c.a;
 					if ($author$project$Stabel$Codegen$requiresBoxingInPatternMatch(nodeLeadingType)) {
 						var idx = A2(
 							$elm$core$Basics$max,
 							0,
-							$elm$core$List$length(nodeType.input) - 1);
+							$elm$core$List$length(nodeType.o) - 1);
 						return $elm$core$Maybe$Just(
 							A2($author$project$Stabel$Codegen$Box, idx, -1));
 					} else {
@@ -4422,264 +6980,295 @@ var $author$project$Stabel$Codegen$astNodeToCodegenNode = F3(
 				A2(
 					$elm$core$List$indexedMap,
 					F2(
-						function (i, _v1) {
-							var l = _v1.a;
-							var r = _v1.b;
+						function (i, _v8) {
+							var l = _v8.a;
+							var r = _v8.b;
 							return _Utils_Tuple3(i, l, r);
 						}),
 					A3(
 						$elm$core$List$map2,
 						$elm$core$Tuple$pair,
 						$elm$core$List$reverse(stackInScope),
-						$elm$core$List$reverse(nodeType.input)))));
-		return _Utils_Tuple2(
+						$elm$core$List$reverse(nodeType.o)))));
+		var _v1 = function () {
+			switch (node.$) {
+				case 0:
+					var val = node.b;
+					return _Utils_Tuple2(
+						$author$project$Stabel$Codegen$IntLiteral(val),
+						context);
+				case 1:
+					var fn = node.b;
+					var _v3 = A2($author$project$Stabel$Codegen$idForFunction, fn.m, context);
+					var fnId = _v3.a;
+					var newContext = _v3.b;
+					return _Utils_Tuple2(
+						A2($author$project$Stabel$Codegen$Function, fnId, fn.m),
+						newContext);
+				case 2:
+					var fn = node.b;
+					var _v4 = A2($author$project$Stabel$Codegen$idForFunction, fn.m, context);
+					var fnId = _v4.a;
+					var newContext = _v4.b;
+					return _Utils_Tuple2(
+						A2($author$project$Stabel$Codegen$FunctionRef, fnId, fn.m),
+						newContext);
+				case 3:
+					var _v5 = A2($author$project$Stabel$Codegen$idForFunction, def.m, context);
+					var fnId = _v5.a;
+					var newContext = _v5.b;
+					return _Utils_Tuple2(
+						A2($author$project$Stabel$Codegen$Function, fnId, def.m),
+						newContext);
+				case 4:
+					var data = node.b;
+					var _v6 = A2($author$project$Stabel$Codegen$idForFunction, data.m, context);
+					var fnId = _v6.a;
+					var newContext = _v6.b;
+					return _Utils_Tuple2(
+						A2($author$project$Stabel$Codegen$Function, fnId, data.m),
+						newContext);
+				case 5:
+					var builtin = node.b;
+					return _Utils_Tuple2(
+						$author$project$Stabel$Codegen$Builtin(builtin),
+						context);
+				case 6:
+					var typeDef = node.a;
+					var _v7 = A2($author$project$Stabel$Codegen$idForType, typeDef.m, context);
+					var typeId = _v7.a;
+					var newContext = _v7.b;
+					return _Utils_Tuple2(
+						A2(
+							$author$project$Stabel$Codegen$ConstructType,
+							typeId,
+							$author$project$Stabel$Codegen$memberSize(typeDef)),
+						newContext);
+				case 7:
+					var typeDef = node.a;
+					var memberIndex = node.c;
+					return _Utils_Tuple2(
+						A2(
+							$author$project$Stabel$Codegen$SetMember,
+							memberIndex,
+							$author$project$Stabel$Codegen$memberSize(typeDef)),
+						context);
+				default:
+					var memberIndex = node.c;
+					return _Utils_Tuple2(
+						$author$project$Stabel$Codegen$GetMember(memberIndex),
+						context);
+			}
+		}();
+		var newNode = _v1.a;
+		var updatedContext = _v1.b;
+		return _Utils_Tuple3(
 			newStack,
 			A2(
 				$elm$core$List$cons,
 				newNode,
-				_Utils_ap(stackElementsToBox, result)));
+				_Utils_ap(stackElementsToBox, result)),
+			updatedContext);
 	});
-var $author$project$Wasm$Batch = function (a) {
-	return {$: 'Batch', a: a};
+var $author$project$Stabel$Wasm$Batch = function (a) {
+	return {$: 0, a: a};
 };
-var $author$project$Wasm$FunctionIndex = function (a) {
-	return {$: 'FunctionIndex', a: a};
-};
-var $elm$core$Maybe$andThen = F2(
-	function (callback, maybeValue) {
-		if (maybeValue.$ === 'Just') {
-			var value = maybeValue.a;
-			return callback(value);
-		} else {
-			return $elm$core$Maybe$Nothing;
+var $author$project$Stabel$Wasm$Commented = F2(
+	function (a, b) {
+		return {$: 23, a: a, b: b};
+	});
+var $author$project$Stabel$Codegen$BaseModule$callAddIntFn = A2($author$project$Stabel$Wasm$Call, 10, $author$project$Stabel$Codegen$BaseModule$addIntFn);
+var $author$project$Stabel$Codegen$BaseModule$callBoxFn = A2($author$project$Stabel$Wasm$Call, 17, $author$project$Stabel$Codegen$BaseModule$boxFn);
+var $author$project$Stabel$Codegen$BaseModule$callCopyStructFn = A2($author$project$Stabel$Wasm$Call, 2, $author$project$Stabel$Codegen$BaseModule$copyStructFn);
+var $author$project$Stabel$Codegen$BaseModule$callDivIntFn = A2($author$project$Stabel$Wasm$Call, 13, $author$project$Stabel$Codegen$BaseModule$divIntFn);
+var $author$project$Stabel$Codegen$BaseModule$callDropFn = A2($author$project$Stabel$Wasm$Call, 6, $author$project$Stabel$Codegen$BaseModule$dropFn);
+var $author$project$Stabel$Codegen$BaseModule$callDupFn = A2($author$project$Stabel$Wasm$Call, 5, $author$project$Stabel$Codegen$BaseModule$dupFn);
+var $author$project$Stabel$Codegen$BaseModule$callEqIntFn = A2($author$project$Stabel$Wasm$Call, 14, $author$project$Stabel$Codegen$BaseModule$eqIntFn);
+var $author$project$Stabel$Codegen$BaseModule$callExecInlineFn = A2($author$project$Stabel$Wasm$Call, 19, $author$project$Stabel$Codegen$BaseModule$execInlineFn);
+var $author$project$Stabel$Codegen$BaseModule$callLeftRotFn = A2($author$project$Stabel$Wasm$Call, 9, $author$project$Stabel$Codegen$BaseModule$leftRotFn);
+var $author$project$Stabel$Codegen$BaseModule$callMulIntFn = A2($author$project$Stabel$Wasm$Call, 12, $author$project$Stabel$Codegen$BaseModule$mulIntFn);
+var $author$project$Stabel$Codegen$BaseModule$callRotFn = A2($author$project$Stabel$Wasm$Call, 8, $author$project$Stabel$Codegen$BaseModule$rotFn);
+var $author$project$Stabel$Codegen$BaseModule$callSubIntFn = A2($author$project$Stabel$Wasm$Call, 11, $author$project$Stabel$Codegen$BaseModule$subIntFn);
+var $author$project$Stabel$Codegen$indexOfHelper = F3(
+	function (idx, value, list) {
+		indexOfHelper:
+		while (true) {
+			if (!list.b) {
+				return $elm$core$Maybe$Nothing;
+			} else {
+				var element = list.a;
+				var rest = list.b;
+				if (_Utils_eq(element, value)) {
+					return $elm$core$Maybe$Just(idx);
+				} else {
+					var $temp$idx = idx + 1,
+						$temp$value = value,
+						$temp$list = rest;
+					idx = $temp$idx;
+					value = $temp$value;
+					list = $temp$list;
+					continue indexOfHelper;
+				}
+			}
 		}
 	});
-var $elm$core$Basics$composeL = F3(
-	function (g, f, x) {
-		return g(
-			f(x));
-	});
-var $elm$core$Maybe$map = F2(
-	function (f, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return $elm$core$Maybe$Just(
-				f(value));
-		} else {
-			return $elm$core$Maybe$Nothing;
-		}
-	});
-var $author$project$Stabel$Codegen$getMemberType = F3(
-	function (typeInfoDict, typeName, memberName) {
-		return A2(
-			$elm$core$Maybe$map,
-			$elm$core$Tuple$first,
-			A2(
-				$elm$core$Maybe$andThen,
-				$elm_community$list_extra$List$Extra$find(
-					function (_v1) {
-						var name = _v1.b;
-						return _Utils_eq(name, memberName);
-					}),
-				A2(
-					$elm$core$Maybe$map,
-					A2(
-						$elm$core$Basics$composeL,
-						$elm$core$List$indexedMap(
-							F2(
-								function (idx, _v0) {
-									var name = _v0.a;
-									return _Utils_Tuple2(idx, name);
-								})),
-						function ($) {
-							return $.members;
-						}),
-					A2($elm$core$Dict$get, typeName, typeInfoDict))));
+var $author$project$Stabel$Codegen$indexOf = F2(
+	function (value, list) {
+		return A3($author$project$Stabel$Codegen$indexOfHelper, 0, value, list);
 	});
 var $author$project$Stabel$Codegen$nodeToInstruction = F2(
-	function (typeInfo, node) {
+	function (context, node) {
 		switch (node.$) {
-			case 'IntLiteral':
+			case 0:
 				var value = node.a;
-				return $author$project$Wasm$Batch(
+				return $author$project$Stabel$Wasm$Batch(
 					_List_fromArray(
 						[
-							$author$project$Wasm$I32_Const(value),
-							$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
+							$author$project$Stabel$Wasm$I32_Const(value),
+							$author$project$Stabel$Codegen$BaseModule$callStackPushFn
 						]));
-			case 'Word':
-				var value = node.a;
-				return $author$project$Wasm$Call(value);
-			case 'WordRef':
-				var name = node.a;
-				return $author$project$Wasm$FunctionIndex(name);
-			case 'ConstructType':
-				var typeName = node.a;
-				var _v1 = A2($elm$core$Dict$get, typeName, typeInfo);
-				if (_v1.$ === 'Just') {
-					var type_ = _v1.a;
-					var memberSize = $elm$core$List$length(type_.members);
-					var typeSize = $author$project$Stabel$Codegen$BaseModule$wasmPtrSize + (memberSize * $author$project$Stabel$Codegen$BaseModule$wasmPtrSize);
-					return $author$project$Wasm$Batch(
-						_List_fromArray(
-							[
-								$author$project$Wasm$I32_Const(typeSize),
-								$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$allocFn),
-								$author$project$Wasm$Local_Tee(0),
-								$author$project$Wasm$I32_Const(type_.id),
-								$author$project$Wasm$I32_Store,
-								$author$project$Wasm$I32_Const(memberSize),
-								$author$project$Wasm$Local_Set(1),
-								$author$project$Wasm$Block(
-								_List_fromArray(
-									[
-										$author$project$Wasm$Loop(
-										_List_fromArray(
-											[
-												$author$project$Wasm$Local_Get(1),
-												$author$project$Wasm$I32_EqZero,
-												$author$project$Wasm$BreakIf(1),
-												$author$project$Wasm$Local_Get(0),
-												$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-												$author$project$Wasm$Local_Get(1),
-												$author$project$Wasm$I32_Mul,
-												$author$project$Wasm$I32_Add,
-												$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-												$author$project$Wasm$I32_Store,
-												$author$project$Wasm$Local_Get(1),
-												$author$project$Wasm$I32_Const(1),
-												$author$project$Wasm$I32_Sub,
-												$author$project$Wasm$Local_Set(1),
-												$author$project$Wasm$Break(0)
-											]))
-									])),
-								$author$project$Wasm$Local_Get(0),
-								$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-							]));
-				} else {
-					return _Debug_todo(
-						'Stabel.Codegen',
-						{
-							start: {line: 572, column: 21},
-							end: {line: 572, column: 31}
-						})('This cannot happen.');
-				}
-			case 'SetMember':
-				var typeName = node.a;
-				var memberName = node.b;
-				var memberType = node.c;
-				var _v2 = A2($elm$core$Dict$get, typeName, typeInfo);
-				if (_v2.$ === 'Just') {
-					var type_ = _v2.a;
-					var memberSize = $elm$core$List$length(type_.members);
-					var typeSize = $author$project$Stabel$Codegen$BaseModule$wasmPtrSize + (memberSize * $author$project$Stabel$Codegen$BaseModule$wasmPtrSize);
-					var _v3 = A3($author$project$Stabel$Codegen$getMemberType, typeInfo, typeName, memberName);
-					if (_v3.$ === 'Just') {
-						var memberIndex = _v3.a;
-						return $author$project$Wasm$Batch(
+			case 1:
+				var id = node.a;
+				var name = node.b;
+				return A2($author$project$Stabel$Wasm$Call, id, name);
+			case 2:
+				var name = node.b;
+				var indexOfId = A2(
+					$elm$core$Maybe$withDefault,
+					0,
+					A2($author$project$Stabel$Codegen$indexOf, name, context.aa));
+				return $author$project$Stabel$Wasm$Batch(
+					_List_fromArray(
+						[
+							A2(
+							$author$project$Stabel$Wasm$Commented,
+							name + 'ref',
+							$author$project$Stabel$Wasm$I32_Const(indexOfId)),
+							$author$project$Stabel$Codegen$BaseModule$callStackPushFn
+						]));
+			case 3:
+				var typeId = node.a;
+				var members = node.b;
+				var typeSize = $author$project$Stabel$Codegen$BaseModule$wasmPtrSize + (members * $author$project$Stabel$Codegen$BaseModule$wasmPtrSize);
+				return $author$project$Stabel$Wasm$Batch(
+					_List_fromArray(
+						[
+							$author$project$Stabel$Wasm$I32_Const(typeSize),
+							$author$project$Stabel$Codegen$BaseModule$callAllocFn,
+							$author$project$Stabel$Wasm$Local_Tee(0),
+							$author$project$Stabel$Wasm$I32_Const(typeId),
+							$author$project$Stabel$Wasm$I32_Store,
+							$author$project$Stabel$Wasm$I32_Const(members),
+							$author$project$Stabel$Wasm$Local_Set(1),
+							$author$project$Stabel$Wasm$Block(
 							_List_fromArray(
 								[
-									$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$swapFn),
-									$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-									$author$project$Wasm$I32_Const(typeSize),
-									$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$copyStructFn),
-									$author$project$Wasm$Local_Tee(0),
-									$author$project$Wasm$I32_Const((memberIndex + 1) * $author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-									$author$project$Wasm$I32_Add,
-									$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-									$author$project$Wasm$I32_Store,
-									$author$project$Wasm$Local_Get(0),
-									$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-								]));
-					} else {
-						return _Debug_todo(
-							'Stabel.Codegen',
-							{
-								start: {line: 601, column: 29},
-								end: {line: 601, column: 39}
-							})('NOOOOO!');
-					}
-				} else {
-					return _Debug_todo(
-						'Stabel.Codegen',
-						{
-							start: {line: 604, column: 21},
-							end: {line: 604, column: 31}
-						})('This cannot happen!');
-				}
-			case 'GetMember':
-				var typeName = node.a;
-				var memberName = node.b;
-				var memberType = node.c;
-				var _v4 = A3($author$project$Stabel$Codegen$getMemberType, typeInfo, typeName, memberName);
-				if (_v4.$ === 'Just') {
-					var memberIndex = _v4.a;
-					return $author$project$Wasm$Batch(
-						_List_fromArray(
-							[
-								$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-								$author$project$Wasm$I32_Const((memberIndex + 1) * $author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-								$author$project$Wasm$I32_Add,
-								$author$project$Wasm$I32_Load,
-								$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn)
-							]));
-				} else {
-					return _Debug_todo(
-						'Stabel.Codegen',
-						{
-							start: {line: 618, column: 21},
-							end: {line: 618, column: 31}
-						})('This cannot happen!');
-				}
-			case 'Builtin':
+									$author$project$Stabel$Wasm$Loop(
+									_List_fromArray(
+										[
+											$author$project$Stabel$Wasm$Local_Get(1),
+											$author$project$Stabel$Wasm$I32_EqZero,
+											$author$project$Stabel$Wasm$BreakIf(1),
+											$author$project$Stabel$Wasm$Local_Get(0),
+											$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+											$author$project$Stabel$Wasm$Local_Get(1),
+											$author$project$Stabel$Wasm$I32_Mul,
+											$author$project$Stabel$Wasm$I32_Add,
+											$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+											$author$project$Stabel$Wasm$I32_Store,
+											$author$project$Stabel$Wasm$Local_Get(1),
+											$author$project$Stabel$Wasm$I32_Const(1),
+											$author$project$Stabel$Wasm$I32_Sub,
+											$author$project$Stabel$Wasm$Local_Set(1),
+											$author$project$Stabel$Wasm$Break(0)
+										]))
+								])),
+							$author$project$Stabel$Wasm$Local_Get(0),
+							$author$project$Stabel$Codegen$BaseModule$callStackPushFn
+						]));
+			case 4:
+				var memberIndex = node.a;
+				var members = node.b;
+				var typeSize = $author$project$Stabel$Codegen$BaseModule$wasmPtrSize + (members * $author$project$Stabel$Codegen$BaseModule$wasmPtrSize);
+				return $author$project$Stabel$Wasm$Batch(
+					_List_fromArray(
+						[
+							$author$project$Stabel$Codegen$BaseModule$callSwapFn,
+							$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+							$author$project$Stabel$Wasm$I32_Const(typeSize),
+							$author$project$Stabel$Codegen$BaseModule$callCopyStructFn,
+							$author$project$Stabel$Wasm$Local_Tee(0),
+							$author$project$Stabel$Wasm$I32_Const((memberIndex + 1) * $author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+							$author$project$Stabel$Wasm$I32_Add,
+							$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+							$author$project$Stabel$Wasm$I32_Store,
+							$author$project$Stabel$Wasm$Local_Get(0),
+							$author$project$Stabel$Codegen$BaseModule$callStackPushFn
+						]));
+			case 5:
+				var memberIndex = node.a;
+				return $author$project$Stabel$Wasm$Batch(
+					_List_fromArray(
+						[
+							$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+							$author$project$Stabel$Wasm$I32_Const((memberIndex + 1) * $author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+							$author$project$Stabel$Wasm$I32_Add,
+							$author$project$Stabel$Wasm$I32_Load,
+							$author$project$Stabel$Codegen$BaseModule$callStackPushFn
+						]));
+			case 6:
 				var builtin = node.a;
-				switch (builtin.$) {
-					case 'Plus':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$addIntFn);
-					case 'Minus':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$subIntFn);
-					case 'Multiply':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$mulIntFn);
-					case 'Divide':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$divIntFn);
-					case 'Equal':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$eqIntFn);
-					case 'StackDuplicate':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$dupFn);
-					case 'StackDrop':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$dropFn);
-					case 'StackSwap':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$swapFn);
-					case 'StackRightRotate':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$rotFn);
-					case 'StackLeftRotate':
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$leftRotFn);
+				switch (builtin) {
+					case 0:
+						return $author$project$Stabel$Codegen$BaseModule$callAddIntFn;
+					case 1:
+						return $author$project$Stabel$Codegen$BaseModule$callSubIntFn;
+					case 2:
+						return $author$project$Stabel$Codegen$BaseModule$callMulIntFn;
+					case 3:
+						return $author$project$Stabel$Codegen$BaseModule$callDivIntFn;
+					case 4:
+						return $author$project$Stabel$Codegen$BaseModule$callEqIntFn;
+					case 5:
+						return $author$project$Stabel$Codegen$BaseModule$callDupFn;
+					case 6:
+						return $author$project$Stabel$Codegen$BaseModule$callDropFn;
+					case 7:
+						return $author$project$Stabel$Codegen$BaseModule$callSwapFn;
+					case 8:
+						return $author$project$Stabel$Codegen$BaseModule$callRotFn;
+					case 9:
+						return $author$project$Stabel$Codegen$BaseModule$callLeftRotFn;
 					default:
-						return $author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$callQuoteFn);
+						return $author$project$Stabel$Codegen$BaseModule$callExecInlineFn;
 				}
 			default:
 				var stackPos = node.a;
 				var id = node.b;
-				return $author$project$Wasm$Batch(
+				return $author$project$Stabel$Wasm$Batch(
 					_List_fromArray(
 						[
-							$author$project$Wasm$I32_Const(stackPos),
-							$author$project$Wasm$I32_Const(id),
-							$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$boxFn)
+							$author$project$Stabel$Wasm$I32_Const(stackPos),
+							$author$project$Stabel$Wasm$I32_Const(id),
+							$author$project$Stabel$Codegen$BaseModule$callBoxFn
 						]));
 		}
 	});
-var $author$project$Stabel$Codegen$astNodesToInstructions = F4(
-	function (typeInfo, ast, def, astNodes) {
-		return A2(
-			$elm$core$List$map,
-			$author$project$Stabel$Codegen$nodeToInstruction(typeInfo),
-			$elm$core$List$reverse(
-				A3(
-					$elm$core$List$foldl,
-					$author$project$Stabel$Codegen$astNodeToCodegenNode(ast),
-					_Utils_Tuple2(def.type_.input, _List_Nil),
-					astNodes).b));
+var $author$project$Stabel$Codegen$astNodesToInstructions = F3(
+	function (context, def, astNodes) {
+		var _v0 = A3(
+			$elm$core$List$foldl,
+			$author$project$Stabel$Codegen$astNodeToCodegenNode(def),
+			_Utils_Tuple3(def.V.o, _List_Nil, context),
+			astNodes);
+		var codeGenNodes = _v0.b;
+		var updatedContext = _v0.c;
+		return _Utils_Tuple2(
+			A2(
+				$elm$core$List$map,
+				$author$project$Stabel$Codegen$nodeToInstruction(updatedContext),
+				$elm$core$List$reverse(codeGenNodes)),
+			updatedContext);
 	});
 var $elm$core$List$maximum = function (list) {
 	if (list.b) {
@@ -4691,35 +7280,37 @@ var $elm$core$List$maximum = function (list) {
 		return $elm$core$Maybe$Nothing;
 	}
 };
-var $author$project$Wasm$maximumLocalIndex = function (ins) {
+var $author$project$Stabel$Wasm$maximumLocalIndex = function (ins) {
 	switch (ins.$) {
-		case 'Batch':
+		case 0:
 			var insList = ins.a;
 			return $elm$core$List$maximum(
-				A2($elm$core$List$filterMap, $author$project$Wasm$maximumLocalIndex, insList));
-		case 'Block':
+				A2($elm$core$List$filterMap, $author$project$Stabel$Wasm$maximumLocalIndex, insList));
+		case 1:
 			var insList = ins.a;
 			return $elm$core$List$maximum(
-				A2($elm$core$List$filterMap, $author$project$Wasm$maximumLocalIndex, insList));
-		case 'Loop':
+				A2($elm$core$List$filterMap, $author$project$Stabel$Wasm$maximumLocalIndex, insList));
+		case 2:
 			var insList = ins.a;
 			return $elm$core$List$maximum(
-				A2($elm$core$List$filterMap, $author$project$Wasm$maximumLocalIndex, insList));
-		case 'Local_Get':
+				A2($elm$core$List$filterMap, $author$project$Stabel$Wasm$maximumLocalIndex, insList));
+		case 8:
 			var idx = ins.a;
 			return $elm$core$Maybe$Just(idx);
-		case 'Local_Set':
+		case 9:
 			var idx = ins.a;
 			return $elm$core$Maybe$Just(idx);
-		case 'Local_Tee':
+		case 10:
 			var idx = ins.a;
 			return $elm$core$Maybe$Just(idx);
 		default:
 			return $elm$core$Maybe$Nothing;
 	}
 };
-var $author$project$Wasm$I32_NotEq = {$: 'I32_NotEq'};
-var $author$project$Wasm$Return = {$: 'Return'};
+var $author$project$Stabel$Wasm$Return = {$: 5};
+var $author$project$Stabel$Wasm$I32_NotEq = {$: 17};
+var $author$project$Stabel$Wasm$Unreachable = {$: 22};
+var $author$project$Stabel$Codegen$BaseModule$callUnboxFn = A2($author$project$Stabel$Wasm$Call, 18, $author$project$Stabel$Codegen$BaseModule$unboxFn);
 var $elm$core$List$append = F2(
 	function (xs, ys) {
 		if (!ys.b) {
@@ -4736,263 +7327,289 @@ var $elm$core$List$concatMap = F2(
 		return $elm$core$List$concat(
 			A2($elm$core$List$map, f, list));
 	});
-var $elm$core$Debug$toString = _Debug_toString;
-var $elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
+var $author$project$Stabel$Codegen$matchingIntTest = F2(
+	function (localIdx, _v0) {
+		var astValue = _v0.b;
+		var value = function () {
+			if (!astValue.$) {
+				var num = astValue.a;
+				return num;
+			} else {
+				return 0;
+			}
+		}();
+		return _List_fromArray(
+			[
+				$author$project$Stabel$Wasm$Local_Get(localIdx),
+				$author$project$Stabel$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
+				$author$project$Stabel$Wasm$I32_Add,
+				$author$project$Stabel$Wasm$I32_Load,
+				$author$project$Stabel$Wasm$I32_Const(value),
+				$author$project$Stabel$Wasm$I32_NotEq,
+				$author$project$Stabel$Wasm$BreakIf(0)
+			]);
+	});
+var $author$project$Stabel$Codegen$makeInequalityTest = F5(
+	function (boxMap, selfIndex, t_, localIdx, context) {
+		var typeFromTypeMatch = t_.b;
+		var maybeBoxId = A2(
+			$elm$core$Maybe$map,
+			$elm$core$Tuple$second,
+			A2(
+				$elm_community$list_extra$List$Extra$find,
+				function (_v18) {
+					var boxedType = _v18.a;
+					return _Utils_eq(boxedType, typeFromTypeMatch);
+				},
+				boxMap));
+		var _v9 = _Utils_Tuple2(t_, maybeBoxId);
+		_v9$4:
+		while (true) {
+			if (!_v9.b.$) {
+				if (!_v9.a.b.$) {
+					var _v10 = _v9.a;
+					var _v11 = _v10.b;
+					var conditions = _v10.c;
+					var boxId = _v9.b.a;
+					return _Utils_Tuple2(
+						$author$project$Stabel$Wasm$Batch(
+							_List_fromArray(
+								[
+									$author$project$Stabel$Wasm$Local_Get(localIdx),
+									$author$project$Stabel$Wasm$I32_Load,
+									$author$project$Stabel$Wasm$I32_Const(boxId),
+									$author$project$Stabel$Wasm$I32_NotEq,
+									$author$project$Stabel$Wasm$BreakIf(0),
+									$author$project$Stabel$Wasm$Batch(
+									A2(
+										$elm$core$List$concatMap,
+										$author$project$Stabel$Codegen$matchingIntTest(localIdx),
+										conditions)),
+									$author$project$Stabel$Wasm$I32_Const(selfIndex),
+									$author$project$Stabel$Codegen$BaseModule$callUnboxFn
+								])),
+						context);
+				} else {
+					if (!_v9.a.c.b) {
+						var _v12 = _v9.a;
+						var boxId = _v9.b.a;
+						return _Utils_Tuple2(
+							$author$project$Stabel$Wasm$Batch(
+								_List_fromArray(
+									[
+										$author$project$Stabel$Wasm$Local_Get(localIdx),
+										$author$project$Stabel$Wasm$I32_Load,
+										$author$project$Stabel$Wasm$I32_Const(boxId),
+										$author$project$Stabel$Wasm$I32_NotEq,
+										$author$project$Stabel$Wasm$BreakIf(0),
+										$author$project$Stabel$Wasm$I32_Const(selfIndex),
+										$author$project$Stabel$Codegen$BaseModule$callUnboxFn
+									])),
+							context);
+					} else {
+						break _v9$4;
+					}
+				}
+			} else {
+				switch (_v9.a.b.$) {
+					case 2:
+						var _v13 = _v9.a;
+						var name = _v13.b.a;
+						var conditions = _v13.c;
+						var _v14 = _v9.b;
+						return A6($author$project$Stabel$Codegen$matchingStructTest, boxMap, selfIndex, context, localIdx, name, conditions);
+					case 3:
+						var _v15 = _v9.a;
+						var _v16 = _v15.b;
+						var name = _v16.a;
+						var conditions = _v15.c;
+						var _v17 = _v9.b;
+						return A6($author$project$Stabel$Codegen$matchingStructTest, boxMap, selfIndex, context, localIdx, name, conditions);
+					default:
+						break _v9$4;
+				}
+			}
+		}
+		return _Utils_Tuple2($author$project$Stabel$Wasm$Unreachable, context);
+	});
+var $author$project$Stabel$Codegen$matchingConditionTest = F5(
+	function (boxMap, selfIndex, localIdx, _v2, _v3) {
+		var fieldName = _v2.a;
+		var value = _v2.b;
+		var result = _v3.a;
+		var context = _v3.b;
+		var getterName = fieldName + '>';
+		var _v4 = A2($author$project$Stabel$Codegen$idForFunction, getterName, context);
+		var getterId = _v4.a;
+		var idContext = _v4.b;
+		var callGetter = A2($author$project$Stabel$Wasm$Call, getterId, getterName);
+		switch (value.$) {
+			case 0:
+				var num = value.a;
+				return _Utils_Tuple2(
+					A2(
+						$elm$core$List$cons,
+						_List_fromArray(
+							[
+								$author$project$Stabel$Wasm$Local_Get(localIdx),
+								$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+								callGetter,
+								$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+								$author$project$Stabel$Wasm$I32_Const(num),
+								$author$project$Stabel$Wasm$I32_NotEq,
+								$author$project$Stabel$Wasm$BreakIf(0)
+							]),
+						result),
+					idContext);
+			case 1:
+				var typ_ = value.a;
+				if (typ_.$ === 2) {
+					var typeName = typ_.a;
+					var _v7 = A2($author$project$Stabel$Codegen$idForType, typeName, idContext);
+					var typeId = _v7.a;
+					var updatedContext = _v7.b;
+					return _Utils_Tuple2(
+						A2(
+							$elm$core$List$cons,
+							_List_fromArray(
+								[
+									$author$project$Stabel$Wasm$Local_Get(localIdx),
+									$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+									callGetter,
+									$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+									$author$project$Stabel$Wasm$I32_Load,
+									$author$project$Stabel$Wasm$I32_Const(typeId),
+									$author$project$Stabel$Wasm$I32_NotEq,
+									$author$project$Stabel$Wasm$BreakIf(0)
+								]),
+							result),
+						updatedContext);
+				} else {
+					return _Utils_Tuple2(
+						A2(
+							$elm$core$List$cons,
+							_List_fromArray(
+								[$author$project$Stabel$Wasm$Unreachable]),
+							result),
+						context);
+				}
+			default:
+				var match = value.a;
+				var nextLocalIdx = localIdx + 1;
+				var _v8 = A5($author$project$Stabel$Codegen$makeInequalityTest, boxMap, selfIndex, match, nextLocalIdx, idContext);
+				var inequalityTestImpl = _v8.a;
+				var updatedContext = _v8.b;
+				return _Utils_Tuple2(
+					A2(
+						$elm$core$List$cons,
+						_List_fromArray(
+							[
+								$author$project$Stabel$Wasm$Local_Get(localIdx),
+								$author$project$Stabel$Codegen$BaseModule$callStackPushFn,
+								callGetter,
+								$author$project$Stabel$Codegen$BaseModule$callStackPopFn,
+								$author$project$Stabel$Wasm$Local_Set(nextLocalIdx),
+								inequalityTestImpl
+							]),
+						result),
+					updatedContext);
 		}
 	});
-var $author$project$Stabel$Codegen$multiFnToInstructions = F5(
-	function (typeInfo, ast, def, whens, defaultImpl) {
+var $author$project$Stabel$Codegen$matchingStructTest = F6(
+	function (boxMap, selfIndex, context, localIdx, typeName, conditions) {
+		var _v0 = A2($author$project$Stabel$Codegen$idForType, typeName, context);
+		var typeId = _v0.a;
+		var updatedContext = _v0.b;
+		var _v1 = A3(
+			$elm$core$List$foldl,
+			A3($author$project$Stabel$Codegen$matchingConditionTest, boxMap, selfIndex, localIdx),
+			_Utils_Tuple2(_List_Nil, updatedContext),
+			conditions);
+		var conditionTestImpls = _v1.a;
+		var finalContext = _v1.b;
+		return _Utils_Tuple2(
+			$author$project$Stabel$Wasm$Batch(
+				_List_fromArray(
+					[
+						$author$project$Stabel$Wasm$Local_Get(localIdx),
+						$author$project$Stabel$Wasm$I32_Load,
+						$author$project$Stabel$Wasm$I32_Const(typeId),
+						$author$project$Stabel$Wasm$I32_NotEq,
+						$author$project$Stabel$Wasm$BreakIf(0),
+						$author$project$Stabel$Wasm$Batch(
+						$elm$core$List$concat(conditionTestImpls))
+					])),
+			finalContext);
+	});
+var $author$project$Stabel$Codegen$buildMultiFnBranch = F5(
+	function (def, boxMap, selfIndex, _v0, _v1) {
+		var type_ = _v0.a;
+		var nodes = _v0.b;
+		var previousBranch = _v1.a;
+		var context = _v1.b;
+		var _v2 = A3($author$project$Stabel$Codegen$astNodesToInstructions, context, def, nodes);
+		var instructions = _v2.a;
+		var updatedContext = _v2.b;
+		var _v3 = A5($author$project$Stabel$Codegen$makeInequalityTest, boxMap, selfIndex, type_, 0, updatedContext);
+		var inequalityTestImpl = _v3.a;
+		var finalContext = _v3.b;
+		return _Utils_Tuple2(
+			$author$project$Stabel$Wasm$Block(
+				_List_fromArray(
+					[
+						previousBranch,
+						inequalityTestImpl,
+						$author$project$Stabel$Wasm$Batch(instructions),
+						$author$project$Stabel$Wasm$Return
+					])),
+			finalContext);
+	});
+var $author$project$Stabel$Codegen$createBoxMap = function (t_) {
+	if (t_.$ === 4) {
+		var members = t_.b;
+		return $author$project$Stabel$Codegen$unionBoxMap(members);
+	} else {
+		return $author$project$Stabel$Codegen$requiresBoxingInPatternMatch(t_) ? _List_fromArray(
+			[
+				_Utils_Tuple2(t_, -1)
+			]) : _List_Nil;
+	}
+};
+var $author$project$Stabel$Codegen$multiFnToInstructions = F4(
+	function (context, def, whens, defaultImpl) {
 		var selfIndex = A2(
 			$elm$core$Basics$max,
 			0,
-			$elm$core$List$length(def.type_.input) - 1);
-		var createBoxMap = function (t_) {
-			if (t_.$ === 'Union') {
-				var members = t_.a;
-				return $author$project$Stabel$Codegen$unionBoxMap(members);
-			} else {
-				return $author$project$Stabel$Codegen$requiresBoxingInPatternMatch(t_) ? _List_fromArray(
-					[
-						_Utils_Tuple2(t_, -1)
-					]) : _List_Nil;
-			}
-		};
+			$elm$core$List$length(def.V.o) - 1);
 		var boxMap = A2(
 			$elm$core$Maybe$withDefault,
 			_List_Nil,
 			A2(
 				$elm$core$Maybe$map,
-				createBoxMap,
-				$elm$core$List$head(def.type_.input)));
-		var buildBranch = F2(
-			function (_v16, previousBranch) {
-				var type_ = _v16.a;
-				var nodes = _v16.b;
-				var matchingIntTest = F2(
-					function (localIdx, _v15) {
-						var astValue = _v15.b;
-						var value = function () {
-							if (astValue.$ === 'LiteralInt') {
-								var num = astValue.a;
-								return num;
-							} else {
-								return 0;
-							}
-						}();
-						return _List_fromArray(
-							[
-								$author$project$Wasm$Local_Get(localIdx),
-								$author$project$Wasm$I32_Const($author$project$Stabel$Codegen$BaseModule$wasmPtrSize),
-								$author$project$Wasm$I32_Add,
-								$author$project$Wasm$I32_Load,
-								$author$project$Wasm$I32_Const(value),
-								$author$project$Wasm$I32_NotEq,
-								$author$project$Wasm$BreakIf(0)
-							]);
-					});
-				var implementation = $author$project$Wasm$Batch(
-					A4($author$project$Stabel$Codegen$astNodesToInstructions, typeInfo, ast, def, nodes));
-				var conditionTest = F2(
-					function (localIdx, _v13) {
-						var fieldName = _v13.a;
-						var value = _v13.b;
-						switch (value.$) {
-							case 'LiteralInt':
-								var num = value.a;
-								return _List_fromArray(
-									[
-										$author$project$Wasm$Local_Get(localIdx),
-										$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-										$author$project$Wasm$Call(fieldName + '>'),
-										$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-										$author$project$Wasm$I32_Const(num),
-										$author$project$Wasm$I32_NotEq,
-										$author$project$Wasm$BreakIf(0)
-									]);
-							case 'LiteralType':
-								var typ_ = value.a;
-								if (typ_.$ === 'Custom') {
-									var typeName = typ_.a;
-									var typeId = A2(
-										$elm$core$Maybe$withDefault,
-										0,
-										A2(
-											$elm$core$Maybe$map,
-											function ($) {
-												return $.id;
-											},
-											A2($elm$core$Dict$get, typeName, typeInfo)));
-									return _List_fromArray(
-										[
-											$author$project$Wasm$Local_Get(localIdx),
-											$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-											$author$project$Wasm$Call(fieldName + '>'),
-											$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-											$author$project$Wasm$I32_Load,
-											$author$project$Wasm$I32_Const(typeId),
-											$author$project$Wasm$I32_NotEq,
-											$author$project$Wasm$BreakIf(0)
-										]);
-								} else {
-									return _Debug_todo(
-										'Stabel.Codegen',
-										{
-											start: {line: 476, column: 37},
-											end: {line: 476, column: 47}
-										})('oops');
-								}
-							default:
-								var match = value.a;
-								var nextLocalIdx = localIdx + 1;
-								return _List_fromArray(
-									[
-										$author$project$Wasm$Local_Get(localIdx),
-										$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPushFn),
-										$author$project$Wasm$Call(fieldName + '>'),
-										$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackPopFn),
-										$author$project$Wasm$Local_Set(nextLocalIdx),
-										A2(makeInequalityTest, match, nextLocalIdx)
-									]);
-						}
-					});
-				var makeInequalityTest = F2(
-					function (t_, localIdx) {
-						var _v0 = t_;
-						var typeFromTypeMatch = _v0.b;
-						var maybeBoxId = A2(
-							$elm$core$Maybe$map,
-							$elm$core$Tuple$second,
-							A2(
-								$elm_community$list_extra$List$Extra$find,
-								function (_v10) {
-									var boxedType = _v10.a;
-									return _Utils_eq(boxedType, typeFromTypeMatch);
-								},
-								boxMap));
-						var _v1 = _Utils_Tuple2(t_, maybeBoxId);
-						_v1$4:
-						while (true) {
-							if (_v1.b.$ === 'Just') {
-								if (_v1.a.b.$ === 'Int') {
-									var _v2 = _v1.a;
-									var _v3 = _v2.b;
-									var conditions = _v2.c;
-									var boxId = _v1.b.a;
-									return $author$project$Wasm$Batch(
-										_List_fromArray(
-											[
-												$author$project$Wasm$Local_Get(localIdx),
-												$author$project$Wasm$I32_Load,
-												$author$project$Wasm$I32_Const(boxId),
-												$author$project$Wasm$I32_NotEq,
-												$author$project$Wasm$BreakIf(0),
-												$author$project$Wasm$Batch(
-												A2(
-													$elm$core$List$concatMap,
-													matchingIntTest(localIdx),
-													conditions)),
-												$author$project$Wasm$I32_Const(selfIndex),
-												$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$unboxFn)
-											]));
-								} else {
-									if (!_v1.a.c.b) {
-										var _v4 = _v1.a;
-										var boxId = _v1.b.a;
-										return $author$project$Wasm$Batch(
-											_List_fromArray(
-												[
-													$author$project$Wasm$Local_Get(localIdx),
-													$author$project$Wasm$I32_Load,
-													$author$project$Wasm$I32_Const(boxId),
-													$author$project$Wasm$I32_NotEq,
-													$author$project$Wasm$BreakIf(0),
-													$author$project$Wasm$I32_Const(selfIndex),
-													$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$unboxFn)
-												]));
-									} else {
-										break _v1$4;
-									}
-								}
-							} else {
-								switch (_v1.a.b.$) {
-									case 'Custom':
-										var _v5 = _v1.a;
-										var name = _v5.b.a;
-										var conditions = _v5.c;
-										var _v6 = _v1.b;
-										return A3(whenSetup, localIdx, name, conditions);
-									case 'CustomGeneric':
-										var _v7 = _v1.a;
-										var _v8 = _v7.b;
-										var name = _v8.a;
-										var conditions = _v7.c;
-										var _v9 = _v1.b;
-										return A3(whenSetup, localIdx, name, conditions);
-									default:
-										break _v1$4;
-								}
-							}
-						}
-						return _Debug_todo(
-							'Stabel.Codegen',
-							{
-								start: {line: 405, column: 29},
-								end: {line: 405, column: 39}
-							})(
-							'Not supported in pattern match: ' + $elm$core$Debug$toString(t_));
-					});
-				var whenSetup = F3(
-					function (localIdx, typeName, conditions) {
-						var typeId = A2(
-							$elm$core$Maybe$withDefault,
-							0,
-							A2(
-								$elm$core$Maybe$map,
-								function ($) {
-									return $.id;
-								},
-								A2($elm$core$Dict$get, typeName, typeInfo)));
-						return $author$project$Wasm$Batch(
-							_List_fromArray(
-								[
-									$author$project$Wasm$Local_Get(localIdx),
-									$author$project$Wasm$I32_Load,
-									$author$project$Wasm$I32_Const(typeId),
-									$author$project$Wasm$I32_NotEq,
-									$author$project$Wasm$BreakIf(0),
-									$author$project$Wasm$Batch(
-									A2(
-										$elm$core$List$concatMap,
-										conditionTest(localIdx),
-										conditions))
-								]));
-					});
-				var testForInequality = A2(makeInequalityTest, type_, 0);
-				return $author$project$Wasm$Block(
-					_List_fromArray(
-						[previousBranch, testForInequality, implementation, $author$project$Wasm$Return]));
-			});
-		var branches = A3(
+				$author$project$Stabel$Codegen$createBoxMap,
+				$elm$core$List$head(def.V.o)));
+		var _v0 = A3(
 			$elm$core$List$foldl,
-			buildBranch,
-			$author$project$Wasm$Batch(_List_Nil),
+			A3($author$project$Stabel$Codegen$buildMultiFnBranch, def, boxMap, selfIndex),
+			_Utils_Tuple2(
+				$author$project$Stabel$Wasm$Batch(_List_Nil),
+				context),
 			whens);
-		return $author$project$Wasm$Batch(
+		var branches = _v0.a;
+		var updatedContext = _v0.b;
+		var _v1 = A3($author$project$Stabel$Codegen$astNodesToInstructions, updatedContext, def, defaultImpl);
+		var implementation = _v1.a;
+		var finalContext = _v1.b;
+		return _Utils_Tuple2(
 			_List_fromArray(
 				[
-					$author$project$Wasm$I32_Const(selfIndex),
-					$author$project$Wasm$Call($author$project$Stabel$Codegen$BaseModule$stackGetElementFn),
-					$author$project$Wasm$Local_Set(0),
+					$author$project$Stabel$Wasm$I32_Const(selfIndex),
+					$author$project$Stabel$Codegen$BaseModule$callStackGetElementFn,
+					$author$project$Stabel$Wasm$Local_Set(0),
 					branches,
-					$author$project$Wasm$Batch(
-					A4($author$project$Stabel$Codegen$astNodesToInstructions, typeInfo, ast, def, defaultImpl))
-				]));
+					$author$project$Stabel$Wasm$Batch(implementation)
+				]),
+			finalContext);
 	});
 var $elm$core$List$repeatHelp = F3(
 	function (result, n, value) {
@@ -5015,22 +7632,26 @@ var $elm$core$List$repeat = F2(
 	function (n, value) {
 		return A3($elm$core$List$repeatHelp, _List_Nil, n, value);
 	});
-var $author$project$Stabel$Codegen$toWasmFuncDef = F3(
-	function (typeInfo, ast, def) {
-		var wasmImplementation = function () {
-			var _v0 = def.implementation;
-			if (_v0.$ === 'SoloImpl') {
-				var impl = _v0.a;
-				return A4($author$project$Stabel$Codegen$astNodesToInstructions, typeInfo, ast, def, impl);
+var $author$project$Stabel$Codegen$toWasmFuncDef = F2(
+	function (def, _v0) {
+		var wasmFuncs = _v0.a;
+		var context = _v0.b;
+		var _v1 = A2($author$project$Stabel$Codegen$idForFunction, def.m, context);
+		var defId = _v1.a;
+		var idContext = _v1.b;
+		var _v2 = function () {
+			var _v3 = def.aL;
+			if (!_v3.$) {
+				var impl = _v3.a;
+				return A3($author$project$Stabel$Codegen$astNodesToInstructions, idContext, def, impl);
 			} else {
-				var whens = _v0.a;
-				var defaultImpl = _v0.b;
-				return _List_fromArray(
-					[
-						A5($author$project$Stabel$Codegen$multiFnToInstructions, typeInfo, ast, def, whens, defaultImpl)
-					]);
+				var whens = _v3.a;
+				var defaultImpl = _v3.b;
+				return A4($author$project$Stabel$Codegen$multiFnToInstructions, idContext, def, whens, defaultImpl);
 			}
 		}();
+		var wasmImplementation = _v2.a;
+		var updatedContext = _v2.b;
 		var numberOfLocals = A2(
 			$elm$core$Maybe$withDefault,
 			0,
@@ -5038,283 +7659,141 @@ var $author$project$Stabel$Codegen$toWasmFuncDef = F3(
 				$elm$core$Maybe$map,
 				$elm$core$Basics$add(1),
 				$elm$core$List$maximum(
-					A2($elm$core$List$filterMap, $author$project$Wasm$maximumLocalIndex, wasmImplementation))));
-		return {
-			args: _List_Nil,
-			exported: def.metadata.isEntryPoint,
-			instructions: wasmImplementation,
-			isIndirectlyCalled: def.metadata.isQuoted,
-			locals: A2($elm$core$List$repeat, numberOfLocals, $author$project$Wasm$Int32),
-			name: def.name,
-			results: _List_Nil
-		};
-	});
-var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
-var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
-var $elm$core$Dict$Black = {$: 'Black'};
-var $elm$core$Dict$RBNode_elm_builtin = F5(
-	function (a, b, c, d, e) {
-		return {$: 'RBNode_elm_builtin', a: a, b: b, c: c, d: d, e: e};
-	});
-var $elm$core$Dict$Red = {$: 'Red'};
-var $elm$core$Dict$balance = F5(
-	function (color, key, value, left, right) {
-		if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Red')) {
-			var _v1 = right.a;
-			var rK = right.b;
-			var rV = right.c;
-			var rLeft = right.d;
-			var rRight = right.e;
-			if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
-				var _v3 = left.a;
-				var lK = left.b;
-				var lV = left.c;
-				var lLeft = left.d;
-				var lRight = left.e;
-				return A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
-					key,
-					value,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rLeft, rRight));
-			} else {
-				return A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					color,
-					rK,
-					rV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, left, rLeft),
-					rRight);
-			}
-		} else {
-			if ((((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) && (left.d.$ === 'RBNode_elm_builtin')) && (left.d.a.$ === 'Red')) {
-				var _v5 = left.a;
-				var lK = left.b;
-				var lV = left.c;
-				var _v6 = left.d;
-				var _v7 = _v6.a;
-				var llK = _v6.b;
-				var llV = _v6.c;
-				var llLeft = _v6.d;
-				var llRight = _v6.e;
-				var lRight = left.e;
-				return A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
-					lK,
-					lV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, key, value, lRight, right));
-			} else {
-				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
-			}
-		}
-	});
-var $elm$core$Dict$insertHelp = F3(
-	function (key, value, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
-		} else {
-			var nColor = dict.a;
-			var nKey = dict.b;
-			var nValue = dict.c;
-			var nLeft = dict.d;
-			var nRight = dict.e;
-			var _v1 = A2($elm$core$Basics$compare, key, nKey);
-			switch (_v1.$) {
-				case 'LT':
-					return A5(
-						$elm$core$Dict$balance,
-						nColor,
-						nKey,
-						nValue,
-						A3($elm$core$Dict$insertHelp, key, value, nLeft),
-						nRight);
-				case 'EQ':
-					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
-				default:
-					return A5(
-						$elm$core$Dict$balance,
-						nColor,
-						nKey,
-						nValue,
-						nLeft,
-						A3($elm$core$Dict$insertHelp, key, value, nRight));
-			}
-		}
-	});
-var $elm$core$Dict$insert = F3(
-	function (key, value, dict) {
-		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
-			var _v1 = _v0.a;
-			var k = _v0.b;
-			var v = _v0.c;
-			var l = _v0.d;
-			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
-		} else {
-			var x = _v0;
-			return x;
-		}
-	});
-var $elm$core$Dict$fromList = function (assocs) {
-	return A3(
-		$elm$core$List$foldl,
-		F2(
-			function (_v0, dict) {
-				var key = _v0.a;
-				var value = _v0.b;
-				return A3($elm$core$Dict$insert, key, value, dict);
-			}),
-		$elm$core$Dict$empty,
-		assocs);
-};
-var $author$project$Stabel$Codegen$typeMeta = function (types) {
-	return $elm$core$Dict$fromList(
-		A2(
-			$elm$core$List$indexedMap,
-			F2(
-				function (idx, _v1) {
-					var name = _v1.a;
-					var def = _v1.b;
-					return _Utils_Tuple2(
-						name,
-						_Utils_update(
-							def,
-							{id: idx}));
-				}),
+					A2($elm$core$List$filterMap, $author$project$Stabel$Wasm$maximumLocalIndex, wasmImplementation))));
+		return _Utils_Tuple2(
 			A2(
-				$elm$core$List$filterMap,
-				function (typeDef) {
-					if (typeDef.$ === 'CustomTypeDef') {
-						var name = typeDef.a;
-						var members = typeDef.d;
-						return $elm$core$Maybe$Just(
-							_Utils_Tuple2(
-								name,
-								{id: 0, members: members}));
-					} else {
-						return $elm$core$Maybe$Nothing;
-					}
+				$elm$core$List$cons,
+				{
+					a8: _List_Nil,
+					bk: defId,
+					bn: wasmImplementation,
+					bq: A2($elm$core$List$repeat, numberOfLocals, 0),
+					m: def.m,
+					bH: _List_Nil
 				},
-				types)));
-};
-var $elm$core$Dict$values = function (dict) {
-	return A3(
-		$elm$core$Dict$foldr,
-		F3(
-			function (key, value, valueList) {
-				return A2($elm$core$List$cons, value, valueList);
-			}),
-		_List_Nil,
-		dict);
-};
-var $author$project$Stabel$Codegen$codegen = function (ast) {
-	var typeMetaDict = $author$project$Stabel$Codegen$typeMeta(
-		$elm$core$Dict$values(ast.types));
-	return $elm$core$Result$Ok(
-		A3(
-			$elm$core$List$foldl,
-			$author$project$Wasm$withFunction,
-			$author$project$Stabel$Codegen$BaseModule$baseModule,
+				wasmFuncs),
+			updatedContext);
+	});
+var $author$project$Stabel$Wasm$withExports = F2(
+	function (exports, _v0) {
+		var module_ = _v0;
+		return _Utils_update(
+			module_,
+			{ao: exports});
+	});
+var $author$project$Stabel$Wasm$withReferencables = F2(
+	function (references, _v0) {
+		var module_ = _v0;
+		return _Utils_update(
+			module_,
+			{bF: references});
+	});
+var $author$project$Stabel$Codegen$run = F2(
+	function (exportedFunctions, ast) {
+		var inlineFunctionNames = $elm$core$Set$toList(ast.bF);
+		var _v0 = A3(
+			$elm$core$Dict$foldl,
+			F3(
+				function (_v1, fn, acc) {
+					return A2($author$project$Stabel$Codegen$toWasmFuncDef, fn, acc);
+				}),
+			_Utils_Tuple2(
+				_List_Nil,
+				_Utils_update(
+					$author$project$Stabel$Codegen$emptyContext,
+					{aa: inlineFunctionNames})),
+			ast.bj);
+		var wasmFunctions = _v0.a;
+		var context = _v0.b;
+		var exportedFunctionRefs = A3(
+			$elm$core$Set$foldr,
+			F2(
+				function (name, acc) {
+					return A2(
+						$elm$core$Maybe$withDefault,
+						acc,
+						A2(
+							$elm$core$Maybe$map,
+							function (res) {
+								return A2($elm$core$List$cons, res, acc);
+							},
+							A2(
+								$elm$core$Maybe$map,
+								function (id) {
+									return _Utils_Tuple2(name, id);
+								},
+								A2($elm$core$Dict$get, name, context.K.aC))));
+				}),
+			_List_Nil,
+			exportedFunctions);
+		var inlineFunctionRefs = A2(
+			$elm$core$List$filterMap,
+			function (name) {
+				return A2($elm$core$Dict$get, name, context.K.aC);
+			},
+			inlineFunctionNames);
+		return A2(
+			$author$project$Stabel$Wasm$withExports,
+			exportedFunctionRefs,
 			A2(
-				$elm$core$List$map,
-				A2($author$project$Stabel$Codegen$toWasmFuncDef, typeMetaDict, ast),
-				$elm$core$Dict$values(ast.words))));
-};
-var $author$project$TestCompiler$formatErrors = F2(
-	function (fn, problems) {
-		return $elm$core$Result$Err(
-			A2(
-				$elm$core$String$join,
-				'\n\n',
-				A2($elm$core$List$map, fn, problems)));
+				$author$project$Stabel$Wasm$withReferencables,
+				inlineFunctionRefs,
+				A3($elm$core$List$foldl, $author$project$Stabel$Wasm$withFunction, $author$project$Stabel$Codegen$BaseModule$baseModule, wasmFunctions)));
 	});
-var $elm$core$Result$map = F2(
-	function (func, ra) {
-		if (ra.$ === 'Ok') {
-			var a = ra.a;
-			return $elm$core$Result$Ok(
-				func(a));
-		} else {
-			var e = ra.a;
-			return $elm$core$Result$Err(e);
-		}
-	});
-var $elm$core$Result$mapError = F2(
-	function (f, result) {
-		if (result.$ === 'Ok') {
-			var v = result.a;
-			return $elm$core$Result$Ok(v);
-		} else {
-			var e = result.a;
-			return $elm$core$Result$Err(
-				f(e));
-		}
-	});
-var $author$project$Stabel$Parser$Problem$ExpectedEnd = {$: 'ExpectedEnd'};
-var $elm$parser$Parser$Advanced$Done = function (a) {
-	return {$: 'Done', a: a};
-};
-var $elm$parser$Parser$Advanced$Loop = function (a) {
-	return {$: 'Loop', a: a};
-};
-var $author$project$Stabel$Parser$Problem$NoProblem = {$: 'NoProblem'};
-var $elm$parser$Parser$Advanced$Token = F2(
-	function (a, b) {
-		return {$: 'Token', a: a, b: b};
-	});
-var $author$project$Stabel$Parser$Problem$TypeAlreadyDefined = F3(
-	function (a, b, c) {
-		return {$: 'TypeAlreadyDefined', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$Parser$Problem$WordAlreadyDefined = F3(
-	function (a, b, c) {
-		return {$: 'WordAlreadyDefined', a: a, b: b, c: c};
-	});
+var $author$project$Stabel$Parser$Problem$ExpectedEndOfFile = {$: 11};
+var $author$project$Stabel$Parser$Problem$ModuleIsEmpty = {$: 19};
 var $elm$parser$Parser$Advanced$Bad = F2(
 	function (a, b) {
-		return {$: 'Bad', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $elm$parser$Parser$Advanced$Good = F3(
 	function (a, b, c) {
-		return {$: 'Good', a: a, b: b, c: c};
+		return {$: 0, a: a, b: b, c: c};
 	});
-var $elm$parser$Parser$Advanced$Parser = function (a) {
-	return {$: 'Parser', a: a};
-};
+var $elm$parser$Parser$Advanced$Parser = $elm$core$Basics$identity;
 var $elm$parser$Parser$Advanced$andThen = F2(
 	function (callback, _v0) {
-		var parseA = _v0.a;
-		return $elm$parser$Parser$Advanced$Parser(
-			function (s0) {
-				var _v1 = parseA(s0);
-				if (_v1.$ === 'Bad') {
-					var p = _v1.a;
-					var x = _v1.b;
-					return A2($elm$parser$Parser$Advanced$Bad, p, x);
+		var parseA = _v0;
+		return function (s0) {
+			var _v1 = parseA(s0);
+			if (_v1.$ === 1) {
+				var p = _v1.a;
+				var x = _v1.b;
+				return A2($elm$parser$Parser$Advanced$Bad, p, x);
+			} else {
+				var p1 = _v1.a;
+				var a = _v1.b;
+				var s1 = _v1.c;
+				var _v2 = callback(a);
+				var parseB = _v2;
+				var _v3 = parseB(s1);
+				if (_v3.$ === 1) {
+					var p2 = _v3.a;
+					var x = _v3.b;
+					return A2($elm$parser$Parser$Advanced$Bad, p1 || p2, x);
 				} else {
-					var p1 = _v1.a;
-					var a = _v1.b;
-					var s1 = _v1.c;
-					var _v2 = callback(a);
-					var parseB = _v2.a;
-					var _v3 = parseB(s1);
-					if (_v3.$ === 'Bad') {
-						var p2 = _v3.a;
-						var x = _v3.b;
-						return A2($elm$parser$Parser$Advanced$Bad, p1 || p2, x);
-					} else {
-						var p2 = _v3.a;
-						var b = _v3.b;
-						var s2 = _v3.c;
-						return A3($elm$parser$Parser$Advanced$Good, p1 || p2, b, s2);
-					}
+					var p2 = _v3.a;
+					var b = _v3.b;
+					var s2 = _v3.c;
+					return A3($elm$parser$Parser$Advanced$Good, p1 || p2, b, s2);
 				}
-			});
+			}
+		};
 	});
+var $author$project$Stabel$Parser$Problem$BadDefinition = function (a) {
+	return {$: 20, a: a};
+};
+var $elm$parser$Parser$Advanced$Done = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$parser$Parser$Advanced$Loop = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$parser$Parser$Advanced$Token = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$Problem$UnknownError = {$: 5};
 var $elm_community$dict_extra$Dict$Extra$fromListBy = F2(
 	function (keyfn, xs) {
 		return A3(
@@ -5330,373 +7809,126 @@ var $elm_community$dict_extra$Dict$Extra$fromListBy = F2(
 			$elm$core$Dict$empty,
 			xs);
 	});
-var $author$project$Stabel$Parser$ConstructType = function (a) {
-	return {$: 'ConstructType', a: a};
-};
-var $author$project$Stabel$Parser$Generic = function (a) {
-	return {$: 'Generic', a: a};
-};
-var $author$project$Stabel$Parser$GetMember = F2(
+var $author$project$Stabel$Parser$Problem$FunctionAlreadyDefined = F2(
 	function (a, b) {
-		return {$: 'GetMember', a: a, b: b};
+		return {$: 15, a: a, b: b};
 	});
-var $author$project$Stabel$Parser$LocalRef = F2(
+var $author$project$Stabel$Parser$Problem$FunctionDefinition = F2(
 	function (a, b) {
-		return {$: 'LocalRef', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
-var $author$project$Stabel$Parser$SetMember = F2(
-	function (a, b) {
-		return {$: 'SetMember', a: a, b: b};
-	});
+var $author$project$Stabel$Parser$AssociatedFunctionSignature$NotProvided = {$: 0};
 var $author$project$Stabel$Parser$SoloImpl = function (a) {
-	return {$: 'SoloImpl', a: a};
+	return {$: 0, a: a};
 };
-var $author$project$Stabel$Parser$Verified = function (a) {
-	return {$: 'Verified', a: a};
+var $author$project$Stabel$Parser$Problem$AliasKeyword = {$: 5};
+var $author$project$Stabel$Parser$Problem$ImplementationKeyword = {$: 10};
+var $author$project$Stabel$Parser$Problem$ImportKeyword = {$: 6};
+var $author$project$Stabel$Parser$Problem$TypeKeyword = {$: 8};
+var $author$project$Stabel$Parser$Problem$UnknownMetadata = function (a) {
+	return {$: 17, a: a};
 };
-var $author$project$Stabel$Parser$generateDefaultWordsForType = function (typeDef) {
-	if (typeDef.$ === 'UnionTypeDef') {
-		return _List_Nil;
-	} else {
-		var typeName = typeDef.b;
-		var binds = typeDef.c;
-		var typeMembers = typeDef.d;
-		var typeOfType = A2(
-			$author$project$Stabel$Parser$LocalRef,
-			typeName,
-			A2($elm$core$List$map, $author$project$Stabel$Parser$Generic, binds));
-		var setterGetterPair = function (_v1) {
-			var memberName = _v1.a;
-			var memberType = _v1.b;
-			return _List_fromArray(
-				[
-					{
-					aliases: $elm$core$Dict$empty,
-					implementation: $author$project$Stabel$Parser$SoloImpl(
-						_List_fromArray(
-							[
-								A2($author$project$Stabel$Parser$SetMember, typeName, memberName)
-							])),
-					imports: $elm$core$Dict$empty,
-					name: '>' + memberName,
-					sourceLocationRange: $elm$core$Maybe$Nothing,
-					typeSignature: $author$project$Stabel$Parser$Verified(
-						{
-							input: _List_fromArray(
-								[typeOfType, memberType]),
-							output: _List_fromArray(
-								[typeOfType])
-						})
-				},
-					{
-					aliases: $elm$core$Dict$empty,
-					implementation: $author$project$Stabel$Parser$SoloImpl(
-						_List_fromArray(
-							[
-								A2($author$project$Stabel$Parser$GetMember, typeName, memberName)
-							])),
-					imports: $elm$core$Dict$empty,
-					name: memberName + '>',
-					sourceLocationRange: $elm$core$Maybe$Nothing,
-					typeSignature: $author$project$Stabel$Parser$Verified(
-						{
-							input: _List_fromArray(
-								[typeOfType]),
-							output: _List_fromArray(
-								[memberType])
-						})
-				}
-				]);
-		};
-		var ctorDef = {
-			aliases: $elm$core$Dict$empty,
-			implementation: $author$project$Stabel$Parser$SoloImpl(
-				_List_fromArray(
-					[
-						$author$project$Stabel$Parser$ConstructType(typeName)
-					])),
-			imports: $elm$core$Dict$empty,
-			name: $elm$core$List$isEmpty(typeMembers) ? typeName : ('>' + typeName),
-			sourceLocationRange: $elm$core$Maybe$Nothing,
-			typeSignature: $author$project$Stabel$Parser$Verified(
-				{
-					input: A2($elm$core$List$map, $elm$core$Tuple$second, typeMembers),
-					output: _List_fromArray(
-						[typeOfType])
-				})
-		};
-		return A2(
-			$elm$core$List$cons,
-			ctorDef,
-			A2($elm$core$List$concatMap, setterGetterPair, typeMembers));
-	}
+var $author$project$Stabel$Parser$AssociatedFunctionSignature$UserProvided = function (a) {
+	return {$: 1, a: a};
 };
-var $elm$core$Basics$always = F2(
-	function (a, _v0) {
-		return a;
-	});
+var $elm$core$Set$fromList = function (list) {
+	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
+};
+var $author$project$Stabel$Parser$Problem$ExpectedMetadata = {$: 2};
 var $elm$parser$Parser$Advanced$map2 = F3(
 	function (func, _v0, _v1) {
-		var parseA = _v0.a;
-		var parseB = _v1.a;
-		return $elm$parser$Parser$Advanced$Parser(
-			function (s0) {
-				var _v2 = parseA(s0);
-				if (_v2.$ === 'Bad') {
-					var p = _v2.a;
-					var x = _v2.b;
-					return A2($elm$parser$Parser$Advanced$Bad, p, x);
+		var parseA = _v0;
+		var parseB = _v1;
+		return function (s0) {
+			var _v2 = parseA(s0);
+			if (_v2.$ === 1) {
+				var p = _v2.a;
+				var x = _v2.b;
+				return A2($elm$parser$Parser$Advanced$Bad, p, x);
+			} else {
+				var p1 = _v2.a;
+				var a = _v2.b;
+				var s1 = _v2.c;
+				var _v3 = parseB(s1);
+				if (_v3.$ === 1) {
+					var p2 = _v3.a;
+					var x = _v3.b;
+					return A2($elm$parser$Parser$Advanced$Bad, p1 || p2, x);
 				} else {
-					var p1 = _v2.a;
-					var a = _v2.b;
-					var s1 = _v2.c;
-					var _v3 = parseB(s1);
-					if (_v3.$ === 'Bad') {
-						var p2 = _v3.a;
-						var x = _v3.b;
-						return A2($elm$parser$Parser$Advanced$Bad, p1 || p2, x);
-					} else {
-						var p2 = _v3.a;
-						var b = _v3.b;
-						var s2 = _v3.c;
-						return A3(
-							$elm$parser$Parser$Advanced$Good,
-							p1 || p2,
-							A2(func, a, b),
-							s2);
-					}
+					var p2 = _v3.a;
+					var b = _v3.b;
+					var s2 = _v3.c;
+					return A3(
+						$elm$parser$Parser$Advanced$Good,
+						p1 || p2,
+						A2(func, a, b),
+						s2);
 				}
-			});
+			}
+		};
 	});
 var $elm$parser$Parser$Advanced$ignorer = F2(
 	function (keepParser, ignoreParser) {
 		return A3($elm$parser$Parser$Advanced$map2, $elm$core$Basics$always, keepParser, ignoreParser);
 	});
+var $author$project$Stabel$Parser$specialChars = $elm$core$Set$fromList(
+	_List_fromArray(
+		[':', '{', '}', '[', ']', '(', ')', '.', '#', '/']));
+var $author$project$Stabel$Parser$whitespaceChars = $elm$core$Set$fromList(
+	_List_fromArray(
+		[' ', '\n', '\u000D', '\t']));
+var $author$project$Stabel$Parser$invalidSymbolChars = A2($elm$core$Set$union, $author$project$Stabel$Parser$whitespaceChars, $author$project$Stabel$Parser$specialChars);
 var $elm$parser$Parser$Advanced$AddRight = F2(
 	function (a, b) {
-		return {$: 'AddRight', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $elm$parser$Parser$Advanced$DeadEnd = F4(
 	function (row, col, problem, contextStack) {
-		return {col: col, contextStack: contextStack, problem: problem, row: row};
+		return {aD: col, aE: contextStack, bE: problem, S: row};
 	});
-var $elm$parser$Parser$Advanced$Empty = {$: 'Empty'};
+var $elm$parser$Parser$Advanced$Empty = {$: 0};
 var $elm$parser$Parser$Advanced$fromState = F2(
 	function (s, x) {
 		return A2(
 			$elm$parser$Parser$Advanced$AddRight,
 			$elm$parser$Parser$Advanced$Empty,
-			A4($elm$parser$Parser$Advanced$DeadEnd, s.row, s.col, x, s.context));
+			A4($elm$parser$Parser$Advanced$DeadEnd, s.S, s.aD, x, s.W));
 	});
 var $elm$core$String$isEmpty = function (string) {
 	return string === '';
 };
-var $elm$parser$Parser$Advanced$isSubChar = _Parser_isSubChar;
 var $elm$parser$Parser$Advanced$isSubString = _Parser_isSubString;
-var $elm$core$Basics$not = _Basics_not;
-var $elm$parser$Parser$Advanced$keyword = function (_v0) {
-	var kwd = _v0.a;
-	var expecting = _v0.b;
-	var progress = !$elm$core$String$isEmpty(kwd);
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			var _v1 = A5($elm$parser$Parser$Advanced$isSubString, kwd, s.offset, s.row, s.col, s.src);
-			var newOffset = _v1.a;
-			var newRow = _v1.b;
-			var newCol = _v1.c;
-			return (_Utils_eq(newOffset, -1) || (0 <= A3(
-				$elm$parser$Parser$Advanced$isSubChar,
-				function (c) {
-					return $elm$core$Char$isAlphaNum(c) || _Utils_eq(
-						c,
-						_Utils_chr('_'));
-				},
-				newOffset,
-				s.src))) ? A2(
-				$elm$parser$Parser$Advanced$Bad,
-				false,
-				A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : A3(
-				$elm$parser$Parser$Advanced$Good,
-				progress,
-				_Utils_Tuple0,
-				{col: newCol, context: s.context, indent: s.indent, offset: newOffset, row: newRow, src: s.src});
-		});
-};
-var $author$project$Stabel$Parser$MultiImpl = F2(
-	function (a, b) {
-		return {$: 'MultiImpl', a: a, b: b};
-	});
-var $author$project$Stabel$Parser$NotProvided = {$: 'NotProvided'};
-var $elm$parser$Parser$Advanced$keeper = F2(
-	function (parseFunc, parseArg) {
-		return A3($elm$parser$Parser$Advanced$map2, $elm$core$Basics$apL, parseFunc, parseArg);
-	});
-var $elm$parser$Parser$Advanced$loopHelp = F4(
-	function (p, state, callback, s0) {
-		loopHelp:
-		while (true) {
-			var _v0 = callback(state);
-			var parse = _v0.a;
-			var _v1 = parse(s0);
-			if (_v1.$ === 'Good') {
-				var p1 = _v1.a;
-				var step = _v1.b;
-				var s1 = _v1.c;
-				if (step.$ === 'Loop') {
-					var newState = step.a;
-					var $temp$p = p || p1,
-						$temp$state = newState,
-						$temp$callback = callback,
-						$temp$s0 = s1;
-					p = $temp$p;
-					state = $temp$state;
-					callback = $temp$callback;
-					s0 = $temp$s0;
-					continue loopHelp;
-				} else {
-					var result = step.a;
-					return A3($elm$parser$Parser$Advanced$Good, p || p1, result, s1);
-				}
-			} else {
-				var p1 = _v1.a;
-				var x = _v1.b;
-				return A2($elm$parser$Parser$Advanced$Bad, p || p1, x);
-			}
-		}
-	});
-var $elm$parser$Parser$Advanced$loop = F2(
-	function (state, callback) {
-		return $elm$parser$Parser$Advanced$Parser(
-			function (s) {
-				return A4($elm$parser$Parser$Advanced$loopHelp, false, state, callback, s);
-			});
-	});
-var $author$project$Stabel$Parser$Problem$UnknownMetadata = function (a) {
-	return {$: 'UnknownMetadata', a: a};
-};
-var $author$project$Stabel$Parser$UserProvided = function (a) {
-	return {$: 'UserProvided', a: a};
-};
-var $author$project$Stabel$Parser$Problem$NotMetadata = {$: 'NotMetadata'};
-var $author$project$Stabel$Parser$Problem$NotSymbol = {$: 'NotSymbol'};
-var $elm$core$Set$Set_elm_builtin = function (a) {
-	return {$: 'Set_elm_builtin', a: a};
-};
-var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
-var $elm$core$Set$insert = F2(
-	function (key, _v0) {
-		var dict = _v0.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A3($elm$core$Dict$insert, key, _Utils_Tuple0, dict));
-	});
-var $elm$core$Set$fromList = function (list) {
-	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
-};
-var $author$project$Stabel$Parser$specialChars = $elm$core$Set$fromList(
-	_List_fromArray(
-		[
-			_Utils_chr(':'),
-			_Utils_chr('{'),
-			_Utils_chr('}'),
-			_Utils_chr('['),
-			_Utils_chr(']'),
-			_Utils_chr('('),
-			_Utils_chr(')'),
-			_Utils_chr('.'),
-			_Utils_chr('#'),
-			_Utils_chr('/')
-		]));
-var $elm$core$Dict$foldl = F3(
-	function (func, acc, dict) {
-		foldl:
-		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
-				return acc;
-			} else {
-				var key = dict.b;
-				var value = dict.c;
-				var left = dict.d;
-				var right = dict.e;
-				var $temp$func = func,
-					$temp$acc = A3(
-					func,
-					key,
-					value,
-					A3($elm$core$Dict$foldl, func, acc, left)),
-					$temp$dict = right;
-				func = $temp$func;
-				acc = $temp$acc;
-				dict = $temp$dict;
-				continue foldl;
-			}
-		}
-	});
-var $elm$core$Dict$union = F2(
-	function (t1, t2) {
-		return A3($elm$core$Dict$foldl, $elm$core$Dict$insert, t2, t1);
-	});
-var $elm$core$Set$union = F2(
-	function (_v0, _v1) {
-		var dict1 = _v0.a;
-		var dict2 = _v1.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A2($elm$core$Dict$union, dict1, dict2));
-	});
-var $author$project$Stabel$Parser$whitespaceChars = $elm$core$Set$fromList(
-	_List_fromArray(
-		[
-			_Utils_chr(' '),
-			_Utils_chr('\n'),
-			_Utils_chr('\u000D'),
-			_Utils_chr('\t')
-		]));
-var $author$project$Stabel$Parser$invalidSymbolChars = A2($elm$core$Set$union, $author$project$Stabel$Parser$whitespaceChars, $author$project$Stabel$Parser$specialChars);
-var $elm$core$Dict$member = F2(
-	function (key, dict) {
-		var _v0 = A2($elm$core$Dict$get, key, dict);
-		if (_v0.$ === 'Just') {
-			return true;
-		} else {
-			return false;
-		}
-	});
-var $elm$core$Set$member = F2(
-	function (key, _v0) {
-		var dict = _v0.a;
-		return A2($elm$core$Dict$member, key, dict);
-	});
 var $elm$parser$Parser$Advanced$token = function (_v0) {
 	var str = _v0.a;
 	var expecting = _v0.b;
 	var progress = !$elm$core$String$isEmpty(str);
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			var _v1 = A5($elm$parser$Parser$Advanced$isSubString, str, s.offset, s.row, s.col, s.src);
-			var newOffset = _v1.a;
-			var newRow = _v1.b;
-			var newCol = _v1.c;
-			return _Utils_eq(newOffset, -1) ? A2(
-				$elm$parser$Parser$Advanced$Bad,
-				false,
-				A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : A3(
-				$elm$parser$Parser$Advanced$Good,
-				progress,
-				_Utils_Tuple0,
-				{col: newCol, context: s.context, indent: s.indent, offset: newOffset, row: newRow, src: s.src});
-		});
+	return function (s) {
+		var _v1 = A5($elm$parser$Parser$Advanced$isSubString, str, s.c, s.S, s.aD, s.b);
+		var newOffset = _v1.a;
+		var newRow = _v1.b;
+		var newCol = _v1.c;
+		return _Utils_eq(newOffset, -1) ? A2(
+			$elm$parser$Parser$Advanced$Bad,
+			false,
+			A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : A3(
+			$elm$parser$Parser$Advanced$Good,
+			progress,
+			0,
+			{aD: newCol, W: s.W, e: s.e, c: newOffset, S: newRow, b: s.b});
+	};
 };
 var $elm$parser$Parser$Advanced$symbol = $elm$parser$Parser$Advanced$token;
 var $author$project$Stabel$Parser$validSymbolChar = function (c) {
 	return !A2($elm$core$Set$member, c, $author$project$Stabel$Parser$invalidSymbolChars);
 };
-var $elm$core$String$slice = _String_slice;
+var $elm$parser$Parser$Advanced$isSubChar = _Parser_isSubChar;
 var $elm$parser$Parser$Advanced$varHelp = F7(
 	function (isGood, offset, row, col, src, indent, context) {
 		varHelp:
 		while (true) {
 			var newOffset = A3($elm$parser$Parser$Advanced$isSubChar, isGood, offset, src);
 			if (_Utils_eq(newOffset, -1)) {
-				return {col: col, context: context, indent: indent, offset: offset, row: row, src: src};
+				return {aD: col, W: context, e: indent, c: offset, S: row, b: src};
 			} else {
 				if (_Utils_eq(newOffset, -2)) {
 					var $temp$isGood = isGood,
@@ -5735,84 +7967,397 @@ var $elm$parser$Parser$Advanced$varHelp = F7(
 		}
 	});
 var $elm$parser$Parser$Advanced$variable = function (i) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			var firstOffset = A3($elm$parser$Parser$Advanced$isSubChar, i.start, s.offset, s.src);
-			if (_Utils_eq(firstOffset, -1)) {
-				return A2(
-					$elm$parser$Parser$Advanced$Bad,
-					false,
-					A2($elm$parser$Parser$Advanced$fromState, s, i.expecting));
-			} else {
-				var s1 = _Utils_eq(firstOffset, -2) ? A7($elm$parser$Parser$Advanced$varHelp, i.inner, s.offset + 1, s.row + 1, 1, s.src, s.indent, s.context) : A7($elm$parser$Parser$Advanced$varHelp, i.inner, firstOffset, s.row, s.col + 1, s.src, s.indent, s.context);
-				var name = A3($elm$core$String$slice, s.offset, s1.offset, s.src);
-				return A2($elm$core$Set$member, name, i.reserved) ? A2(
-					$elm$parser$Parser$Advanced$Bad,
-					false,
-					A2($elm$parser$Parser$Advanced$fromState, s, i.expecting)) : A3($elm$parser$Parser$Advanced$Good, true, name, s1);
-			}
-		});
+	return function (s) {
+		var firstOffset = A3($elm$parser$Parser$Advanced$isSubChar, i.bJ, s.c, s.b);
+		if (_Utils_eq(firstOffset, -1)) {
+			return A2(
+				$elm$parser$Parser$Advanced$Bad,
+				false,
+				A2($elm$parser$Parser$Advanced$fromState, s, i.Z));
+		} else {
+			var s1 = _Utils_eq(firstOffset, -2) ? A7($elm$parser$Parser$Advanced$varHelp, i.ab, s.c + 1, s.S + 1, 1, s.b, s.e, s.W) : A7($elm$parser$Parser$Advanced$varHelp, i.ab, firstOffset, s.S, s.aD + 1, s.b, s.e, s.W);
+			var name = A3($elm$core$String$slice, s.c, s1.c, s.b);
+			return A2($elm$core$Set$member, name, i.ai) ? A2(
+				$elm$parser$Parser$Advanced$Bad,
+				false,
+				A2($elm$parser$Parser$Advanced$fromState, s, i.Z)) : A3($elm$parser$Parser$Advanced$Good, true, name, s1);
+		}
+	};
 };
-var $author$project$Stabel$Parser$definitionMetadataParser = A2(
-	$elm$parser$Parser$Advanced$ignorer,
-	$elm$parser$Parser$Advanced$variable(
-		{
-			expecting: $author$project$Stabel$Parser$Problem$NotSymbol,
-			inner: $author$project$Stabel$Parser$validSymbolChar,
-			reserved: $elm$core$Set$fromList(
-				_List_fromArray(
-					['def', 'defmulti', 'defstruct', 'defunion'])),
-			start: function (c) {
-				return !($elm$core$Char$isDigit(c) || ($elm$core$Char$isUpper(c) || A2($elm$core$Set$member, c, $author$project$Stabel$Parser$invalidSymbolChars)));
-			}
-		}),
-	$elm$parser$Parser$Advanced$symbol(
-		A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NotMetadata)));
-var $author$project$Stabel$Parser$Problem$ExpectedLeftBracket = {$: 'ExpectedLeftBracket'};
-var $author$project$Stabel$Parser$Problem$ExpectedRightBracket = {$: 'ExpectedRightBracket'};
-var $author$project$Stabel$Parser$Quotation = F2(
+var $author$project$Stabel$Parser$metadataParserHelp = function (reserved) {
+	return A2(
+		$elm$parser$Parser$Advanced$ignorer,
+		$elm$parser$Parser$Advanced$variable(
+			{
+				Z: $author$project$Stabel$Parser$Problem$ExpectedMetadata,
+				ab: $author$project$Stabel$Parser$validSymbolChar,
+				ai: reserved,
+				bJ: function (c) {
+					return !($elm$core$Char$isDigit(c) || ($elm$core$Char$isUpper(c) || A2($elm$core$Set$member, c, $author$project$Stabel$Parser$invalidSymbolChars)));
+				}
+			}),
+		$elm$parser$Parser$Advanced$symbol(
+			A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$ExpectedMetadata)));
+};
+var $author$project$Stabel$Parser$definitionMetadataParser = $author$project$Stabel$Parser$metadataParserHelp(
+	$elm$core$Set$fromList(
+		_List_fromArray(
+			['def', 'defmulti', 'defstruct', 'defunion'])));
+var $author$project$Stabel$Parser$Problem$ExpectedLeftBracket = {$: 13};
+var $author$project$Stabel$Parser$Problem$ExpectedRightBracket = {$: 14};
+var $author$project$Stabel$Parser$InlineFunction = F2(
 	function (a, b) {
-		return {$: 'Quotation', a: a, b: b};
+		return {$: 4, a: a, b: b};
 	});
-var $author$project$Stabel$Data$SourceLocation$SourceLocationRange = F2(
+var $author$project$Stabel$Parser$SourceLocation$SourceLocationRange = F2(
 	function (start, end) {
-		return {end: end, start: start};
+		return {bd: end, bJ: start};
+	});
+var $elm$parser$Parser$Advanced$keeper = F2(
+	function (parseFunc, parseArg) {
+		return A3($elm$parser$Parser$Advanced$map2, $elm$core$Basics$apL, parseFunc, parseArg);
+	});
+var $elm$parser$Parser$Advanced$loopHelp = F4(
+	function (p, state, callback, s0) {
+		loopHelp:
+		while (true) {
+			var _v0 = callback(state);
+			var parse = _v0;
+			var _v1 = parse(s0);
+			if (!_v1.$) {
+				var p1 = _v1.a;
+				var step = _v1.b;
+				var s1 = _v1.c;
+				if (!step.$) {
+					var newState = step.a;
+					var $temp$p = p || p1,
+						$temp$state = newState,
+						$temp$callback = callback,
+						$temp$s0 = s1;
+					p = $temp$p;
+					state = $temp$state;
+					callback = $temp$callback;
+					s0 = $temp$s0;
+					continue loopHelp;
+				} else {
+					var result = step.a;
+					return A3($elm$parser$Parser$Advanced$Good, p || p1, result, s1);
+				}
+			} else {
+				var p1 = _v1.a;
+				var x = _v1.b;
+				return A2($elm$parser$Parser$Advanced$Bad, p || p1, x);
+			}
+		}
+	});
+var $elm$parser$Parser$Advanced$loop = F2(
+	function (state, callback) {
+		return function (s) {
+			return A4($elm$parser$Parser$Advanced$loopHelp, false, state, callback, s);
+		};
 	});
 var $author$project$Stabel$Parser$Integer = F2(
 	function (a, b) {
-		return {$: 'Integer', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
-var $author$project$Stabel$Parser$Problem$NotInt = {$: 'NotInt'};
+var $author$project$Stabel$Parser$Problem$ExpectedInt = {$: 0};
+var $elm$parser$Parser$Advanced$problem = function (x) {
+	return function (s) {
+		return A2(
+			$elm$parser$Parser$Advanced$Bad,
+			false,
+			A2($elm$parser$Parser$Advanced$fromState, s, x));
+	};
+};
+var $elm$parser$Parser$Advanced$succeed = function (a) {
+	return function (s) {
+		return A3($elm$parser$Parser$Advanced$Good, false, a, s);
+	};
+};
+var $elm$core$String$toInt = _String_toInt;
+var $author$project$Stabel$Parser$intParser = function () {
+	var helper = function (text) {
+		var _v0 = $elm$core$String$toInt(text);
+		if (!_v0.$) {
+			var num = _v0.a;
+			return $elm$parser$Parser$Advanced$succeed(num);
+		} else {
+			return $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$ExpectedInt);
+		}
+	};
+	return A2(
+		$elm$parser$Parser$Advanced$andThen,
+		helper,
+		$elm$parser$Parser$Advanced$variable(
+			{Z: $author$project$Stabel$Parser$Problem$ExpectedInt, ab: $elm$core$Char$isDigit, ai: $elm$core$Set$empty, bJ: $elm$core$Char$isDigit}));
+}();
+var $elm$parser$Parser$Advanced$Append = F2(
+	function (a, b) {
+		return {$: 2, a: a, b: b};
+	});
+var $elm$parser$Parser$Advanced$oneOfHelp = F3(
+	function (s0, bag, parsers) {
+		oneOfHelp:
+		while (true) {
+			if (!parsers.b) {
+				return A2($elm$parser$Parser$Advanced$Bad, false, bag);
+			} else {
+				var parse = parsers.a;
+				var remainingParsers = parsers.b;
+				var _v1 = parse(s0);
+				if (!_v1.$) {
+					var step = _v1;
+					return step;
+				} else {
+					var step = _v1;
+					var p = step.a;
+					var x = step.b;
+					if (p) {
+						return step;
+					} else {
+						var $temp$s0 = s0,
+							$temp$bag = A2($elm$parser$Parser$Advanced$Append, bag, x),
+							$temp$parsers = remainingParsers;
+						s0 = $temp$s0;
+						bag = $temp$bag;
+						parsers = $temp$parsers;
+						continue oneOfHelp;
+					}
+				}
+			}
+		}
+	});
+var $elm$parser$Parser$Advanced$oneOf = function (parsers) {
+	return function (s) {
+		return A3($elm$parser$Parser$Advanced$oneOfHelp, s, $elm$parser$Parser$Advanced$Empty, parsers);
+	};
+};
+var $author$project$Stabel$Parser$Function = F2(
+	function (a, b) {
+		return {$: 1, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$Problem$InvalidModulePath = function (a) {
+	return {$: 18, a: a};
+};
+var $elm$core$String$any = _String_any;
+var $author$project$Stabel$Parser$modulePathFinalizer = function (symbols) {
+	if (!symbols.b) {
+		return _Utils_Tuple2(_List_Nil, '');
+	} else {
+		if (!symbols.b.b) {
+			var only = symbols.a;
+			return _Utils_Tuple2(_List_Nil, only);
+		} else {
+			var first = symbols.a;
+			var rest = symbols.b;
+			return _Utils_Tuple2(
+				$elm$core$List$reverse(rest),
+				first);
+		}
+	}
+};
+var $author$project$Stabel$Parser$Problem$ExpectedSymbol = {$: 1};
+var $author$project$Stabel$Parser$Problem$UnexpectedMetadata = {$: 8};
+var $elm$parser$Parser$Advanced$backtrackable = function (_v0) {
+	var parse = _v0;
+	return function (s0) {
+		var _v1 = parse(s0);
+		if (_v1.$ === 1) {
+			var x = _v1.b;
+			return A2($elm$parser$Parser$Advanced$Bad, false, x);
+		} else {
+			var a = _v1.b;
+			var s1 = _v1.c;
+			return A3($elm$parser$Parser$Advanced$Good, false, a, s1);
+		}
+	};
+};
+var $author$project$Stabel$Parser$symbolParserHelp = function (startPred) {
+	return $elm$parser$Parser$Advanced$backtrackable(
+		A2(
+			$elm$parser$Parser$Advanced$ignorer,
+			$elm$parser$Parser$Advanced$variable(
+				{Z: $author$project$Stabel$Parser$Problem$ExpectedSymbol, ab: $author$project$Stabel$Parser$validSymbolChar, ai: $elm$core$Set$empty, bJ: startPred}),
+			$elm$parser$Parser$Advanced$oneOf(
+				_List_fromArray(
+					[
+						A2(
+						$elm$parser$Parser$Advanced$andThen,
+						function (_v0) {
+							return $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$UnexpectedMetadata);
+						},
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
+							$elm$parser$Parser$Advanced$symbol(
+								A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$ExpectedMetadata)))),
+						$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity)
+					]))));
+};
+var $author$project$Stabel$Parser$symbolImplParser = $author$project$Stabel$Parser$symbolParserHelp(
+	function (c) {
+		return !($elm$core$Char$isDigit(c) || A2($elm$core$Set$member, c, $author$project$Stabel$Parser$invalidSymbolChars));
+	});
+var $author$project$Stabel$Parser$modulePathParser = function (symbols) {
+	return $elm$parser$Parser$Advanced$oneOf(
+		_List_fromArray(
+			[
+				A2(
+				$elm$parser$Parser$Advanced$keeper,
+				A2(
+					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$succeed(
+						function (name) {
+							return $elm$parser$Parser$Advanced$Loop(
+								A2($elm$core$List$cons, name, symbols));
+						}),
+					$elm$parser$Parser$Advanced$symbol(
+						A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$ExpectedMetadata))),
+				$author$project$Stabel$Parser$symbolImplParser),
+				$elm$parser$Parser$Advanced$succeed(
+				$elm$parser$Parser$Advanced$Done(
+					$author$project$Stabel$Parser$modulePathFinalizer(symbols)))
+			]));
+};
+var $elm$core$Basics$neq = _Utils_notEqual;
+var $author$project$Stabel$Parser$qualifiedSymbolImplParser = function () {
+	var checkForUpperCaseLetterInPath = function (path) {
+		return A2(
+			$elm$core$List$any,
+			$elm$core$String$any($elm$core$Char$isUpper),
+			path);
+	};
+	var externalBuilder = function (_v0) {
+		var path = _v0.a;
+		var reference = _v0.b;
+		return checkForUpperCaseLetterInPath(path) ? $elm$parser$Parser$Advanced$problem(
+			$author$project$Stabel$Parser$Problem$InvalidModulePath(
+				'/' + A2($elm$core$String$join, '/', path))) : ((!$elm$core$List$length(path)) ? $elm$parser$Parser$Advanced$problem(
+			$author$project$Stabel$Parser$Problem$InvalidModulePath(
+				'/' + (A2($elm$core$String$join, '/', path) + ('/' + reference)))) : $elm$parser$Parser$Advanced$succeed(
+			function (loc) {
+				return A3($author$project$Stabel$Parser$ExternalFunction, loc, path, reference);
+			}));
+	};
+	var internalBuilder = F2(
+		function (firstSymbol, modulePathResult) {
+			var partialPath = modulePathResult.a;
+			var reference = modulePathResult.b;
+			var path = A2($elm$core$List$cons, firstSymbol, partialPath);
+			return (checkForUpperCaseLetterInPath(path) && (!_Utils_eq(partialPath, _List_Nil))) ? $elm$parser$Parser$Advanced$problem(
+				$author$project$Stabel$Parser$Problem$InvalidModulePath(
+					A2($elm$core$String$join, '/', path))) : $elm$parser$Parser$Advanced$succeed(
+				function (loc) {
+					return _Utils_eq(
+						modulePathResult,
+						_Utils_Tuple2(_List_Nil, '')) ? A2($author$project$Stabel$Parser$Function, loc, firstSymbol) : A3($author$project$Stabel$Parser$PackageFunction, loc, path, reference);
+				});
+		});
+	return $elm$parser$Parser$Advanced$oneOf(
+		_List_fromArray(
+			[
+				A2(
+				$elm$parser$Parser$Advanced$andThen,
+				$elm$core$Basics$identity,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						$elm$parser$Parser$Advanced$succeed(internalBuilder),
+						$author$project$Stabel$Parser$symbolImplParser),
+					A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modulePathParser))),
+				A2(
+				$elm$parser$Parser$Advanced$andThen,
+				externalBuilder,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
+					A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modulePathParser)))
+			]));
+}();
+var $author$project$Stabel$Parser$SourceLocation$SourceLocation = F2(
+	function (row, col) {
+		return {aD: col, S: row};
+	});
+var $elm$parser$Parser$Advanced$getCol = function (s) {
+	return A3($elm$parser$Parser$Advanced$Good, false, s.aD, s);
+};
+var $elm$parser$Parser$Advanced$getRow = function (s) {
+	return A3($elm$parser$Parser$Advanced$Good, false, s.S, s);
+};
+var $author$project$Stabel$Parser$sourceLocationParser = A2(
+	$elm$parser$Parser$Advanced$keeper,
+	A2(
+		$elm$parser$Parser$Advanced$keeper,
+		$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$SourceLocation$SourceLocation),
+		$elm$parser$Parser$Advanced$getRow),
+	$elm$parser$Parser$Advanced$getCol);
+var $author$project$Stabel$Parser$nodeParser = $elm$parser$Parser$Advanced$oneOf(
+	_List_fromArray(
+		[
+			A2(
+			$elm$parser$Parser$Advanced$keeper,
+			A2(
+				$elm$parser$Parser$Advanced$keeper,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					$elm$parser$Parser$Advanced$succeed(
+						F3(
+							function (startLoc, value, endLoc) {
+								return A2(
+									$author$project$Stabel$Parser$Integer,
+									A2($author$project$Stabel$Parser$SourceLocation$SourceLocationRange, startLoc, endLoc),
+									value);
+							})),
+					$author$project$Stabel$Parser$sourceLocationParser),
+				$author$project$Stabel$Parser$intParser),
+			$author$project$Stabel$Parser$sourceLocationParser),
+			A2(
+			$elm$parser$Parser$Advanced$keeper,
+			A2(
+				$elm$parser$Parser$Advanced$keeper,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					$elm$parser$Parser$Advanced$succeed(
+						F3(
+							function (startLoc, builder, endLoc) {
+								return builder(
+									A2($author$project$Stabel$Parser$SourceLocation$SourceLocationRange, startLoc, endLoc));
+							})),
+					$author$project$Stabel$Parser$sourceLocationParser),
+				$author$project$Stabel$Parser$qualifiedSymbolImplParser),
+			$author$project$Stabel$Parser$sourceLocationParser)
+		]));
+var $author$project$Stabel$Parser$Problem$ExpectedWhitespace = {$: 7};
 var $elm$parser$Parser$Advanced$chompIf = F2(
 	function (isGood, expecting) {
-		return $elm$parser$Parser$Advanced$Parser(
-			function (s) {
-				var newOffset = A3($elm$parser$Parser$Advanced$isSubChar, isGood, s.offset, s.src);
-				return _Utils_eq(newOffset, -1) ? A2(
-					$elm$parser$Parser$Advanced$Bad,
-					false,
-					A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : (_Utils_eq(newOffset, -2) ? A3(
-					$elm$parser$Parser$Advanced$Good,
-					true,
-					_Utils_Tuple0,
-					{col: 1, context: s.context, indent: s.indent, offset: s.offset + 1, row: s.row + 1, src: s.src}) : A3(
-					$elm$parser$Parser$Advanced$Good,
-					true,
-					_Utils_Tuple0,
-					{col: s.col + 1, context: s.context, indent: s.indent, offset: newOffset, row: s.row, src: s.src}));
-			});
+		return function (s) {
+			var newOffset = A3($elm$parser$Parser$Advanced$isSubChar, isGood, s.c, s.b);
+			return _Utils_eq(newOffset, -1) ? A2(
+				$elm$parser$Parser$Advanced$Bad,
+				false,
+				A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : (_Utils_eq(newOffset, -2) ? A3(
+				$elm$parser$Parser$Advanced$Good,
+				true,
+				0,
+				{aD: 1, W: s.W, e: s.e, c: s.c + 1, S: s.S + 1, b: s.b}) : A3(
+				$elm$parser$Parser$Advanced$Good,
+				true,
+				0,
+				{aD: s.aD + 1, W: s.W, e: s.e, c: newOffset, S: s.S, b: s.b}));
+		};
 	});
 var $elm$parser$Parser$Advanced$chompWhileHelp = F5(
 	function (isGood, offset, row, col, s0) {
 		chompWhileHelp:
 		while (true) {
-			var newOffset = A3($elm$parser$Parser$Advanced$isSubChar, isGood, offset, s0.src);
+			var newOffset = A3($elm$parser$Parser$Advanced$isSubChar, isGood, offset, s0.b);
 			if (_Utils_eq(newOffset, -1)) {
 				return A3(
 					$elm$parser$Parser$Advanced$Good,
-					_Utils_cmp(s0.offset, offset) < 0,
-					_Utils_Tuple0,
-					{col: col, context: s0.context, indent: s0.indent, offset: offset, row: row, src: s0.src});
+					_Utils_cmp(s0.c, offset) < 0,
+					0,
+					{aD: col, W: s0.W, e: s0.e, c: offset, S: row, b: s0.b});
 			} else {
 				if (_Utils_eq(newOffset, -2)) {
 					var $temp$isGood = isGood,
@@ -5843,80 +8388,9 @@ var $elm$parser$Parser$Advanced$chompWhileHelp = F5(
 		}
 	});
 var $elm$parser$Parser$Advanced$chompWhile = function (isGood) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			return A5($elm$parser$Parser$Advanced$chompWhileHelp, isGood, s.offset, s.row, s.col, s);
-		});
-};
-var $elm$core$String$length = _String_length;
-var $elm$parser$Parser$Advanced$chompUntilEndOr = function (str) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			var _v0 = A5(_Parser_findSubString, str, s.offset, s.row, s.col, s.src);
-			var newOffset = _v0.a;
-			var newRow = _v0.b;
-			var newCol = _v0.c;
-			var adjustedOffset = (newOffset < 0) ? $elm$core$String$length(s.src) : newOffset;
-			return A3(
-				$elm$parser$Parser$Advanced$Good,
-				_Utils_cmp(s.offset, adjustedOffset) < 0,
-				_Utils_Tuple0,
-				{col: newCol, context: s.context, indent: s.indent, offset: adjustedOffset, row: newRow, src: s.src});
-		});
-};
-var $elm$parser$Parser$Advanced$lineComment = function (start) {
-	return A2(
-		$elm$parser$Parser$Advanced$ignorer,
-		$elm$parser$Parser$Advanced$token(start),
-		$elm$parser$Parser$Advanced$chompUntilEndOr('\n'));
-};
-var $elm$parser$Parser$Advanced$Append = F2(
-	function (a, b) {
-		return {$: 'Append', a: a, b: b};
-	});
-var $elm$parser$Parser$Advanced$oneOfHelp = F3(
-	function (s0, bag, parsers) {
-		oneOfHelp:
-		while (true) {
-			if (!parsers.b) {
-				return A2($elm$parser$Parser$Advanced$Bad, false, bag);
-			} else {
-				var parse = parsers.a.a;
-				var remainingParsers = parsers.b;
-				var _v1 = parse(s0);
-				if (_v1.$ === 'Good') {
-					var step = _v1;
-					return step;
-				} else {
-					var step = _v1;
-					var p = step.a;
-					var x = step.b;
-					if (p) {
-						return step;
-					} else {
-						var $temp$s0 = s0,
-							$temp$bag = A2($elm$parser$Parser$Advanced$Append, bag, x),
-							$temp$parsers = remainingParsers;
-						s0 = $temp$s0;
-						bag = $temp$bag;
-						parsers = $temp$parsers;
-						continue oneOfHelp;
-					}
-				}
-			}
-		}
-	});
-var $elm$parser$Parser$Advanced$oneOf = function (parsers) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			return A3($elm$parser$Parser$Advanced$oneOfHelp, s, $elm$parser$Parser$Advanced$Empty, parsers);
-		});
-};
-var $elm$parser$Parser$Advanced$succeed = function (a) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			return A3($elm$parser$Parser$Advanced$Good, false, a, s);
-		});
+	return function (s) {
+		return A5($elm$parser$Parser$Advanced$chompWhileHelp, isGood, s.c, s.S, s.aD, s);
+	};
 };
 var $author$project$Stabel$Parser$noiseParserLoop = function (_v0) {
 	return $elm$parser$Parser$Advanced$oneOf(
@@ -5924,311 +8398,37 @@ var $author$project$Stabel$Parser$noiseParserLoop = function (_v0) {
 			[
 				A2(
 				$elm$parser$Parser$Advanced$ignorer,
-				$elm$parser$Parser$Advanced$succeed(
-					$elm$parser$Parser$Advanced$Loop(_Utils_Tuple0)),
-				$elm$parser$Parser$Advanced$lineComment(
-					A2($elm$parser$Parser$Advanced$Token, '#', $author$project$Stabel$Parser$Problem$NoProblem))),
+				A2(
+					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$succeed(
+						$elm$parser$Parser$Advanced$Loop(0)),
+					$elm$parser$Parser$Advanced$symbol(
+						A2($elm$parser$Parser$Advanced$Token, '#', $author$project$Stabel$Parser$Problem$UnknownError))),
+				$elm$parser$Parser$Advanced$chompWhile(
+					function (c) {
+						return c !== '\n';
+					})),
 				A2(
 				$elm$parser$Parser$Advanced$ignorer,
 				A2(
 					$elm$parser$Parser$Advanced$ignorer,
 					$elm$parser$Parser$Advanced$succeed(
-						$elm$parser$Parser$Advanced$Loop(_Utils_Tuple0)),
+						$elm$parser$Parser$Advanced$Loop(0)),
 					A2(
 						$elm$parser$Parser$Advanced$chompIf,
 						function (c) {
 							return A2($elm$core$Set$member, c, $author$project$Stabel$Parser$whitespaceChars);
 						},
-						$author$project$Stabel$Parser$Problem$NoProblem)),
+						$author$project$Stabel$Parser$Problem$ExpectedWhitespace)),
 				$elm$parser$Parser$Advanced$chompWhile(
 					function (c) {
 						return A2($elm$core$Set$member, c, $author$project$Stabel$Parser$whitespaceChars);
 					})),
 				$elm$parser$Parser$Advanced$succeed(
-				$elm$parser$Parser$Advanced$Done(_Utils_Tuple0))
+				$elm$parser$Parser$Advanced$Done(0))
 			]));
 };
-var $author$project$Stabel$Parser$noiseParser = A2($elm$parser$Parser$Advanced$loop, _Utils_Tuple0, $author$project$Stabel$Parser$noiseParserLoop);
-var $elm$parser$Parser$Advanced$problem = function (x) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			return A2(
-				$elm$parser$Parser$Advanced$Bad,
-				false,
-				A2($elm$parser$Parser$Advanced$fromState, s, x));
-		});
-};
-var $elm$core$String$toInt = _String_toInt;
-var $author$project$Stabel$Parser$intParser = function () {
-	var helper = function (text) {
-		var _v0 = $elm$core$String$toInt(text);
-		if (_v0.$ === 'Just') {
-			var num = _v0.a;
-			return $elm$parser$Parser$Advanced$succeed(num);
-		} else {
-			return $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$NotInt);
-		}
-	};
-	return A2(
-		$elm$parser$Parser$Advanced$andThen,
-		helper,
-		A2(
-			$elm$parser$Parser$Advanced$ignorer,
-			$elm$parser$Parser$Advanced$variable(
-				{expecting: $author$project$Stabel$Parser$Problem$NotInt, inner: $elm$core$Char$isDigit, reserved: $elm$core$Set$empty, start: $elm$core$Char$isDigit}),
-			$author$project$Stabel$Parser$noiseParser));
-}();
-var $author$project$Stabel$Data$SourceLocation$SourceLocation = F3(
-	function (row, col, offset) {
-		return {col: col, offset: offset, row: row};
-	});
-var $elm$parser$Parser$Advanced$getCol = $elm$parser$Parser$Advanced$Parser(
-	function (s) {
-		return A3($elm$parser$Parser$Advanced$Good, false, s.col, s);
-	});
-var $elm$parser$Parser$Advanced$getOffset = $elm$parser$Parser$Advanced$Parser(
-	function (s) {
-		return A3($elm$parser$Parser$Advanced$Good, false, s.offset, s);
-	});
-var $elm$parser$Parser$Advanced$getRow = $elm$parser$Parser$Advanced$Parser(
-	function (s) {
-		return A3($elm$parser$Parser$Advanced$Good, false, s.row, s);
-	});
-var $author$project$Stabel$Parser$sourceLocationParser = A2(
-	$elm$parser$Parser$Advanced$keeper,
-	A2(
-		$elm$parser$Parser$Advanced$keeper,
-		A2(
-			$elm$parser$Parser$Advanced$keeper,
-			$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Data$SourceLocation$SourceLocation),
-			$elm$parser$Parser$Advanced$getRow),
-		$elm$parser$Parser$Advanced$getCol),
-	$elm$parser$Parser$Advanced$getOffset);
-var $author$project$Stabel$Parser$ExternalWord = F3(
-	function (a, b, c) {
-		return {$: 'ExternalWord', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$Parser$Problem$InvalidModulePath = function (a) {
-	return {$: 'InvalidModulePath', a: a};
-};
-var $author$project$Stabel$Parser$PackageWord = F3(
-	function (a, b, c) {
-		return {$: 'PackageWord', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$Parser$Word = F2(
-	function (a, b) {
-		return {$: 'Word', a: a, b: b};
-	});
-var $elm$core$List$any = F2(
-	function (isOkay, list) {
-		any:
-		while (true) {
-			if (!list.b) {
-				return false;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (isOkay(x)) {
-					return true;
-				} else {
-					var $temp$isOkay = isOkay,
-						$temp$list = xs;
-					isOkay = $temp$isOkay;
-					list = $temp$list;
-					continue any;
-				}
-			}
-		}
-	});
-var $elm$core$String$any = _String_any;
-var $author$project$Stabel$Parser$modulePathFinalizer = function (symbols) {
-	if (!symbols.b) {
-		return _Utils_Tuple2(_List_Nil, '');
-	} else {
-		if (!symbols.b.b) {
-			var only = symbols.a;
-			return _Utils_Tuple2(_List_Nil, only);
-		} else {
-			var first = symbols.a;
-			var rest = symbols.b;
-			return _Utils_Tuple2(
-				$elm$core$List$reverse(rest),
-				first);
-		}
-	}
-};
-var $author$project$Stabel$Parser$Problem$FoundMetadata = {$: 'FoundMetadata'};
-var $elm$parser$Parser$Advanced$backtrackable = function (_v0) {
-	var parse = _v0.a;
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s0) {
-			var _v1 = parse(s0);
-			if (_v1.$ === 'Bad') {
-				var x = _v1.b;
-				return A2($elm$parser$Parser$Advanced$Bad, false, x);
-			} else {
-				var a = _v1.b;
-				var s1 = _v1.c;
-				return A3($elm$parser$Parser$Advanced$Good, false, a, s1);
-			}
-		});
-};
-var $author$project$Stabel$Parser$symbolImplParser = $elm$parser$Parser$Advanced$backtrackable(
-	A2(
-		$elm$parser$Parser$Advanced$ignorer,
-		$elm$parser$Parser$Advanced$variable(
-			{
-				expecting: $author$project$Stabel$Parser$Problem$NotSymbol,
-				inner: $author$project$Stabel$Parser$validSymbolChar,
-				reserved: $elm$core$Set$empty,
-				start: function (c) {
-					return !($elm$core$Char$isDigit(c) || A2($elm$core$Set$member, c, $author$project$Stabel$Parser$invalidSymbolChars));
-				}
-			}),
-		$elm$parser$Parser$Advanced$oneOf(
-			_List_fromArray(
-				[
-					A2(
-					$elm$parser$Parser$Advanced$andThen,
-					function (_v0) {
-						return $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$FoundMetadata);
-					},
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-						$elm$parser$Parser$Advanced$symbol(
-							A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NotMetadata)))),
-					$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity)
-				]))));
-var $author$project$Stabel$Parser$modulePathParser = function (symbols) {
-	return $elm$parser$Parser$Advanced$oneOf(
-		_List_fromArray(
-			[
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					$elm$parser$Parser$Advanced$succeed(
-						function (name) {
-							return $elm$parser$Parser$Advanced$Loop(
-								A2($elm$core$List$cons, name, symbols));
-						}),
-					$elm$parser$Parser$Advanced$symbol(
-						A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$NotMetadata))),
-				$author$project$Stabel$Parser$symbolImplParser),
-				$elm$parser$Parser$Advanced$succeed(
-				$elm$parser$Parser$Advanced$Done(
-					$author$project$Stabel$Parser$modulePathFinalizer(symbols)))
-			]));
-};
-var $elm$core$Basics$neq = _Utils_notEqual;
-var $author$project$Stabel$Parser$symbolImplParser2 = function () {
-	var checkForUpperCaseLetterInPath = function (path) {
-		return A2(
-			$elm$core$List$any,
-			$elm$core$String$any($elm$core$Char$isUpper),
-			path);
-	};
-	var externalBuilder = F2(
-		function (firstSymbol, modulePathResult) {
-			var partialPath = modulePathResult.a;
-			var reference = modulePathResult.b;
-			var path = A2($elm$core$List$cons, firstSymbol, partialPath);
-			return checkForUpperCaseLetterInPath(path) ? $elm$parser$Parser$Advanced$problem(
-				$author$project$Stabel$Parser$Problem$InvalidModulePath(
-					'/' + A2($elm$core$String$join, '/', path))) : (_Utils_eq(
-				modulePathResult,
-				_Utils_Tuple2(_List_Nil, '')) ? $elm$parser$Parser$Advanced$problem(
-				$author$project$Stabel$Parser$Problem$InvalidModulePath('/' + firstSymbol)) : $elm$parser$Parser$Advanced$succeed(
-				function (loc) {
-					return A3($author$project$Stabel$Parser$ExternalWord, loc, path, reference);
-				}));
-		});
-	var internalBuilder = F2(
-		function (firstSymbol, modulePathResult) {
-			var partialPath = modulePathResult.a;
-			var reference = modulePathResult.b;
-			var path = A2($elm$core$List$cons, firstSymbol, partialPath);
-			return (checkForUpperCaseLetterInPath(path) && (!_Utils_eq(partialPath, _List_Nil))) ? $elm$parser$Parser$Advanced$problem(
-				$author$project$Stabel$Parser$Problem$InvalidModulePath(
-					A2($elm$core$String$join, '/', path))) : $elm$parser$Parser$Advanced$succeed(
-				function (loc) {
-					return _Utils_eq(
-						modulePathResult,
-						_Utils_Tuple2(_List_Nil, '')) ? A2($author$project$Stabel$Parser$Word, loc, firstSymbol) : A3($author$project$Stabel$Parser$PackageWord, loc, path, reference);
-				});
-		});
-	return A2(
-		$elm$parser$Parser$Advanced$andThen,
-		$elm$core$Basics$identity,
-		A2(
-			$elm$parser$Parser$Advanced$ignorer,
-			$elm$parser$Parser$Advanced$oneOf(
-				_List_fromArray(
-					[
-						A2(
-						$elm$parser$Parser$Advanced$keeper,
-						A2(
-							$elm$parser$Parser$Advanced$keeper,
-							A2(
-								$elm$parser$Parser$Advanced$ignorer,
-								$elm$parser$Parser$Advanced$succeed(externalBuilder),
-								$elm$parser$Parser$Advanced$symbol(
-									A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$NotMetadata))),
-							$author$project$Stabel$Parser$symbolImplParser),
-						A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modulePathParser)),
-						A2(
-						$elm$parser$Parser$Advanced$keeper,
-						A2(
-							$elm$parser$Parser$Advanced$keeper,
-							$elm$parser$Parser$Advanced$succeed(internalBuilder),
-							$author$project$Stabel$Parser$symbolImplParser),
-						$elm$parser$Parser$Advanced$oneOf(
-							_List_fromArray(
-								[
-									A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modulePathParser),
-									$elm$parser$Parser$Advanced$succeed(
-									_Utils_Tuple2(_List_Nil, ''))
-								])))
-					])),
-			$author$project$Stabel$Parser$noiseParser));
-}();
-var $author$project$Stabel$Parser$nodeParser = $elm$parser$Parser$Advanced$oneOf(
-	_List_fromArray(
-		[
-			A2(
-			$elm$parser$Parser$Advanced$keeper,
-			A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$keeper,
-					$elm$parser$Parser$Advanced$succeed(
-						F3(
-							function (startLoc, value, endLoc) {
-								return A2(
-									$author$project$Stabel$Parser$Integer,
-									A2($author$project$Stabel$Data$SourceLocation$SourceLocationRange, startLoc, endLoc),
-									value);
-							})),
-					$author$project$Stabel$Parser$sourceLocationParser),
-				$author$project$Stabel$Parser$intParser),
-			$author$project$Stabel$Parser$sourceLocationParser),
-			A2(
-			$elm$parser$Parser$Advanced$keeper,
-			A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$keeper,
-					$elm$parser$Parser$Advanced$succeed(
-						F3(
-							function (startLoc, builder, endLoc) {
-								return builder(
-									A2($author$project$Stabel$Data$SourceLocation$SourceLocationRange, startLoc, endLoc));
-							})),
-					$author$project$Stabel$Parser$sourceLocationParser),
-				$author$project$Stabel$Parser$symbolImplParser2),
-			$author$project$Stabel$Parser$sourceLocationParser)
-		]));
+var $author$project$Stabel$Parser$noiseParser = A2($elm$parser$Parser$Advanced$loop, 0, $author$project$Stabel$Parser$noiseParserLoop);
 var $author$project$Stabel$Parser$implementationParserHelp = function (nodes) {
 	return $elm$parser$Parser$Advanced$oneOf(
 		_List_fromArray(
@@ -6240,7 +8440,7 @@ var $author$project$Stabel$Parser$implementationParserHelp = function (nodes) {
 						return $elm$parser$Parser$Advanced$Loop(
 							A2($elm$core$List$cons, node, nodes));
 					}),
-				$author$project$Stabel$Parser$nodeParser),
+				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$nodeParser, $author$project$Stabel$Parser$noiseParser)),
 				A2(
 				$elm$parser$Parser$Advanced$keeper,
 				A2(
@@ -6254,8 +8454,8 @@ var $author$project$Stabel$Parser$implementationParserHelp = function (nodes) {
 										A2(
 											$elm$core$List$cons,
 											A2(
-												$author$project$Stabel$Parser$Quotation,
-												A2($author$project$Stabel$Data$SourceLocation$SourceLocationRange, startLoc, endLoc),
+												$author$project$Stabel$Parser$InlineFunction,
+												A2($author$project$Stabel$Parser$SourceLocation$SourceLocationRange, startLoc, endLoc),
 												quotImpl),
 											nodes));
 								})),
@@ -6281,119 +8481,218 @@ var $author$project$Stabel$Parser$implementationParserHelp = function (nodes) {
 function $author$project$Stabel$Parser$cyclic$implementationParser() {
 	return A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$implementationParserHelp);
 }
-try {
-	var $author$project$Stabel$Parser$implementationParser = $author$project$Stabel$Parser$cyclic$implementationParser();
-	$author$project$Stabel$Parser$cyclic$implementationParser = function () {
-		return $author$project$Stabel$Parser$implementationParser;
+var $author$project$Stabel$Parser$implementationParser = $author$project$Stabel$Parser$cyclic$implementationParser();
+$author$project$Stabel$Parser$cyclic$implementationParser = function () {
+	return $author$project$Stabel$Parser$implementationParser;
+};
+var $elm$parser$Parser$Advanced$Located = F3(
+	function (row, col, context) {
+		return {aD: col, W: context, S: row};
+	});
+var $elm$parser$Parser$Advanced$changeContext = F2(
+	function (newContext, s) {
+		return {aD: s.aD, W: newContext, e: s.e, c: s.c, S: s.S, b: s.b};
+	});
+var $elm$parser$Parser$Advanced$inContext = F2(
+	function (context, _v0) {
+		var parse = _v0;
+		return function (s0) {
+			var _v1 = parse(
+				A2(
+					$elm$parser$Parser$Advanced$changeContext,
+					A2(
+						$elm$core$List$cons,
+						A3($elm$parser$Parser$Advanced$Located, s0.S, s0.aD, context),
+						s0.W),
+					s0));
+			if (!_v1.$) {
+				var p = _v1.a;
+				var a = _v1.b;
+				var s1 = _v1.c;
+				return A3(
+					$elm$parser$Parser$Advanced$Good,
+					p,
+					a,
+					A2($elm$parser$Parser$Advanced$changeContext, s0.W, s1));
+			} else {
+				var step = _v1;
+				return step;
+			}
+		};
+	});
+var $elm$parser$Parser$Advanced$keyword = function (_v0) {
+	var kwd = _v0.a;
+	var expecting = _v0.b;
+	var progress = !$elm$core$String$isEmpty(kwd);
+	return function (s) {
+		var _v1 = A5($elm$parser$Parser$Advanced$isSubString, kwd, s.c, s.S, s.aD, s.b);
+		var newOffset = _v1.a;
+		var newRow = _v1.b;
+		var newCol = _v1.c;
+		return (_Utils_eq(newOffset, -1) || (0 <= A3(
+			$elm$parser$Parser$Advanced$isSubChar,
+			function (c) {
+				return $elm$core$Char$isAlphaNum(c) || (c === '_');
+			},
+			newOffset,
+			s.b))) ? A2(
+			$elm$parser$Parser$Advanced$Bad,
+			false,
+			A2($elm$parser$Parser$Advanced$fromState, s, expecting)) : A3(
+			$elm$parser$Parser$Advanced$Good,
+			progress,
+			0,
+			{aD: newCol, W: s.W, e: s.e, c: newOffset, S: newRow, b: s.b});
 	};
-} catch ($) {
-	throw 'Some top-level definitions from `Stabel.Parser` are causing infinite recursion:\n\n  ┌─────┐\n  │    implementationParser\n  │     ↓\n  │    implementationParserHelp\n  └─────┘\n\nThese errors are very tricky, so read https://elm-lang.org/0.19.1/bad-recursion to learn how to fix it!';}
-var $author$project$Stabel$Parser$Problem$ExpectedLeftParen = {$: 'ExpectedLeftParen'};
-var $author$project$Stabel$Parser$Problem$ExpectedRightParen = {$: 'ExpectedRightParen'};
-var $author$project$Stabel$Parser$LiteralInt = function (a) {
-	return {$: 'LiteralInt', a: a};
 };
-var $author$project$Stabel$Parser$LiteralType = function (a) {
-	return {$: 'LiteralType', a: a};
-};
-var $author$project$Stabel$Parser$RecursiveMatch = function (a) {
-	return {$: 'RecursiveMatch', a: a};
-};
-var $author$project$Stabel$Parser$TypeMatch = F3(
-	function (a, b, c) {
-		return {$: 'TypeMatch', a: a, b: b, c: c};
+var $elm$parser$Parser$Advanced$map = F2(
+	function (func, _v0) {
+		var parse = _v0;
+		return function (s0) {
+			var _v1 = parse(s0);
+			if (!_v1.$) {
+				var p = _v1.a;
+				var a = _v1.b;
+				var s1 = _v1.c;
+				return A3(
+					$elm$parser$Parser$Advanced$Good,
+					p,
+					func(a),
+					s1);
+			} else {
+				var p = _v1.a;
+				var x = _v1.b;
+				return A2($elm$parser$Parser$Advanced$Bad, p, x);
+			}
+		};
 	});
-var $author$project$Stabel$Parser$symbolParser = $elm$parser$Parser$Advanced$backtrackable(
-	A2(
-		$elm$parser$Parser$Advanced$ignorer,
-		A2(
-			$elm$parser$Parser$Advanced$ignorer,
-			$elm$parser$Parser$Advanced$variable(
-				{
-					expecting: $author$project$Stabel$Parser$Problem$NotSymbol,
-					inner: $author$project$Stabel$Parser$validSymbolChar,
-					reserved: $elm$core$Set$empty,
-					start: function (c) {
-						return !($elm$core$Char$isDigit(c) || ($elm$core$Char$isUpper(c) || A2($elm$core$Set$member, c, $author$project$Stabel$Parser$invalidSymbolChars)));
-					}
-				}),
-			$elm$parser$Parser$Advanced$oneOf(
+var $author$project$Stabel$Parser$modulePathStringParser = function () {
+	var joiner = function (_v0) {
+		var path = _v0.a;
+		var sym = _v0.b;
+		return A2(
+			$elm$core$String$join,
+			'/',
+			_Utils_ap(
+				path,
 				_List_fromArray(
-					[
-						A2(
-						$elm$parser$Parser$Advanced$andThen,
-						function (_v0) {
-							return $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$FoundMetadata);
-						},
-						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-							$elm$parser$Parser$Advanced$symbol(
-								A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NotMetadata)))),
-						$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity)
-					]))),
-		$author$project$Stabel$Parser$noiseParser));
-var $author$project$Stabel$Parser$ExternalRef = F3(
-	function (a, b, c) {
-		return {$: 'ExternalRef', a: a, b: b, c: c};
+					[sym])));
+	};
+	return $elm$parser$Parser$Advanced$oneOf(
+		_List_fromArray(
+			[
+				A2(
+				$elm$parser$Parser$Advanced$map,
+				joiner,
+				A2(
+					$elm$parser$Parser$Advanced$andThen,
+					function (sym) {
+						return A2(
+							$elm$parser$Parser$Advanced$loop,
+							_List_fromArray(
+								[sym]),
+							$author$project$Stabel$Parser$modulePathParser);
+					},
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
+						$author$project$Stabel$Parser$symbolImplParser))),
+				A2(
+				$elm$parser$Parser$Advanced$keeper,
+				$elm$parser$Parser$Advanced$succeed(
+					function (res) {
+						return '/' + joiner(res);
+					}),
+				A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modulePathParser))
+			]));
+}();
+var $author$project$Stabel$Parser$symbolImplListParser = function (symbols) {
+	return $elm$parser$Parser$Advanced$oneOf(
+		_List_fromArray(
+			[
+				A2(
+				$elm$parser$Parser$Advanced$keeper,
+				$elm$parser$Parser$Advanced$succeed(
+					function (sym) {
+						return $elm$parser$Parser$Advanced$Loop(
+							A2($elm$core$List$cons, sym, symbols));
+					}),
+				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$symbolImplParser, $author$project$Stabel$Parser$noiseParser)),
+				$elm$parser$Parser$Advanced$succeed(
+				$elm$parser$Parser$Advanced$Done(
+					$elm$core$List$reverse(symbols)))
+			]));
+};
+var $author$project$Stabel$Parser$symbolParser = $author$project$Stabel$Parser$symbolParserHelp(
+	function (c) {
+		return !($elm$core$Char$isDigit(c) || ($elm$core$Char$isUpper(c) || A2($elm$core$Set$member, c, $author$project$Stabel$Parser$invalidSymbolChars)));
 	});
-var $author$project$Stabel$Parser$InternalRef = F3(
-	function (a, b, c) {
-		return {$: 'InternalRef', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$Parser$Problem$NotGeneric = {$: 'NotGeneric'};
+var $author$project$Stabel$Parser$Problem$ExpectedTypeSeperator = {$: 12};
+var $author$project$Stabel$Parser$Type$FunctionType = function (a) {
+	return {$: 4, a: a};
+};
+var $author$project$Stabel$Parser$Type$NotStackRange = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Stabel$Parser$Type$Generic = function (a) {
+	return {$: 3, a: a};
+};
+var $author$project$Stabel$Parser$Type$StackRange = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Stabel$Parser$Problem$ExpectedGeneric = {$: 3};
 var $author$project$Stabel$Parser$genericParser = $elm$parser$Parser$Advanced$backtrackable(
-	A2(
-		$elm$parser$Parser$Advanced$ignorer,
-		$elm$parser$Parser$Advanced$oneOf(
+	$elm$parser$Parser$Advanced$oneOf(
+		_List_fromArray(
+			[
+				A2(
+				$elm$parser$Parser$Advanced$andThen,
+				function (_v0) {
+					return $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$ExpectedGeneric);
+				},
+				A2(
+					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
+					$elm$parser$Parser$Advanced$symbol(
+						A2($elm$parser$Parser$Advanced$Token, '-', $author$project$Stabel$Parser$Problem$UnknownError)))),
+				$author$project$Stabel$Parser$symbolParser
+			])));
+var $author$project$Stabel$Parser$genericOrRangeParser = function () {
+	var helper = function (value) {
+		return $elm$parser$Parser$Advanced$oneOf(
 			_List_fromArray(
 				[
 					A2(
-					$elm$parser$Parser$Advanced$andThen,
-					function (_v0) {
-						return $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$NotGeneric);
-					},
+					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$succeed(
+						$author$project$Stabel$Parser$Type$StackRange(value)),
+					$elm$parser$Parser$Advanced$symbol(
+						A2($elm$parser$Parser$Advanced$Token, '...', $author$project$Stabel$Parser$Problem$UnknownError))),
 					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-						$elm$parser$Parser$Advanced$symbol(
-							A2($elm$parser$Parser$Advanced$Token, '-', $author$project$Stabel$Parser$Problem$NoProblem)))),
-					$author$project$Stabel$Parser$symbolParser
-				])),
-		$author$project$Stabel$Parser$noiseParser));
-var $author$project$Stabel$Parser$symbolParser2 = $elm$parser$Parser$Advanced$backtrackable(
-	A2(
-		$elm$parser$Parser$Advanced$ignorer,
-		$elm$parser$Parser$Advanced$variable(
-			{
-				expecting: $author$project$Stabel$Parser$Problem$NotSymbol,
-				inner: $author$project$Stabel$Parser$validSymbolChar,
-				reserved: $elm$core$Set$empty,
-				start: function (c) {
-					return !($elm$core$Char$isDigit(c) || ($elm$core$Char$isUpper(c) || A2($elm$core$Set$member, c, $author$project$Stabel$Parser$invalidSymbolChars)));
-				}
-			}),
-		$elm$parser$Parser$Advanced$oneOf(
-			_List_fromArray(
-				[
+					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$succeed(
+						$author$project$Stabel$Parser$Type$NotStackRange(
+							$author$project$Stabel$Parser$Type$Generic(value))),
 					A2(
-					$elm$parser$Parser$Advanced$andThen,
-					function (_v0) {
-						return $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$FoundMetadata);
-					},
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-						$elm$parser$Parser$Advanced$symbol(
-							A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NotMetadata)))),
-					$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity)
-				]))));
-var $author$project$Stabel$Parser$Problem$NotType = {$: 'NotType'};
-var $author$project$Stabel$Parser$typeNameParser = A2(
-	$elm$parser$Parser$Advanced$ignorer,
-	$elm$parser$Parser$Advanced$variable(
-		{expecting: $author$project$Stabel$Parser$Problem$NotType, inner: $author$project$Stabel$Parser$validSymbolChar, reserved: $elm$core$Set$empty, start: $elm$core$Char$isUpper}),
-	$author$project$Stabel$Parser$noiseParser);
+						$elm$parser$Parser$Advanced$chompIf,
+						function (c) {
+							return A2($elm$core$Set$member, c, $author$project$Stabel$Parser$whitespaceChars);
+						},
+						$author$project$Stabel$Parser$Problem$ExpectedWhitespace))
+				]));
+	};
+	return A2($elm$parser$Parser$Advanced$andThen, helper, $author$project$Stabel$Parser$genericParser);
+}();
+var $author$project$Stabel$Parser$Problem$ExpectedForwardSlash = {$: 6};
+var $author$project$Stabel$Parser$Problem$ExpectedLeftParen = {$: 9};
+var $author$project$Stabel$Parser$Problem$ExpectedRightParen = {$: 10};
+var $author$project$Stabel$Parser$Type$LocalRef = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$Problem$ExpectedType = {$: 4};
+var $author$project$Stabel$Parser$typeNameParser = $elm$parser$Parser$Advanced$variable(
+	{Z: $author$project$Stabel$Parser$Problem$ExpectedType, ab: $author$project$Stabel$Parser$validSymbolChar, ai: $elm$core$Set$empty, bJ: $elm$core$Char$isUpper});
 var $author$project$Stabel$Parser$modularizedTypeRefParser = function (reversedPath) {
 	var onType = function (type_) {
 		return $elm$parser$Parser$Advanced$Done(
@@ -6417,18 +8716,17 @@ var $author$project$Stabel$Parser$modularizedTypeRefParser = function (reversedP
 				$elm$parser$Parser$Advanced$succeed(addToPath),
 				A2(
 					$elm$parser$Parser$Advanced$ignorer,
-					$author$project$Stabel$Parser$symbolParser2,
+					$author$project$Stabel$Parser$symbolParser,
 					$elm$parser$Parser$Advanced$symbol(
-						A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$NoProblem))))
+						A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$ExpectedForwardSlash))))
 			]));
 };
 var $elm$parser$Parser$Advanced$lazy = function (thunk) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			var _v0 = thunk(_Utils_Tuple0);
-			var parse = _v0.a;
-			return parse(s);
-		});
+	return function (s) {
+		var _v0 = thunk(0);
+		var parse = _v0;
+		return parse(s);
+	};
 };
 var $author$project$Stabel$Parser$typeOrGenericParser = function (types) {
 	return $elm$parser$Parser$Advanced$oneOf(
@@ -6441,10 +8739,10 @@ var $author$project$Stabel$Parser$typeOrGenericParser = function (types) {
 						return $elm$parser$Parser$Advanced$Loop(
 							A2(
 								$elm$core$List$cons,
-								A2($author$project$Stabel$Parser$LocalRef, name, _List_Nil),
+								A2($author$project$Stabel$Parser$Type$LocalRef, name, _List_Nil),
 								types));
 					}),
-				$author$project$Stabel$Parser$typeNameParser),
+				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$typeNameParser, $author$project$Stabel$Parser$noiseParser)),
 				A2(
 				$elm$parser$Parser$Advanced$keeper,
 				$elm$parser$Parser$Advanced$succeed(
@@ -6452,10 +8750,10 @@ var $author$project$Stabel$Parser$typeOrGenericParser = function (types) {
 						return $elm$parser$Parser$Advanced$Loop(
 							A2(
 								$elm$core$List$cons,
-								$author$project$Stabel$Parser$Generic(name),
+								$author$project$Stabel$Parser$Type$Generic(name),
 								types));
 					}),
-				$author$project$Stabel$Parser$genericParser),
+				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$genericParser, $author$project$Stabel$Parser$noiseParser)),
 				$elm$parser$Parser$Advanced$succeed(
 				$elm$parser$Parser$Advanced$Done(
 					$elm$core$List$reverse(types)))
@@ -6469,8 +8767,8 @@ function $author$project$Stabel$Parser$cyclic$typeRefParser() {
 				$elm$parser$Parser$Advanced$keeper,
 				A2(
 					$elm$parser$Parser$Advanced$keeper,
-					$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$LocalRef),
-					$author$project$Stabel$Parser$typeNameParser),
+					$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Type$LocalRef),
+					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$typeNameParser, $author$project$Stabel$Parser$noiseParser)),
 				A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeOrGenericParser)),
 				A2(
 				$elm$parser$Parser$Advanced$keeper,
@@ -6483,11 +8781,14 @@ function $author$project$Stabel$Parser$cyclic$typeRefParser() {
 								function (_v0, binds) {
 									var path = _v0.a;
 									var name = _v0.b;
-									return A3($author$project$Stabel$Parser$ExternalRef, path, name, binds);
+									return A3($author$project$Stabel$Parser$Type$ExternalRef, path, name, binds);
 								})),
 						$elm$parser$Parser$Advanced$symbol(
-							A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$NoProblem))),
-					A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser)),
+							A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$ExpectedForwardSlash))),
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser),
+						$author$project$Stabel$Parser$noiseParser)),
 				A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeOrGenericParser)),
 				A2(
 				$elm$parser$Parser$Advanced$keeper,
@@ -6498,14 +8799,17 @@ function $author$project$Stabel$Parser$cyclic$typeRefParser() {
 							function (_v1, binds) {
 								var path = _v1.a;
 								var name = _v1.b;
-								return A3($author$project$Stabel$Parser$InternalRef, path, name, binds);
+								return A3($author$project$Stabel$Parser$Type$InternalRef, path, name, binds);
 							})),
-					A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser)),
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser),
+						$author$project$Stabel$Parser$noiseParser)),
 				A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeOrGenericParser)),
 				A2(
 				$elm$parser$Parser$Advanced$keeper,
-				$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Generic),
-				$author$project$Stabel$Parser$genericParser),
+				$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Type$Generic),
+				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$genericParser, $author$project$Stabel$Parser$noiseParser)),
 				A2(
 				$elm$parser$Parser$Advanced$keeper,
 				A2(
@@ -6529,21 +8833,18 @@ function $author$project$Stabel$Parser$cyclic$typeRefParser() {
 					$author$project$Stabel$Parser$noiseParser))
 			]));
 }
-try {
-	var $author$project$Stabel$Parser$typeRefParser = $author$project$Stabel$Parser$cyclic$typeRefParser();
-	$author$project$Stabel$Parser$cyclic$typeRefParser = function () {
-		return $author$project$Stabel$Parser$typeRefParser;
-	};
-} catch ($) {
-	throw 'Some top-level definitions from `Stabel.Parser` are causing infinite recursion:\n\n  ┌─────┐\n  │    typeRefParser\n  └─────┘\n\nThese errors are very tricky, so read https://elm-lang.org/0.19.1/bad-recursion to learn how to fix it!';}
-var $author$project$Stabel$Parser$typeMatchTypeParser = $elm$parser$Parser$Advanced$oneOf(
+var $author$project$Stabel$Parser$typeRefParser = $author$project$Stabel$Parser$cyclic$typeRefParser();
+$author$project$Stabel$Parser$cyclic$typeRefParser = function () {
+	return $author$project$Stabel$Parser$typeRefParser;
+};
+var $author$project$Stabel$Parser$typeSignatureRefParser = $elm$parser$Parser$Advanced$oneOf(
 	_List_fromArray(
 		[
 			A2(
 			$elm$parser$Parser$Advanced$keeper,
 			$elm$parser$Parser$Advanced$succeed(
 				function (name) {
-					return A2($author$project$Stabel$Parser$LocalRef, name, _List_Nil);
+					return A2($author$project$Stabel$Parser$Type$LocalRef, name, _List_Nil);
 				}),
 			$author$project$Stabel$Parser$typeNameParser),
 			A2(
@@ -6554,10 +8855,10 @@ var $author$project$Stabel$Parser$typeMatchTypeParser = $elm$parser$Parser$Advan
 					function (_v0) {
 						var path = _v0.a;
 						var name = _v0.b;
-						return A3($author$project$Stabel$Parser$ExternalRef, path, name, _List_Nil);
+						return A3($author$project$Stabel$Parser$Type$ExternalRef, path, name, _List_Nil);
 					}),
 				$elm$parser$Parser$Advanced$symbol(
-					A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$NoProblem))),
+					A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$ExpectedForwardSlash))),
 			A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser)),
 			A2(
 			$elm$parser$Parser$Advanced$keeper,
@@ -6565,12 +8866,12 @@ var $author$project$Stabel$Parser$typeMatchTypeParser = $elm$parser$Parser$Advan
 				function (_v1) {
 					var path = _v1.a;
 					var name = _v1.b;
-					return A3($author$project$Stabel$Parser$InternalRef, path, name, _List_Nil);
+					return A3($author$project$Stabel$Parser$Type$InternalRef, path, name, _List_Nil);
 				}),
 			A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser)),
 			A2(
 			$elm$parser$Parser$Advanced$keeper,
-			$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Generic),
+			$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Type$Generic),
 			$author$project$Stabel$Parser$genericParser),
 			A2(
 			$elm$parser$Parser$Advanced$keeper,
@@ -6584,12 +8885,405 @@ var $author$project$Stabel$Parser$typeMatchTypeParser = $elm$parser$Parser$Advan
 				$author$project$Stabel$Parser$noiseParser),
 			A2(
 				$elm$parser$Parser$Advanced$ignorer,
+				$author$project$Stabel$Parser$typeRefParser,
+				$elm$parser$Parser$Advanced$symbol(
+					A2($elm$parser$Parser$Advanced$Token, ')', $author$project$Stabel$Parser$Problem$ExpectedRightParen))))
+		]));
+var $author$project$Stabel$Parser$typeLoopParser = function (reverseTypes) {
+	var step = function (type_) {
+		return $elm$parser$Parser$Advanced$Loop(
+			A2($elm$core$List$cons, type_, reverseTypes));
+	};
+	return $elm$parser$Parser$Advanced$oneOf(
+		_List_fromArray(
+			[
+				A2(
+				$elm$parser$Parser$Advanced$keeper,
+				$elm$parser$Parser$Advanced$succeed(step),
+				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$genericOrRangeParser, $author$project$Stabel$Parser$noiseParser)),
+				A2(
+				$elm$parser$Parser$Advanced$keeper,
+				$elm$parser$Parser$Advanced$succeed(
+					A2($elm$core$Basics$composeR, $author$project$Stabel$Parser$Type$NotStackRange, step)),
+				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$typeSignatureRefParser, $author$project$Stabel$Parser$noiseParser)),
+				A2(
+				$elm$parser$Parser$Advanced$keeper,
 				A2(
 					$elm$parser$Parser$Advanced$ignorer,
-					$author$project$Stabel$Parser$typeRefParser,
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						$elm$parser$Parser$Advanced$succeed(
+							function (functionType) {
+								return step(
+									$author$project$Stabel$Parser$Type$NotStackRange(
+										$author$project$Stabel$Parser$Type$FunctionType(functionType)));
+							}),
+						$elm$parser$Parser$Advanced$symbol(
+							A2($elm$parser$Parser$Advanced$Token, '[', $author$project$Stabel$Parser$Problem$ExpectedLeftBracket))),
+					$author$project$Stabel$Parser$noiseParser),
+				A2(
+					$elm$parser$Parser$Advanced$ignorer,
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						$author$project$Stabel$Parser$cyclic$typeSignatureParser(),
+						$elm$parser$Parser$Advanced$symbol(
+							A2($elm$parser$Parser$Advanced$Token, ']', $author$project$Stabel$Parser$Problem$ExpectedRightBracket))),
+					$author$project$Stabel$Parser$noiseParser)),
+				$elm$parser$Parser$Advanced$succeed(
+				$elm$parser$Parser$Advanced$Done(
+					$elm$core$List$reverse(reverseTypes)))
+			]));
+};
+function $author$project$Stabel$Parser$cyclic$typeSignatureParser() {
+	return A2(
+		$elm$parser$Parser$Advanced$keeper,
+		A2(
+			$elm$parser$Parser$Advanced$keeper,
+			$elm$parser$Parser$Advanced$succeed(
+				F2(
+					function (input, output) {
+						return {o: input, H: output};
+					})),
+			A2(
+				$elm$parser$Parser$Advanced$ignorer,
+				A2(
+					$elm$parser$Parser$Advanced$ignorer,
+					A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeLoopParser),
 					$elm$parser$Parser$Advanced$symbol(
-						A2($elm$parser$Parser$Advanced$Token, ')', $author$project$Stabel$Parser$Problem$ExpectedRightParen))),
-				$author$project$Stabel$Parser$noiseParser))
+						A2($elm$parser$Parser$Advanced$Token, '--', $author$project$Stabel$Parser$Problem$ExpectedTypeSeperator))),
+				$author$project$Stabel$Parser$noiseParser)),
+		A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeLoopParser));
+}
+var $author$project$Stabel$Parser$typeSignatureParser = $author$project$Stabel$Parser$cyclic$typeSignatureParser();
+$author$project$Stabel$Parser$cyclic$typeSignatureParser = function () {
+	return $author$project$Stabel$Parser$typeSignatureParser;
+};
+var $author$project$Stabel$Parser$functionMetadataParser = function (def) {
+	return $elm$parser$Parser$Advanced$oneOf(
+		_List_fromArray(
+			[
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$TypeKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							$elm$parser$Parser$Advanced$succeed(
+								function (typeSign) {
+									return $elm$parser$Parser$Advanced$Loop(
+										_Utils_update(
+											def,
+											{
+												bO: $author$project$Stabel$Parser$AssociatedFunctionSignature$UserProvided(typeSign)
+											}));
+								}),
+							$elm$parser$Parser$Advanced$keyword(
+								A2($elm$parser$Parser$Advanced$Token, 'type:', $author$project$Stabel$Parser$Problem$UnknownError))),
+						$author$project$Stabel$Parser$noiseParser),
+					$author$project$Stabel$Parser$typeSignatureParser)),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$AliasKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(
+									F2(
+										function (alias, value) {
+											return $elm$parser$Parser$Advanced$Loop(
+												_Utils_update(
+													def,
+													{
+														q: A3($elm$core$Dict$insert, alias, value, def.q)
+													}));
+										})),
+								$elm$parser$Parser$Advanced$keyword(
+									A2($elm$parser$Parser$Advanced$Token, 'alias:', $author$project$Stabel$Parser$Problem$UnknownError))),
+							$author$project$Stabel$Parser$noiseParser),
+						A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$symbolParser, $author$project$Stabel$Parser$noiseParser)),
+					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser))),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$ImportKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(
+									F2(
+										function (mod, vals) {
+											return $elm$parser$Parser$Advanced$Loop(
+												_Utils_update(
+													def,
+													{
+														t: A3($elm$core$Dict$insert, mod, vals, def.t)
+													}));
+										})),
+								$elm$parser$Parser$Advanced$keyword(
+									A2($elm$parser$Parser$Advanced$Token, 'import:', $author$project$Stabel$Parser$Problem$UnknownError))),
+							$author$project$Stabel$Parser$noiseParser),
+						A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser)),
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$symbolImplListParser),
+						$author$project$Stabel$Parser$noiseParser))),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$ImplementationKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							$elm$parser$Parser$Advanced$succeed(
+								function (impl) {
+									return $elm$parser$Parser$Advanced$Loop(
+										_Utils_update(
+											def,
+											{
+												aL: $author$project$Stabel$Parser$SoloImpl(impl)
+											}));
+								}),
+							$elm$parser$Parser$Advanced$keyword(
+								A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$UnknownError))),
+						$author$project$Stabel$Parser$noiseParser),
+					$author$project$Stabel$Parser$implementationParser)),
+				A2(
+				$elm$parser$Parser$Advanced$andThen,
+				$elm$parser$Parser$Advanced$problem,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Problem$UnknownMetadata),
+					$author$project$Stabel$Parser$definitionMetadataParser)),
+				$elm$parser$Parser$Advanced$succeed(
+				$elm$parser$Parser$Advanced$Done(def))
+			]));
+};
+var $author$project$Stabel$Parser$functionDefinitionParser = F2(
+	function (definedFunctions, _v0) {
+		var startLocation = _v0.a;
+		var name = _v0.b;
+		var joinParseResults = F2(
+			function (def, endLocation) {
+				return _Utils_update(
+					def,
+					{
+						w: $elm$core$Maybe$Just(
+							{bd: endLocation, bJ: startLocation})
+					});
+			});
+		var emptyDef = {
+			q: $elm$core$Dict$empty,
+			aL: $author$project$Stabel$Parser$SoloImpl(_List_Nil),
+			t: $elm$core$Dict$empty,
+			m: name,
+			w: $elm$core$Maybe$Nothing,
+			bO: $author$project$Stabel$Parser$AssociatedFunctionSignature$NotProvided
+		};
+		return A2(
+			$elm$parser$Parser$Advanced$inContext,
+			A2($author$project$Stabel$Parser$Problem$FunctionDefinition, startLocation, name),
+			function () {
+				var _v1 = A2($elm$core$Dict$get, name, definedFunctions);
+				if (!_v1.$) {
+					var previousDefinition = _v1.a;
+					return $elm$parser$Parser$Advanced$problem(
+						A2($author$project$Stabel$Parser$Problem$FunctionAlreadyDefined, name, previousDefinition.w));
+				} else {
+					return A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$keeper,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(joinParseResults),
+								$author$project$Stabel$Parser$noiseParser),
+							A2($elm$parser$Parser$Advanced$loop, emptyDef, $author$project$Stabel$Parser$functionMetadataParser)),
+						$author$project$Stabel$Parser$sourceLocationParser);
+				}
+			}());
+	});
+var $author$project$Stabel$Parser$ConstructType = function (a) {
+	return {$: 5, a: a};
+};
+var $author$project$Stabel$Parser$GetMember = F2(
+	function (a, b) {
+		return {$: 6, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$SetMember = F2(
+	function (a, b) {
+		return {$: 7, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$AssociatedFunctionSignature$Verified = function (a) {
+	return {$: 2, a: a};
+};
+var $author$project$Stabel$Parser$generateDefaultFunctionsForType = function (typeDef) {
+	var _v0 = typeDef.aQ;
+	if (_v0.$ === 1) {
+		return _List_Nil;
+	} else {
+		var typeMembers = _v0.a;
+		var typeOfType = $author$project$Stabel$Parser$Type$NotStackRange(
+			A2(
+				$author$project$Stabel$Parser$Type$LocalRef,
+				typeDef.m,
+				A2($elm$core$List$map, $author$project$Stabel$Parser$Type$Generic, typeDef._)));
+		var setterGetterPair = function (_v1) {
+			var memberName = _v1.a;
+			var memberType = _v1.b;
+			return _List_fromArray(
+				[
+					{
+					q: $elm$core$Dict$empty,
+					aL: $author$project$Stabel$Parser$SoloImpl(
+						_List_fromArray(
+							[
+								A2($author$project$Stabel$Parser$SetMember, typeDef.m, memberName)
+							])),
+					t: $elm$core$Dict$empty,
+					m: '>' + memberName,
+					w: $elm$core$Maybe$Nothing,
+					bO: $author$project$Stabel$Parser$AssociatedFunctionSignature$Verified(
+						{
+							o: _List_fromArray(
+								[
+									typeOfType,
+									$author$project$Stabel$Parser$Type$NotStackRange(memberType)
+								]),
+							H: _List_fromArray(
+								[typeOfType])
+						})
+				},
+					{
+					q: $elm$core$Dict$empty,
+					aL: $author$project$Stabel$Parser$SoloImpl(
+						_List_fromArray(
+							[
+								A2($author$project$Stabel$Parser$GetMember, typeDef.m, memberName)
+							])),
+					t: $elm$core$Dict$empty,
+					m: memberName + '>',
+					w: $elm$core$Maybe$Nothing,
+					bO: $author$project$Stabel$Parser$AssociatedFunctionSignature$Verified(
+						{
+							o: _List_fromArray(
+								[typeOfType]),
+							H: _List_fromArray(
+								[
+									$author$project$Stabel$Parser$Type$NotStackRange(memberType)
+								])
+						})
+				}
+				]);
+		};
+		var ctorDef = {
+			q: $elm$core$Dict$empty,
+			aL: $author$project$Stabel$Parser$SoloImpl(
+				_List_fromArray(
+					[
+						$author$project$Stabel$Parser$ConstructType(typeDef.m)
+					])),
+			t: $elm$core$Dict$empty,
+			m: $elm$core$List$isEmpty(typeMembers) ? typeDef.m : ('>' + typeDef.m),
+			w: $elm$core$Maybe$Nothing,
+			bO: $author$project$Stabel$Parser$AssociatedFunctionSignature$Verified(
+				{
+					o: A2(
+						$elm$core$List$map,
+						A2($elm$core$Basics$composeL, $author$project$Stabel$Parser$Type$NotStackRange, $elm$core$Tuple$second),
+						typeMembers),
+					H: _List_fromArray(
+						[typeOfType])
+				})
+		};
+		return A2(
+			$elm$core$List$cons,
+			ctorDef,
+			A2($elm$core$List$concatMap, setterGetterPair, typeMembers));
+	}
+};
+var $author$project$Stabel$Parser$MultiImpl = F2(
+	function (a, b) {
+		return {$: 1, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$Problem$MultifunctionDefinition = F2(
+	function (a, b) {
+		return {$: 2, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$Problem$ElseKeyword = {$: 11};
+var $author$project$Stabel$Parser$LiteralInt = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Stabel$Parser$LiteralType = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Stabel$Parser$RecursiveMatch = function (a) {
+	return {$: 2, a: a};
+};
+var $author$project$Stabel$Parser$typeMatchTypeParser = $elm$parser$Parser$Advanced$oneOf(
+	_List_fromArray(
+		[
+			A2(
+			$elm$parser$Parser$Advanced$keeper,
+			$elm$parser$Parser$Advanced$succeed(
+				function (name) {
+					return A2($author$project$Stabel$Parser$Type$LocalRef, name, _List_Nil);
+				}),
+			$author$project$Stabel$Parser$typeNameParser),
+			A2(
+			$elm$parser$Parser$Advanced$keeper,
+			A2(
+				$elm$parser$Parser$Advanced$ignorer,
+				$elm$parser$Parser$Advanced$succeed(
+					function (_v0) {
+						var path = _v0.a;
+						var name = _v0.b;
+						return A3($author$project$Stabel$Parser$Type$ExternalRef, path, name, _List_Nil);
+					}),
+				$elm$parser$Parser$Advanced$symbol(
+					A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$ExpectedForwardSlash))),
+			A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser)),
+			A2(
+			$elm$parser$Parser$Advanced$keeper,
+			$elm$parser$Parser$Advanced$succeed(
+				function (_v1) {
+					var path = _v1.a;
+					var name = _v1.b;
+					return A3($author$project$Stabel$Parser$Type$InternalRef, path, name, _List_Nil);
+				}),
+			A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser)),
+			A2(
+			$elm$parser$Parser$Advanced$keeper,
+			$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Type$Generic),
+			$author$project$Stabel$Parser$genericParser),
+			A2(
+			$elm$parser$Parser$Advanced$keeper,
+			A2(
+				$elm$parser$Parser$Advanced$ignorer,
+				A2(
+					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
+					$elm$parser$Parser$Advanced$symbol(
+						A2($elm$parser$Parser$Advanced$Token, '(', $author$project$Stabel$Parser$Problem$ExpectedLeftParen))),
+				$author$project$Stabel$Parser$noiseParser),
+			A2(
+				$elm$parser$Parser$Advanced$ignorer,
+				$author$project$Stabel$Parser$typeRefParser,
+				$elm$parser$Parser$Advanced$symbol(
+					A2($elm$parser$Parser$Advanced$Token, ')', $author$project$Stabel$Parser$Problem$ExpectedRightParen))))
 		]));
 var $author$project$Stabel$Parser$typeMatchConditionParser = function (nodes) {
 	return $elm$parser$Parser$Advanced$oneOf(
@@ -6608,8 +9302,11 @@ var $author$project$Stabel$Parser$typeMatchConditionParser = function (nodes) {
 										_Utils_Tuple2(name, value),
 										nodes));
 							})),
-					$author$project$Stabel$Parser$symbolParser),
-				$author$project$Stabel$Parser$cyclic$typeMatchValueParser()),
+					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$symbolParser, $author$project$Stabel$Parser$noiseParser)),
+				A2(
+					$elm$parser$Parser$Advanced$ignorer,
+					$author$project$Stabel$Parser$cyclic$typeMatchValueParser(),
+					$author$project$Stabel$Parser$noiseParser)),
 				$elm$parser$Parser$Advanced$succeed(
 				$elm$parser$Parser$Advanced$Done(
 					$elm$core$List$reverse(nodes)))
@@ -6652,7 +9349,7 @@ function $author$project$Stabel$Parser$cyclic$typeMatchParser() {
 							function (startLoc, type_, conds, endLoc) {
 								return A3(
 									$author$project$Stabel$Parser$TypeMatch,
-									A2($author$project$Stabel$Data$SourceLocation$SourceLocationRange, startLoc, endLoc),
+									A2($author$project$Stabel$Parser$SourceLocation$SourceLocationRange, startLoc, endLoc),
 									type_,
 									conds);
 							})),
@@ -6678,183 +9375,20 @@ function $author$project$Stabel$Parser$cyclic$typeMatchParser() {
 								A2($elm$parser$Parser$Advanced$Token, ')', $author$project$Stabel$Parser$Problem$ExpectedRightParen)))),
 						$elm$parser$Parser$Advanced$succeed(_List_Nil)
 					]))),
-		A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$sourceLocationParser, $author$project$Stabel$Parser$noiseParser));
+		$author$project$Stabel$Parser$sourceLocationParser);
 }
-try {
-	var $author$project$Stabel$Parser$typeMatchValueParser = $author$project$Stabel$Parser$cyclic$typeMatchValueParser();
-	$author$project$Stabel$Parser$cyclic$typeMatchValueParser = function () {
-		return $author$project$Stabel$Parser$typeMatchValueParser;
-	};
-	var $author$project$Stabel$Parser$typeMatchParser = $author$project$Stabel$Parser$cyclic$typeMatchParser();
-	$author$project$Stabel$Parser$cyclic$typeMatchParser = function () {
-		return $author$project$Stabel$Parser$typeMatchParser;
-	};
-} catch ($) {
-	throw 'Some top-level definitions from `Stabel.Parser` are causing infinite recursion:\n\n  ┌─────┐\n  │    typeMatchValueParser\n  │     ↓\n  │    typeMatchParser\n  │     ↓\n  │    typeMatchConditionParser\n  └─────┘\n\nThese errors are very tricky, so read https://elm-lang.org/0.19.1/bad-recursion to learn how to fix it!';}
-var $author$project$Stabel$Parser$Problem$ExpectedTypeSeperator = {$: 'ExpectedTypeSeperator'};
-var $author$project$Stabel$Parser$QuotationType = function (a) {
-	return {$: 'QuotationType', a: a};
+var $author$project$Stabel$Parser$typeMatchValueParser = $author$project$Stabel$Parser$cyclic$typeMatchValueParser();
+$author$project$Stabel$Parser$cyclic$typeMatchValueParser = function () {
+	return $author$project$Stabel$Parser$typeMatchValueParser;
 };
-var $author$project$Stabel$Parser$StackRange = function (a) {
-	return {$: 'StackRange', a: a};
+var $author$project$Stabel$Parser$typeMatchParser = $author$project$Stabel$Parser$cyclic$typeMatchParser();
+$author$project$Stabel$Parser$cyclic$typeMatchParser = function () {
+	return $author$project$Stabel$Parser$typeMatchParser;
 };
-var $author$project$Stabel$Parser$genericOrRangeParser = function () {
-	var helper = function (value) {
-		return $elm$parser$Parser$Advanced$oneOf(
-			_List_fromArray(
-				[
-					A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed(
-							$author$project$Stabel$Parser$StackRange(value)),
-						$elm$parser$Parser$Advanced$symbol(
-							A2($elm$parser$Parser$Advanced$Token, '...', $author$project$Stabel$Parser$Problem$NoProblem))),
-					$author$project$Stabel$Parser$noiseParser),
-					A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					$elm$parser$Parser$Advanced$succeed(
-						$author$project$Stabel$Parser$Generic(value)),
-					A2(
-						$elm$parser$Parser$Advanced$chompIf,
-						function (c) {
-							return A2($elm$core$Set$member, c, $author$project$Stabel$Parser$whitespaceChars);
-						},
-						$author$project$Stabel$Parser$Problem$NoProblem))
-				]));
-	};
-	return A2($elm$parser$Parser$Advanced$andThen, helper, $author$project$Stabel$Parser$genericParser);
-}();
-var $author$project$Stabel$Parser$typeSignatureRefParser = $elm$parser$Parser$Advanced$oneOf(
-	_List_fromArray(
-		[
-			A2(
-			$elm$parser$Parser$Advanced$keeper,
-			$elm$parser$Parser$Advanced$succeed(
-				function (name) {
-					return A2($author$project$Stabel$Parser$LocalRef, name, _List_Nil);
-				}),
-			$author$project$Stabel$Parser$typeNameParser),
-			A2(
-			$elm$parser$Parser$Advanced$keeper,
-			A2(
-				$elm$parser$Parser$Advanced$ignorer,
-				$elm$parser$Parser$Advanced$succeed(
-					function (_v0) {
-						var path = _v0.a;
-						var name = _v0.b;
-						return A3($author$project$Stabel$Parser$ExternalRef, path, name, _List_Nil);
-					}),
-				$elm$parser$Parser$Advanced$symbol(
-					A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$NoProblem))),
-			A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser)),
-			A2(
-			$elm$parser$Parser$Advanced$keeper,
-			$elm$parser$Parser$Advanced$succeed(
-				function (_v1) {
-					var path = _v1.a;
-					var name = _v1.b;
-					return A3($author$project$Stabel$Parser$InternalRef, path, name, _List_Nil);
-				}),
-			A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$modularizedTypeRefParser)),
-			A2(
-			$elm$parser$Parser$Advanced$keeper,
-			$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Generic),
-			$author$project$Stabel$Parser$genericParser),
-			A2(
-			$elm$parser$Parser$Advanced$keeper,
-			A2(
-				$elm$parser$Parser$Advanced$ignorer,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-					$elm$parser$Parser$Advanced$symbol(
-						A2($elm$parser$Parser$Advanced$Token, '(', $author$project$Stabel$Parser$Problem$ExpectedLeftParen))),
-				$author$project$Stabel$Parser$noiseParser),
-			A2(
-				$elm$parser$Parser$Advanced$ignorer,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					$author$project$Stabel$Parser$typeRefParser,
-					$elm$parser$Parser$Advanced$symbol(
-						A2($elm$parser$Parser$Advanced$Token, ')', $author$project$Stabel$Parser$Problem$ExpectedRightParen))),
-				$author$project$Stabel$Parser$noiseParser))
-		]));
-var $author$project$Stabel$Parser$typeLoopParser = function (reverseTypes) {
-	var step = function (type_) {
-		return $elm$parser$Parser$Advanced$Loop(
-			A2($elm$core$List$cons, type_, reverseTypes));
-	};
-	return $elm$parser$Parser$Advanced$oneOf(
-		_List_fromArray(
-			[
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				$elm$parser$Parser$Advanced$succeed(step),
-				$author$project$Stabel$Parser$genericOrRangeParser),
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				$elm$parser$Parser$Advanced$succeed(step),
-				$author$project$Stabel$Parser$typeSignatureRefParser),
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed(
-							function (wordType) {
-								return step(
-									$author$project$Stabel$Parser$QuotationType(wordType));
-							}),
-						$elm$parser$Parser$Advanced$symbol(
-							A2($elm$parser$Parser$Advanced$Token, '[', $author$project$Stabel$Parser$Problem$ExpectedLeftBracket))),
-					$author$project$Stabel$Parser$noiseParser),
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$author$project$Stabel$Parser$cyclic$typeSignatureParser(),
-						$elm$parser$Parser$Advanced$symbol(
-							A2($elm$parser$Parser$Advanced$Token, ']', $author$project$Stabel$Parser$Problem$ExpectedRightBracket))),
-					$author$project$Stabel$Parser$noiseParser)),
-				$elm$parser$Parser$Advanced$succeed(
-				$elm$parser$Parser$Advanced$Done(
-					$elm$core$List$reverse(reverseTypes)))
-			]));
-};
-function $author$project$Stabel$Parser$cyclic$typeSignatureParser() {
-	return A2(
-		$elm$parser$Parser$Advanced$keeper,
-		A2(
-			$elm$parser$Parser$Advanced$keeper,
-			$elm$parser$Parser$Advanced$succeed(
-				F2(
-					function (input, output) {
-						return {input: input, output: output};
-					})),
-			A2(
-				$elm$parser$Parser$Advanced$ignorer,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeLoopParser),
-					$elm$parser$Parser$Advanced$symbol(
-						A2($elm$parser$Parser$Advanced$Token, '--', $author$project$Stabel$Parser$Problem$ExpectedTypeSeperator))),
-				$author$project$Stabel$Parser$noiseParser)),
-		A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeLoopParser));
-}
-try {
-	var $author$project$Stabel$Parser$typeSignatureParser = $author$project$Stabel$Parser$cyclic$typeSignatureParser();
-	$author$project$Stabel$Parser$cyclic$typeSignatureParser = function () {
-		return $author$project$Stabel$Parser$typeSignatureParser;
-	};
-} catch ($) {
-	throw 'Some top-level definitions from `Stabel.Parser` are causing infinite recursion:\n\n  ┌─────┐\n  │    typeSignatureParser\n  │     ↓\n  │    typeLoopParser\n  └─────┘\n\nThese errors are very tricky, so read https://elm-lang.org/0.19.1/bad-recursion to learn how to fix it!';}
-var $author$project$Stabel$Parser$multiWordMetadataParser = function (def) {
+var $author$project$Stabel$Parser$multiFunctionMetadataParser = function (def) {
 	var setDefaultImpl = function (impl) {
-		var _v1 = def.implementation;
-		if (_v1.$ === 'MultiImpl') {
+		var _v1 = def.aL;
+		if (_v1.$ === 1) {
 			var whens = _v1.a;
 			return A2($author$project$Stabel$Parser$MultiImpl, whens, impl);
 		} else {
@@ -6862,8 +9396,8 @@ var $author$project$Stabel$Parser$multiWordMetadataParser = function (def) {
 		}
 	};
 	var addWhenImpl = function (impl) {
-		var _v0 = def.implementation;
-		if (_v0.$ === 'MultiImpl') {
+		var _v0 = def.aL;
+		if (_v0.$ === 1) {
 			var whens = _v0.a;
 			var _default = _v0.b;
 			return A2(
@@ -6883,45 +9417,8 @@ var $author$project$Stabel$Parser$multiWordMetadataParser = function (def) {
 		_List_fromArray(
 			[
 				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed(
-							function (typeSign) {
-								return $elm$parser$Parser$Advanced$Loop(
-									_Utils_update(
-										def,
-										{
-											typeSignature: $author$project$Stabel$Parser$UserProvided(typeSign)
-										}));
-							}),
-						$elm$parser$Parser$Advanced$keyword(
-							A2($elm$parser$Parser$Advanced$Token, 'type:', $author$project$Stabel$Parser$Problem$NoProblem))),
-					$author$project$Stabel$Parser$noiseParser),
-				$author$project$Stabel$Parser$typeSignatureParser),
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed(
-							function (impl) {
-								return $elm$parser$Parser$Advanced$Loop(
-									_Utils_update(
-										def,
-										{
-											implementation: setDefaultImpl(impl)
-										}));
-							}),
-						$elm$parser$Parser$Advanced$keyword(
-							A2($elm$parser$Parser$Advanced$Token, 'else:', $author$project$Stabel$Parser$Problem$NoProblem))),
-					$author$project$Stabel$Parser$noiseParser),
-				$author$project$Stabel$Parser$implementationParser),
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$TypeKeyword,
 				A2(
 					$elm$parser$Parser$Advanced$keeper,
 					A2(
@@ -6929,21 +9426,122 @@ var $author$project$Stabel$Parser$multiWordMetadataParser = function (def) {
 						A2(
 							$elm$parser$Parser$Advanced$ignorer,
 							$elm$parser$Parser$Advanced$succeed(
-								F2(
-									function (type_, impl) {
-										return $elm$parser$Parser$Advanced$Loop(
-											_Utils_update(
-												def,
-												{
-													implementation: addWhenImpl(
-														_Utils_Tuple2(type_, impl))
-												}));
-									})),
+								function (typeSign) {
+									return $elm$parser$Parser$Advanced$Loop(
+										_Utils_update(
+											def,
+											{
+												bO: $author$project$Stabel$Parser$AssociatedFunctionSignature$UserProvided(typeSign)
+											}));
+								}),
 							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NoProblem))),
+								A2($elm$parser$Parser$Advanced$Token, 'type:', $author$project$Stabel$Parser$Problem$UnknownError))),
 						$author$project$Stabel$Parser$noiseParser),
-					$author$project$Stabel$Parser$typeMatchParser),
-				$author$project$Stabel$Parser$implementationParser),
+					$author$project$Stabel$Parser$typeSignatureParser)),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$ElseKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							$elm$parser$Parser$Advanced$succeed(
+								function (impl) {
+									return $elm$parser$Parser$Advanced$Loop(
+										_Utils_update(
+											def,
+											{
+												aL: setDefaultImpl(impl)
+											}));
+								}),
+							$elm$parser$Parser$Advanced$keyword(
+								A2($elm$parser$Parser$Advanced$Token, 'else:', $author$project$Stabel$Parser$Problem$UnknownError))),
+						$author$project$Stabel$Parser$noiseParser),
+					$author$project$Stabel$Parser$implementationParser)),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$AliasKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(
+									F2(
+										function (alias, value) {
+											return $elm$parser$Parser$Advanced$Loop(
+												_Utils_update(
+													def,
+													{
+														q: A3($elm$core$Dict$insert, alias, value, def.q)
+													}));
+										})),
+								$elm$parser$Parser$Advanced$keyword(
+									A2($elm$parser$Parser$Advanced$Token, 'alias:', $author$project$Stabel$Parser$Problem$UnknownError))),
+							$author$project$Stabel$Parser$noiseParser),
+						A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$symbolParser, $author$project$Stabel$Parser$noiseParser)),
+					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser))),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$ImportKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(
+									F2(
+										function (mod, vals) {
+											return $elm$parser$Parser$Advanced$Loop(
+												_Utils_update(
+													def,
+													{
+														t: A3($elm$core$Dict$insert, mod, vals, def.t)
+													}));
+										})),
+								$elm$parser$Parser$Advanced$keyword(
+									A2($elm$parser$Parser$Advanced$Token, 'import:', $author$project$Stabel$Parser$Problem$UnknownError))),
+							$author$project$Stabel$Parser$noiseParser),
+						A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser)),
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$symbolImplListParser),
+						$author$project$Stabel$Parser$noiseParser))),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$ImplementationKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(
+									F2(
+										function (type_, impl) {
+											return $elm$parser$Parser$Advanced$Loop(
+												_Utils_update(
+													def,
+													{
+														aL: addWhenImpl(
+															_Utils_Tuple2(type_, impl))
+													}));
+										})),
+								$elm$parser$Parser$Advanced$keyword(
+									A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$UnknownError))),
+							$author$project$Stabel$Parser$noiseParser),
+						A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$typeMatchParser, $author$project$Stabel$Parser$noiseParser)),
+					$author$project$Stabel$Parser$implementationParser)),
 				A2(
 				$elm$parser$Parser$Advanced$andThen,
 				$elm$parser$Parser$Advanced$problem,
@@ -6955,75 +9553,105 @@ var $author$project$Stabel$Parser$multiWordMetadataParser = function (def) {
 				$elm$parser$Parser$Advanced$Done(def))
 			]));
 };
-var $author$project$Stabel$Parser$multiWordDefinitionParser = function (startLocation) {
-	var reverseWhens = function (def) {
-		var _v0 = def.implementation;
-		if (_v0.$ === 'SoloImpl') {
-			return def;
-		} else {
-			var whens = _v0.a;
-			var impl = _v0.b;
-			return _Utils_update(
-				def,
-				{
-					implementation: A2(
-						$author$project$Stabel$Parser$MultiImpl,
-						$elm$core$List$reverse(whens),
-						impl)
-				});
-		}
-	};
-	var joinParseResults = F3(
-		function (name, def, endLocation) {
-			return reverseWhens(
-				_Utils_update(
+var $author$project$Stabel$Parser$multiFunctionDefinitionParser = F2(
+	function (definedFunctions, _v0) {
+		var startLocation = _v0.a;
+		var name = _v0.b;
+		var reverseWhens = function (implementation) {
+			if (!implementation.$) {
+				return implementation;
+			} else {
+				var whens = implementation.a;
+				var impl = implementation.b;
+				return A2(
+					$author$project$Stabel$Parser$MultiImpl,
+					$elm$core$List$reverse(whens),
+					impl);
+			}
+		};
+		var joinParseResults = F2(
+			function (def, endLocation) {
+				return _Utils_update(
 					def,
 					{
-						name: name,
-						sourceLocationRange: $elm$core$Maybe$Just(
-							{end: endLocation, start: startLocation})
-					}));
-		});
-	var emptyDef = {
-		aliases: $elm$core$Dict$empty,
-		implementation: $author$project$Stabel$Parser$SoloImpl(_List_Nil),
-		imports: $elm$core$Dict$empty,
-		name: '',
-		sourceLocationRange: $elm$core$Maybe$Nothing,
-		typeSignature: $author$project$Stabel$Parser$NotProvided
-	};
-	return A2(
-		$elm$parser$Parser$Advanced$keeper,
-		A2(
-			$elm$parser$Parser$Advanced$keeper,
-			A2(
-				$elm$parser$Parser$Advanced$keeper,
-				$elm$parser$Parser$Advanced$succeed(joinParseResults),
-				$author$project$Stabel$Parser$symbolParser),
-			A2($elm$parser$Parser$Advanced$loop, emptyDef, $author$project$Stabel$Parser$multiWordMetadataParser)),
-		$author$project$Stabel$Parser$sourceLocationParser);
+						aL: reverseWhens(def.aL),
+						w: $elm$core$Maybe$Just(
+							{bd: endLocation, bJ: startLocation})
+					});
+			});
+		var emptyDef = {
+			q: $elm$core$Dict$empty,
+			aL: $author$project$Stabel$Parser$SoloImpl(_List_Nil),
+			t: $elm$core$Dict$empty,
+			m: name,
+			w: $elm$core$Maybe$Nothing,
+			bO: $author$project$Stabel$Parser$AssociatedFunctionSignature$NotProvided
+		};
+		return A2(
+			$elm$parser$Parser$Advanced$inContext,
+			A2($author$project$Stabel$Parser$Problem$MultifunctionDefinition, startLocation, name),
+			function () {
+				var _v1 = A2($elm$core$Dict$get, name, definedFunctions);
+				if (!_v1.$) {
+					var previousDefinition = _v1.a;
+					return $elm$parser$Parser$Advanced$problem(
+						A2($author$project$Stabel$Parser$Problem$FunctionAlreadyDefined, name, previousDefinition.w));
+				} else {
+					return A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$keeper,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(joinParseResults),
+								$author$project$Stabel$Parser$noiseParser),
+							A2($elm$parser$Parser$Advanced$loop, emptyDef, $author$project$Stabel$Parser$multiFunctionMetadataParser)),
+						$author$project$Stabel$Parser$sourceLocationParser);
+				}
+			}());
+	});
+var $elm$parser$Parser$Advanced$mapChompedString = F2(
+	function (func, _v0) {
+		var parse = _v0;
+		return function (s0) {
+			var _v1 = parse(s0);
+			if (_v1.$ === 1) {
+				var p = _v1.a;
+				var x = _v1.b;
+				return A2($elm$parser$Parser$Advanced$Bad, p, x);
+			} else {
+				var p = _v1.a;
+				var a = _v1.b;
+				var s1 = _v1.c;
+				return A3(
+					$elm$parser$Parser$Advanced$Good,
+					p,
+					A2(
+						func,
+						A3($elm$core$String$slice, s0.c, s1.c, s0.b),
+						a),
+					s1);
+			}
+		};
+	});
+var $elm$parser$Parser$Advanced$getChompedString = function (parser) {
+	return A2($elm$parser$Parser$Advanced$mapChompedString, $elm$core$Basics$always, parser);
 };
-var $author$project$Stabel$Parser$typeDefinitionLocation = function (typeDef) {
-	if (typeDef.$ === 'CustomTypeDef') {
-		var range = typeDef.a;
-		return range;
-	} else {
-		var range = typeDef.a;
-		return range;
-	}
+var $author$project$Stabel$Parser$textParser = $elm$parser$Parser$Advanced$getChompedString(
+	$elm$parser$Parser$Advanced$chompWhile(
+		function (c) {
+			return !A2($elm$core$Set$member, c, $author$project$Stabel$Parser$whitespaceChars);
+		}));
+var $author$project$Stabel$Parser$Problem$StructDefinition = F2(
+	function (a, b) {
+		return {$: 3, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$StructMembers = function (a) {
+	return {$: 0, a: a};
 };
-var $author$project$Stabel$Parser$typeDefinitionName = function (typeDef) {
-	if (typeDef.$ === 'CustomTypeDef') {
-		var name = typeDef.b;
-		return name;
-	} else {
-		var name = typeDef.b;
-		return name;
-	}
-};
-var $author$project$Stabel$Parser$CustomTypeDef = F4(
-	function (a, b, c, d) {
-		return {$: 'CustomTypeDef', a: a, b: b, c: c, d: d};
+var $author$project$Stabel$Parser$Problem$TypeAlreadyDefined = F2(
+	function (a, b) {
+		return {$: 16, a: a, b: b};
 	});
 var $author$project$Stabel$Parser$typeGenericParser = function (generics) {
 	return $elm$parser$Parser$Advanced$oneOf(
@@ -7036,97 +9664,151 @@ var $author$project$Stabel$Parser$typeGenericParser = function (generics) {
 						return $elm$parser$Parser$Advanced$Loop(
 							A2($elm$core$List$cons, name, generics));
 					}),
-				$author$project$Stabel$Parser$genericParser),
+				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$genericParser, $author$project$Stabel$Parser$noiseParser)),
 				$elm$parser$Parser$Advanced$succeed(
 				$elm$parser$Parser$Advanced$Done(
 					$elm$core$List$reverse(generics)))
 			]));
 };
-var $author$project$Stabel$Parser$typeMemberParser = function (types) {
-	return $elm$parser$Parser$Advanced$oneOf(
-		_List_fromArray(
-			[
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$keeper,
+var $author$project$Stabel$Parser$Problem$MemberKeyword = {$: 9};
+var $author$project$Stabel$Parser$typeMemberParser = F2(
+	function (functions, types) {
+		var alreadyDefinedCheck = function (name) {
+			var setterName = '>' + name;
+			var getterName = name + '>';
+			var _v0 = _Utils_Tuple2(
+				A2($elm$core$Dict$get, getterName, functions),
+				A2($elm$core$Dict$get, setterName, functions));
+			if (!_v0.a.$) {
+				var getter = _v0.a.a;
+				return $elm$parser$Parser$Advanced$problem(
+					A2($author$project$Stabel$Parser$Problem$FunctionAlreadyDefined, getter.m, getter.w));
+			} else {
+				if (!_v0.b.$) {
+					var setter = _v0.b.a;
+					return $elm$parser$Parser$Advanced$problem(
+						A2($author$project$Stabel$Parser$Problem$FunctionAlreadyDefined, setter.m, setter.w));
+				} else {
+					var _v1 = _v0.a;
+					var _v2 = _v0.b;
+					return $elm$parser$Parser$Advanced$succeed(name);
+				}
+			}
+		};
+		return $elm$parser$Parser$Advanced$oneOf(
+			_List_fromArray(
+				[
 					A2(
-						$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$inContext,
+					$author$project$Stabel$Parser$Problem$MemberKeyword,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
 						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$elm$parser$Parser$Advanced$succeed(
-								F2(
-									function (name, type_) {
-										return $elm$parser$Parser$Advanced$Loop(
-											A2(
-												$elm$core$List$cons,
-												_Utils_Tuple2(name, type_),
-												types));
-									})),
-							$elm$parser$Parser$Advanced$symbol(
-								A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NoProblem))),
-						$author$project$Stabel$Parser$noiseParser),
-					$author$project$Stabel$Parser$symbolParser),
-				$author$project$Stabel$Parser$typeRefParser),
-				A2(
-				$elm$parser$Parser$Advanced$andThen,
-				$elm$parser$Parser$Advanced$problem,
-				A2(
-					$elm$parser$Parser$Advanced$keeper,
-					$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Problem$UnknownMetadata),
-					$author$project$Stabel$Parser$definitionMetadataParser)),
-				$elm$parser$Parser$Advanced$succeed(
-				$elm$parser$Parser$Advanced$Done(
-					$elm$core$List$reverse(types)))
-			]));
-};
-var $author$project$Stabel$Parser$typeDefinitionParser = function (startLocation) {
-	var ctor = F4(
-		function (typeName, generics, members, endLocation) {
-			return A4(
-				$author$project$Stabel$Parser$CustomTypeDef,
-				A2($author$project$Stabel$Data$SourceLocation$SourceLocationRange, startLocation, endLocation),
-				typeName,
-				generics,
-				members);
-		});
-	return A2(
-		$elm$parser$Parser$Advanced$keeper,
-		A2(
-			$elm$parser$Parser$Advanced$keeper,
-			A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$keeper,
-					$elm$parser$Parser$Advanced$succeed(ctor),
-					$author$project$Stabel$Parser$typeNameParser),
-				A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeGenericParser)),
-			A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeMemberParser)),
-		$author$project$Stabel$Parser$sourceLocationParser);
-};
-var $author$project$Stabel$Parser$UnionTypeDef = F4(
-	function (a, b, c, d) {
-		return {$: 'UnionTypeDef', a: a, b: b, c: c, d: d};
+							$elm$parser$Parser$Advanced$keeper,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								A2(
+									$elm$parser$Parser$Advanced$ignorer,
+									$elm$parser$Parser$Advanced$succeed(
+										F2(
+											function (name, type_) {
+												return $elm$parser$Parser$Advanced$Loop(
+													A2(
+														$elm$core$List$cons,
+														_Utils_Tuple2(name, type_),
+														types));
+											})),
+									$elm$parser$Parser$Advanced$symbol(
+										A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$UnknownError))),
+								$author$project$Stabel$Parser$noiseParser),
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								A2($elm$parser$Parser$Advanced$andThen, alreadyDefinedCheck, $author$project$Stabel$Parser$symbolParser),
+								$author$project$Stabel$Parser$noiseParser)),
+						$author$project$Stabel$Parser$typeRefParser)),
+					A2(
+					$elm$parser$Parser$Advanced$andThen,
+					$elm$parser$Parser$Advanced$problem,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Problem$UnknownMetadata),
+						$author$project$Stabel$Parser$definitionMetadataParser)),
+					$elm$parser$Parser$Advanced$succeed(
+					$elm$parser$Parser$Advanced$Done(
+						$elm$core$List$reverse(types)))
+				]));
 	});
+var $author$project$Stabel$Parser$typeDefinitionParser = F3(
+	function (definedTypes, definedFunctions, _v0) {
+		var startLocation = _v0.a;
+		var typeName = _v0.b;
+		var ctor = F3(
+			function (generics, members, endLocation) {
+				return {
+					_: generics,
+					aQ: $author$project$Stabel$Parser$StructMembers(members),
+					m: typeName,
+					U: A2($author$project$Stabel$Parser$SourceLocation$SourceLocationRange, startLocation, endLocation)
+				};
+			});
+		return A2(
+			$elm$parser$Parser$Advanced$inContext,
+			A2($author$project$Stabel$Parser$Problem$StructDefinition, startLocation, typeName),
+			function () {
+				var _v1 = A2($elm$core$Dict$get, typeName, definedTypes);
+				if (!_v1.$) {
+					var previousDefinition = _v1.a;
+					return $elm$parser$Parser$Advanced$problem(
+						A2($author$project$Stabel$Parser$Problem$TypeAlreadyDefined, typeName, previousDefinition.U));
+				} else {
+					return A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$keeper,
+							A2(
+								$elm$parser$Parser$Advanced$keeper,
+								A2(
+									$elm$parser$Parser$Advanced$ignorer,
+									$elm$parser$Parser$Advanced$succeed(ctor),
+									$author$project$Stabel$Parser$noiseParser),
+								A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeGenericParser)),
+							A2(
+								$elm$parser$Parser$Advanced$loop,
+								_List_Nil,
+								$author$project$Stabel$Parser$typeMemberParser(definedFunctions))),
+						$author$project$Stabel$Parser$sourceLocationParser);
+				}
+			}());
+	});
+var $author$project$Stabel$Parser$Problem$UnionDefinition = F2(
+	function (a, b) {
+		return {$: 4, a: a, b: b};
+	});
+var $author$project$Stabel$Parser$UnionMembers = function (a) {
+	return {$: 1, a: a};
+};
 var $author$project$Stabel$Parser$unionTypeMemberParser = function (types) {
 	return $elm$parser$Parser$Advanced$oneOf(
 		_List_fromArray(
 			[
 				A2(
-				$elm$parser$Parser$Advanced$keeper,
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$MemberKeyword,
 				A2(
-					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$keeper,
 					A2(
 						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed(
-							function (type_) {
-								return $elm$parser$Parser$Advanced$Loop(
-									A2($elm$core$List$cons, type_, types));
-							}),
-						$elm$parser$Parser$Advanced$symbol(
-							A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NoProblem))),
-					$author$project$Stabel$Parser$noiseParser),
-				$author$project$Stabel$Parser$typeRefParser),
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							$elm$parser$Parser$Advanced$succeed(
+								function (type_) {
+									return $elm$parser$Parser$Advanced$Loop(
+										A2($elm$core$List$cons, type_, types));
+								}),
+							$elm$parser$Parser$Advanced$symbol(
+								A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$UnknownError))),
+						$author$project$Stabel$Parser$noiseParser),
+					$author$project$Stabel$Parser$typeRefParser)),
 				A2(
 				$elm$parser$Parser$Advanced$andThen,
 				$elm$parser$Parser$Advanced$problem,
@@ -7139,385 +9821,247 @@ var $author$project$Stabel$Parser$unionTypeMemberParser = function (types) {
 					$elm$core$List$reverse(types)))
 			]));
 };
-var $author$project$Stabel$Parser$unionTypeDefinitionParser = function (startLocation) {
-	var ctor = F4(
-		function (typeName, generics, members, endLocation) {
-			return A4(
-				$author$project$Stabel$Parser$UnionTypeDef,
-				A2($author$project$Stabel$Data$SourceLocation$SourceLocationRange, startLocation, endLocation),
-				typeName,
-				generics,
-				members);
-		});
-	return A2(
-		$elm$parser$Parser$Advanced$keeper,
-		A2(
-			$elm$parser$Parser$Advanced$keeper,
-			A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$keeper,
-					$elm$parser$Parser$Advanced$succeed(ctor),
-					$author$project$Stabel$Parser$typeNameParser),
-				A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeGenericParser)),
-			A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$unionTypeMemberParser)),
-		$author$project$Stabel$Parser$sourceLocationParser);
-};
-var $author$project$Stabel$Parser$moduleRefParser = function (path) {
-	return $elm$parser$Parser$Advanced$oneOf(
-		_List_fromArray(
-			[
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					$elm$parser$Parser$Advanced$succeed(
-						function (part) {
-							return $elm$parser$Parser$Advanced$Loop(path + ('/' + part));
-						}),
-					$elm$parser$Parser$Advanced$symbol(
-						A2($elm$parser$Parser$Advanced$Token, '/', $author$project$Stabel$Parser$Problem$NotMetadata))),
-				$author$project$Stabel$Parser$symbolImplParser),
-				$elm$parser$Parser$Advanced$succeed(
-				$elm$parser$Parser$Advanced$Done(path))
-			]));
-};
-var $author$project$Stabel$Parser$modulePathStringParser = $elm$parser$Parser$Advanced$oneOf(
-	_List_fromArray(
-		[
-			A2(
-			$elm$parser$Parser$Advanced$andThen,
-			function (sym) {
-				return A2($elm$parser$Parser$Advanced$loop, sym, $author$project$Stabel$Parser$moduleRefParser);
-			},
-			A2(
-				$elm$parser$Parser$Advanced$keeper,
-				$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-				$author$project$Stabel$Parser$symbolImplParser)),
-			A2(
-			$elm$parser$Parser$Advanced$keeper,
-			$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-			A2($elm$parser$Parser$Advanced$loop, '', $author$project$Stabel$Parser$moduleRefParser))
-		]));
-var $author$project$Stabel$Parser$symbolImplListParser = function (symbols) {
-	return $elm$parser$Parser$Advanced$oneOf(
-		_List_fromArray(
-			[
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				$elm$parser$Parser$Advanced$succeed(
-					function (sym) {
-						return $elm$parser$Parser$Advanced$Loop(
-							A2($elm$core$List$cons, sym, symbols));
-					}),
-				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$symbolImplParser, $author$project$Stabel$Parser$noiseParser)),
-				$elm$parser$Parser$Advanced$succeed(
-				$elm$parser$Parser$Advanced$Done(
-					$elm$core$List$reverse(symbols)))
-			]));
-};
-var $author$project$Stabel$Parser$wordMetadataParser = function (def) {
-	return $elm$parser$Parser$Advanced$oneOf(
-		_List_fromArray(
-			[
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed(
-							function (typeSign) {
-								return $elm$parser$Parser$Advanced$Loop(
-									_Utils_update(
-										def,
-										{
-											typeSignature: $author$project$Stabel$Parser$UserProvided(typeSign)
-										}));
-							}),
-						$elm$parser$Parser$Advanced$keyword(
-							A2($elm$parser$Parser$Advanced$Token, 'type:', $author$project$Stabel$Parser$Problem$NoProblem))),
-					$author$project$Stabel$Parser$noiseParser),
-				$author$project$Stabel$Parser$typeSignatureParser),
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$keeper,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
+var $author$project$Stabel$Parser$unionTypeDefinitionParser = F2(
+	function (definedTypes, _v0) {
+		var startLocation = _v0.a;
+		var typeName = _v0.b;
+		var ctor = F3(
+			function (generics, members, endLocation) {
+				return {
+					_: generics,
+					aQ: $author$project$Stabel$Parser$UnionMembers(members),
+					m: typeName,
+					U: A2($author$project$Stabel$Parser$SourceLocation$SourceLocationRange, startLocation, endLocation)
+				};
+			});
+		return A2(
+			$elm$parser$Parser$Advanced$inContext,
+			A2($author$project$Stabel$Parser$Problem$UnionDefinition, startLocation, typeName),
+			function () {
+				var _v1 = A2($elm$core$Dict$get, typeName, definedTypes);
+				if (!_v1.$) {
+					var previousDefinition = _v1.a;
+					return $elm$parser$Parser$Advanced$problem(
+						A2($author$project$Stabel$Parser$Problem$TypeAlreadyDefined, typeName, previousDefinition.U));
+				} else {
+					return A2(
+						$elm$parser$Parser$Advanced$keeper,
 						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$elm$parser$Parser$Advanced$succeed(
-								F2(
-									function (alias, value) {
-										return $elm$parser$Parser$Advanced$Loop(
-											_Utils_update(
-												def,
-												{
-													aliases: A3($elm$core$Dict$insert, alias, value, def.aliases)
-												}));
-									})),
-							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, 'alias:', $author$project$Stabel$Parser$Problem$NoProblem))),
-						$author$project$Stabel$Parser$noiseParser),
-					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$symbolParser, $author$project$Stabel$Parser$noiseParser)),
-				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser)),
+							$elm$parser$Parser$Advanced$keeper,
+							A2(
+								$elm$parser$Parser$Advanced$keeper,
+								A2(
+									$elm$parser$Parser$Advanced$ignorer,
+									$elm$parser$Parser$Advanced$succeed(ctor),
+									$author$project$Stabel$Parser$noiseParser),
+								A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$typeGenericParser)),
+							A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$unionTypeMemberParser)),
+						$author$project$Stabel$Parser$sourceLocationParser);
+				}
+			}());
+	});
+var $author$project$Stabel$Parser$definitionParser = function (ast) {
+	var insertType = function (typeDef) {
+		var typeName = typeDef.m;
+		var typeFunctions = $author$project$Stabel$Parser$generateDefaultFunctionsForType(typeDef);
+		return $elm$parser$Parser$Advanced$succeed(
+			$elm$parser$Parser$Advanced$Loop(
+				_Utils_update(
+					ast,
+					{
+						bj: A2(
+							$elm$core$Dict$union,
+							A2(
+								$elm_community$dict_extra$Dict$Extra$fromListBy,
+								function ($) {
+									return $.m;
+								},
+								typeFunctions),
+							ast.bj),
+						I: A3($elm$core$Dict$insert, typeName, typeDef, ast.I)
+					})));
+	};
+	var insertFunction = function (funcDef) {
+		return $elm$parser$Parser$Advanced$succeed(
+			$elm$parser$Parser$Advanced$Loop(
+				_Utils_update(
+					ast,
+					{
+						bj: A3($elm$core$Dict$insert, funcDef.m, funcDef, ast.bj)
+					})));
+	};
+	return $elm$parser$Parser$Advanced$oneOf(
+		_List_fromArray(
+			[
 				A2(
-				$elm$parser$Parser$Advanced$keeper,
+				$elm$parser$Parser$Advanced$andThen,
+				insertFunction,
 				A2(
-					$elm$parser$Parser$Advanced$keeper,
+					$elm$parser$Parser$Advanced$andThen,
+					$author$project$Stabel$Parser$functionDefinitionParser(ast.bj),
 					A2(
-						$elm$parser$Parser$Advanced$ignorer,
+						$elm$parser$Parser$Advanced$keeper,
 						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$elm$parser$Parser$Advanced$succeed(
-								F2(
-									function (mod, vals) {
-										return $elm$parser$Parser$Advanced$Loop(
-											_Utils_update(
-												def,
-												{
-													imports: A3($elm$core$Dict$insert, mod, vals, def.imports)
-												}));
-									})),
-							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, 'import:', $author$project$Stabel$Parser$Problem$NoProblem))),
-						$author$project$Stabel$Parser$noiseParser),
-					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser)),
+							$elm$parser$Parser$Advanced$keeper,
+							$elm$parser$Parser$Advanced$succeed($elm$core$Tuple$pair),
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								A2(
+									$elm$parser$Parser$Advanced$ignorer,
+									$author$project$Stabel$Parser$sourceLocationParser,
+									$elm$parser$Parser$Advanced$keyword(
+										A2($elm$parser$Parser$Advanced$Token, 'def:', $author$project$Stabel$Parser$Problem$UnknownError))),
+								$author$project$Stabel$Parser$noiseParser)),
+						$author$project$Stabel$Parser$symbolParser))),
 				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$symbolImplListParser),
-					$author$project$Stabel$Parser$noiseParser)),
+				$elm$parser$Parser$Advanced$andThen,
+				insertFunction,
 				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$andThen,
+					$author$project$Stabel$Parser$multiFunctionDefinitionParser(ast.bj),
 					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed(
-							function (impl) {
-								return $elm$parser$Parser$Advanced$Loop(
-									_Utils_update(
-										def,
-										{
-											implementation: $author$project$Stabel$Parser$SoloImpl(impl)
-										}));
-							}),
-						$elm$parser$Parser$Advanced$keyword(
-							A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NoProblem))),
-					$author$project$Stabel$Parser$noiseParser),
-				$author$project$Stabel$Parser$implementationParser),
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$keeper,
+							$elm$parser$Parser$Advanced$succeed($elm$core$Tuple$pair),
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								A2(
+									$elm$parser$Parser$Advanced$ignorer,
+									$author$project$Stabel$Parser$sourceLocationParser,
+									$elm$parser$Parser$Advanced$keyword(
+										A2($elm$parser$Parser$Advanced$Token, 'defmulti:', $author$project$Stabel$Parser$Problem$UnknownError))),
+								$author$project$Stabel$Parser$noiseParser)),
+						$author$project$Stabel$Parser$symbolParser))),
+				A2(
+				$elm$parser$Parser$Advanced$andThen,
+				insertType,
+				A2(
+					$elm$parser$Parser$Advanced$andThen,
+					A2($author$project$Stabel$Parser$typeDefinitionParser, ast.I, ast.bj),
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$keeper,
+							$elm$parser$Parser$Advanced$succeed($elm$core$Tuple$pair),
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								A2(
+									$elm$parser$Parser$Advanced$ignorer,
+									$author$project$Stabel$Parser$sourceLocationParser,
+									$elm$parser$Parser$Advanced$keyword(
+										A2($elm$parser$Parser$Advanced$Token, 'defstruct:', $author$project$Stabel$Parser$Problem$UnknownError))),
+								$author$project$Stabel$Parser$noiseParser)),
+						$author$project$Stabel$Parser$typeNameParser))),
+				A2(
+				$elm$parser$Parser$Advanced$andThen,
+				insertType,
+				A2(
+					$elm$parser$Parser$Advanced$andThen,
+					$author$project$Stabel$Parser$unionTypeDefinitionParser(ast.I),
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$keeper,
+							$elm$parser$Parser$Advanced$succeed($elm$core$Tuple$pair),
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								A2(
+									$elm$parser$Parser$Advanced$ignorer,
+									$author$project$Stabel$Parser$sourceLocationParser,
+									$elm$parser$Parser$Advanced$keyword(
+										A2($elm$parser$Parser$Advanced$Token, 'defunion:', $author$project$Stabel$Parser$Problem$UnknownError))),
+								$author$project$Stabel$Parser$noiseParser)),
+						$author$project$Stabel$Parser$typeNameParser))),
 				A2(
 				$elm$parser$Parser$Advanced$andThen,
 				$elm$parser$Parser$Advanced$problem,
 				A2(
 					$elm$parser$Parser$Advanced$keeper,
-					$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Problem$UnknownMetadata),
-					$author$project$Stabel$Parser$definitionMetadataParser)),
-				$elm$parser$Parser$Advanced$succeed(
-				$elm$parser$Parser$Advanced$Done(def))
-			]));
-};
-var $author$project$Stabel$Parser$wordDefinitionParser = function (startLocation) {
-	var joinParseResults = F3(
-		function (name, def, endLocation) {
-			return _Utils_update(
-				def,
-				{
-					name: name,
-					sourceLocationRange: $elm$core$Maybe$Just(
-						{end: endLocation, start: startLocation})
-				});
-		});
-	var emptyDef = {
-		aliases: $elm$core$Dict$empty,
-		implementation: $author$project$Stabel$Parser$SoloImpl(_List_Nil),
-		imports: $elm$core$Dict$empty,
-		name: '',
-		sourceLocationRange: $elm$core$Maybe$Nothing,
-		typeSignature: $author$project$Stabel$Parser$NotProvided
-	};
-	return A2(
-		$elm$parser$Parser$Advanced$keeper,
-		A2(
-			$elm$parser$Parser$Advanced$keeper,
-			A2(
-				$elm$parser$Parser$Advanced$keeper,
-				$elm$parser$Parser$Advanced$succeed(joinParseResults),
-				$author$project$Stabel$Parser$symbolParser),
-			A2($elm$parser$Parser$Advanced$loop, emptyDef, $author$project$Stabel$Parser$wordMetadataParser)),
-		$author$project$Stabel$Parser$sourceLocationParser);
-};
-var $author$project$Stabel$Parser$definitionParser = function (ast) {
-	var maybeInsertWordProblem = function (wordDef) {
-		return A2(
-			$elm$core$Maybe$map,
-			function (prevDef) {
-				return A3($author$project$Stabel$Parser$Problem$WordAlreadyDefined, wordDef.name, prevDef.sourceLocationRange, wordDef.sourceLocationRange);
-			},
-			A2($elm$core$Dict$get, wordDef.name, ast.words));
-	};
-	var insertWord = function (wordDef) {
-		var _v2 = maybeInsertWordProblem(wordDef);
-		if (_v2.$ === 'Just') {
-			var problem = _v2.a;
-			return $elm$parser$Parser$Advanced$problem(problem);
-		} else {
-			return $elm$parser$Parser$Advanced$succeed(
-				$elm$parser$Parser$Advanced$Loop(
-					_Utils_update(
-						ast,
-						{
-							words: A3($elm$core$Dict$insert, wordDef.name, wordDef, ast.words)
-						})));
-		}
-	};
-	var insertType = function (typeDef) {
-		var typeName = $author$project$Stabel$Parser$typeDefinitionName(typeDef);
-		var _v0 = A2($elm$core$Dict$get, typeName, ast.types);
-		if (_v0.$ === 'Just') {
-			var previousDefinition = _v0.a;
-			return $elm$parser$Parser$Advanced$problem(
-				A3(
-					$author$project$Stabel$Parser$Problem$TypeAlreadyDefined,
-					typeName,
-					$author$project$Stabel$Parser$typeDefinitionLocation(previousDefinition),
-					$author$project$Stabel$Parser$typeDefinitionLocation(typeDef)));
-		} else {
-			var typeWords = $author$project$Stabel$Parser$generateDefaultWordsForType(typeDef);
-			var typeWordsProblem = $elm$core$List$head(
-				A2($elm$core$List$filterMap, maybeInsertWordProblem, typeWords));
-			if (typeWordsProblem.$ === 'Just') {
-				var problem = typeWordsProblem.a;
-				return $elm$parser$Parser$Advanced$problem(problem);
-			} else {
-				return $elm$parser$Parser$Advanced$succeed(
-					$elm$parser$Parser$Advanced$Loop(
-						_Utils_update(
-							ast,
-							{
-								types: A3($elm$core$Dict$insert, typeName, typeDef, ast.types),
-								words: A2(
-									$elm$core$Dict$union,
-									A2(
-										$elm_community$dict_extra$Dict$Extra$fromListBy,
-										function ($) {
-											return $.name;
-										},
-										typeWords),
-									ast.words)
-							})));
-			}
-		}
-	};
-	return $elm$parser$Parser$Advanced$oneOf(
-		_List_fromArray(
-			[
-				A2(
-				$elm$parser$Parser$Advanced$andThen,
-				insertWord,
-				A2(
-					$elm$parser$Parser$Advanced$andThen,
-					$author$project$Stabel$Parser$wordDefinitionParser,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$author$project$Stabel$Parser$sourceLocationParser,
-							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, 'def:', $author$project$Stabel$Parser$Problem$NoProblem))),
-						$author$project$Stabel$Parser$noiseParser))),
-				A2(
-				$elm$parser$Parser$Advanced$andThen,
-				insertWord,
-				A2(
-					$elm$parser$Parser$Advanced$andThen,
-					$author$project$Stabel$Parser$multiWordDefinitionParser,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$author$project$Stabel$Parser$sourceLocationParser,
-							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, 'defmulti:', $author$project$Stabel$Parser$Problem$NoProblem))),
-						$author$project$Stabel$Parser$noiseParser))),
-				A2(
-				$elm$parser$Parser$Advanced$andThen,
-				insertType,
-				A2(
-					$elm$parser$Parser$Advanced$andThen,
-					$author$project$Stabel$Parser$typeDefinitionParser,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$author$project$Stabel$Parser$sourceLocationParser,
-							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, 'defstruct:', $author$project$Stabel$Parser$Problem$NoProblem))),
-						$author$project$Stabel$Parser$noiseParser))),
-				A2(
-				$elm$parser$Parser$Advanced$andThen,
-				insertType,
-				A2(
-					$elm$parser$Parser$Advanced$andThen,
-					$author$project$Stabel$Parser$unionTypeDefinitionParser,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$author$project$Stabel$Parser$sourceLocationParser,
-							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, 'defunion:', $author$project$Stabel$Parser$Problem$NoProblem))),
-						$author$project$Stabel$Parser$noiseParser))),
+					$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Problem$BadDefinition),
+					$author$project$Stabel$Parser$textParser)),
 				$elm$parser$Parser$Advanced$succeed(
 				$elm$parser$Parser$Advanced$Done(ast))
 			]));
 };
-var $author$project$Stabel$Parser$Undefined = {$: 'Undefined'};
-var $author$project$Stabel$Parser$emptyModuleDefinition = $author$project$Stabel$Parser$Undefined;
 var $elm$parser$Parser$Advanced$end = function (x) {
-	return $elm$parser$Parser$Advanced$Parser(
-		function (s) {
-			return _Utils_eq(
-				$elm$core$String$length(s.src),
-				s.offset) ? A3($elm$parser$Parser$Advanced$Good, false, _Utils_Tuple0, s) : A2(
-				$elm$parser$Parser$Advanced$Bad,
-				false,
-				A2($elm$parser$Parser$Advanced$fromState, s, x));
-		});
+	return function (s) {
+		return _Utils_eq(
+			$elm$core$String$length(s.b),
+			s.c) ? A3($elm$parser$Parser$Advanced$Good, false, 0, s) : A2(
+			$elm$parser$Parser$Advanced$Bad,
+			false,
+			A2($elm$parser$Parser$Advanced$fromState, s, x));
+	};
 };
-var $author$project$Stabel$Parser$Defined = function (a) {
-	return {$: 'Defined', a: a};
+var $author$project$Stabel$Parser$ModuleDefinition$Defined = function (a) {
+	return {$: 1, a: a};
 };
-var $author$project$Stabel$Parser$emptyModuleDefinitionRec = {aliases: $elm$core$Dict$empty, exposes: $elm$core$Set$empty, imports: $elm$core$Dict$empty};
-var $elm$parser$Parser$Advanced$map = F2(
-	function (func, _v0) {
-		var parse = _v0.a;
-		return $elm$parser$Parser$Advanced$Parser(
-			function (s0) {
-				var _v1 = parse(s0);
-				if (_v1.$ === 'Good') {
-					var p = _v1.a;
-					var a = _v1.b;
-					var s1 = _v1.c;
-					return A3(
-						$elm$parser$Parser$Advanced$Good,
-						p,
-						func(a),
-						s1);
-				} else {
-					var p = _v1.a;
-					var x = _v1.b;
-					return A2($elm$parser$Parser$Advanced$Bad, p, x);
-				}
-			});
-	});
+var $author$project$Stabel$Parser$Problem$ModuleDefinition = {$: 0};
+var $author$project$Stabel$Parser$Problem$ExposingKeyword = {$: 7};
+var $author$project$Stabel$Parser$metadataParser = $author$project$Stabel$Parser$metadataParserHelp($elm$core$Set$empty);
 var $author$project$Stabel$Parser$moduleDefinitionMetaParser = function (def) {
 	return $elm$parser$Parser$Advanced$oneOf(
 		_List_fromArray(
 			[
 				A2(
-				$elm$parser$Parser$Advanced$keeper,
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$AliasKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(
+									F2(
+										function (alias, value) {
+											return $elm$parser$Parser$Advanced$Loop(
+												_Utils_update(
+													def,
+													{
+														q: A3($elm$core$Dict$insert, alias, value, def.q)
+													}));
+										})),
+								$elm$parser$Parser$Advanced$keyword(
+									A2($elm$parser$Parser$Advanced$Token, 'alias:', $author$project$Stabel$Parser$Problem$UnknownError))),
+							$author$project$Stabel$Parser$noiseParser),
+						A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$symbolParser, $author$project$Stabel$Parser$noiseParser)),
+					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser))),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$ImportKeyword,
+				A2(
+					$elm$parser$Parser$Advanced$keeper,
+					A2(
+						$elm$parser$Parser$Advanced$keeper,
+						A2(
+							$elm$parser$Parser$Advanced$ignorer,
+							A2(
+								$elm$parser$Parser$Advanced$ignorer,
+								$elm$parser$Parser$Advanced$succeed(
+									F2(
+										function (mod, vals) {
+											return $elm$parser$Parser$Advanced$Loop(
+												_Utils_update(
+													def,
+													{
+														t: A3($elm$core$Dict$insert, mod, vals, def.t)
+													}));
+										})),
+								$elm$parser$Parser$Advanced$keyword(
+									A2($elm$parser$Parser$Advanced$Token, 'import:', $author$project$Stabel$Parser$Problem$UnknownError))),
+							$author$project$Stabel$Parser$noiseParser),
+						A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser)),
+					A2(
+						$elm$parser$Parser$Advanced$ignorer,
+						A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$symbolImplListParser),
+						$author$project$Stabel$Parser$noiseParser))),
+				A2(
+				$elm$parser$Parser$Advanced$inContext,
+				$author$project$Stabel$Parser$Problem$ExposingKeyword,
 				A2(
 					$elm$parser$Parser$Advanced$keeper,
 					A2(
@@ -7525,76 +10069,29 @@ var $author$project$Stabel$Parser$moduleDefinitionMetaParser = function (def) {
 						A2(
 							$elm$parser$Parser$Advanced$ignorer,
 							$elm$parser$Parser$Advanced$succeed(
-								F2(
-									function (alias, value) {
-										return $elm$parser$Parser$Advanced$Loop(
-											_Utils_update(
-												def,
-												{
-													aliases: A3($elm$core$Dict$insert, alias, value, def.aliases)
-												}));
-									})),
+								function (exposings) {
+									return $elm$parser$Parser$Advanced$Loop(
+										_Utils_update(
+											def,
+											{bg: exposings}));
+								}),
 							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, 'alias:', $author$project$Stabel$Parser$Problem$NoProblem))),
+								A2($elm$parser$Parser$Advanced$Token, 'exposing:', $author$project$Stabel$Parser$Problem$UnknownError))),
 						$author$project$Stabel$Parser$noiseParser),
-					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$symbolParser, $author$project$Stabel$Parser$noiseParser)),
-				A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser)),
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$keeper,
 					A2(
 						$elm$parser$Parser$Advanced$ignorer,
 						A2(
-							$elm$parser$Parser$Advanced$ignorer,
-							$elm$parser$Parser$Advanced$succeed(
-								F2(
-									function (mod, vals) {
-										return $elm$parser$Parser$Advanced$Loop(
-											_Utils_update(
-												def,
-												{
-													imports: A3($elm$core$Dict$insert, mod, vals, def.imports)
-												}));
-									})),
-							$elm$parser$Parser$Advanced$keyword(
-								A2($elm$parser$Parser$Advanced$Token, 'import:', $author$project$Stabel$Parser$Problem$NoProblem))),
-						$author$project$Stabel$Parser$noiseParser),
-					A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$modulePathStringParser, $author$project$Stabel$Parser$noiseParser)),
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$symbolImplListParser),
-					$author$project$Stabel$Parser$noiseParser)),
-				A2(
-				$elm$parser$Parser$Advanced$keeper,
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2(
-						$elm$parser$Parser$Advanced$ignorer,
-						$elm$parser$Parser$Advanced$succeed(
-							function (exposings) {
-								return $elm$parser$Parser$Advanced$Loop(
-									_Utils_update(
-										def,
-										{exposes: exposings}));
-							}),
-						$elm$parser$Parser$Advanced$keyword(
-							A2($elm$parser$Parser$Advanced$Token, 'exposing:', $author$project$Stabel$Parser$Problem$NoProblem))),
-					$author$project$Stabel$Parser$noiseParser),
-				A2(
-					$elm$parser$Parser$Advanced$ignorer,
-					A2(
-						$elm$parser$Parser$Advanced$map,
-						$elm$core$Set$fromList,
-						A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$symbolImplListParser)),
-					$author$project$Stabel$Parser$noiseParser)),
+							$elm$parser$Parser$Advanced$map,
+							$elm$core$Set$fromList,
+							A2($elm$parser$Parser$Advanced$loop, _List_Nil, $author$project$Stabel$Parser$symbolImplListParser)),
+						$author$project$Stabel$Parser$noiseParser))),
 				A2(
 				$elm$parser$Parser$Advanced$andThen,
 				$elm$parser$Parser$Advanced$problem,
 				A2(
 					$elm$parser$Parser$Advanced$keeper,
 					$elm$parser$Parser$Advanced$succeed($author$project$Stabel$Parser$Problem$UnknownMetadata),
-					$author$project$Stabel$Parser$definitionMetadataParser)),
+					$author$project$Stabel$Parser$metadataParser)),
 				A2(
 				$elm$parser$Parser$Advanced$ignorer,
 				A2(
@@ -7602,66 +10099,75 @@ var $author$project$Stabel$Parser$moduleDefinitionMetaParser = function (def) {
 					$elm$parser$Parser$Advanced$succeed(
 						$elm$parser$Parser$Advanced$Done(def)),
 					$elm$parser$Parser$Advanced$keyword(
-						A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$NoProblem))),
+						A2($elm$parser$Parser$Advanced$Token, ':', $author$project$Stabel$Parser$Problem$UnknownError))),
 				$author$project$Stabel$Parser$noiseParser)
 			]));
 };
 var $author$project$Stabel$Parser$moduleDefinitionParser = A2(
-	$elm$parser$Parser$Advanced$keeper,
-	A2(
-		$elm$parser$Parser$Advanced$ignorer,
-		A2(
-			$elm$parser$Parser$Advanced$ignorer,
-			$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-			$elm$parser$Parser$Advanced$keyword(
-				A2($elm$parser$Parser$Advanced$Token, 'defmodule:', $author$project$Stabel$Parser$Problem$NoProblem))),
-		$author$project$Stabel$Parser$noiseParser),
+	$elm$parser$Parser$Advanced$inContext,
+	$author$project$Stabel$Parser$Problem$ModuleDefinition,
 	A2(
 		$elm$parser$Parser$Advanced$map,
-		$author$project$Stabel$Parser$Defined,
-		A2($elm$parser$Parser$Advanced$loop, $author$project$Stabel$Parser$emptyModuleDefinitionRec, $author$project$Stabel$Parser$moduleDefinitionMetaParser)));
-var $author$project$Stabel$Parser$parser = function () {
+		$author$project$Stabel$Parser$ModuleDefinition$Defined,
+		A2(
+			$elm$parser$Parser$Advanced$keeper,
+			A2(
+				$elm$parser$Parser$Advanced$ignorer,
+				A2(
+					$elm$parser$Parser$Advanced$ignorer,
+					$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
+					$elm$parser$Parser$Advanced$keyword(
+						A2($elm$parser$Parser$Advanced$Token, 'defmodule:', $author$project$Stabel$Parser$Problem$UnknownError))),
+				$author$project$Stabel$Parser$noiseParser),
+			A2($elm$parser$Parser$Advanced$loop, $author$project$Stabel$Parser$ModuleDefinition$emptyDefinition, $author$project$Stabel$Parser$moduleDefinitionMetaParser))));
+var $author$project$Stabel$Parser$parser = function (ref) {
 	var joinParseResults = F2(
 		function (modDef, ast) {
 			return _Utils_update(
 				ast,
-				{moduleDefinition: modDef});
+				{aq: modDef});
 		});
-	var emptyAst = {moduleDefinition: $author$project$Stabel$Parser$emptyModuleDefinition, types: $elm$core$Dict$empty, words: $elm$core$Dict$empty};
+	var emptyAst = {bj: $elm$core$Dict$empty, aq: $author$project$Stabel$Parser$ModuleDefinition$Undefined, a$: ref, I: $elm$core$Dict$empty};
+	var checkIfEmpty = function (ast) {
+		return ($elm$core$Dict$isEmpty(ast.I) && $elm$core$Dict$isEmpty(ast.bj)) ? $elm$parser$Parser$Advanced$problem($author$project$Stabel$Parser$Problem$ModuleIsEmpty) : $elm$parser$Parser$Advanced$succeed(ast);
+	};
 	return A2(
-		$elm$parser$Parser$Advanced$keeper,
+		$elm$parser$Parser$Advanced$andThen,
+		checkIfEmpty,
 		A2(
-			$elm$parser$Parser$Advanced$ignorer,
-			$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
-			$author$project$Stabel$Parser$noiseParser),
-		A2(
-			$elm$parser$Parser$Advanced$ignorer,
-			$elm$parser$Parser$Advanced$oneOf(
-				_List_fromArray(
-					[
-						A2(
-						$elm$parser$Parser$Advanced$keeper,
-						A2(
+			$elm$parser$Parser$Advanced$keeper,
+			A2(
+				$elm$parser$Parser$Advanced$ignorer,
+				$elm$parser$Parser$Advanced$succeed($elm$core$Basics$identity),
+				$author$project$Stabel$Parser$noiseParser),
+			A2(
+				$elm$parser$Parser$Advanced$ignorer,
+				$elm$parser$Parser$Advanced$oneOf(
+					_List_fromArray(
+						[
+							A2(
 							$elm$parser$Parser$Advanced$keeper,
-							$elm$parser$Parser$Advanced$succeed(joinParseResults),
-							A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$moduleDefinitionParser, $author$project$Stabel$Parser$noiseParser)),
-						A2($elm$parser$Parser$Advanced$loop, emptyAst, $author$project$Stabel$Parser$definitionParser)),
-						A2(
-						$elm$parser$Parser$Advanced$keeper,
-						$elm$parser$Parser$Advanced$succeed(
-							joinParseResults($author$project$Stabel$Parser$emptyModuleDefinition)),
-						A2($elm$parser$Parser$Advanced$loop, emptyAst, $author$project$Stabel$Parser$definitionParser))
-					])),
-			$elm$parser$Parser$Advanced$end($author$project$Stabel$Parser$Problem$ExpectedEnd)));
-}();
+							A2(
+								$elm$parser$Parser$Advanced$keeper,
+								$elm$parser$Parser$Advanced$succeed(joinParseResults),
+								A2($elm$parser$Parser$Advanced$ignorer, $author$project$Stabel$Parser$moduleDefinitionParser, $author$project$Stabel$Parser$noiseParser)),
+							A2($elm$parser$Parser$Advanced$loop, emptyAst, $author$project$Stabel$Parser$definitionParser)),
+							A2(
+							$elm$parser$Parser$Advanced$keeper,
+							$elm$parser$Parser$Advanced$succeed(
+								joinParseResults($author$project$Stabel$Parser$ModuleDefinition$Undefined)),
+							A2($elm$parser$Parser$Advanced$loop, emptyAst, $author$project$Stabel$Parser$definitionParser))
+						])),
+				$elm$parser$Parser$Advanced$end($author$project$Stabel$Parser$Problem$ExpectedEndOfFile))));
+};
 var $elm$parser$Parser$Advanced$bagToList = F2(
 	function (bag, list) {
 		bagToList:
 		while (true) {
 			switch (bag.$) {
-				case 'Empty':
+				case 0:
 					return list;
-				case 'AddRight':
+				case 1:
 					var bag1 = bag.a;
 					var x = bag.b;
 					var $temp$bag = bag1,
@@ -7682,10 +10188,10 @@ var $elm$parser$Parser$Advanced$bagToList = F2(
 	});
 var $elm$parser$Parser$Advanced$run = F2(
 	function (_v0, src) {
-		var parse = _v0.a;
+		var parse = _v0;
 		var _v1 = parse(
-			{col: 1, context: _List_Nil, indent: 1, offset: 0, row: 1, src: src});
-		if (_v1.$ === 'Good') {
+			{aD: 1, W: _List_Nil, e: 1, c: 0, S: 1, b: src});
+		if (!_v1.$) {
 			var value = _v1.b;
 			return $elm$core$Result$Ok(value);
 		} else {
@@ -7694,174 +10200,64 @@ var $elm$parser$Parser$Advanced$run = F2(
 				A2($elm$parser$Parser$Advanced$bagToList, bag, _List_Nil));
 		}
 	});
-var $author$project$Stabel$Parser$run = function (sourceCode) {
-	return A2(
-		$elm$core$Result$mapError,
-		$elm$core$List$map(
-			function ($) {
-				return $.problem;
+var $author$project$Stabel$Parser$run = F2(
+	function (ref, sourceCode) {
+		return A2(
+			$elm$parser$Parser$Advanced$run,
+			$author$project$Stabel$Parser$parser(ref),
+			sourceCode);
+	});
+var $elm$core$Dict$values = function (dict) {
+	return A3(
+		$elm$core$Dict$foldr,
+		F3(
+			function (key, value, valueList) {
+				return A2($elm$core$List$cons, value, valueList);
 			}),
-		A2($elm$parser$Parser$Advanced$run, $author$project$Stabel$Parser$parser, sourceCode));
+		_List_Nil,
+		dict);
 };
-var $elm$core$Dict$map = F2(
-	function (func, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
-			return $elm$core$Dict$RBEmpty_elm_builtin;
-		} else {
-			var color = dict.a;
-			var key = dict.b;
-			var value = dict.c;
-			var left = dict.d;
-			var right = dict.e;
-			return A5(
-				$elm$core$Dict$RBNode_elm_builtin,
-				color,
-				key,
-				A2(func, key, value),
-				A2($elm$core$Dict$map, func, left),
-				A2($elm$core$Dict$map, func, right));
-		}
+var $elm$core$Dict$singleton = F2(
+	function (key, value) {
+		return A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
 	});
-var $elm$core$Tuple$mapSecond = F2(
-	function (func, _v0) {
-		var x = _v0.a;
-		var y = _v0.b;
-		return _Utils_Tuple2(
-			x,
-			func(y));
-	});
-var $author$project$Stabel$Qualifier$MultiImpl = F2(
-	function (a, b) {
-		return {$: 'MultiImpl', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$SoloImpl = function (a) {
-	return {$: 'SoloImpl', a: a};
+var $elm$core$Set$singleton = function (key) {
+	return A2($elm$core$Dict$singleton, key, 0);
 };
-var $elm$core$Result$map2 = F3(
-	function (func, ra, rb) {
-		if (ra.$ === 'Err') {
-			var x = ra.a;
-			return $elm$core$Result$Err(x);
-		} else {
-			var a = ra.a;
-			if (rb.$ === 'Err') {
-				var x = rb.a;
-				return $elm$core$Result$Err(x);
-			} else {
-				var b = rb.a;
-				return $elm$core$Result$Ok(
-					A2(func, a, b));
-			}
-		}
-	});
-var $elm_community$result_extra$Result$Extra$combine = A2(
-	$elm$core$List$foldr,
-	$elm$core$Result$map2($elm$core$List$cons),
-	$elm$core$Result$Ok(_List_Nil));
-var $author$project$Stabel$Qualifier$Builtin = F2(
-	function (a, b) {
-		return {$: 'Builtin', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$ConstructType = function (a) {
-	return {$: 'ConstructType', a: a};
+var $author$project$Stabel$Data$Type$referencedGenerics = function (t) {
+	switch (t.$) {
+		case 1:
+			var val = t.a;
+			return $elm$core$Set$singleton(val);
+		case 3:
+			var members = t.b;
+			return A3(
+				$elm$core$List$foldl,
+				$elm$core$Set$union,
+				$elm$core$Set$empty,
+				A2($elm$core$List$map, $author$project$Stabel$Data$Type$referencedGenerics, members));
+		case 4:
+			var members = t.b;
+			return A3(
+				$elm$core$List$foldl,
+				$elm$core$Set$union,
+				$elm$core$Set$empty,
+				A2($elm$core$List$map, $author$project$Stabel$Data$Type$referencedGenerics, members));
+		default:
+			return $elm$core$Set$empty;
+	}
 };
-var $author$project$Stabel$Qualifier$GetMember = F2(
-	function (a, b) {
-		return {$: 'GetMember', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$Integer = F2(
-	function (a, b) {
-		return {$: 'Integer', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$SetMember = F2(
-	function (a, b) {
-		return {$: 'SetMember', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$Problem$UnknownWordRef = F2(
-	function (a, b) {
-		return {$: 'UnknownWordRef', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$Word = F2(
-	function (a, b) {
-		return {$: 'Word', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$Problem$WordNotExposed = F2(
-	function (a, b) {
-		return {$: 'WordNotExposed', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$WordRef = F2(
-	function (a, b) {
-		return {$: 'WordRef', a: a, b: b};
-	});
-var $author$project$Stabel$Data$Builtin$Apply = {$: 'Apply'};
-var $author$project$Stabel$Data$Builtin$Divide = {$: 'Divide'};
-var $author$project$Stabel$Data$Builtin$Equal = {$: 'Equal'};
-var $author$project$Stabel$Data$Builtin$Minus = {$: 'Minus'};
-var $author$project$Stabel$Data$Builtin$Multiply = {$: 'Multiply'};
-var $author$project$Stabel$Data$Builtin$Plus = {$: 'Plus'};
-var $author$project$Stabel$Data$Builtin$StackDrop = {$: 'StackDrop'};
-var $author$project$Stabel$Data$Builtin$StackDuplicate = {$: 'StackDuplicate'};
-var $author$project$Stabel$Data$Builtin$StackLeftRotate = {$: 'StackLeftRotate'};
-var $author$project$Stabel$Data$Builtin$StackRightRotate = {$: 'StackRightRotate'};
-var $author$project$Stabel$Data$Builtin$StackSwap = {$: 'StackSwap'};
-var $author$project$Stabel$Qualifier$builtinDict = $elm$core$Dict$fromList(
-	_List_fromArray(
-		[
-			_Utils_Tuple2('+', $author$project$Stabel$Data$Builtin$Plus),
-			_Utils_Tuple2('-', $author$project$Stabel$Data$Builtin$Minus),
-			_Utils_Tuple2('*', $author$project$Stabel$Data$Builtin$Multiply),
-			_Utils_Tuple2('div', $author$project$Stabel$Data$Builtin$Divide),
-			_Utils_Tuple2('=', $author$project$Stabel$Data$Builtin$Equal),
-			_Utils_Tuple2('swap', $author$project$Stabel$Data$Builtin$StackSwap),
-			_Utils_Tuple2('dup', $author$project$Stabel$Data$Builtin$StackDuplicate),
-			_Utils_Tuple2('drop', $author$project$Stabel$Data$Builtin$StackDrop),
-			_Utils_Tuple2('rotate', $author$project$Stabel$Data$Builtin$StackRightRotate),
-			_Utils_Tuple2('-rotate', $author$project$Stabel$Data$Builtin$StackLeftRotate),
-			_Utils_Tuple2('!', $author$project$Stabel$Data$Builtin$Apply)
-		]));
-var $elm$core$String$concat = function (strings) {
-	return A2($elm$core$String$join, '', strings);
+var $author$project$Stabel$TypeChecker$collectReferencedGenerics = function (memberTypes) {
+	return $elm$core$Set$toList(
+		A3(
+			$elm$core$List$foldl,
+			$elm$core$Set$union,
+			$elm$core$Set$empty,
+			A2($elm$core$List$map, $author$project$Stabel$Data$Type$referencedGenerics, memberTypes)));
 };
-var $author$project$Stabel$Data$TypeSignature$NotProvided = {$: 'NotProvided'};
-var $author$project$Stabel$Data$Metadata$default = {isEntryPoint: false, isExposed: true, isQuoted: false, sourceLocationRange: $elm$core$Maybe$Nothing, type_: $author$project$Stabel$Data$TypeSignature$NotProvided};
-var $author$project$Stabel$Qualifier$initQualifyNodeAccumulator = function (qualifiedWords) {
-	return {availableQuoteId: 1, qualifiedNodes: _List_Nil, qualifiedWords: qualifiedWords};
-};
-var $author$project$Stabel$Data$Metadata$isQuoted = function (meta) {
-	return _Utils_update(
-		meta,
-		{isQuoted: true});
-};
-var $author$project$Stabel$Qualifier$qualifyName = F2(
-	function (config, name) {
-		return (config.packageName === '') ? name : $elm$core$String$concat(
-			_List_fromArray(
-				['/', config.packageName, '/', config.modulePath, '/', name]));
-	});
-var $author$project$Stabel$Qualifier$qualifyPackageModule = F2(
-	function (packageName, path) {
-		return (packageName === '') ? path : $elm$core$String$concat(
-			_List_fromArray(
-				['/', packageName, '/', path]));
-	});
-var $elm$core$String$dropLeft = F2(
-	function (n, string) {
-		return (n < 1) ? string : A3(
-			$elm$core$String$slice,
-			n,
-			$elm$core$String$length(string),
-			string);
-	});
-var $elm$core$Dict$filter = F2(
-	function (isGood, dict) {
-		return A3(
-			$elm$core$Dict$foldl,
-			F3(
-				function (k, v, d) {
-					return A2(isGood, k, v) ? A3($elm$core$Dict$insert, k, v, d) : d;
-				}),
-			$elm$core$Dict$empty,
-			dict);
+var $author$project$Stabel$TypeChecker$Problem$UndeclaredGeneric = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
 	});
 var $elm$core$List$filter = F2(
 	function (isGood, list) {
@@ -7874,1668 +10270,106 @@ var $elm$core$List$filter = F2(
 			_List_Nil,
 			list);
 	});
-var $elm$core$List$member = F2(
-	function (x, xs) {
+var $author$project$Stabel$TypeChecker$collectUndeclaredGenericProblems = F3(
+	function (range, listedGenerics, memberTypes) {
 		return A2(
-			$elm$core$List$any,
-			function (a) {
-				return _Utils_eq(a, x);
-			},
-			xs);
-	});
-var $elm$core$String$startsWith = _String_startsWith;
-var $author$project$Stabel$Qualifier$resolveImportedWord = F3(
-	function (config, modRefs, name) {
-		var resolveMod = function (mod) {
-			return A2($elm$core$String$startsWith, '/', mod) ? A2(
-				$elm$core$Maybe$map,
-				function (_package) {
-					return A2(
-						$author$project$Stabel$Qualifier$qualifyPackageModule,
-						_package,
-						A2($elm$core$String$dropLeft, 1, mod));
-				},
-				A2($elm$core$Dict$get, mod, config.externalModules)) : $elm$core$Maybe$Just(
-				A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.packageName, mod));
-		};
-		var potentialCandidates = A2(
 			$elm$core$List$map,
-			function (mod) {
-				return _Utils_Tuple2(mod, mod + ('/' + name));
+			function (gen) {
+				return A2($author$project$Stabel$TypeChecker$Problem$UndeclaredGeneric, range, gen);
 			},
 			A2(
-				$elm$core$List$filterMap,
-				resolveMod,
-				$elm$core$Dict$keys(
-					A2(
-						$elm$core$Dict$filter,
-						F2(
-							function (_v4, v) {
-								return $elm$core$List$isEmpty(v);
-							}),
-						modRefs.imports))));
-		var explicitImports = A2(
-			$elm$core$Maybe$andThen,
-			resolveMod,
-			A2(
-				$elm$core$Maybe$map,
-				$elm$core$Tuple$first,
-				A2(
-					$elm_community$list_extra$List$Extra$find,
-					function (_v3) {
-						var v = _v3.b;
-						return A2($elm$core$List$member, name, v);
-					},
-					$elm$core$Dict$toList(modRefs.imports))));
-		if (explicitImports.$ === 'Just') {
-			return explicitImports;
-		} else {
-			return A2(
-				$elm$core$Maybe$map,
-				$elm$core$Tuple$first,
-				$elm$core$List$head(
-					A2(
-						$elm$core$List$filter,
-						function (_v2) {
-							var possibleDef = _v2.b;
-							return !_Utils_eq(possibleDef, $elm$core$Maybe$Nothing);
-						},
-						A2(
-							$elm$core$List$map,
-							function (_v1) {
-								var mod = _v1.a;
-								var qName = _v1.b;
-								return _Utils_Tuple2(
-									mod,
-									A2($elm$core$Dict$get, qName, config.inProgressAST.words));
-							},
-							potentialCandidates))));
-		}
-	});
-var $author$project$Stabel$Qualifier$initQualifyNode = F5(
-	function (config, currentDefName, modRefs, qualifiedWords, impl) {
-		return function (acc) {
-			return _Utils_Tuple2(
-				acc.qualifiedWords,
-				$elm_community$result_extra$Result$Extra$combine(acc.qualifiedNodes));
-		}(
-			A3(
-				$elm$core$List$foldr,
-				A3($author$project$Stabel$Qualifier$qualifyNode, config, currentDefName, modRefs),
-				$author$project$Stabel$Qualifier$initQualifyNodeAccumulator(qualifiedWords),
-				impl));
-	});
-var $author$project$Stabel$Qualifier$qualifyNode = F5(
-	function (config, currentDefName, modRefs, node, acc) {
-		qualifyNode:
-		while (true) {
-			switch (node.$) {
-				case 'Integer':
-					var loc = node.a;
-					var value = node.b;
-					return _Utils_update(
-						acc,
-						{
-							qualifiedNodes: A2(
-								$elm$core$List$cons,
-								$elm$core$Result$Ok(
-									A2($author$project$Stabel$Qualifier$Integer, loc, value)),
-								acc.qualifiedNodes)
-						});
-				case 'Word':
-					var loc = node.a;
-					var value = node.b;
-					var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, value);
-					if (A2($elm$core$Dict$member, value, config.ast.words)) {
-						return _Utils_update(
-							acc,
-							{
-								qualifiedNodes: A2(
-									$elm$core$List$cons,
-									$elm$core$Result$Ok(
-										A2($author$project$Stabel$Qualifier$Word, loc, qualifiedName)),
-									acc.qualifiedNodes)
-							});
-					} else {
-						var _v1 = A2($elm$core$Dict$get, value, $author$project$Stabel$Qualifier$builtinDict);
-						if (_v1.$ === 'Just') {
-							var builtin = _v1.a;
-							return _Utils_update(
-								acc,
-								{
-									qualifiedNodes: A2(
-										$elm$core$List$cons,
-										$elm$core$Result$Ok(
-											A2($author$project$Stabel$Qualifier$Builtin, loc, builtin)),
-										acc.qualifiedNodes)
-								});
-						} else {
-							var _v2 = A3($author$project$Stabel$Qualifier$resolveImportedWord, config, modRefs, value);
-							if (_v2.$ === 'Nothing') {
-								return _Utils_update(
-									acc,
-									{
-										qualifiedNodes: A2(
-											$elm$core$List$cons,
-											$elm$core$Result$Err(
-												A2($author$project$Stabel$Qualifier$Problem$UnknownWordRef, loc, value)),
-											acc.qualifiedNodes)
-									});
-							} else {
-								var mod = _v2.a;
-								if (A2($elm$core$String$startsWith, '/', mod)) {
-									var path = A2(
-										$elm$core$List$drop,
-										3,
-										A2($elm$core$String$split, '/', mod));
-									var $temp$config = config,
-										$temp$currentDefName = currentDefName,
-										$temp$modRefs = modRefs,
-										$temp$node = A3($author$project$Stabel$Parser$ExternalWord, loc, path, value),
-										$temp$acc = acc;
-									config = $temp$config;
-									currentDefName = $temp$currentDefName;
-									modRefs = $temp$modRefs;
-									node = $temp$node;
-									acc = $temp$acc;
-									continue qualifyNode;
-								} else {
-									var path = A2($elm$core$String$split, '/', mod);
-									var $temp$config = config,
-										$temp$currentDefName = currentDefName,
-										$temp$modRefs = modRefs,
-										$temp$node = A3($author$project$Stabel$Parser$PackageWord, loc, path, value),
-										$temp$acc = acc;
-									config = $temp$config;
-									currentDefName = $temp$currentDefName;
-									modRefs = $temp$modRefs;
-									node = $temp$node;
-									acc = $temp$acc;
-									continue qualifyNode;
-								}
-							}
-						}
-					}
-				case 'PackageWord':
-					var loc = node.a;
-					var path = node.b;
-					var value = node.c;
-					var normalizedPathPreAliasCheck = A2($elm$core$String$join, '/', path);
-					var normalizedPath = A2(
-						$elm$core$Maybe$withDefault,
-						normalizedPathPreAliasCheck,
-						A2($elm$core$Dict$get, normalizedPathPreAliasCheck, modRefs.aliases));
-					if (A2($elm$core$String$startsWith, '/', normalizedPath)) {
-						var externalWordNode = A3(
-							$author$project$Stabel$Parser$ExternalWord,
-							loc,
-							A2(
-								$elm$core$List$drop,
-								1,
-								A2($elm$core$String$split, '/', normalizedPath)),
-							value);
-						var $temp$config = config,
-							$temp$currentDefName = currentDefName,
-							$temp$modRefs = modRefs,
-							$temp$node = externalWordNode,
-							$temp$acc = acc;
-						config = $temp$config;
-						currentDefName = $temp$currentDefName;
-						modRefs = $temp$modRefs;
-						node = $temp$node;
-						acc = $temp$acc;
-						continue qualifyNode;
-					} else {
-						var qualifiedPath = A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.packageName, normalizedPath);
-						var qualifiedName = A2(
-							$elm$core$String$join,
-							'/',
-							_List_fromArray(
-								[qualifiedPath, value]));
-						var _v3 = $elm$core$Dict$keys(config.inProgressAST.words);
-						var _v4 = A2($elm$core$Dict$get, qualifiedName, config.inProgressAST.words);
-						if (_v4.$ === 'Nothing') {
-							return _Utils_update(
-								acc,
-								{
-									qualifiedNodes: A2(
-										$elm$core$List$cons,
-										$elm$core$Result$Err(
-											A2($author$project$Stabel$Qualifier$Problem$UnknownWordRef, loc, qualifiedName)),
-										acc.qualifiedNodes)
-								});
-						} else {
-							var word = _v4.a;
-							return word.metadata.isExposed ? _Utils_update(
-								acc,
-								{
-									qualifiedNodes: A2(
-										$elm$core$List$cons,
-										$elm$core$Result$Ok(
-											A2($author$project$Stabel$Qualifier$Word, loc, qualifiedName)),
-										acc.qualifiedNodes)
-								}) : _Utils_update(
-								acc,
-								{
-									qualifiedNodes: A2(
-										$elm$core$List$cons,
-										$elm$core$Result$Err(
-											A2($author$project$Stabel$Qualifier$Problem$WordNotExposed, loc, qualifiedName)),
-										acc.qualifiedNodes)
-								});
-						}
-					}
-				case 'ExternalWord':
-					var loc = node.a;
-					var path = node.b;
-					var value = node.c;
-					var normalizedPath = '/' + A2($elm$core$String$join, '/', path);
-					var _v5 = A2($elm$core$Dict$get, normalizedPath, config.externalModules);
-					if (_v5.$ === 'Nothing') {
-						return _Utils_update(
-							acc,
-							{
-								qualifiedNodes: A2(
-									$elm$core$List$cons,
-									$elm$core$Result$Err(
-										A2($author$project$Stabel$Qualifier$Problem$UnknownWordRef, loc, normalizedPath + ('/' + value))),
-									acc.qualifiedNodes)
-							});
-					} else {
-						var _package = _v5.a;
-						var fullReference = $elm$core$String$concat(
-							_List_fromArray(
-								['/', _package, normalizedPath, '/', value]));
-						var _v6 = A2($elm$core$Dict$get, fullReference, config.inProgressAST.words);
-						if (_v6.$ === 'Nothing') {
-							return _Utils_update(
-								acc,
-								{
-									qualifiedNodes: A2(
-										$elm$core$List$cons,
-										$elm$core$Result$Err(
-											A2($author$project$Stabel$Qualifier$Problem$UnknownWordRef, loc, fullReference)),
-										acc.qualifiedNodes)
-								});
-						} else {
-							var def = _v6.a;
-							return def.metadata.isExposed ? _Utils_update(
-								acc,
-								{
-									qualifiedNodes: A2(
-										$elm$core$List$cons,
-										$elm$core$Result$Ok(
-											A2($author$project$Stabel$Qualifier$Word, loc, fullReference)),
-										acc.qualifiedNodes)
-								}) : _Utils_update(
-								acc,
-								{
-									qualifiedNodes: A2(
-										$elm$core$List$cons,
-										$elm$core$Result$Err(
-											A2($author$project$Stabel$Qualifier$Problem$WordNotExposed, loc, fullReference)),
-										acc.qualifiedNodes)
-								});
-						}
-					}
-				case 'ConstructType':
-					var typeName = node.a;
-					return _Utils_update(
-						acc,
-						{
-							qualifiedNodes: A2(
-								$elm$core$List$cons,
-								$elm$core$Result$Ok(
-									$author$project$Stabel$Qualifier$ConstructType(
-										A2($author$project$Stabel$Qualifier$qualifyName, config, typeName))),
-								acc.qualifiedNodes)
-						});
-				case 'SetMember':
-					var typeName = node.a;
-					var memberName = node.b;
-					return _Utils_update(
-						acc,
-						{
-							qualifiedNodes: A2(
-								$elm$core$List$cons,
-								$elm$core$Result$Ok(
-									A2(
-										$author$project$Stabel$Qualifier$SetMember,
-										A2($author$project$Stabel$Qualifier$qualifyName, config, typeName),
-										memberName)),
-								acc.qualifiedNodes)
-						});
-				case 'GetMember':
-					var typeName = node.a;
-					var memberName = node.b;
-					return _Utils_update(
-						acc,
-						{
-							qualifiedNodes: A2(
-								$elm$core$List$cons,
-								$elm$core$Result$Ok(
-									A2(
-										$author$project$Stabel$Qualifier$GetMember,
-										A2($author$project$Stabel$Qualifier$qualifyName, config, typeName),
-										memberName)),
-								acc.qualifiedNodes)
-						});
-				default:
-					var sourceLocation = node.a;
-					var quotImpl = node.b;
-					var quoteName = A2($elm$core$String$startsWith, 'quote:', currentDefName) ? (currentDefName + ('/' + $elm$core$String$fromInt(acc.availableQuoteId))) : ('quote:' + (A2($author$project$Stabel$Qualifier$qualifyName, config, currentDefName) + ('/' + $elm$core$String$fromInt(acc.availableQuoteId))));
-					var _v7 = A5($author$project$Stabel$Qualifier$initQualifyNode, config, quoteName, modRefs, acc.qualifiedWords, quotImpl);
-					var newWordsAfterQuot = _v7.a;
-					var qualifiedQuotImplResult = _v7.b;
-					if (qualifiedQuotImplResult.$ === 'Ok') {
-						var qualifiedQuotImpl = qualifiedQuotImplResult.a;
-						return _Utils_update(
-							acc,
-							{
-								availableQuoteId: acc.availableQuoteId + 1,
-								qualifiedNodes: A2(
-									$elm$core$List$cons,
-									$elm$core$Result$Ok(
-										A2($author$project$Stabel$Qualifier$WordRef, sourceLocation, quoteName)),
-									acc.qualifiedNodes),
-								qualifiedWords: A3(
-									$elm$core$Dict$insert,
-									quoteName,
-									{
-										implementation: $author$project$Stabel$Qualifier$SoloImpl(qualifiedQuotImpl),
-										metadata: $author$project$Stabel$Data$Metadata$isQuoted($author$project$Stabel$Data$Metadata$default),
-										name: quoteName
-									},
-									newWordsAfterQuot)
-							});
-					} else {
-						var err = qualifiedQuotImplResult.a;
-						return _Utils_update(
-							acc,
-							{
-								qualifiedNodes: A2(
-									$elm$core$List$cons,
-									$elm$core$Result$Err(err),
-									acc.qualifiedNodes)
-							});
-					}
-			}
-		}
-	});
-var $author$project$Stabel$Qualifier$moduleDefinition = function (config) {
-	var defaultImports = _Utils_eq(
-		A2($elm$core$Dict$get, '/core', config.externalModules),
-		$elm$core$Maybe$Just('stabel/standard_library')) ? $elm$core$Dict$fromList(
-		_List_fromArray(
-			[
-				_Utils_Tuple2('/core', _List_Nil)
-			])) : $elm$core$Dict$empty;
-	var _v0 = config.ast.moduleDefinition;
-	if (_v0.$ === 'Undefined') {
-		return {aliases: $elm$core$Dict$empty, exposes: $elm$core$Set$empty, imports: defaultImports};
-	} else {
-		var def = _v0.a;
-		return {
-			aliases: def.aliases,
-			exposes: def.exposes,
-			imports: A2($elm$core$Dict$union, def.imports, defaultImports)
-		};
-	}
-};
-var $author$project$Stabel$Data$TypeSignature$CompilerProvided = function (a) {
-	return {$: 'CompilerProvided', a: a};
-};
-var $author$project$Stabel$Data$TypeSignature$UserProvided = function (a) {
-	return {$: 'UserProvided', a: a};
-};
-var $author$project$Stabel$Data$SourceLocation$emptyRange = A2(
-	$author$project$Stabel$Data$SourceLocation$SourceLocationRange,
-	A3($author$project$Stabel$Data$SourceLocation$SourceLocation, 0, 0, 0),
-	A3($author$project$Stabel$Data$SourceLocation$SourceLocation, 0, 0, 0));
-var $author$project$Stabel$Data$TypeSignature$map = F2(
-	function (fn, ts) {
-		switch (ts.$) {
-			case 'NotProvided':
-				return $author$project$Stabel$Data$TypeSignature$NotProvided;
-			case 'UserProvided':
-				var wt = ts.a;
-				return $author$project$Stabel$Data$TypeSignature$UserProvided(
-					fn(wt));
-			default:
-				var wt = ts.a;
-				return $author$project$Stabel$Data$TypeSignature$CompilerProvided(
-					fn(wt));
-		}
-	});
-var $author$project$Stabel$Qualifier$Problem$TypeNotExposed = F2(
-	function (a, b) {
-		return {$: 'TypeNotExposed', a: a, b: b};
-	});
-var $author$project$Stabel$Data$Type$Union = function (a) {
-	return {$: 'Union', a: a};
-};
-var $author$project$Stabel$Qualifier$Problem$UnknownTypeRef = F2(
-	function (a, b) {
-		return {$: 'UnknownTypeRef', a: a, b: b};
-	});
-var $author$project$Stabel$Qualifier$resolveImportedType = F3(
-	function (config, modRefs, name) {
-		var resolveMod = function (mod) {
-			return A2($elm$core$String$startsWith, '/', mod) ? A2(
-				$elm$core$Maybe$map,
-				function (_package) {
-					return A2(
-						$author$project$Stabel$Qualifier$qualifyPackageModule,
-						_package,
-						A2($elm$core$String$dropLeft, 1, mod));
+				$elm$core$List$filter,
+				function (gen) {
+					return !A2($elm$core$Set$member, gen, listedGenerics);
 				},
-				A2($elm$core$Dict$get, mod, config.externalModules)) : $elm$core$Maybe$Just(
-				A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.packageName, mod));
-		};
-		var potentialCandidates = A2(
-			$elm$core$List$map,
-			function (mod) {
-				return _Utils_Tuple2(mod, mod + ('/' + name));
-			},
-			A2(
-				$elm$core$List$filterMap,
-				resolveMod,
-				$elm$core$Dict$keys(
-					A2(
-						$elm$core$Dict$filter,
-						F2(
-							function (_v4, v) {
-								return $elm$core$List$isEmpty(v);
-							}),
-						modRefs.imports))));
-		var explicitImports = A2(
-			$elm$core$Maybe$andThen,
-			resolveMod,
-			A2(
-				$elm$core$Maybe$map,
-				$elm$core$Tuple$first,
-				A2(
-					$elm_community$list_extra$List$Extra$find,
-					function (_v3) {
-						var v = _v3.b;
-						return A2($elm$core$List$member, name, v);
-					},
-					$elm$core$Dict$toList(modRefs.imports))));
-		if (explicitImports.$ === 'Just') {
-			return explicitImports;
-		} else {
-			return A2(
-				$elm$core$Maybe$map,
-				$elm$core$Tuple$first,
-				$elm$core$List$head(
-					A2(
-						$elm$core$List$filter,
-						function (_v2) {
-							var possibleDef = _v2.b;
-							return !_Utils_eq(possibleDef, $elm$core$Maybe$Nothing);
-						},
-						A2(
-							$elm$core$List$map,
-							function (_v1) {
-								var mod = _v1.a;
-								var qName = _v1.b;
-								return _Utils_Tuple2(
-									mod,
-									A2($elm$core$Dict$get, qName, config.inProgressAST.types));
-							},
-							potentialCandidates))));
-		}
+				memberTypes));
 	});
-var $author$project$Stabel$Qualifier$qualifyMemberType = F4(
-	function (config, modRefs, range, type_) {
-		var internalRefLookup = F3(
-			function (path, name, binds) {
-				var qualifiedName = A2(
-					$author$project$Stabel$Qualifier$qualifyPackageModule,
-					config.packageName,
-					A2(
-						$elm$core$String$join,
-						'/',
-						_Utils_ap(
-							path,
-							_List_fromArray(
-								[name]))));
-				var bindResult = $elm_community$result_extra$Result$Extra$combine(
-					A2(
-						$elm$core$List$map,
-						A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range),
-						binds));
-				var _v13 = _Utils_Tuple2(
-					A2($elm$core$Dict$get, qualifiedName, config.inProgressAST.types),
-					bindResult);
-				_v13$5:
-				while (true) {
-					if (_v13.a.$ === 'Just') {
-						if (_v13.a.a.$ === 'CustomTypeDef') {
-							if (!_v13.a.a.b) {
-								var _v14 = _v13.a.a;
-								return $elm$core$Result$Err(
-									A2($author$project$Stabel$Qualifier$Problem$TypeNotExposed, range, qualifiedName));
-							} else {
-								if (!_v13.a.a.d.b) {
-									var _v15 = _v13.a.a;
-									return $elm$core$Result$Ok(
-										$author$project$Stabel$Data$Type$Custom(qualifiedName));
-								} else {
-									if (_v13.b.$ === 'Ok') {
-										var _v16 = _v13.a.a;
-										var qualifiedBinds = _v13.b.a;
-										return $elm$core$Result$Ok(
-											A2($author$project$Stabel$Data$Type$CustomGeneric, qualifiedName, qualifiedBinds));
-									} else {
-										break _v13$5;
-									}
-								}
-							}
-						} else {
-							if (_v13.a.a.b) {
-								var _v17 = _v13.a.a;
-								var memberTypes = _v17.e;
-								return $elm$core$Result$Ok(
-									$author$project$Stabel$Data$Type$Union(memberTypes));
-							} else {
-								var _v18 = _v13.a.a;
-								return $elm$core$Result$Err(
-									A2($author$project$Stabel$Qualifier$Problem$TypeNotExposed, range, qualifiedName));
-							}
-						}
-					} else {
-						break _v13$5;
-					}
-				}
-				return $elm$core$Result$Err(
-					A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, range, qualifiedName));
-			});
-		var importsLookup = F2(
-			function (name, binds) {
-				var _v12 = A3($author$project$Stabel$Qualifier$resolveImportedType, config, modRefs, name);
-				if (_v12.$ === 'Just') {
-					var importedModule = _v12.a;
-					if (A2($elm$core$String$startsWith, '/', importedModule)) {
-						var nextPath = A2(
-							$elm$core$List$drop,
-							2,
-							A2(
-								$elm$core$String$split,
-								'/',
-								A2($elm$core$String$dropLeft, 1, importedModule)));
-						return A4(
-							$author$project$Stabel$Qualifier$qualifyMemberType,
-							config,
-							modRefs,
-							range,
-							A3($author$project$Stabel$Parser$ExternalRef, nextPath, name, binds));
-					} else {
-						return A4(
-							$author$project$Stabel$Qualifier$qualifyMemberType,
-							config,
-							modRefs,
-							range,
-							A3(
-								$author$project$Stabel$Parser$InternalRef,
-								A2($elm$core$String$split, '/', importedModule),
-								name,
-								binds));
-					}
-				} else {
-					return $elm$core$Result$Err(
-						A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, range, name));
-				}
-			});
-		switch (type_.$) {
-			case 'LocalRef':
-				if (!type_.b.b) {
-					if (type_.a === 'Int') {
-						return $elm$core$Result$Ok($author$project$Stabel$Data$Type$Int);
-					} else {
-						var name = type_.a;
-						var _v1 = A2($elm$core$Dict$get, name, config.ast.types);
-						if (_v1.$ === 'Just') {
-							return $elm$core$Result$Ok(
-								$author$project$Stabel$Data$Type$Custom(
-									A2($author$project$Stabel$Qualifier$qualifyName, config, name)));
-						} else {
-							return A2(importsLookup, name, _List_Nil);
-						}
-					}
-				} else {
-					var name = type_.a;
-					var binds = type_.b;
-					var _v2 = A2($elm$core$Dict$get, name, config.ast.types);
-					if (_v2.$ === 'Just') {
-						var bindResult = $elm_community$result_extra$Result$Extra$combine(
-							A2(
-								$elm$core$List$map,
-								A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range),
-								binds));
-						if (bindResult.$ === 'Ok') {
-							var convertedBindings = bindResult.a;
-							return $elm$core$Result$Ok(
-								A2(
-									$author$project$Stabel$Data$Type$CustomGeneric,
-									A2($author$project$Stabel$Qualifier$qualifyName, config, name),
-									convertedBindings));
-						} else {
-							var err = bindResult.a;
-							return $elm$core$Result$Err(err);
-						}
-					} else {
-						return A2(importsLookup, name, binds);
-					}
-				}
-			case 'InternalRef':
-				if (type_.a.b && (!type_.a.b.b)) {
-					var path = type_.a;
-					var possibleAlias = path.a;
-					var name = type_.b;
-					var binds = type_.c;
-					var _v4 = A2($elm$core$Dict$get, possibleAlias, modRefs.aliases);
-					if (_v4.$ === 'Just') {
-						var val = _v4.a;
-						if (A2($elm$core$String$startsWith, '/', val)) {
-							var newPath = A2(
-								$elm$core$List$drop,
-								1,
-								A2($elm$core$String$split, '/', val));
-							return A4(
-								$author$project$Stabel$Qualifier$qualifyMemberType,
-								config,
-								modRefs,
-								range,
-								A3($author$project$Stabel$Parser$ExternalRef, newPath, name, binds));
-						} else {
-							return A3(
-								internalRefLookup,
-								A2($elm$core$String$split, '/', val),
-								name,
-								binds);
-						}
-					} else {
-						return A3(internalRefLookup, path, name, binds);
-					}
-				} else {
-					var path = type_.a;
-					var name = type_.b;
-					var binds = type_.c;
-					return A3(internalRefLookup, path, name, binds);
-				}
-			case 'ExternalRef':
-				var path = type_.a;
-				var name = type_.b;
-				var binds = type_.c;
-				var pathString = '/' + A2($elm$core$String$join, '/', path);
-				var qualifiedName = A2(
-					$elm$core$Maybe$withDefault,
-					'',
-					A2(
-						$elm$core$Maybe$map,
-						function (prefix) {
-							return '/' + (prefix + (pathString + ('/' + name)));
-						},
-						A2($elm$core$Dict$get, pathString, config.externalModules)));
-				var bindResult = $elm_community$result_extra$Result$Extra$combine(
-					A2(
-						$elm$core$List$map,
-						A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range),
-						binds));
-				var _v5 = _Utils_Tuple2(
-					A2($elm$core$Dict$get, qualifiedName, config.inProgressAST.types),
-					bindResult);
-				_v5$5:
-				while (true) {
-					if (_v5.a.$ === 'Just') {
-						if (_v5.a.a.$ === 'CustomTypeDef') {
-							if (!_v5.a.a.b) {
-								var _v6 = _v5.a.a;
-								return $elm$core$Result$Err(
-									A2($author$project$Stabel$Qualifier$Problem$TypeNotExposed, range, qualifiedName));
-							} else {
-								if (!_v5.a.a.d.b) {
-									var _v7 = _v5.a.a;
-									return $elm$core$Result$Ok(
-										$author$project$Stabel$Data$Type$Custom(qualifiedName));
-								} else {
-									if (_v5.b.$ === 'Ok') {
-										var _v8 = _v5.a.a;
-										var qualifiedBinds = _v5.b.a;
-										return $elm$core$Result$Ok(
-											A2($author$project$Stabel$Data$Type$CustomGeneric, qualifiedName, qualifiedBinds));
-									} else {
-										break _v5$5;
-									}
-								}
-							}
-						} else {
-							if (_v5.a.a.b) {
-								var _v9 = _v5.a.a;
-								var memberTypes = _v9.e;
-								return $elm$core$Result$Ok(
-									$author$project$Stabel$Data$Type$Union(memberTypes));
-							} else {
-								var _v10 = _v5.a.a;
-								return $elm$core$Result$Err(
-									A2($author$project$Stabel$Qualifier$Problem$TypeNotExposed, range, qualifiedName));
-							}
-						}
-					} else {
-						break _v5$5;
-					}
-				}
-				return $elm$core$Result$Err(
-					A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, range, qualifiedName));
-			case 'Generic':
-				var sym = type_.a;
-				return $elm$core$Result$Ok(
-					$author$project$Stabel$Data$Type$Generic(sym));
-			case 'StackRange':
-				var sym = type_.a;
-				return $elm$core$Result$Ok(
-					$author$project$Stabel$Data$Type$Generic(sym));
-			default:
-				var sign = type_.a;
-				var outputResult = $elm_community$result_extra$Result$Extra$combine(
-					A2(
-						$elm$core$List$map,
-						A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range),
-						sign.output));
-				var inputResult = $elm_community$result_extra$Result$Extra$combine(
-					A2(
-						$elm$core$List$map,
-						A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range),
-						sign.input));
-				var _v11 = _Utils_Tuple2(inputResult, outputResult);
-				if (_v11.a.$ === 'Ok') {
-					if (_v11.b.$ === 'Ok') {
-						var input = _v11.a.a;
-						var output = _v11.b.a;
-						return $elm$core$Result$Ok(
-							$author$project$Stabel$Data$Type$Quotation(
-								{input: input, output: output}));
-					} else {
-						var output = _v11.b.a;
-						return $elm$core$Result$Err(output);
-					}
-				} else {
-					var input = _v11.a.a;
-					return $elm$core$Result$Err(input);
-				}
-		}
-	});
-var $author$project$Stabel$Qualifier$resolveUnion = F2(
-	function (typeDefs, type_) {
-		switch (type_.$) {
-			case 'Custom':
-				var typeName = type_.a;
-				var _v1 = A2($elm$core$Dict$get, typeName, typeDefs);
-				if ((_v1.$ === 'Just') && (_v1.a.$ === 'UnionTypeDef')) {
-					var _v2 = _v1.a;
-					var members = _v2.e;
-					return $author$project$Stabel$Data$Type$Union(members);
-				} else {
-					return type_;
-				}
-			case 'CustomGeneric':
-				var typeName = type_.a;
-				var types = type_.b;
-				var _v3 = A2($elm$core$Dict$get, typeName, typeDefs);
-				if ((_v3.$ === 'Just') && (_v3.a.$ === 'UnionTypeDef')) {
-					var _v4 = _v3.a;
-					var generics = _v4.d;
-					var members = _v4.e;
-					var genericsMap = $elm$core$Dict$fromList(
-						A3($elm$core$List$map2, $elm$core$Tuple$pair, generics, types));
-					var rebindGenerics = function (t) {
-						switch (t.$) {
-							case 'Generic':
-								var val = t.a;
-								return A2(
-									$elm$core$Maybe$withDefault,
-									t,
-									A2($elm$core$Dict$get, val, genericsMap));
-							case 'CustomGeneric':
-								var cgName = t.a;
-								var cgMembers = t.b;
-								return A2(
-									$author$project$Stabel$Data$Type$CustomGeneric,
-									cgName,
-									A2($elm$core$List$map, rebindGenerics, cgMembers));
-							default:
-								return t;
-						}
-					};
-					return $author$project$Stabel$Data$Type$Union(
-						A2($elm$core$List$map, rebindGenerics, members));
-				} else {
-					return type_;
-				}
-			default:
-				return type_;
-		}
-	});
-var $author$project$Stabel$Qualifier$resolveUnions = F2(
-	function (typeDefs, wt) {
-		return {
-			input: A2(
-				$elm$core$List$map,
-				$author$project$Stabel$Qualifier$resolveUnion(typeDefs),
-				wt.input),
-			output: A2(
-				$elm$core$List$map,
-				$author$project$Stabel$Qualifier$resolveUnion(typeDefs),
-				wt.output)
-		};
-	});
-var $author$project$Stabel$Parser$typeSignatureToMaybe = function (ts) {
-	switch (ts.$) {
-		case 'NotProvided':
-			return $elm$core$Maybe$Nothing;
-		case 'UserProvided':
-			var wt = ts.a;
-			return $elm$core$Maybe$Just(wt);
-		default:
-			var wt = ts.a;
-			return $elm$core$Maybe$Just(wt);
-	}
-};
-var $author$project$Stabel$Qualifier$qualifyMetadata = F3(
-	function (config, qualifiedTypes, word) {
-		var wordRange = A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, word.sourceLocationRange);
-		var modDef = $author$project$Stabel$Qualifier$moduleDefinition(config);
-		var modRefs = {
-			aliases: A2($elm$core$Dict$union, modDef.aliases, word.aliases),
-			imports: A2($elm$core$Dict$union, modDef.imports, word.imports)
-		};
-		var inputLength = function () {
-			var _v2 = word.typeSignature;
-			switch (_v2.$) {
-				case 'NotProvided':
-					return 0;
-				case 'UserProvided':
-					var wt = _v2.a;
-					return $elm$core$List$length(wt.input);
-				default:
-					var wt = _v2.a;
-					return $elm$core$List$length(wt.input);
-			}
-		}();
-		return A2(
-			$elm$core$Result$map,
-			function (qualifiedFlatTypeSignature) {
-				var wordType = {
-					input: A2($elm$core$List$take, inputLength, qualifiedFlatTypeSignature),
-					output: A2($elm$core$List$drop, inputLength, qualifiedFlatTypeSignature)
-				};
-				var ts = function () {
-					var _v1 = word.typeSignature;
-					switch (_v1.$) {
-						case 'NotProvided':
-							return $author$project$Stabel$Data$TypeSignature$NotProvided;
-						case 'UserProvided':
-							return $author$project$Stabel$Data$TypeSignature$UserProvided(wordType);
-						default:
-							return $author$project$Stabel$Data$TypeSignature$CompilerProvided(wordType);
-					}
-				}();
-				var baseMeta = $author$project$Stabel$Data$Metadata$default;
-				return _Utils_update(
-					baseMeta,
-					{
-						isExposed: function () {
-							var _v0 = config.ast.moduleDefinition;
-							if (_v0.$ === 'Undefined') {
-								return true;
-							} else {
-								var def = _v0.a;
-								return A2($elm$core$Set$member, word.name, def.exposes);
-							}
-						}(),
-						type_: A2(
-							$author$project$Stabel$Data$TypeSignature$map,
-							$author$project$Stabel$Qualifier$resolveUnions(qualifiedTypes),
-							ts)
-					});
-			},
-			$elm_community$result_extra$Result$Extra$combine(
-				A2(
-					$elm$core$List$map,
-					A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, wordRange),
-					A2(
-						$elm$core$Maybe$withDefault,
-						_List_Nil,
-						A2(
-							$elm$core$Maybe$map,
-							function (ts) {
-								return _Utils_ap(ts.input, ts.output);
-							},
-							$author$project$Stabel$Parser$typeSignatureToMaybe(word.typeSignature))))));
-	});
-var $author$project$Stabel$Qualifier$Problem$InvalidTypeMatch = function (a) {
-	return {$: 'InvalidTypeMatch', a: a};
-};
-var $author$project$Stabel$Qualifier$LiteralInt = function (a) {
-	return {$: 'LiteralInt', a: a};
-};
-var $author$project$Stabel$Qualifier$LiteralType = function (a) {
-	return {$: 'LiteralType', a: a};
-};
-var $author$project$Stabel$Qualifier$Problem$NoSuchMemberOnType = F3(
-	function (a, b, c) {
-		return {$: 'NoSuchMemberOnType', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$Qualifier$RecursiveMatch = function (a) {
-	return {$: 'RecursiveMatch', a: a};
-};
-var $author$project$Stabel$Qualifier$TypeMatch = F3(
-	function (a, b, c) {
-		return {$: 'TypeMatch', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$Qualifier$Problem$UnionTypeMatchWithPatterns = function (a) {
-	return {$: 'UnionTypeMatchWithPatterns', a: a};
-};
-var $author$project$Stabel$Qualifier$qualifyMatch = F4(
-	function (config, qualifiedTypes, modRefs, typeMatch) {
-		var qualifiedNameToMatch = F3(
-			function (range, name, patterns) {
-				var _v18 = A2($elm$core$Dict$get, name, qualifiedTypes);
-				if (_v18.$ === 'Just') {
-					if (_v18.a.$ === 'CustomTypeDef') {
-						if (!_v18.a.b) {
-							var _v19 = _v18.a;
-							return $elm$core$Result$Err(
-								A2($author$project$Stabel$Qualifier$Problem$TypeNotExposed, range, name));
-						} else {
-							var _v20 = _v18.a;
-							var gens = _v20.d;
-							var members = _v20.e;
-							var memberNames = $elm$core$Set$fromList(
-								A2($elm$core$List$map, $elm$core$Tuple$first, members));
-							var qualifiedPatternsResult = $elm_community$result_extra$Result$Extra$combine(
-								A2(
-									$elm$core$List$map,
-									A6($author$project$Stabel$Qualifier$qualifyMatchValue, config, qualifiedTypes, modRefs, range, name, memberNames),
-									patterns));
-							var actualType = function () {
-								if (!gens.b) {
-									return $author$project$Stabel$Data$Type$Custom(name);
-								} else {
-									return A2(
-										$author$project$Stabel$Data$Type$CustomGeneric,
-										name,
-										A2($elm$core$List$map, $author$project$Stabel$Data$Type$Generic, gens));
-								}
-							}();
-							if (qualifiedPatternsResult.$ === 'Ok') {
-								var qualifiedPatterns = qualifiedPatternsResult.a;
-								return $elm$core$Result$Ok(
-									A3($author$project$Stabel$Qualifier$TypeMatch, range, actualType, qualifiedPatterns));
-							} else {
-								var err = qualifiedPatternsResult.a;
-								return $elm$core$Result$Err(err);
-							}
-						}
-					} else {
-						if (!_v18.a.b) {
-							var _v23 = _v18.a;
-							return $elm$core$Result$Err(
-								A2($author$project$Stabel$Qualifier$Problem$TypeNotExposed, range, name));
-						} else {
-							var _v24 = _v18.a;
-							var types = _v24.e;
-							return $elm$core$List$isEmpty(patterns) ? $elm$core$Result$Ok(
-								A3(
-									$author$project$Stabel$Qualifier$TypeMatch,
-									range,
-									$author$project$Stabel$Data$Type$Union(types),
-									_List_Nil)) : $elm$core$Result$Err(
-								$author$project$Stabel$Qualifier$Problem$UnionTypeMatchWithPatterns(range));
-						}
-					}
-				} else {
-					return $elm$core$Result$Err(
-						A2($author$project$Stabel$Qualifier$Problem$UnknownTypeRef, range, name));
-				}
-			});
-		_v4$3:
-		while (true) {
-			_v4$7:
-			while (true) {
-				switch (typeMatch.b.$) {
-					case 'Generic':
-						if (!typeMatch.c.b) {
-							var range = typeMatch.a;
-							var sym = typeMatch.b.a;
-							return $elm$core$Result$Ok(
-								A3(
-									$author$project$Stabel$Qualifier$TypeMatch,
-									range,
-									$author$project$Stabel$Data$Type$Generic(sym),
-									_List_Nil));
-						} else {
-							break _v4$7;
-						}
-					case 'LocalRef':
-						if (!typeMatch.b.b.b) {
-							if (typeMatch.b.a === 'Int') {
-								if (!typeMatch.c.b) {
-									var range = typeMatch.a;
-									var _v5 = typeMatch.b;
-									return $elm$core$Result$Ok(
-										A3($author$project$Stabel$Qualifier$TypeMatch, range, $author$project$Stabel$Data$Type$Int, _List_Nil));
-								} else {
-									if (((typeMatch.c.a.a === 'value') && (typeMatch.c.a.b.$ === 'LiteralInt')) && (!typeMatch.c.b.b)) {
-										var range = typeMatch.a;
-										var _v6 = typeMatch.b;
-										var _v7 = typeMatch.c;
-										var _v8 = _v7.a;
-										var val = _v8.b.a;
-										return $elm$core$Result$Ok(
-											A3(
-												$author$project$Stabel$Qualifier$TypeMatch,
-												range,
-												$author$project$Stabel$Data$Type$Int,
-												_List_fromArray(
-													[
-														_Utils_Tuple2(
-														'value',
-														$author$project$Stabel$Qualifier$LiteralInt(val))
-													])));
-									} else {
-										break _v4$3;
-									}
-								}
-							} else {
-								break _v4$3;
-							}
-						} else {
-							break _v4$7;
-						}
-					case 'InternalRef':
-						if (typeMatch.b.a.b && (!typeMatch.b.a.b.b)) {
-							var range = typeMatch.a;
-							var _v13 = typeMatch.b;
-							var _v14 = _v13.a;
-							var possibleAlias = _v14.a;
-							var name = _v13.b;
-							var patterns = typeMatch.c;
-							var _v15 = A2($elm$core$Dict$get, possibleAlias, modRefs.aliases);
-							if (_v15.$ === 'Just') {
-								var actualPath = _v15.a;
-								if (A2($elm$core$String$startsWith, '/', actualPath)) {
-									var extPath = A2(
-										$elm$core$String$split,
-										'/',
-										A2($elm$core$String$dropLeft, 1, actualPath));
-									return A4(
-										$author$project$Stabel$Qualifier$qualifyMatch,
-										config,
-										qualifiedTypes,
-										modRefs,
-										A3(
-											$author$project$Stabel$Parser$TypeMatch,
-											range,
-											A3($author$project$Stabel$Parser$ExternalRef, extPath, name, _List_Nil),
-											patterns));
-								} else {
-									var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.packageName, actualPath + ('/' + name));
-									return A3(qualifiedNameToMatch, range, qualifiedName, patterns);
-								}
-							} else {
-								var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyPackageModule, config.packageName, possibleAlias + ('/' + name));
-								return A3(qualifiedNameToMatch, range, qualifiedName, patterns);
-							}
-						} else {
-							var range = typeMatch.a;
-							var _v16 = typeMatch.b;
-							var path = _v16.a;
-							var name = _v16.b;
-							var patterns = typeMatch.c;
-							var qualifiedName = A2(
-								$author$project$Stabel$Qualifier$qualifyPackageModule,
-								config.packageName,
-								A2(
-									$elm$core$String$join,
-									'/',
-									_Utils_ap(
-										path,
-										_List_fromArray(
-											[name]))));
-							return A3(qualifiedNameToMatch, range, qualifiedName, patterns);
-						}
-					case 'ExternalRef':
-						var range = typeMatch.a;
-						var _v17 = typeMatch.b;
-						var path = _v17.a;
-						var name = _v17.b;
-						var patterns = typeMatch.c;
-						var pathString = '/' + A2($elm$core$String$join, '/', path);
-						var qualifiedName = A2(
-							$elm$core$Maybe$withDefault,
-							'',
-							A2(
-								$elm$core$Maybe$map,
-								function (prefix) {
-									return '/' + (prefix + (pathString + ('/' + name)));
-								},
-								A2($elm$core$Dict$get, pathString, config.externalModules)));
-						return A3(qualifiedNameToMatch, range, qualifiedName, patterns);
-					default:
-						break _v4$7;
-				}
-			}
-			var range = typeMatch.a;
-			return $elm$core$Result$Err(
-				$author$project$Stabel$Qualifier$Problem$InvalidTypeMatch(range));
-		}
-		var range = typeMatch.a;
-		var _v9 = typeMatch.b;
-		var name = _v9.a;
-		var patterns = typeMatch.c;
-		var _v10 = A3(
-			qualifiedNameToMatch,
-			range,
-			A2($author$project$Stabel$Qualifier$qualifyName, config, name),
-			patterns);
-		if ((_v10.$ === 'Err') && (_v10.a.$ === 'UnknownTypeRef')) {
-			var errMsg = _v10;
-			var _v11 = errMsg.a;
-			var _v12 = A3($author$project$Stabel$Qualifier$resolveImportedType, config, modRefs, name);
-			if (_v12.$ === 'Just') {
-				var importedModule = _v12.a;
-				return A3(qualifiedNameToMatch, range, importedModule + ('/' + name), patterns);
-			} else {
-				return errMsg;
-			}
-		} else {
-			var result = _v10;
-			return result;
-		}
-	});
-var $author$project$Stabel$Qualifier$qualifyMatchValue = F7(
-	function (config, qualifiedTypes, modRefs, range, typeName, memberNames, _v0) {
-		var fieldName = _v0.a;
-		var matchValue = _v0.b;
-		if (A2($elm$core$Set$member, fieldName, memberNames)) {
-			switch (matchValue.$) {
-				case 'LiteralInt':
-					var val = matchValue.a;
-					return $elm$core$Result$Ok(
-						_Utils_Tuple2(
-							fieldName,
-							$author$project$Stabel$Qualifier$LiteralInt(val)));
-				case 'LiteralType':
-					var type_ = matchValue.a;
-					var qualifyTypeResult = A4($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range, type_);
-					if (qualifyTypeResult.$ === 'Ok') {
-						var qualifiedType = qualifyTypeResult.a;
-						return $elm$core$Result$Ok(
-							_Utils_Tuple2(
-								fieldName,
-								$author$project$Stabel$Qualifier$LiteralType(qualifiedType)));
-					} else {
-						var err = qualifyTypeResult.a;
-						return $elm$core$Result$Err(err);
-					}
-				default:
-					var typeMatch = matchValue.a;
-					var _v3 = A4($author$project$Stabel$Qualifier$qualifyMatch, config, qualifiedTypes, modRefs, typeMatch);
-					if (_v3.$ === 'Err') {
-						var err = _v3.a;
-						return $elm$core$Result$Err(err);
-					} else {
-						var match = _v3.a;
-						return $elm$core$Result$Ok(
-							_Utils_Tuple2(
-								fieldName,
-								$author$project$Stabel$Qualifier$RecursiveMatch(match)));
-					}
-			}
-		} else {
-			return $elm$core$Result$Err(
-				A3($author$project$Stabel$Qualifier$Problem$NoSuchMemberOnType, range, typeName, fieldName));
-		}
-	});
-var $author$project$Stabel$Qualifier$qualifyWhen = F6(
-	function (config, qualifiedTypes, wordName, modRefs, _v0, _v1) {
-		var typeMatch = _v0.a;
-		var impl = _v0.b;
-		var qualifiedWords = _v1.a;
-		var result = _v1.b;
-		var qualifiedMatchResult = A4($author$project$Stabel$Qualifier$qualifyMatch, config, qualifiedTypes, modRefs, typeMatch);
-		var _v2 = A5($author$project$Stabel$Qualifier$initQualifyNode, config, wordName, modRefs, qualifiedWords, impl);
-		var newWords = _v2.a;
-		var qualifiedImplementationResult = _v2.b;
-		var _v3 = _Utils_Tuple2(qualifiedImplementationResult, qualifiedMatchResult);
-		if (_v3.a.$ === 'Err') {
-			var err = _v3.a.a;
-			return _Utils_Tuple2(
-				newWords,
-				A2(
-					$elm$core$List$cons,
-					$elm$core$Result$Err(err),
-					result));
-		} else {
-			if (_v3.b.$ === 'Err') {
-				var err = _v3.b.a;
-				return _Utils_Tuple2(
-					newWords,
-					A2(
-						$elm$core$List$cons,
-						$elm$core$Result$Err(err),
-						result));
-			} else {
-				var qualifiedImplementation = _v3.a.a;
-				var qualifiedMatch = _v3.b.a;
-				return _Utils_Tuple2(
-					newWords,
-					A2(
-						$elm$core$List$cons,
-						$elm$core$Result$Ok(
-							_Utils_Tuple2(qualifiedMatch, qualifiedImplementation)),
-						result));
-			}
-		}
-	});
-var $author$project$Stabel$Qualifier$qualifyDefinition = F4(
-	function (config, qualifiedTypes, unqualifiedWord, _v0) {
-		var errors = _v0.a;
-		var acc = _v0.b;
-		var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, unqualifiedWord.name);
-		var qualifiedMetadataResult = A3($author$project$Stabel$Qualifier$qualifyMetadata, config, qualifiedTypes, unqualifiedWord);
-		var modDef = $author$project$Stabel$Qualifier$moduleDefinition(config);
-		var moduleReferences = {
-			aliases: A2($elm$core$Dict$union, unqualifiedWord.aliases, modDef.aliases),
-			imports: A2($elm$core$Dict$union, unqualifiedWord.imports, modDef.imports)
-		};
-		var _v1 = function () {
-			var _v2 = unqualifiedWord.implementation;
-			if (_v2.$ === 'SoloImpl') {
-				var defImpl = _v2.a;
-				return _Utils_Tuple2(_List_Nil, defImpl);
-			} else {
-				var whenImpl = _v2.a;
-				var defImpl = _v2.b;
-				return _Utils_Tuple2(whenImpl, defImpl);
-			}
-		}();
-		var whens = _v1.a;
-		var impl = _v1.b;
-		var _v3 = A2(
-			$elm$core$Tuple$mapSecond,
-			$elm_community$result_extra$Result$Extra$combine,
-			A3(
-				$elm$core$List$foldr,
-				A4($author$project$Stabel$Qualifier$qualifyWhen, config, qualifiedTypes, unqualifiedWord.name, moduleReferences),
-				_Utils_Tuple2(acc, _List_Nil),
-				whens));
-		var newWordsAfterWhens = _v3.a;
-		var qualifiedWhensResult = _v3.b;
-		var _v4 = A5($author$project$Stabel$Qualifier$initQualifyNode, config, unqualifiedWord.name, moduleReferences, newWordsAfterWhens, impl);
-		var newWordsAfterImpl = _v4.a;
-		var qualifiedImplementationResult = _v4.b;
-		var _v5 = _Utils_Tuple3(qualifiedWhensResult, qualifiedImplementationResult, qualifiedMetadataResult);
-		if (_v5.a.$ === 'Ok') {
-			if (_v5.b.$ === 'Ok') {
-				if (_v5.c.$ === 'Ok') {
-					var qualifiedWhens = _v5.a.a;
-					var qualifiedImplementation = _v5.b.a;
-					var qualifiedMetadata = _v5.c.a;
-					return _Utils_Tuple2(
-						errors,
-						A3(
-							$elm$core$Dict$insert,
-							qualifiedName,
-							{
-								implementation: $elm$core$List$isEmpty(qualifiedWhens) ? $author$project$Stabel$Qualifier$SoloImpl(qualifiedImplementation) : A2($author$project$Stabel$Qualifier$MultiImpl, qualifiedWhens, qualifiedImplementation),
-								metadata: qualifiedMetadata,
-								name: qualifiedName
-							},
-							newWordsAfterImpl));
-				} else {
-					var metaError = _v5.c.a;
-					return _Utils_Tuple2(
-						A2($elm$core$List$cons, metaError, errors),
-						newWordsAfterImpl);
-				}
-			} else {
-				var implError = _v5.b.a;
-				return _Utils_Tuple2(
-					A2($elm$core$List$cons, implError, errors),
-					newWordsAfterImpl);
-			}
-		} else {
-			var whenError = _v5.a.a;
-			return _Utils_Tuple2(
-				A2($elm$core$List$cons, whenError, errors),
-				newWordsAfterImpl);
-		}
-	});
-var $author$project$Stabel$Qualifier$CustomTypeDef = F5(
-	function (a, b, c, d, e) {
-		return {$: 'CustomTypeDef', a: a, b: b, c: c, d: d, e: e};
-	});
-var $author$project$Stabel$Qualifier$UnionTypeDef = F5(
-	function (a, b, c, d, e) {
-		return {$: 'UnionTypeDef', a: a, b: b, c: c, d: d, e: e};
-	});
-var $elm$core$Dict$isEmpty = function (dict) {
-	if (dict.$ === 'RBEmpty_elm_builtin') {
-		return true;
+var $author$project$Stabel$TypeChecker$verifyGenericVariableConsistency = function (t) {
+	var _v0 = t.aQ;
+	if (!_v0.$) {
+		var members = _v0.a;
+		var listedGenerics_ = $elm$core$Set$fromList(t._);
+		return A3(
+			$author$project$Stabel$TypeChecker$collectUndeclaredGenericProblems,
+			t.U,
+			listedGenerics_,
+			$author$project$Stabel$TypeChecker$collectReferencedGenerics(
+				A2($elm$core$List$map, $elm$core$Tuple$second, members)));
 	} else {
-		return false;
-	}
-};
-var $elm$core$Set$isEmpty = function (_v0) {
-	var dict = _v0.a;
-	return $elm$core$Dict$isEmpty(dict);
-};
-var $author$project$Stabel$Qualifier$qualifyType = F3(
-	function (config, typeDef, _v0) {
-		var errors = _v0.a;
-		var acc = _v0.b;
-		var modDef = $author$project$Stabel$Qualifier$moduleDefinition(config);
-		var _v1 = _Utils_Tuple2(
-			{aliases: modDef.aliases, imports: modDef.imports},
-			modDef.exposes);
-		var modRefs = _v1.a;
-		var exposes = _v1.b;
-		if (typeDef.$ === 'CustomTypeDef') {
-			var range = typeDef.a;
-			var name = typeDef.b;
-			var generics = typeDef.c;
-			var members = typeDef.d;
-			var raiseTupleError = function (_v5) {
-				var label = _v5.a;
-				var result = _v5.b;
-				if (result.$ === 'Ok') {
-					var value = result.a;
-					return $elm$core$Result$Ok(
-						_Utils_Tuple2(label, value));
-				} else {
-					var err = result.a;
-					return $elm$core$Result$Err(err);
-				}
-			};
-			var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, name);
-			var qualifiedMemberResult = $elm_community$result_extra$Result$Extra$combine(
-				A2(
-					$elm$core$List$map,
-					raiseTupleError,
-					A2(
-						$elm$core$List$map,
-						$elm$core$Tuple$mapSecond(
-							A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range)),
-						members)));
-			var exposed = $elm$core$Set$isEmpty(exposes) || A2($elm$core$Set$member, name, exposes);
-			if (qualifiedMemberResult.$ === 'Err') {
-				var err = qualifiedMemberResult.a;
-				return _Utils_Tuple2(
-					A2($elm$core$List$cons, err, errors),
-					acc);
-			} else {
-				var qualifiedMembers = qualifiedMemberResult.a;
-				return _Utils_Tuple2(
-					errors,
-					A3(
-						$elm$core$Dict$insert,
-						qualifiedName,
-						A5($author$project$Stabel$Qualifier$CustomTypeDef, qualifiedName, exposed, range, generics, qualifiedMembers),
-						acc));
-			}
-		} else {
-			var range = typeDef.a;
-			var name = typeDef.b;
-			var generics = typeDef.c;
-			var memberTypes = typeDef.d;
-			var qualifiedName = A2($author$project$Stabel$Qualifier$qualifyName, config, name);
-			var qualifiedMemberTypesResult = $elm_community$result_extra$Result$Extra$combine(
-				A2(
-					$elm$core$List$map,
-					A3($author$project$Stabel$Qualifier$qualifyMemberType, config, modRefs, range),
-					memberTypes));
-			var exposed = $elm$core$Set$isEmpty(exposes) || A2($elm$core$Set$member, name, exposes);
-			if (qualifiedMemberTypesResult.$ === 'Err') {
-				var err = qualifiedMemberTypesResult.a;
-				return _Utils_Tuple2(
-					A2($elm$core$List$cons, err, errors),
-					acc);
-			} else {
-				var qualifiedMemberTypes = qualifiedMemberTypesResult.a;
-				return _Utils_Tuple2(
-					errors,
-					A3(
-						$elm$core$Dict$insert,
-						qualifiedName,
-						A5($author$project$Stabel$Qualifier$UnionTypeDef, qualifiedName, exposed, range, generics, qualifiedMemberTypes),
-						acc));
-			}
-		}
-	});
-var $author$project$Stabel$Qualifier$resolveUnionInTypeDefs = F2(
-	function (qt, td) {
-		if (td.$ === 'CustomTypeDef') {
-			var exposed = td.a;
-			var name = td.b;
-			var range = td.c;
-			var generics = td.d;
-			var members = td.e;
-			return A5(
-				$author$project$Stabel$Qualifier$CustomTypeDef,
-				exposed,
-				name,
-				range,
-				generics,
-				A2(
-					$elm$core$List$map,
-					$elm$core$Tuple$mapSecond(
-						$author$project$Stabel$Qualifier$resolveUnion(qt)),
-					members));
-		} else {
-			var exposed = td.a;
-			var name = td.b;
-			var range = td.c;
-			var generics = td.d;
-			var memberTypes = td.e;
-			return A5(
-				$author$project$Stabel$Qualifier$UnionTypeDef,
-				exposed,
-				name,
-				range,
-				generics,
-				A2(
-					$elm$core$List$map,
-					$author$project$Stabel$Qualifier$resolveUnion(qt),
-					memberTypes));
-		}
-	});
-var $author$project$Stabel$Qualifier$run = function (config) {
-	var _v0 = A2(
-		$elm$core$Tuple$mapSecond,
-		function (qt) {
-			return A2(
-				$elm$core$Dict$map,
-				F2(
-					function (_v2, v) {
-						return A2($author$project$Stabel$Qualifier$resolveUnionInTypeDefs, qt, v);
-					}),
-				qt);
-		},
-		A3(
-			$elm$core$Dict$foldl,
-			F3(
-				function (_v1, val, acc) {
-					return A3($author$project$Stabel$Qualifier$qualifyType, config, val, acc);
-				}),
-			_Utils_Tuple2(_List_Nil, $elm$core$Dict$empty),
-			config.ast.types));
-	var typeErrors = _v0.a;
-	var qualifiedTypes = _v0.b;
-	var allQualifiedTypes = A2($elm$core$Dict$union, qualifiedTypes, config.inProgressAST.types);
-	var _v3 = A3(
-		$elm$core$Dict$foldl,
-		F3(
-			function (_v4, val, acc) {
-				return A4($author$project$Stabel$Qualifier$qualifyDefinition, config, allQualifiedTypes, val, acc);
-			}),
-		_Utils_Tuple2(_List_Nil, $elm$core$Dict$empty),
-		config.ast.words);
-	var wordErrors = _v3.a;
-	var qualifiedWords = _v3.b;
-	var _v5 = _Utils_Tuple2(typeErrors, wordErrors);
-	if ((!_v5.a.b) && (!_v5.b.b)) {
-		return $elm$core$Result$Ok(
-			{types: qualifiedTypes, words: qualifiedWords});
-	} else {
-		return $elm$core$Result$Err(
-			_Utils_ap(typeErrors, wordErrors));
-	}
-};
-var $author$project$Stabel$TypeChecker$CustomTypeDef = F4(
-	function (a, b, c, d) {
-		return {$: 'CustomTypeDef', a: a, b: b, c: c, d: d};
-	});
-var $author$project$Stabel$TypeChecker$Problem$UndeclaredGeneric = F3(
-	function (a, b, c) {
-		return {$: 'UndeclaredGeneric', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$TypeChecker$UnionTypeDef = F4(
-	function (a, b, c, d) {
-		return {$: 'UnionTypeDef', a: a, b: b, c: c, d: d};
-	});
-var $elm$core$Dict$singleton = F2(
-	function (key, value) {
-		return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
-	});
-var $elm$core$Set$singleton = function (key) {
-	return $elm$core$Set$Set_elm_builtin(
-		A2($elm$core$Dict$singleton, key, _Utils_Tuple0));
-};
-var $author$project$Stabel$Data$Type$referencedGenerics = function (t) {
-	switch (t.$) {
-		case 'Generic':
-			var val = t.a;
-			return $elm$core$Set$singleton(val);
-		case 'CustomGeneric':
-			var members = t.b;
-			return A3(
-				$elm$core$List$foldl,
-				$elm$core$Set$union,
-				$elm$core$Set$empty,
-				A2($elm$core$List$map, $author$project$Stabel$Data$Type$referencedGenerics, members));
-		case 'Union':
-			var members = t.a;
-			return A3(
-				$elm$core$List$foldl,
-				$elm$core$Set$union,
-				$elm$core$Set$empty,
-				A2($elm$core$List$map, $author$project$Stabel$Data$Type$referencedGenerics, members));
-		default:
-			return $elm$core$Set$empty;
+		var mts = _v0.a;
+		var listedGenerics_ = $elm$core$Set$fromList(t._);
+		return A3(
+			$author$project$Stabel$TypeChecker$collectUndeclaredGenericProblems,
+			t.U,
+			listedGenerics_,
+			$author$project$Stabel$TypeChecker$collectReferencedGenerics(mts));
 	}
 };
 var $author$project$Stabel$TypeChecker$initContext = function (ast) {
-	var genericErrors = function (t) {
-		var collectUndeclaredGenericProblems = F3(
-			function (range, listedGenerics, memberTypes) {
-				return A2(
-					$elm$core$List$map,
-					function (gen) {
-						return A3($author$project$Stabel$TypeChecker$Problem$UndeclaredGeneric, range, gen, listedGenerics);
-					},
-					A2(
-						$elm$core$List$filter,
-						function (gen) {
-							return !A2($elm$core$Set$member, gen, listedGenerics);
-						},
-						memberTypes));
-			});
-		var collectReferencedGenerics = function (memberTypes) {
-			return $elm$core$Set$toList(
-				A3(
-					$elm$core$List$foldl,
-					$elm$core$Set$union,
-					$elm$core$Set$empty,
-					A2($elm$core$List$map, $author$project$Stabel$Data$Type$referencedGenerics, memberTypes)));
-		};
-		if (t.$ === 'CustomTypeDef') {
-			var name = t.a;
-			var range = t.b;
-			var generics = t.c;
-			var members = t.d;
-			var listedGenerics_ = $elm$core$Set$fromList(generics);
-			return A3(
-				collectUndeclaredGenericProblems,
-				range,
-				listedGenerics_,
-				collectReferencedGenerics(
-					A2($elm$core$List$map, $elm$core$Tuple$second, members)));
-		} else {
-			var name = t.a;
-			var range = t.b;
-			var generics = t.c;
-			var mts = t.d;
-			var listedGenerics_ = $elm$core$Set$fromList(generics);
-			return A3(
-				collectUndeclaredGenericProblems,
-				range,
-				listedGenerics_,
-				collectReferencedGenerics(mts));
-		}
-	};
-	var concreteTypes = A2(
-		$elm$core$Dict$map,
-		F2(
-			function (_v0, t) {
-				if (t.$ === 'CustomTypeDef') {
-					var name = t.a;
-					var range = t.c;
-					var generics = t.d;
-					var members = t.e;
-					return A4($author$project$Stabel$TypeChecker$CustomTypeDef, name, range, generics, members);
-				} else {
-					var name = t.a;
-					var range = t.c;
-					var generics = t.d;
-					var memberTypes = t.e;
-					return A4($author$project$Stabel$TypeChecker$UnionTypeDef, name, range, generics, memberTypes);
-				}
-			}),
-		ast.types);
 	return {
-		boundGenerics: $elm$core$Dict$empty,
-		boundStackRanges: $elm$core$Dict$empty,
-		callStack: $elm$core$Set$empty,
-		errors: A2(
+		z: $elm$core$Dict$empty,
+		F: $elm$core$Dict$empty,
+		l: A2(
 			$elm$core$List$concatMap,
-			genericErrors,
-			$elm$core$Dict$values(concreteTypes)),
-		stackEffects: _List_Nil,
-		typedWords: $elm$core$Dict$empty,
-		types: concreteTypes,
-		untypedWords: ast.words
+			$author$project$Stabel$TypeChecker$verifyGenericVariableConsistency,
+			$elm$core$Dict$values(ast.I)),
+		y: _List_Nil,
+		E: $elm$core$Dict$empty,
+		I: ast.I,
+		a5: ast.bj
 	};
 };
+var $author$project$Stabel$TypeChecker$Builtin = F2(
+	function (a, b) {
+		return {$: 5, a: a, b: b};
+	});
+var $author$project$Stabel$TypeChecker$ConstructType = function (a) {
+	return {$: 6, a: a};
+};
+var $author$project$Stabel$TypeChecker$Cycle = F2(
+	function (a, b) {
+		return {$: 4, a: a, b: b};
+	});
+var $author$project$Stabel$TypeChecker$Function = F3(
+	function (a, b, c) {
+		return {$: 1, a: a, b: b, c: c};
+	});
+var $author$project$Stabel$TypeChecker$FunctionRef = F2(
+	function (a, b) {
+		return {$: 2, a: a, b: b};
+	});
+var $author$project$Stabel$TypeChecker$GetMember = F4(
+	function (a, b, c, d) {
+		return {$: 8, a: a, b: b, c: c, d: d};
+	});
 var $author$project$Stabel$TypeChecker$Problem$InconsistentWhens = F2(
 	function (a, b) {
-		return {$: 'InconsistentWhens', a: a, b: b};
+		return {$: 3, a: a, b: b};
+	});
+var $author$project$Stabel$TypeChecker$IntLiteral = F2(
+	function (a, b) {
+		return {$: 0, a: a, b: b};
 	});
 var $author$project$Stabel$TypeChecker$Problem$MissingTypeAnnotationInRecursiveCallStack = F2(
 	function (a, b) {
-		return {$: 'MissingTypeAnnotationInRecursiveCallStack', a: a, b: b};
+		return {$: 4, a: a, b: b};
 	});
 var $author$project$Stabel$TypeChecker$MultiImpl = F2(
 	function (a, b) {
-		return {$: 'MultiImpl', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $author$project$Stabel$TypeChecker$Push = function (a) {
-	return {$: 'Push', a: a};
+	return {$: 0, a: a};
 };
+var $author$project$Stabel$TypeChecker$Recurse = function (a) {
+	return {$: 3, a: a};
+};
+var $author$project$Stabel$TypeChecker$SetMember = F4(
+	function (a, b, c, d) {
+		return {$: 7, a: a, b: b, c: c, d: d};
+	});
 var $author$project$Stabel$TypeChecker$SoloImpl = function (a) {
-	return {$: 'SoloImpl', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$List$all = F2(
 	function (isOkay, list) {
@@ -9544,16 +10378,88 @@ var $elm$core$List$all = F2(
 			A2($elm$core$Basics$composeL, $elm$core$Basics$not, isOkay),
 			list);
 	});
+var $author$project$Stabel$Data$Type$genericlyCompatible = F2(
+	function (lhs, rhs) {
+		var _v0 = _Utils_Tuple2(lhs, rhs);
+		_v0$2:
+		while (true) {
+			_v0$5:
+			while (true) {
+				switch (_v0.a.$) {
+					case 1:
+						if (_v0.b.$ === 1) {
+							return true;
+						} else {
+							return false;
+						}
+					case 3:
+						switch (_v0.b.$) {
+							case 1:
+								break _v0$2;
+							case 3:
+								var _v1 = _v0.a;
+								var lName = _v1.a;
+								var _v2 = _v0.b;
+								var rName = _v2.a;
+								return _Utils_eq(lName, rName);
+							default:
+								break _v0$5;
+						}
+					case 4:
+						switch (_v0.b.$) {
+							case 1:
+								break _v0$2;
+							case 4:
+								var _v3 = _v0.a;
+								var lMems = _v3.b;
+								var _v4 = _v0.b;
+								var rMems = _v4.b;
+								return _Utils_eq(lMems, rMems);
+							default:
+								break _v0$5;
+						}
+					default:
+						if (_v0.b.$ === 1) {
+							break _v0$2;
+						} else {
+							break _v0$5;
+						}
+				}
+			}
+			return _Utils_eq(lhs, rhs);
+		}
+		return true;
+	});
+var $author$project$Stabel$TypeChecker$compatibleTypeList = F2(
+	function (aLs, bLs) {
+		return A2(
+			$elm$core$List$all,
+			$elm$core$Basics$identity,
+			A3($elm$core$List$map2, $author$project$Stabel$Data$Type$genericlyCompatible, aLs, bLs));
+	});
+var $author$project$Stabel$TypeChecker$areAllEqual = function (ls) {
+	if (!ls.b) {
+		return true;
+	} else {
+		var _v1 = ls.a;
+		var inputTypes = _v1.a;
+		var outputLength = _v1.b;
+		var rest = ls.b;
+		return A2(
+			$elm$core$List$all,
+			function (_v2) {
+				var nextInputTypes = _v2.a;
+				var nextOutputLength = _v2.b;
+				return _Utils_eq(outputLength, nextOutputLength) && A2($author$project$Stabel$TypeChecker$compatibleTypeList, inputTypes, nextInputTypes);
+			},
+			rest);
+	}
+};
 var $author$project$Stabel$TypeChecker$cleanContext = function (ctx) {
 	return _Utils_update(
 		ctx,
-		{boundGenerics: $elm$core$Dict$empty, boundStackRanges: $elm$core$Dict$empty, stackEffects: _List_Nil});
+		{z: $elm$core$Dict$empty, F: $elm$core$Dict$empty, y: _List_Nil});
 };
-var $elm$core$Basics$composeR = F3(
-	function (f, g, x) {
-		return g(
-			f(x));
-	});
 var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 	function (remappedGenerics, annotated, inferred, acc) {
 		constrainGenericsHelper:
@@ -9562,9 +10468,12 @@ var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 			_v0$6:
 			while (true) {
 				if (!_v0.a.b) {
+					var rest = _v0.b;
 					return _Utils_Tuple2(
 						remappedGenerics,
-						$elm$core$List$reverse(acc));
+						_Utils_ap(
+							$elm$core$List$reverse(acc),
+							rest));
 				} else {
 					if (!_v0.b.b) {
 						return _Utils_Tuple2(
@@ -9572,8 +10481,8 @@ var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 							$elm$core$List$reverse(acc));
 					} else {
 						switch (_v0.b.a.$) {
-							case 'Generic':
-								if (_v0.a.a.$ === 'Generic') {
+							case 1:
+								if (_v0.a.a.$ === 1) {
 									var _v1 = _v0.a;
 									var annotatedEl = _v1.a;
 									var annGen = annotatedEl.a;
@@ -9594,7 +10503,7 @@ var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 										continue constrainGenericsHelper;
 									} else {
 										var _v3 = A2($elm$core$Dict$get, infGen, remappedGenerics);
-										if (_v3.$ === 'Just') {
+										if (!_v3.$) {
 											var val = _v3.a;
 											var $temp$remappedGenerics = remappedGenerics,
 												$temp$annotated = annotatedRest,
@@ -9620,8 +10529,8 @@ var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 								} else {
 									break _v0$6;
 								}
-							case 'StackRange':
-								if (_v0.a.a.$ === 'StackRange') {
+							case 6:
+								if (_v0.a.a.$ === 6) {
 									var _v4 = _v0.a;
 									var annotatedEl = _v4.a;
 									var annGen = annotatedEl.a;
@@ -9642,7 +10551,7 @@ var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 										continue constrainGenericsHelper;
 									} else {
 										var _v6 = A2($elm$core$Dict$get, infGen, remappedGenerics);
-										if (_v6.$ === 'Just') {
+										if (!_v6.$) {
 											var val = _v6.a;
 											var $temp$remappedGenerics = remappedGenerics,
 												$temp$annotated = annotatedRest,
@@ -9673,7 +10582,7 @@ var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 									var infGen = _v8.a.a;
 									var inferredRest = _v8.b;
 									var _v9 = A2($elm$core$Dict$get, infGen, remappedGenerics);
-									if (_v9.$ === 'Just') {
+									if (!_v9.$) {
 										var val = _v9.a;
 										var $temp$remappedGenerics = remappedGenerics,
 											$temp$annotated = annotatedRest,
@@ -9696,26 +10605,26 @@ var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 										continue constrainGenericsHelper;
 									}
 								}
-							case 'Quotation':
-								if (_v0.a.a.$ === 'Quotation') {
+							case 5:
+								if (_v0.a.a.$ === 5) {
 									var _v10 = _v0.a;
-									var annotatedQuote = _v10.a.a;
+									var annotatedFunction = _v10.a.a;
 									var annotatedRest = _v10.b;
 									var _v11 = _v0.b;
-									var inferredQuote = _v11.a.a;
+									var inferredFunction = _v11.a.a;
 									var inferredRest = _v11.b;
-									var _v12 = A4($author$project$Stabel$TypeChecker$constrainGenericsHelper, remappedGenerics, annotatedQuote.input, inferredQuote.input, _List_Nil);
-									var quoteRemappedGens = _v12.a;
+									var _v12 = A4($author$project$Stabel$TypeChecker$constrainGenericsHelper, remappedGenerics, annotatedFunction.o, inferredFunction.o, _List_Nil);
+									var functionRemappedGens = _v12.a;
 									var constrainedInputs = _v12.b;
-									var _v13 = A4($author$project$Stabel$TypeChecker$constrainGenericsHelper, quoteRemappedGens, annotatedQuote.output, inferredQuote.output, _List_Nil);
-									var quoteRemappedGens2 = _v13.a;
+									var _v13 = A4($author$project$Stabel$TypeChecker$constrainGenericsHelper, functionRemappedGens, annotatedFunction.H, inferredFunction.H, _List_Nil);
+									var functionRemappedGens2 = _v13.a;
 									var constrainedOutputs = _v13.b;
-									var constrainedQuote = $author$project$Stabel$Data$Type$Quotation(
-										{input: constrainedInputs, output: constrainedOutputs});
-									var $temp$remappedGenerics = A2($elm$core$Dict$union, quoteRemappedGens2, remappedGenerics),
+									var constrainedFunction = $author$project$Stabel$Data$Type$FunctionSignature(
+										{o: constrainedInputs, H: constrainedOutputs});
+									var $temp$remappedGenerics = A2($elm$core$Dict$union, functionRemappedGens2, remappedGenerics),
 										$temp$annotated = annotatedRest,
 										$temp$inferred = inferredRest,
-										$temp$acc = A2($elm$core$List$cons, constrainedQuote, acc);
+										$temp$acc = A2($elm$core$List$cons, constrainedFunction, acc);
 									remappedGenerics = $temp$remappedGenerics;
 									annotated = $temp$annotated;
 									inferred = $temp$inferred;
@@ -9748,9 +10657,9 @@ var $author$project$Stabel$TypeChecker$constrainGenericsHelper = F4(
 	});
 var $author$project$Stabel$Data$TypeSignature$toMaybe = function (ts) {
 	switch (ts.$) {
-		case 'NotProvided':
+		case 0:
 			return $elm$core$Maybe$Nothing;
-		case 'UserProvided':
+		case 1:
 			var wt = ts.a;
 			return $elm$core$Maybe$Just(wt);
 		default:
@@ -9761,19 +10670,31 @@ var $author$project$Stabel$Data$TypeSignature$toMaybe = function (ts) {
 var $author$project$Stabel$TypeChecker$constrainGenerics = F2(
 	function (typeSignature, inferredType) {
 		var _v0 = $author$project$Stabel$Data$TypeSignature$toMaybe(typeSignature);
-		if (_v0.$ === 'Nothing') {
+		if (_v0.$ === 1) {
 			return inferredType;
 		} else {
 			var annotatedType = _v0.a;
-			var _v1 = A4($author$project$Stabel$TypeChecker$constrainGenericsHelper, $elm$core$Dict$empty, annotatedType.input, inferredType.input, _List_Nil);
+			var _v1 = A4($author$project$Stabel$TypeChecker$constrainGenericsHelper, $elm$core$Dict$empty, annotatedType.o, inferredType.o, _List_Nil);
 			var remappedGenerics = _v1.a;
 			var constrainedInputs = _v1.b;
-			var _v2 = A4($author$project$Stabel$TypeChecker$constrainGenericsHelper, remappedGenerics, annotatedType.output, inferredType.output, _List_Nil);
+			var _v2 = A4($author$project$Stabel$TypeChecker$constrainGenericsHelper, remappedGenerics, annotatedType.H, inferredType.H, _List_Nil);
 			var constrainedOutputs = _v2.b;
-			return {input: constrainedInputs, output: constrainedOutputs};
+			return {o: constrainedInputs, H: constrainedOutputs};
 		}
 	});
-var $author$project$Stabel$Data$Type$emptyWordType = {input: _List_Nil, output: _List_Nil};
+var $author$project$Stabel$TypeChecker$countOutput = function (functionType) {
+	return _Utils_Tuple2(
+		functionType.o,
+		$elm$core$List$length(functionType.H));
+};
+var $author$project$Stabel$TypeChecker$dropFirstInputType = function (inf) {
+	return _Utils_update(
+		inf,
+		{
+			o: A2($elm$core$List$drop, 1, inf.o)
+		});
+};
+var $author$project$Stabel$Data$Type$emptyFunctionType = {o: _List_Nil, H: _List_Nil};
 var $author$project$Stabel$TypeChecker$equalizeWhenTypesHelper = F3(
 	function (types, remappedGenerics, acc) {
 		equalizeWhenTypesHelper:
@@ -9803,15 +10724,15 @@ var $author$project$Stabel$TypeChecker$equalizeWhenTypesHelper = F3(
 					var constrainAndZip = F2(
 						function (lhs, rhs) {
 							var _v3 = _Utils_Tuple2(lhs, rhs);
-							if (_v3.a.$ === 'Generic') {
-								if (_v3.b.$ === 'Generic') {
+							if (_v3.a.$ === 1) {
+								if (_v3.b.$ === 1) {
 									return _Utils_Tuple2(lhs, rhs);
 								} else {
 									var other = _v3.b;
 									return _Utils_Tuple2(other, other);
 								}
 							} else {
-								if (_v3.b.$ === 'Generic') {
+								if (_v3.b.$ === 1) {
 									var other = _v3.a;
 									return _Utils_Tuple2(other, other);
 								} else {
@@ -9819,7 +10740,7 @@ var $author$project$Stabel$TypeChecker$equalizeWhenTypesHelper = F3(
 								}
 							}
 						});
-					var constrainedInputs = A3($elm$core$List$map2, constrainAndZip, firstType.input, secondType.input);
+					var constrainedInputs = A3($elm$core$List$map2, constrainAndZip, firstType.o, secondType.o);
 					var _v2 = A3(
 						$elm$core$List$foldr,
 						unzip,
@@ -9827,8 +10748,8 @@ var $author$project$Stabel$TypeChecker$equalizeWhenTypesHelper = F3(
 						constrainedInputs);
 					var unzippedFirstInputs = _v2.a;
 					var unzippedSecondInputs = _v2.b;
-					var newFirstType = {input: unzippedFirstInputs, output: firstType.output};
-					var newSecondType = {input: unzippedSecondInputs, output: secondType.output};
+					var newFirstType = {o: unzippedFirstInputs, H: firstType.H};
+					var newSecondType = {o: unzippedSecondInputs, H: secondType.H};
 					var $temp$types = remaining,
 						$temp$remappedGenerics = remappedGenerics,
 						$temp$acc = A2(
@@ -9843,9 +10764,9 @@ var $author$project$Stabel$TypeChecker$equalizeWhenTypesHelper = F3(
 			}
 		}
 	});
-var $author$project$Stabel$TypeChecker$equalizeWhenTypes = function (wordTypes) {
-	var splitFirstInputType = function (wordType) {
-		var _v4 = wordType.input;
+var $author$project$Stabel$TypeChecker$equalizeWhenTypes = function (functionTypes) {
+	var splitFirstInputType = function (functionType) {
+		var _v4 = functionType.o;
 		if (_v4.b) {
 			var first = _v4.a;
 			var rest = _v4.b;
@@ -9853,24 +10774,24 @@ var $author$project$Stabel$TypeChecker$equalizeWhenTypes = function (wordTypes) 
 				_Utils_Tuple2(
 					first,
 					_Utils_update(
-						wordType,
-						{input: rest})));
+						functionType,
+						{o: rest})));
 		} else {
 			return $elm$core$Maybe$Nothing;
 		}
 	};
-	var joinSplitWordType = function (_v3) {
+	var joinSplitFunctionType = function (_v3) {
 		var firstType = _v3.a;
-		var wordType = _v3.b;
+		var functionType = _v3.b;
 		return _Utils_update(
-			wordType,
+			functionType,
 			{
-				input: A2($elm$core$List$cons, firstType, wordType.input)
+				o: A2($elm$core$List$cons, firstType, functionType.o)
 			});
 	};
 	return A2(
 		$elm$core$List$map,
-		joinSplitWordType,
+		joinSplitFunctionType,
 		function (_v2) {
 			var firstTypes = _v2.a;
 			var equalizedWhenTypes = _v2.b;
@@ -9878,85 +10799,671 @@ var $author$project$Stabel$TypeChecker$equalizeWhenTypes = function (wordTypes) 
 		}(
 			A2(
 				$elm$core$Tuple$mapSecond,
-				function (lobotomizedWordTypes) {
-					return A3($author$project$Stabel$TypeChecker$equalizeWhenTypesHelper, lobotomizedWordTypes, $elm$core$Dict$empty, _List_Nil);
+				function (lobotomizedFunctionTypes) {
+					return A3($author$project$Stabel$TypeChecker$equalizeWhenTypesHelper, lobotomizedFunctionTypes, $elm$core$Dict$empty, _List_Nil);
 				},
 				A3(
 					$elm$core$List$foldr,
 					F2(
 						function (_v0, _v1) {
 							var firstType = _v0.a;
-							var wordType = _v0.b;
+							var functionType = _v0.b;
 							var typeAcc = _v1.a;
-							var wordTypeAcc = _v1.b;
+							var functionTypeAcc = _v1.b;
 							return _Utils_Tuple2(
 								A2($elm$core$List$cons, firstType, typeAcc),
-								A2($elm$core$List$cons, wordType, wordTypeAcc));
+								A2($elm$core$List$cons, functionType, functionTypeAcc));
 						}),
 					_Utils_Tuple2(_List_Nil, _List_Nil),
-					A2($elm$core$List$filterMap, splitFirstInputType, wordTypes)))));
+					A2($elm$core$List$filterMap, splitFirstInputType, functionTypes)))));
 };
-var $author$project$Stabel$Data$Type$genericlyCompatible = F2(
-	function (lhs, rhs) {
-		var _v0 = _Utils_Tuple2(lhs, rhs);
-		_v0$1:
+var $author$project$Stabel$TypeChecker$Pop = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Stabel$TypeChecker$Problem$UnexpectedType = F4(
+	function (a, b, c, d) {
+		return {$: 2, a: a, b: b, c: c, d: d};
+	});
+var $author$project$Stabel$TypeChecker$bindGeneric = F3(
+	function (toBind, target, context) {
+		if (toBind.$ === 1) {
+			var name = toBind.a;
+			return _Utils_update(
+				context,
+				{
+					z: A3($elm$core$Dict$insert, name, target, context.z)
+				});
+		} else {
+			return context;
+		}
+	});
+var $author$project$Stabel$TypeChecker$getGenericBinding = F2(
+	function (context, type_) {
+		getGenericBinding:
 		while (true) {
-			_v0$3:
-			while (true) {
-				switch (_v0.a.$) {
-					case 'Generic':
-						return true;
-					case 'CustomGeneric':
-						switch (_v0.b.$) {
-							case 'Generic':
-								break _v0$1;
-							case 'CustomGeneric':
-								var _v1 = _v0.a;
-								var lName = _v1.a;
-								var _v2 = _v0.b;
-								var rName = _v2.a;
-								return _Utils_eq(lName, rName);
-							default:
-								break _v0$3;
-						}
-					default:
-						if (_v0.b.$ === 'Generic') {
-							break _v0$1;
+			switch (type_.$) {
+				case 1:
+					var genericId = type_.a;
+					var _v1 = A2($elm$core$Dict$get, genericId, context.z);
+					if ((!_v1.$) && (_v1.a.$ === 1)) {
+						var nextGenericId = _v1.a.a;
+						var _v2 = A2($elm$core$Dict$get, nextGenericId, context.z);
+						if ((!_v2.$) && (_v2.a.$ === 1)) {
+							var anotherGenericType = _v2.a;
+							var cycleCheckId = anotherGenericType.a;
+							if (_Utils_eq(cycleCheckId, genericId)) {
+								return $elm$core$Maybe$Nothing;
+							} else {
+								var $temp$context = context,
+									$temp$type_ = anotherGenericType;
+								context = $temp$context;
+								type_ = $temp$type_;
+								continue getGenericBinding;
+							}
 						} else {
-							break _v0$3;
+							var otherwise = _v2;
+							return otherwise;
 						}
+					} else {
+						var otherwise = _v1;
+						return otherwise;
+					}
+				case 4:
+					var name = type_.a;
+					var members = type_.b;
+					return $elm$core$Maybe$Just(
+						A2(
+							$author$project$Stabel$Data$Type$Union,
+							name,
+							A2(
+								$elm$core$List$map,
+								$author$project$Stabel$TypeChecker$resolveType(context),
+								members)));
+				case 3:
+					var name = type_.a;
+					var members = type_.b;
+					return $elm$core$Maybe$Just(
+						A2(
+							$author$project$Stabel$Data$Type$CustomGeneric,
+							name,
+							A2(
+								$elm$core$List$map,
+								$author$project$Stabel$TypeChecker$resolveType(context),
+								members)));
+				default:
+					return $elm$core$Maybe$Just(type_);
+			}
+		}
+	});
+var $author$project$Stabel$TypeChecker$resolveType = F2(
+	function (context, t) {
+		return A2(
+			$elm$core$Maybe$withDefault,
+			t,
+			A2($author$project$Stabel$TypeChecker$getGenericBinding, context, t));
+	});
+var $author$project$Stabel$Data$Type$isGeneric = function (t) {
+	if (t.$ === 1) {
+		return true;
+	} else {
+		return false;
+	}
+};
+var $elm$core$List$partition = F2(
+	function (pred, list) {
+		var step = F2(
+			function (x, _v0) {
+				var trues = _v0.a;
+				var falses = _v0.b;
+				return pred(x) ? _Utils_Tuple2(
+					A2($elm$core$List$cons, x, trues),
+					falses) : _Utils_Tuple2(
+					trues,
+					A2($elm$core$List$cons, x, falses));
+			});
+		return A3(
+			$elm$core$List$foldr,
+			step,
+			_Utils_Tuple2(_List_Nil, _List_Nil),
+			list);
+	});
+var $author$project$Stabel$TypeChecker$replaceStackRange = F2(
+	function (boundRanges, types) {
+		return A2(
+			$elm$core$List$concatMap,
+			function (t) {
+				if (t.$ === 6) {
+					var rangeName = t.a;
+					return A2(
+						$elm$core$Maybe$withDefault,
+						_List_Nil,
+						A2($elm$core$Dict$get, rangeName, boundRanges));
+				} else {
+					var otherwise = t;
+					return _List_fromArray(
+						[otherwise]);
+				}
+			},
+			types);
+	});
+var $elm$core$Dict$update = F3(
+	function (targetKey, alter, dictionary) {
+		var _v0 = alter(
+			A2($elm$core$Dict$get, targetKey, dictionary));
+		if (!_v0.$) {
+			var value = _v0.a;
+			return A3($elm$core$Dict$insert, targetKey, value, dictionary);
+		} else {
+			return A2($elm$core$Dict$remove, targetKey, dictionary);
+		}
+	});
+var $author$project$Stabel$TypeChecker$bindStackRange = F4(
+	function (context, actual, expected, bound) {
+		bindStackRange:
+		while (true) {
+			var rangeUpdater = F2(
+				function (existing, newType) {
+					if (!existing.$) {
+						var vals = existing.a;
+						return $elm$core$Maybe$Just(
+							_Utils_ap(
+								vals,
+								_List_fromArray(
+									[newType])));
+					} else {
+						return $elm$core$Maybe$Just(
+							_List_fromArray(
+								[newType]));
+					}
+				});
+			var _v26 = _Utils_Tuple2(actual, expected);
+			if (!_v26.a.b) {
+				return bound;
+			} else {
+				if (!_v26.b.b) {
+					return bound;
+				} else {
+					if ((_v26.b.a.$ === 6) && (!_v26.b.b.b)) {
+						var _v27 = _v26.a;
+						var afirst = _v27.a;
+						var arest = _v27.b;
+						var _v28 = _v26.b;
+						var rangeName = _v28.a.a;
+						var newBound = A3(
+							$elm$core$Dict$update,
+							rangeName,
+							function (existing) {
+								return A2(rangeUpdater, existing, afirst);
+							},
+							bound);
+						var $temp$context = context,
+							$temp$actual = arest,
+							$temp$expected = expected,
+							$temp$bound = newBound;
+						context = $temp$context;
+						actual = $temp$actual;
+						expected = $temp$expected;
+						bound = $temp$bound;
+						continue bindStackRange;
+					} else {
+						var _v29 = _v26.a;
+						var afirst = _v29.a;
+						var arest = _v29.b;
+						var _v30 = _v26.b;
+						var bfirst = _v30.a;
+						var brest = _v30.b;
+						var _v31 = A3($author$project$Stabel$TypeChecker$compatibleTypes, context, afirst, bfirst);
+						var newContext = _v31.a;
+						var compatible = _v31.b;
+						if (compatible) {
+							var $temp$context = newContext,
+								$temp$actual = arest,
+								$temp$expected = brest,
+								$temp$bound = bound;
+							context = $temp$context;
+							actual = $temp$actual;
+							expected = $temp$expected;
+							bound = $temp$bound;
+							continue bindStackRange;
+						} else {
+							return bound;
+						}
+					}
 				}
 			}
-			return _Utils_eq(lhs, rhs);
-		}
-		return true;
-	});
-var $author$project$Stabel$TypeChecker$getMemberType = F3(
-	function (typeDict, typeName, memberName) {
-		var _v0 = A2($elm$core$Dict$get, typeName, typeDict);
-		if ((_v0.$ === 'Just') && (_v0.a.$ === 'CustomTypeDef')) {
-			var _v1 = _v0.a;
-			var members = _v1.d;
-			return A2(
-				$elm$core$Maybe$map,
-				$elm$core$Tuple$second,
-				A2(
-					$elm_community$list_extra$List$Extra$find,
-					function (_v2) {
-						var name = _v2.a;
-						return _Utils_eq(name, memberName);
-					},
-					members));
-		} else {
-			return $elm$core$Maybe$Nothing;
 		}
 	});
-var $author$project$Stabel$TypeChecker$Problem$InexhaustiveMultiWord = F2(
+var $author$project$Stabel$TypeChecker$compatibleTypes = F3(
+	function (context, typeA, typeB) {
+		compatibleTypes:
+		while (true) {
+			var _v0 = _Utils_Tuple2(
+				A2($author$project$Stabel$TypeChecker$getGenericBinding, context, typeA),
+				A2($author$project$Stabel$TypeChecker$getGenericBinding, context, typeB));
+			if (_v0.a.$ === 1) {
+				if (!_v0.b.$) {
+					var _v1 = _v0.a;
+					var boundB = _v0.b.a;
+					return _Utils_Tuple2(
+						A3($author$project$Stabel$TypeChecker$bindGeneric, typeA, boundB, context),
+						true);
+				} else {
+					var _v3 = _v0.a;
+					var _v4 = _v0.b;
+					return _Utils_Tuple2(
+						A3(
+							$author$project$Stabel$TypeChecker$bindGeneric,
+							typeB,
+							typeA,
+							A3($author$project$Stabel$TypeChecker$bindGeneric, typeA, typeB, context)),
+						true);
+				}
+			} else {
+				if (_v0.b.$ === 1) {
+					var boundA = _v0.a.a;
+					var _v2 = _v0.b;
+					return _Utils_Tuple2(
+						A3($author$project$Stabel$TypeChecker$bindGeneric, typeB, boundA, context),
+						true);
+				} else {
+					var boundA = _v0.a.a;
+					var boundB = _v0.b.a;
+					if (_Utils_eq(boundA, boundB)) {
+						return _Utils_Tuple2(context, true);
+					} else {
+						var _v5 = _Utils_Tuple2(boundA, boundB);
+						_v5$2:
+						while (true) {
+							_v5$5:
+							while (true) {
+								switch (_v5.a.$) {
+									case 4:
+										if (_v5.b.$ === 4) {
+											var _v6 = _v5.a;
+											var leftUnion = _v6.b;
+											var _v7 = _v5.b;
+											var rightUnion = _v7.b;
+											var lengthTest = _Utils_eq(
+												$elm$core$List$length(leftUnion),
+												$elm$core$List$length(rightUnion));
+											var foldHelper = F2(
+												function (_v9, _v10) {
+													var lType = _v9.a;
+													var rType = _v9.b;
+													var ctx = _v10.a;
+													var currValue = _v10.b;
+													return (!currValue) ? _Utils_Tuple2(ctx, currValue) : A3($author$project$Stabel$TypeChecker$compatibleTypes, ctx, lType, rType);
+												});
+											var _v8 = A3(
+												$elm$core$List$foldl,
+												foldHelper,
+												_Utils_Tuple2(context, true),
+												A3($elm$core$List$map2, $elm$core$Tuple$pair, leftUnion, rightUnion));
+											var newContext = _v8.a;
+											var allMembersTest = _v8.b;
+											return _Utils_Tuple2(newContext, lengthTest && allMembersTest);
+										} else {
+											var _v11 = _v5.a;
+											var unionTypes = _v11.b;
+											var rhs = _v5.b;
+											if (!unionTypes.b) {
+												return _Utils_Tuple2(context, false);
+											} else {
+												var firstType = unionTypes.a;
+												var rest = unionTypes.b;
+												var helper = F2(
+													function (t, _v15) {
+														var ctx = _v15.a;
+														var oldTruth = _v15.b;
+														var _v14 = A3($author$project$Stabel$TypeChecker$compatibleTypes, ctx, firstType, t);
+														var newCtx = _v14.a;
+														var thisTruth = _v14.b;
+														return _Utils_Tuple2(newCtx, oldTruth && thisTruth);
+													});
+												var _v13 = A3(
+													$elm$core$List$foldl,
+													helper,
+													_Utils_Tuple2(context, true),
+													rest);
+												var finalCtx = _v13.a;
+												var allBoundToSame = _v13.b;
+												if (allBoundToSame) {
+													var $temp$context = finalCtx,
+														$temp$typeA = firstType,
+														$temp$typeB = rhs;
+													context = $temp$context;
+													typeA = $temp$typeA;
+													typeB = $temp$typeB;
+													continue compatibleTypes;
+												} else {
+													return _Utils_Tuple2(context, false);
+												}
+											}
+										}
+									case 3:
+										switch (_v5.b.$) {
+											case 4:
+												break _v5$2;
+											case 3:
+												var _v19 = _v5.a;
+												var lName = _v19.a;
+												var lMembers = _v19.b;
+												var _v20 = _v5.b;
+												var rName = _v20.a;
+												var rMembers = _v20.b;
+												var members = A3($elm$core$List$map2, $elm$core$Tuple$pair, lMembers, rMembers);
+												var foldHelper = F2(
+													function (_v22, acc) {
+														var lType = _v22.a;
+														var rType = _v22.b;
+														var currCtx = acc.a;
+														var isCompatible = acc.b;
+														return (!isCompatible) ? acc : A3($author$project$Stabel$TypeChecker$compatibleTypes, currCtx, lType, rType);
+													});
+												var _v21 = A3(
+													$elm$core$List$foldl,
+													foldHelper,
+													_Utils_Tuple2(context, true),
+													members);
+												var updatedContext = _v21.a;
+												var compatible = _v21.b;
+												return (_Utils_eq(lName, rName) && compatible) ? _Utils_Tuple2(updatedContext, true) : _Utils_Tuple2(context, false);
+											default:
+												break _v5$5;
+										}
+									case 5:
+										switch (_v5.b.$) {
+											case 4:
+												break _v5$2;
+											case 5:
+												var lhs = _v5.a.a;
+												var rhs = _v5.b.a;
+												var foldHelper = F2(
+													function (_v25, acc) {
+														var lType = _v25.a;
+														var rType = _v25.b;
+														var currCtx = acc.a;
+														var isCompatible = acc.b;
+														return (!isCompatible) ? acc : A3($author$project$Stabel$TypeChecker$compatibleTypes, currCtx, lType, rType);
+													});
+												var boundRanges = A4(
+													$author$project$Stabel$TypeChecker$bindStackRange,
+													context,
+													lhs.H,
+													rhs.H,
+													A4($author$project$Stabel$TypeChecker$bindStackRange, context, lhs.o, rhs.o, $elm$core$Dict$empty));
+												var contextWithBoundRanges = _Utils_update(
+													context,
+													{
+														F: A2($elm$core$Dict$union, context.F, boundRanges)
+													});
+												var actualOutputRequirement = A2($author$project$Stabel$TypeChecker$replaceStackRange, boundRanges, rhs.H);
+												var actualInputRequirement = A2($author$project$Stabel$TypeChecker$replaceStackRange, boundRanges, rhs.o);
+												var _v23 = A3(
+													$elm$core$List$foldl,
+													foldHelper,
+													_Utils_Tuple2(contextWithBoundRanges, true),
+													A3($elm$core$List$map2, $elm$core$Tuple$pair, lhs.o, actualInputRequirement));
+												var contextAfterInputCheck = _v23.a;
+												var inputsCompatible = _v23.b;
+												var _v24 = A3(
+													$elm$core$List$foldl,
+													foldHelper,
+													_Utils_Tuple2(contextAfterInputCheck, true),
+													A3($elm$core$List$map2, $elm$core$Tuple$pair, lhs.H, actualOutputRequirement));
+												var contextAfterOutputCheck = _v24.a;
+												var outputsCompatible = _v24.b;
+												return _Utils_Tuple2(contextAfterOutputCheck, inputsCompatible && outputsCompatible);
+											default:
+												break _v5$5;
+										}
+									default:
+										if (_v5.b.$ === 4) {
+											break _v5$2;
+										} else {
+											break _v5$5;
+										}
+								}
+							}
+							return _Utils_Tuple2(context, false);
+						}
+						var lhsType = _v5.a;
+						var _v16 = _v5.b;
+						var unionTypes = _v16.b;
+						var findCompatibleMember = function (members) {
+							return A2(
+								$elm$core$Maybe$withDefault,
+								_Utils_Tuple2(context, false),
+								A2(
+									$elm_community$list_extra$List$Extra$find,
+									$elm$core$Tuple$second,
+									A2(
+										$elm$core$List$map,
+										A2($author$project$Stabel$TypeChecker$compatibleTypes, context, lhsType),
+										members)));
+						};
+						var _v17 = A2($elm$core$List$partition, $author$project$Stabel$Data$Type$isGeneric, unionTypes);
+						var generics = _v17.a;
+						var nonGenerics = _v17.b;
+						var _v18 = findCompatibleMember(nonGenerics);
+						var nonGenericContext = _v18.a;
+						var compatibleNonGenericMember = _v18.b;
+						return compatibleNonGenericMember ? _Utils_Tuple2(nonGenericContext, true) : findCompatibleMember(generics);
+					}
+				}
+			}
+		}
+	});
+var $author$project$Stabel$TypeChecker$functionTypeFromStackEffectsHelper = F3(
+	function (untypedDef, effects, _v0) {
+		functionTypeFromStackEffectsHelper:
+		while (true) {
+			var context = _v0.a;
+			var functionType = _v0.b;
+			var problem = F2(
+				function (expected, actual) {
+					return A4(
+						$author$project$Stabel$TypeChecker$Problem$UnexpectedType,
+						A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, untypedDef.U),
+						untypedDef.m,
+						A2($author$project$Stabel$TypeChecker$resolveType, context, expected),
+						A2($author$project$Stabel$TypeChecker$resolveType, context, actual));
+				});
+			if (!effects.b) {
+				return _Utils_Tuple2(
+					context,
+					_Utils_update(
+						functionType,
+						{
+							H: $elm$core$List$reverse(functionType.H)
+						}));
+			} else {
+				if (effects.a.$ === 1) {
+					if (effects.a.a.$ === 6) {
+						var type_ = effects.a.a;
+						var rangeName = type_.a;
+						var remainingEffects = effects.b;
+						var _v2 = A2($elm$core$Dict$get, rangeName, context.F);
+						if (!_v2.$) {
+							var needToPop = _v2.a;
+							var $temp$untypedDef = untypedDef,
+								$temp$effects = _Utils_ap(
+								A2($elm$core$List$map, $author$project$Stabel$TypeChecker$Pop, needToPop),
+								remainingEffects),
+								$temp$_v0 = _Utils_Tuple2(context, functionType);
+							untypedDef = $temp$untypedDef;
+							effects = $temp$effects;
+							_v0 = $temp$_v0;
+							continue functionTypeFromStackEffectsHelper;
+						} else {
+							var _v3 = functionType.H;
+							if (!_v3.b) {
+								return A3(
+									$author$project$Stabel$TypeChecker$functionTypeFromStackEffectsHelper,
+									untypedDef,
+									remainingEffects,
+									_Utils_Tuple2(
+										context,
+										_Utils_update(
+											functionType,
+											{
+												o: A2($elm$core$List$cons, type_, functionType.o)
+											})));
+							} else {
+								var availableType = _v3.a;
+								var remainingOutput = _v3.b;
+								return (!_Utils_eq(availableType, type_)) ? _Utils_Tuple2(
+									_Utils_update(
+										context,
+										{
+											l: A2(
+												$elm$core$List$cons,
+												A2(problem, type_, availableType),
+												context.l)
+										}),
+									functionType) : _Utils_Tuple2(
+									context,
+									_Utils_update(
+										functionType,
+										{H: remainingOutput}));
+							}
+						}
+					} else {
+						var type_ = effects.a.a;
+						var remainingEffects = effects.b;
+						var _v4 = functionType.H;
+						if (!_v4.b) {
+							return A3(
+								$author$project$Stabel$TypeChecker$functionTypeFromStackEffectsHelper,
+								untypedDef,
+								remainingEffects,
+								_Utils_Tuple2(
+									context,
+									_Utils_update(
+										functionType,
+										{
+											o: A2($elm$core$List$cons, type_, functionType.o)
+										})));
+						} else {
+							var availableType = _v4.a;
+							var remainingOutput = _v4.b;
+							var _v5 = A3($author$project$Stabel$TypeChecker$compatibleTypes, context, availableType, type_);
+							var newContext = _v5.a;
+							var compatible = _v5.b;
+							return (!compatible) ? _Utils_Tuple2(
+								_Utils_update(
+									newContext,
+									{
+										l: A2(
+											$elm$core$List$cons,
+											A2(problem, type_, availableType),
+											context.l)
+									}),
+								functionType) : A3(
+								$author$project$Stabel$TypeChecker$functionTypeFromStackEffectsHelper,
+								untypedDef,
+								remainingEffects,
+								_Utils_Tuple2(
+									newContext,
+									_Utils_update(
+										functionType,
+										{H: remainingOutput})));
+						}
+					}
+				} else {
+					if (effects.a.a.$ === 6) {
+						var type_ = effects.a.a;
+						var rangeName = type_.a;
+						var remainingEffects = effects.b;
+						var _v6 = A2($elm$core$Dict$get, rangeName, context.F);
+						if (!_v6.$) {
+							var range = _v6.a;
+							var $temp$untypedDef = untypedDef,
+								$temp$effects = _Utils_ap(
+								A2($elm$core$List$map, $author$project$Stabel$TypeChecker$Push, range),
+								remainingEffects),
+								$temp$_v0 = _Utils_Tuple2(context, functionType);
+							untypedDef = $temp$untypedDef;
+							effects = $temp$effects;
+							_v0 = $temp$_v0;
+							continue functionTypeFromStackEffectsHelper;
+						} else {
+							return A3(
+								$author$project$Stabel$TypeChecker$functionTypeFromStackEffectsHelper,
+								untypedDef,
+								remainingEffects,
+								_Utils_Tuple2(
+									context,
+									_Utils_update(
+										functionType,
+										{
+											H: A2($elm$core$List$cons, type_, functionType.H)
+										})));
+						}
+					} else {
+						var type_ = effects.a.a;
+						var remainingEffects = effects.b;
+						return A3(
+							$author$project$Stabel$TypeChecker$functionTypeFromStackEffectsHelper,
+							untypedDef,
+							remainingEffects,
+							_Utils_Tuple2(
+								context,
+								_Utils_update(
+									functionType,
+									{
+										H: A2($elm$core$List$cons, type_, functionType.H)
+									})));
+					}
+				}
+			}
+		}
+	});
+var $author$project$Stabel$TypeChecker$functionTypeFromStackEffects = F2(
+	function (untypedDef, context) {
+		return A3(
+			$author$project$Stabel$TypeChecker$functionTypeFromStackEffectsHelper,
+			untypedDef,
+			context.y,
+			_Utils_Tuple2(
+				context,
+				{o: _List_Nil, H: _List_Nil}));
+	});
+var $author$project$Stabel$TypeChecker$functionTypeToStackEffects = function (functionType) {
+	return _Utils_ap(
+		A2(
+			$elm$core$List$map,
+			$author$project$Stabel$TypeChecker$Pop,
+			$elm$core$List$reverse(functionType.o)),
+		A2($elm$core$List$map, $author$project$Stabel$TypeChecker$Push, functionType.H));
+};
+var $author$project$Stabel$TypeChecker$getStructMembers = function (typeDef) {
+	var _v0 = typeDef.aQ;
+	if (!_v0.$) {
+		var members = _v0.a;
+		return members;
+	} else {
+		return _List_Nil;
+	}
+};
+var $author$project$Stabel$TypeChecker$getStructType = function (typeDef) {
+	var _v0 = typeDef._;
+	if (!_v0.b) {
+		return $author$project$Stabel$Data$Type$Custom(typeDef.m);
+	} else {
+		var gens = _v0;
+		return A2(
+			$author$project$Stabel$Data$Type$CustomGeneric,
+			typeDef.m,
+			A2($elm$core$List$map, $author$project$Stabel$Data$Type$Generic, gens));
+	}
+};
+var $author$project$Stabel$TypeChecker$Problem$InexhaustiveMultiFunction = F2(
 	function (a, b) {
-		return {$: 'InexhaustiveMultiWord', a: a, b: b};
+		return {$: 5, a: a, b: b};
 	});
-var $author$project$Stabel$TypeChecker$Total = {$: 'Total'};
-var $author$project$Stabel$TypeChecker$SeenInt = {$: 'SeenInt'};
+var $author$project$Stabel$TypeChecker$Total = 0;
+var $author$project$Stabel$TypeChecker$SeenInt = 1;
 var $author$project$Stabel$TypeChecker$inexhaustivenessCheckHelper = F3(
 	function (typePrefix, _v0, acc) {
 		var t = _v0.b;
@@ -9970,15 +11477,15 @@ var $author$project$Stabel$TypeChecker$inexhaustivenessCheckHelper = F3(
 			function (_v1) {
 				var toMatch = _v1.a;
 				var state = _v1.b;
-				return _Utils_eq(typeList, toMatch) && _Utils_eq(state, $author$project$Stabel$TypeChecker$Total);
+				return _Utils_eq(typeList, toMatch) && (!state);
 			},
 			acc)) {
 			return acc;
 		} else {
-			var isRecursiveMatch = function (match) {
-				if (match.$ === 'RecursiveMatch') {
-					var cond = match.a;
-					return $elm$core$Maybe$Just(cond);
+			var isRecursiveMatch = function (cond) {
+				if (cond.c.$ === 2) {
+					var val = cond.c.a;
+					return $elm$core$Maybe$Just(val);
 				} else {
 					return $elm$core$Maybe$Nothing;
 				}
@@ -9987,23 +11494,20 @@ var $author$project$Stabel$TypeChecker$inexhaustivenessCheckHelper = F3(
 				$elm$core$List$foldl,
 				$author$project$Stabel$TypeChecker$inexhaustivenessCheckHelper(typeList),
 				acc,
-				A2(
-					$elm$core$List$filterMap,
-					isRecursiveMatch,
-					A2($elm$core$List$map, $elm$core$Tuple$second, conds)));
+				A2($elm$core$List$filterMap, isRecursiveMatch, conds));
 			var toAdd = function () {
 				var _v5 = _Utils_Tuple3(t, conds, subcases);
 				if (!_v5.b.b) {
 					return _List_fromArray(
 						[
-							_Utils_Tuple2(typeList, $author$project$Stabel$TypeChecker$Total)
+							_Utils_Tuple2(typeList, 0)
 						]);
 				} else {
-					if (_v5.a.$ === 'Int') {
+					if (!_v5.a.$) {
 						var _v6 = _v5.a;
 						return _List_fromArray(
 							[
-								_Utils_Tuple2(typeList, $author$project$Stabel$TypeChecker$SeenInt)
+								_Utils_Tuple2(typeList, 1)
 							]);
 					} else {
 						return A2(
@@ -10011,10 +11515,10 @@ var $author$project$Stabel$TypeChecker$inexhaustivenessCheckHelper = F3(
 							A2(
 								$elm$core$Basics$composeR,
 								$elm$core$Tuple$second,
-								$elm$core$Basics$eq($author$project$Stabel$TypeChecker$Total)),
+								$elm$core$Basics$eq(0)),
 							subcases) ? _List_fromArray(
 							[
-								_Utils_Tuple2(typeList, $author$project$Stabel$TypeChecker$Total)
+								_Utils_Tuple2(typeList, 0)
 							]) : subcases;
 					}
 				}
@@ -10023,7 +11527,7 @@ var $author$project$Stabel$TypeChecker$inexhaustivenessCheckHelper = F3(
 				toAdd,
 				_List_fromArray(
 					[
-						_Utils_Tuple2(typeList, $author$project$Stabel$TypeChecker$Total)
+						_Utils_Tuple2(typeList, 0)
 					]))) ? acc : A2(
 				$elm$core$List$filter,
 				function (_v4) {
@@ -10036,15 +11540,13 @@ var $author$project$Stabel$TypeChecker$inexhaustivenessCheckHelper = F3(
 						typeList);
 				},
 				acc);
-			if (_Utils_eq(
-				A2(
-					$elm_community$list_extra$List$Extra$find,
-					function (_v2) {
-						var toMatch = _v2.a;
-						return _Utils_eq(toMatch, typeList);
-					},
-					modifiedAcc),
-				$elm$core$Maybe$Nothing)) {
+			if (A2(
+				$elm$core$List$any,
+				function (_v2) {
+					var toMatch = _v2.a;
+					return _Utils_eq(toMatch, typeList);
+				},
+				modifiedAcc)) {
 				return _Utils_ap(toAdd, modifiedAcc);
 			} else {
 				var updatedStates = A2(
@@ -10067,7 +11569,7 @@ var $author$project$Stabel$TypeChecker$inexhaustivenessCheck = F2(
 				$elm$core$List$filter,
 				function (_v1) {
 					var state = _v1.b;
-					return !_Utils_eq(state, $author$project$Stabel$TypeChecker$Total);
+					return !(!state);
 				},
 				A3(
 					$elm$core$List$foldl,
@@ -10078,16 +11580,9 @@ var $author$project$Stabel$TypeChecker$inexhaustivenessCheck = F2(
 			return $elm$core$Maybe$Nothing;
 		} else {
 			return $elm$core$Maybe$Just(
-				A2($author$project$Stabel$TypeChecker$Problem$InexhaustiveMultiWord, range, inexhaustiveStates));
+				A2($author$project$Stabel$TypeChecker$Problem$InexhaustiveMultiFunction, range, inexhaustiveStates));
 		}
 	});
-var $author$project$Stabel$Data$Type$isGeneric = function (t) {
-	if (t.$ === 'Generic') {
-		return true;
-	} else {
-		return false;
-	}
-};
 var $author$project$Stabel$TypeChecker$joinOutputs = F2(
 	function (outputs, result) {
 		joinOutputs:
@@ -10101,9 +11596,40 @@ var $author$project$Stabel$TypeChecker$joinOutputs = F2(
 					var unionize = F2(
 						function (lhs, rhs) {
 							var _v2 = _Utils_Tuple2(lhs, rhs);
-							return _Utils_eq(lhs, rhs) ? lhs : $author$project$Stabel$Data$Type$Union(
-								_List_fromArray(
-									[lhs, rhs]));
+							if (_v2.a.$ === 4) {
+								if (_v2.b.$ === 4) {
+									var _v3 = _v2.a;
+									var lhsMems = _v3.b;
+									var _v4 = _v2.b;
+									var rhsMems = _v4.b;
+									return _Utils_eq(lhsMems, rhsMems) ? lhs : A2(
+										$author$project$Stabel$Data$Type$Union,
+										$elm$core$Maybe$Nothing,
+										_Utils_ap(lhsMems, rhsMems));
+								} else {
+									var _v5 = _v2.a;
+									var lhsMems = _v5.b;
+									return A2($elm$core$List$member, rhs, lhsMems) ? lhs : A2(
+										$author$project$Stabel$Data$Type$Union,
+										$elm$core$Maybe$Nothing,
+										A2($elm$core$List$cons, rhs, lhsMems));
+								}
+							} else {
+								if (_v2.b.$ === 4) {
+									var _v6 = _v2.b;
+									var rhsMems = _v6.b;
+									return A2($elm$core$List$member, lhs, rhsMems) ? rhs : A2(
+										$author$project$Stabel$Data$Type$Union,
+										$elm$core$Maybe$Nothing,
+										A2($elm$core$List$cons, lhs, rhsMems));
+								} else {
+									return _Utils_eq(lhs, rhs) ? lhs : A2(
+										$author$project$Stabel$Data$Type$Union,
+										$elm$core$Maybe$Nothing,
+										_List_fromArray(
+											[lhs, rhs]));
+								}
+							}
 						});
 					var joined = A3($elm$core$List$map2, unionize, first, second);
 					var $temp$outputs = A2($elm$core$List$cons, joined, rest),
@@ -10115,7 +11641,7 @@ var $author$project$Stabel$TypeChecker$joinOutputs = F2(
 					var joined = outputs.a;
 					return _Utils_update(
 						result,
-						{output: joined});
+						{H: joined});
 				}
 			} else {
 				return result;
@@ -10139,17 +11665,17 @@ var $elm$core$Tuple$mapFirst = F2(
 			y);
 	});
 var $author$project$Stabel$TypeChecker$LiteralInt = function (a) {
-	return {$: 'LiteralInt', a: a};
+	return {$: 0, a: a};
 };
 var $author$project$Stabel$TypeChecker$LiteralType = function (a) {
-	return {$: 'LiteralType', a: a};
+	return {$: 1, a: a};
 };
 var $author$project$Stabel$TypeChecker$RecursiveMatch = function (a) {
-	return {$: 'RecursiveMatch', a: a};
+	return {$: 2, a: a};
 };
 var $author$project$Stabel$TypeChecker$TypeMatch = F3(
 	function (a, b, c) {
-		return {$: 'TypeMatch', a: a, b: b, c: c};
+		return {$: 0, a: a, b: b, c: c};
 	});
 var $author$project$Stabel$TypeChecker$mapTypeMatch = function (_v2) {
 	var range = _v2.a;
@@ -10159,18 +11685,18 @@ var $author$project$Stabel$TypeChecker$mapTypeMatch = function (_v2) {
 		$author$project$Stabel$TypeChecker$TypeMatch,
 		range,
 		type_,
-		A2($elm$core$List$map, $author$project$Stabel$TypeChecker$mapTypeMatchValue, cond));
+		A2($elm$core$List$map, $author$project$Stabel$TypeChecker$mapTypeMatchCond, cond));
 };
-var $author$project$Stabel$TypeChecker$mapTypeMatchValue = function (_v0) {
+var $author$project$Stabel$TypeChecker$mapTypeMatchCond = function (_v0) {
 	var fieldName = _v0.a;
-	var value = _v0.b;
+	var value = _v0.c;
 	switch (value.$) {
-		case 'LiteralInt':
+		case 0:
 			var val = value.a;
 			return _Utils_Tuple2(
 				fieldName,
 				$author$project$Stabel$TypeChecker$LiteralInt(val));
-		case 'LiteralType':
+		case 1:
 			var val = value.a;
 			return _Utils_Tuple2(
 				fieldName,
@@ -10186,7 +11712,7 @@ var $author$project$Stabel$TypeChecker$mapTypeMatchValue = function (_v0) {
 var $elm$core$List$sortBy = _List_sortBy;
 var $author$project$Stabel$TypeChecker$normalizeWhenTypes = function (whenTypes) {
 	var padGeneric = function (t) {
-		if (t.$ === 'Generic') {
+		if (t.$ === 1) {
 			var val = t.a;
 			return $author$project$Stabel$Data$Type$Generic('*' + val);
 		} else {
@@ -10200,30 +11726,28 @@ var $author$project$Stabel$TypeChecker$normalizeWhenTypes = function (whenTypes)
 				A2(
 					$elm$core$Basics$composeR,
 					function ($) {
-						return $.input;
+						return $.o;
 					},
 					$elm$core$List$length),
 				whenTypes)));
 	var matchInputLength = F2(
-		function (toMatch, wordType) {
-			var diff = $elm$core$List$length(toMatch.input) - $elm$core$List$length(wordType.input);
+		function (toMatch, functionType) {
+			var diff = $elm$core$List$length(toMatch.o) - $elm$core$List$length(functionType.o);
 			var padding = A2(
 				$elm$core$List$map,
 				padGeneric,
-				A2($elm$core$List$take, diff, toMatch.input));
+				A2($elm$core$List$take, diff, toMatch.o));
 			if (!padding.b) {
-				return wordType;
+				return functionType;
 			} else {
 				var elements = padding;
-				return _Utils_update(
-					wordType,
-					{
-						input: _Utils_ap(elements, wordType.input),
-						output: _Utils_ap(elements, wordType.output)
-					});
+				return {
+					o: _Utils_ap(elements, functionType.o),
+					H: _Utils_ap(elements, functionType.H)
+				};
 			}
 		});
-	if (maybeLongestInputWhenType.$ === 'Just') {
+	if (!maybeLongestInputWhenType.$) {
 		var longestInputWT = maybeLongestInputWhenType.a;
 		return A2(
 			$elm$core$List$map,
@@ -10233,394 +11757,379 @@ var $author$project$Stabel$TypeChecker$normalizeWhenTypes = function (whenTypes)
 		return whenTypes;
 	}
 };
-var $elm$core$Dict$getMin = function (dict) {
-	getMin:
-	while (true) {
-		if ((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) {
-			var left = dict.d;
-			var $temp$dict = left;
-			dict = $temp$dict;
-			continue getMin;
-		} else {
-			return dict;
-		}
-	}
-};
-var $elm$core$Dict$moveRedLeft = function (dict) {
-	if (((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) && (dict.e.$ === 'RBNode_elm_builtin')) {
-		if ((dict.e.d.$ === 'RBNode_elm_builtin') && (dict.e.d.a.$ === 'Red')) {
-			var clr = dict.a;
-			var k = dict.b;
-			var v = dict.c;
-			var _v1 = dict.d;
-			var lClr = _v1.a;
-			var lK = _v1.b;
-			var lV = _v1.c;
-			var lLeft = _v1.d;
-			var lRight = _v1.e;
-			var _v2 = dict.e;
-			var rClr = _v2.a;
-			var rK = _v2.b;
-			var rV = _v2.c;
-			var rLeft = _v2.d;
-			var _v3 = rLeft.a;
-			var rlK = rLeft.b;
-			var rlV = rLeft.c;
-			var rlL = rLeft.d;
-			var rlR = rLeft.e;
-			var rRight = _v2.e;
-			return A5(
-				$elm$core$Dict$RBNode_elm_builtin,
-				$elm$core$Dict$Red,
-				rlK,
-				rlV,
-				A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
-					k,
-					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					rlL),
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rlR, rRight));
-		} else {
-			var clr = dict.a;
-			var k = dict.b;
-			var v = dict.c;
-			var _v4 = dict.d;
-			var lClr = _v4.a;
-			var lK = _v4.b;
-			var lV = _v4.c;
-			var lLeft = _v4.d;
-			var lRight = _v4.e;
-			var _v5 = dict.e;
-			var rClr = _v5.a;
-			var rK = _v5.b;
-			var rV = _v5.c;
-			var rLeft = _v5.d;
-			var rRight = _v5.e;
-			if (clr.$ === 'Black') {
-				return A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
-					k,
-					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
-			} else {
-				return A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
-					k,
-					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
-			}
-		}
+var $author$project$Stabel$TypeChecker$patternMatchIsCompatibleWithInferredType = function (_v0) {
+	var _v1 = _v0.a;
+	var typeMatchType = _v1.b;
+	var inf = _v0.b;
+	var _v2 = inf.o;
+	if (_v2.b) {
+		var inferredType = _v2.a;
+		return A2($author$project$Stabel$Data$Type$genericlyCompatible, typeMatchType, inferredType);
 	} else {
-		return dict;
+		return false;
 	}
 };
-var $elm$core$Dict$moveRedRight = function (dict) {
-	if (((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) && (dict.e.$ === 'RBNode_elm_builtin')) {
-		if ((dict.d.d.$ === 'RBNode_elm_builtin') && (dict.d.d.a.$ === 'Red')) {
-			var clr = dict.a;
-			var k = dict.b;
-			var v = dict.c;
-			var _v1 = dict.d;
-			var lClr = _v1.a;
-			var lK = _v1.b;
-			var lV = _v1.c;
-			var _v2 = _v1.d;
-			var _v3 = _v2.a;
-			var llK = _v2.b;
-			var llV = _v2.c;
-			var llLeft = _v2.d;
-			var llRight = _v2.e;
-			var lRight = _v1.e;
-			var _v4 = dict.e;
-			var rClr = _v4.a;
-			var rK = _v4.b;
-			var rV = _v4.c;
-			var rLeft = _v4.d;
-			var rRight = _v4.e;
-			return A5(
-				$elm$core$Dict$RBNode_elm_builtin,
-				$elm$core$Dict$Red,
-				lK,
-				lV,
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
-				A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
-					k,
-					v,
-					lRight,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight)));
-		} else {
-			var clr = dict.a;
-			var k = dict.b;
-			var v = dict.c;
-			var _v5 = dict.d;
-			var lClr = _v5.a;
-			var lK = _v5.b;
-			var lV = _v5.c;
-			var lLeft = _v5.d;
-			var lRight = _v5.e;
-			var _v6 = dict.e;
-			var rClr = _v6.a;
-			var rK = _v6.b;
-			var rV = _v6.c;
-			var rLeft = _v6.d;
-			var rRight = _v6.e;
-			if (clr.$ === 'Black') {
-				return A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
-					k,
-					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
-			} else {
-				return A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
-					k,
-					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
-			}
-		}
-	} else {
-		return dict;
-	}
-};
-var $elm$core$Dict$removeHelpPrepEQGT = F7(
-	function (targetKey, dict, color, key, value, left, right) {
-		if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
-			var _v1 = left.a;
-			var lK = left.b;
-			var lV = left.c;
-			var lLeft = left.d;
-			var lRight = left.e;
-			return A5(
-				$elm$core$Dict$RBNode_elm_builtin,
-				color,
-				lK,
-				lV,
-				lLeft,
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, lRight, right));
-		} else {
-			_v2$2:
-			while (true) {
-				if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Black')) {
-					if (right.d.$ === 'RBNode_elm_builtin') {
-						if (right.d.a.$ === 'Black') {
-							var _v3 = right.a;
-							var _v4 = right.d;
-							var _v5 = _v4.a;
-							return $elm$core$Dict$moveRedRight(dict);
-						} else {
-							break _v2$2;
-						}
-					} else {
-						var _v6 = right.a;
-						var _v7 = right.d;
-						return $elm$core$Dict$moveRedRight(dict);
-					}
-				} else {
-					break _v2$2;
-				}
-			}
-			return dict;
-		}
-	});
-var $elm$core$Dict$removeMin = function (dict) {
-	if ((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) {
-		var color = dict.a;
-		var key = dict.b;
-		var value = dict.c;
-		var left = dict.d;
-		var lColor = left.a;
-		var lLeft = left.d;
-		var right = dict.e;
-		if (lColor.$ === 'Black') {
-			if ((lLeft.$ === 'RBNode_elm_builtin') && (lLeft.a.$ === 'Red')) {
-				var _v3 = lLeft.a;
-				return A5(
-					$elm$core$Dict$RBNode_elm_builtin,
-					color,
-					key,
-					value,
-					$elm$core$Dict$removeMin(left),
-					right);
-			} else {
-				var _v4 = $elm$core$Dict$moveRedLeft(dict);
-				if (_v4.$ === 'RBNode_elm_builtin') {
-					var nColor = _v4.a;
-					var nKey = _v4.b;
-					var nValue = _v4.c;
-					var nLeft = _v4.d;
-					var nRight = _v4.e;
-					return A5(
-						$elm$core$Dict$balance,
-						nColor,
-						nKey,
-						nValue,
-						$elm$core$Dict$removeMin(nLeft),
-						nRight);
-				} else {
-					return $elm$core$Dict$RBEmpty_elm_builtin;
-				}
-			}
-		} else {
-			return A5(
-				$elm$core$Dict$RBNode_elm_builtin,
-				color,
-				key,
-				value,
-				$elm$core$Dict$removeMin(left),
-				right);
-		}
-	} else {
-		return $elm$core$Dict$RBEmpty_elm_builtin;
-	}
-};
-var $elm$core$Dict$removeHelp = F2(
-	function (targetKey, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
-			return $elm$core$Dict$RBEmpty_elm_builtin;
-		} else {
-			var color = dict.a;
-			var key = dict.b;
-			var value = dict.c;
-			var left = dict.d;
-			var right = dict.e;
-			if (_Utils_cmp(targetKey, key) < 0) {
-				if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Black')) {
-					var _v4 = left.a;
-					var lLeft = left.d;
-					if ((lLeft.$ === 'RBNode_elm_builtin') && (lLeft.a.$ === 'Red')) {
-						var _v6 = lLeft.a;
-						return A5(
-							$elm$core$Dict$RBNode_elm_builtin,
-							color,
-							key,
-							value,
-							A2($elm$core$Dict$removeHelp, targetKey, left),
-							right);
-					} else {
-						var _v7 = $elm$core$Dict$moveRedLeft(dict);
-						if (_v7.$ === 'RBNode_elm_builtin') {
-							var nColor = _v7.a;
-							var nKey = _v7.b;
-							var nValue = _v7.c;
-							var nLeft = _v7.d;
-							var nRight = _v7.e;
-							return A5(
-								$elm$core$Dict$balance,
-								nColor,
-								nKey,
-								nValue,
-								A2($elm$core$Dict$removeHelp, targetKey, nLeft),
-								nRight);
-						} else {
-							return $elm$core$Dict$RBEmpty_elm_builtin;
-						}
-					}
-				} else {
-					return A5(
-						$elm$core$Dict$RBNode_elm_builtin,
-						color,
-						key,
-						value,
-						A2($elm$core$Dict$removeHelp, targetKey, left),
-						right);
-				}
-			} else {
-				return A2(
-					$elm$core$Dict$removeHelpEQGT,
-					targetKey,
-					A7($elm$core$Dict$removeHelpPrepEQGT, targetKey, dict, color, key, value, left, right));
-			}
-		}
-	});
-var $elm$core$Dict$removeHelpEQGT = F2(
-	function (targetKey, dict) {
-		if (dict.$ === 'RBNode_elm_builtin') {
-			var color = dict.a;
-			var key = dict.b;
-			var value = dict.c;
-			var left = dict.d;
-			var right = dict.e;
-			if (_Utils_eq(targetKey, key)) {
-				var _v1 = $elm$core$Dict$getMin(right);
-				if (_v1.$ === 'RBNode_elm_builtin') {
-					var minKey = _v1.b;
-					var minValue = _v1.c;
-					return A5(
-						$elm$core$Dict$balance,
-						color,
-						minKey,
-						minValue,
-						left,
-						$elm$core$Dict$removeMin(right));
-				} else {
-					return $elm$core$Dict$RBEmpty_elm_builtin;
-				}
-			} else {
-				return A5(
-					$elm$core$Dict$balance,
-					color,
-					key,
-					value,
-					left,
-					A2($elm$core$Dict$removeHelp, targetKey, right));
-			}
-		} else {
-			return $elm$core$Dict$RBEmpty_elm_builtin;
-		}
-	});
-var $elm$core$Dict$remove = F2(
-	function (key, dict) {
-		var _v0 = A2($elm$core$Dict$removeHelp, key, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
-			var _v1 = _v0.a;
-			var k = _v0.b;
-			var v = _v0.c;
-			var l = _v0.d;
-			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
-		} else {
-			var x = _v0;
-			return x;
-		}
-	});
-var $elm$core$Set$remove = F2(
-	function (key, _v0) {
-		var dict = _v0.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A2($elm$core$Dict$remove, key, dict));
-	});
-var $author$project$Stabel$TypeChecker$replaceFirstType = F2(
+var $author$project$Stabel$TypeChecker$replaceFirstInputType = F2(
 	function (_with, inf) {
-		var _v0 = inf.input;
+		var _v0 = inf.o;
 		if (_v0.b) {
 			var rem = _v0.b;
 			return _Utils_update(
 				inf,
 				{
-					input: A2($elm$core$List$cons, _with, rem)
+					o: A2($elm$core$List$cons, _with, rem)
 				});
 		} else {
 			return inf;
+		}
+	});
+var $author$project$Stabel$TypeChecker$replaceType = F3(
+	function (type_, _with, el) {
+		switch (el.$) {
+			case 3:
+				var name = el.a;
+				var members = el.b;
+				return A2(
+					$author$project$Stabel$Data$Type$CustomGeneric,
+					name,
+					A2(
+						$elm$core$List$map,
+						A2($author$project$Stabel$TypeChecker$replaceType, type_, _with),
+						members));
+			case 4:
+				var name = el.a;
+				var members = el.b;
+				return A2(
+					$author$project$Stabel$Data$Type$Union,
+					name,
+					A2(
+						$elm$core$List$map,
+						A2($author$project$Stabel$TypeChecker$replaceType, type_, _with),
+						members));
+			case 5:
+				var functionType = el.a;
+				return $author$project$Stabel$Data$Type$FunctionSignature(
+					{
+						o: A2(
+							$elm$core$List$map,
+							A2($author$project$Stabel$TypeChecker$replaceType, type_, _with),
+							functionType.o),
+						H: A2(
+							$elm$core$List$map,
+							A2($author$project$Stabel$TypeChecker$replaceType, type_, _with),
+							functionType.H)
+					});
+			default:
+				return _Utils_eq(type_, el) ? _with : el;
+		}
+	});
+var $author$project$Stabel$TypeChecker$replaceFirstTypeWithPatternMatch = function (_v0) {
+	var _v1 = _v0.a;
+	var matchType = _v1.b;
+	var typeSignature = _v0.b;
+	var _v2 = typeSignature.o;
+	_v2$2:
+	while (true) {
+		if (_v2.b) {
+			switch (_v2.a.$) {
+				case 1:
+					var toReplace = _v2.a;
+					return {
+						o: A2(
+							$elm$core$List$map,
+							A2($author$project$Stabel$TypeChecker$replaceType, toReplace, matchType),
+							typeSignature.o),
+						H: A2(
+							$elm$core$List$map,
+							A2($author$project$Stabel$TypeChecker$replaceType, toReplace, matchType),
+							typeSignature.H)
+					};
+				case 6:
+					var toReplace = _v2.a;
+					return {
+						o: A2(
+							$elm$core$List$map,
+							A2($author$project$Stabel$TypeChecker$replaceType, toReplace, matchType),
+							typeSignature.o),
+						H: A2(
+							$elm$core$List$map,
+							A2($author$project$Stabel$TypeChecker$replaceType, toReplace, matchType),
+							typeSignature.H)
+					};
+				default:
+					break _v2$2;
+			}
+		} else {
+			break _v2$2;
+		}
+	}
+	return typeSignature;
+};
+var $author$project$Stabel$TypeChecker$tagGeneric = F2(
+	function (idx, type_) {
+		switch (type_.$) {
+			case 1:
+				var genName = type_.a;
+				return $author$project$Stabel$Data$Type$Generic(
+					_Utils_ap(
+						genName,
+						$elm$core$String$fromInt(idx)));
+			case 3:
+				var name = type_.a;
+				var generics = type_.b;
+				return A2(
+					$author$project$Stabel$Data$Type$CustomGeneric,
+					name,
+					A2(
+						$elm$core$List$map,
+						$author$project$Stabel$TypeChecker$tagGeneric(idx),
+						generics));
+			case 4:
+				var name = type_.a;
+				var members = type_.b;
+				return A2(
+					$author$project$Stabel$Data$Type$Union,
+					name,
+					A2(
+						$elm$core$List$map,
+						$author$project$Stabel$TypeChecker$tagGeneric(idx),
+						members));
+			case 5:
+				var wt = type_.a;
+				return $author$project$Stabel$Data$Type$FunctionSignature(
+					{
+						o: A2(
+							$elm$core$List$map,
+							$author$project$Stabel$TypeChecker$tagGeneric(idx),
+							wt.o),
+						H: A2(
+							$elm$core$List$map,
+							$author$project$Stabel$TypeChecker$tagGeneric(idx),
+							wt.H)
+					});
+			default:
+				return type_;
+		}
+	});
+var $author$project$Stabel$TypeChecker$resolveGenericsInFunctionType = F3(
+	function (idx, context, wt) {
+		var replaceGenericWithBoundValue = function (t) {
+			var boundType = function () {
+				var _v1 = A2($author$project$Stabel$TypeChecker$getGenericBinding, context, t);
+				if (!_v1.$) {
+					var boundValue = _v1.a;
+					return boundValue;
+				} else {
+					return t;
+				}
+			}();
+			switch (boundType.$) {
+				case 4:
+					var unionName = boundType.a;
+					var members = boundType.b;
+					return A2(
+						$author$project$Stabel$Data$Type$Union,
+						unionName,
+						A2($elm$core$List$map, replaceGenericWithBoundValue, members));
+				case 3:
+					var name = boundType.a;
+					var members = boundType.b;
+					return A2(
+						$author$project$Stabel$Data$Type$CustomGeneric,
+						name,
+						A2($elm$core$List$map, replaceGenericWithBoundValue, members));
+				default:
+					return boundType;
+			}
+		};
+		return {
+			o: A2(
+				$elm$core$List$map,
+				A2(
+					$elm$core$Basics$composeR,
+					$author$project$Stabel$TypeChecker$tagGeneric(idx),
+					replaceGenericWithBoundValue),
+				wt.o),
+			H: A2(
+				$elm$core$List$map,
+				A2(
+					$elm$core$Basics$composeR,
+					$author$project$Stabel$TypeChecker$tagGeneric(idx),
+					replaceGenericWithBoundValue),
+				wt.H)
+		};
+	});
+var $author$project$Stabel$TypeChecker$bindGenericsInType = F2(
+	function (bindings, t) {
+		switch (t.$) {
+			case 1:
+				var genericName = t.a;
+				return A2(
+					$elm$core$Maybe$withDefault,
+					t,
+					A2($elm$core$Dict$get, genericName, bindings));
+			case 3:
+				var name = t.a;
+				var gens = t.b;
+				return A2(
+					$author$project$Stabel$Data$Type$CustomGeneric,
+					name,
+					A2(
+						$elm$core$List$map,
+						$author$project$Stabel$TypeChecker$bindGenericsInType(bindings),
+						gens));
+			case 4:
+				var name = t.a;
+				var members = t.b;
+				return A2(
+					$author$project$Stabel$Data$Type$Union,
+					name,
+					A2(
+						$elm$core$List$map,
+						$author$project$Stabel$TypeChecker$bindGenericsInType(bindings),
+						members));
+			default:
+				return t;
+		}
+	});
+var $author$project$Stabel$Data$Type$genericName = function (type_) {
+	if (type_.$ === 1) {
+		var name = type_.a;
+		return $elm$core$Maybe$Just(name);
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $author$project$Stabel$TypeChecker$initialBindingsFromFunctionDef = F2(
+	function (def, structGenerics) {
+		var _v0 = $author$project$Stabel$Data$TypeSignature$toMaybe(def.bO);
+		if (!_v0.$) {
+			var wt = _v0.a;
+			var _v1 = wt.o;
+			if (_v1.b && (_v1.a.$ === 3)) {
+				var _v2 = _v1.a;
+				var possiblyBoundGenerics = _v2.b;
+				var liftTupleMaybe = function (_v3) {
+					var first = _v3.a;
+					var second = _v3.b;
+					return A2(
+						$elm$core$Maybe$map,
+						function (x) {
+							return _Utils_Tuple2(x, second);
+						},
+						first);
+				};
+				return $elm$core$Dict$fromList(
+					A2(
+						$elm$core$List$filterMap,
+						liftTupleMaybe,
+						A2(
+							$elm$core$List$map,
+							$elm$core$Tuple$mapFirst($author$project$Stabel$Data$Type$genericName),
+							A3($elm$core$List$map2, $elm$core$Tuple$pair, structGenerics, possiblyBoundGenerics))));
+			} else {
+				return $elm$core$Dict$empty;
+			}
+		} else {
+			return $elm$core$Dict$empty;
+		}
+	});
+var $author$project$Stabel$TypeChecker$whenConditionsBindGenerics = F2(
+	function (bindings, _v0) {
+		var fieldName = _v0.a;
+		var fieldType = _v0.b;
+		var value = _v0.c;
+		var boundValue = function () {
+			switch (value.$) {
+				case 1:
+					var t = value.a;
+					return $author$project$Stabel$Qualifier$LiteralType(
+						A2($author$project$Stabel$TypeChecker$bindGenericsInType, bindings, t));
+				case 2:
+					var _v2 = value.a;
+					var subLoc = _v2.a;
+					var subType = _v2.b;
+					var subConds = _v2.c;
+					return $author$project$Stabel$Qualifier$RecursiveMatch(
+						A3(
+							$author$project$Stabel$Qualifier$TypeMatch,
+							subLoc,
+							A2($author$project$Stabel$TypeChecker$bindGenericsInType, bindings, subType),
+							A2(
+								$elm$core$List$map,
+								$author$project$Stabel$TypeChecker$whenConditionsBindGenerics(bindings),
+								subConds)));
+				default:
+					return value;
+			}
+		}();
+		return A3(
+			$author$project$Stabel$Qualifier$TypeMatchCond,
+			fieldName,
+			A2($author$project$Stabel$TypeChecker$bindGenericsInType, bindings, fieldType),
+			boundValue);
+	});
+var $author$project$Stabel$TypeChecker$whenConditionsGenericBindings = F2(
+	function (_v0, bindings) {
+		var fieldType = _v0.b;
+		var value = _v0.c;
+		var _v1 = _Utils_Tuple2(fieldType, value);
+		_v1$3:
+		while (true) {
+			switch (_v1.b.$) {
+				case 0:
+					if (_v1.a.$ === 1) {
+						var genericName = _v1.a.a;
+						return A3($elm$core$Dict$insert, genericName, $author$project$Stabel$Data$Type$Int, bindings);
+					} else {
+						break _v1$3;
+					}
+				case 1:
+					if (_v1.a.$ === 1) {
+						var genericName = _v1.a.a;
+						var t = _v1.b.a;
+						return A3($elm$core$Dict$insert, genericName, t, bindings);
+					} else {
+						break _v1$3;
+					}
+				default:
+					var _v2 = _v1.b.a;
+					var subConds = _v2.c;
+					return A3($elm$core$List$foldl, $author$project$Stabel$TypeChecker$whenConditionsGenericBindings, bindings, subConds);
+			}
+		}
+		return bindings;
+	});
+var $author$project$Stabel$TypeChecker$resolveWhenConditions = F2(
+	function (untypedDef, match) {
+		var loc = match.a;
+		var typeMatch = match.b;
+		var conds = match.c;
+		if (typeMatch.$ === 3) {
+			var structGenerics = typeMatch.b;
+			var bindings = A3(
+				$elm$core$List$foldl,
+				$author$project$Stabel$TypeChecker$whenConditionsGenericBindings,
+				A2($author$project$Stabel$TypeChecker$initialBindingsFromFunctionDef, untypedDef, structGenerics),
+				conds);
+			return A3(
+				$author$project$Stabel$Qualifier$TypeMatch,
+				loc,
+				A2($author$project$Stabel$TypeChecker$bindGenericsInType, bindings, typeMatch),
+				A2(
+					$elm$core$List$map,
+					$author$project$Stabel$TypeChecker$whenConditionsBindGenerics(bindings),
+					conds));
+		} else {
+			return match;
 		}
 	});
 var $author$project$Stabel$TypeChecker$isAliasOf = F5(
 	function (context, visitedKeys, targetKey, topKey, currentKey) {
 		isAliasOf:
 		while (true) {
-			var _v0 = A2($elm$core$Dict$get, currentKey, context.boundGenerics);
-			if ((_v0.$ === 'Just') && (_v0.a.$ === 'Generic')) {
+			var _v0 = A2($elm$core$Dict$get, currentKey, context.z);
+			if ((!_v0.$) && (_v0.a.$ === 1)) {
 				var genericKey = _v0.a.a;
 				if (A2($elm$core$Set$member, genericKey, visitedKeys)) {
 					return $elm$core$Maybe$Nothing;
@@ -10655,54 +12164,83 @@ var $author$project$Stabel$TypeChecker$findAliases = F2(
 				function (key) {
 					return A5($author$project$Stabel$TypeChecker$isAliasOf, context, $elm$core$Set$empty, generic, key, key);
 				},
-				$elm$core$Dict$keys(context.boundGenerics)));
+				$elm$core$Dict$keys(context.z)));
 	});
 var $elm$core$String$cons = _String_cons;
 var $elm$core$String$fromChar = function (_char) {
 	return A2($elm$core$String$cons, _char, '');
 };
 var $elm$core$Char$fromCode = _Char_fromCode;
-var $author$project$Stabel$Data$Type$genericName = function (type_) {
-	if (type_.$ === 'Generic') {
-		var name = type_.a;
-		return $elm$core$Maybe$Just(name);
-	} else {
-		return $elm$core$Maybe$Nothing;
-	}
-};
-var $author$project$Stabel$TypeChecker$getGenericBinding = F2(
-	function (context, type_) {
-		getGenericBinding:
-		while (true) {
-			if (type_.$ === 'Generic') {
-				var genericId = type_.a;
-				var _v1 = A2($elm$core$Dict$get, genericId, context.boundGenerics);
-				if ((_v1.$ === 'Just') && (_v1.a.$ === 'Generic')) {
-					var nextGenericId = _v1.a.a;
-					var _v2 = A2($elm$core$Dict$get, nextGenericId, context.boundGenerics);
-					if ((_v2.$ === 'Just') && (_v2.a.$ === 'Generic')) {
-						var anotherGenericType = _v2.a;
-						var cycleCheckId = anotherGenericType.a;
-						if (_Utils_eq(cycleCheckId, genericId)) {
-							return $elm$core$Maybe$Nothing;
-						} else {
-							var $temp$context = context,
-								$temp$type_ = anotherGenericType;
-							context = $temp$context;
-							type_ = $temp$type_;
-							continue getGenericBinding;
-						}
-					} else {
-						var otherwise = _v2;
-						return otherwise;
-					}
+var $author$project$Stabel$TypeChecker$renameGenerics = F2(
+	function (type_, _v0) {
+		var nextId = _v0.a;
+		var seenGenerics = _v0.b;
+		var acc = _v0.c;
+		switch (type_.$) {
+			case 1:
+				var genName = type_.a;
+				var _v2 = A2($elm$core$Dict$get, genName, seenGenerics);
+				if (!_v2.$) {
+					var newName = _v2.a;
+					return _Utils_Tuple3(
+						nextId,
+						seenGenerics,
+						A2(
+							$elm$core$List$cons,
+							$author$project$Stabel$Data$Type$Generic(newName),
+							acc));
 				} else {
-					var otherwise = _v1;
-					return otherwise;
+					var newName = $elm$core$String$fromChar(nextId);
+					return _Utils_Tuple3(
+						$elm$core$Char$fromCode(
+							1 + $elm$core$Char$toCode(nextId)),
+						A3($elm$core$Dict$insert, genName, newName, seenGenerics),
+						A2(
+							$elm$core$List$cons,
+							$author$project$Stabel$Data$Type$Generic(newName),
+							acc));
 				}
-			} else {
-				return $elm$core$Maybe$Just(type_);
-			}
+			case 4:
+				var name = type_.a;
+				var members = type_.b;
+				var _v3 = A3(
+					$elm$core$List$foldr,
+					$author$project$Stabel$TypeChecker$renameGenerics,
+					_Utils_Tuple3(nextId, seenGenerics, _List_Nil),
+					members);
+				var newNextId = _v3.a;
+				var newSeenGenerics = _v3.b;
+				var newMembers = _v3.c;
+				return _Utils_Tuple3(
+					newNextId,
+					newSeenGenerics,
+					A2(
+						$elm$core$List$cons,
+						A2($author$project$Stabel$Data$Type$Union, name, newMembers),
+						acc));
+			case 3:
+				var name = type_.a;
+				var members = type_.b;
+				var _v4 = A3(
+					$elm$core$List$foldr,
+					$author$project$Stabel$TypeChecker$renameGenerics,
+					_Utils_Tuple3(nextId, seenGenerics, _List_Nil),
+					members);
+				var newNextId = _v4.a;
+				var newSeenGenerics = _v4.b;
+				var newMembers = _v4.c;
+				return _Utils_Tuple3(
+					newNextId,
+					newSeenGenerics,
+					A2(
+						$elm$core$List$cons,
+						A2($author$project$Stabel$Data$Type$CustomGeneric, name, newMembers),
+						acc));
+			default:
+				return _Utils_Tuple3(
+					nextId,
+					seenGenerics,
+					A2($elm$core$List$cons, type_, acc));
 		}
 	});
 var $author$project$Stabel$TypeChecker$reverseLookup = F2(
@@ -10732,82 +12270,11 @@ var $author$project$Stabel$TypeChecker$reverseLookup = F2(
 					},
 					aliases)));
 	});
-var $author$project$Stabel$TypeChecker$simplifyWordType = function (_v0) {
-	var context = _v0.a;
-	var wordType = _v0.b;
-	var renameGenerics = F2(
-		function (type_, _v1) {
-			var nextId = _v1.a;
-			var seenGenerics = _v1.b;
-			var acc = _v1.c;
-			switch (type_.$) {
-				case 'Generic':
-					var genName = type_.a;
-					var _v3 = A2($elm$core$Dict$get, genName, seenGenerics);
-					if (_v3.$ === 'Just') {
-						var newName = _v3.a;
-						return _Utils_Tuple3(
-							nextId,
-							seenGenerics,
-							A2(
-								$elm$core$List$cons,
-								$author$project$Stabel$Data$Type$Generic(newName),
-								acc));
-					} else {
-						var newName = $elm$core$String$fromChar(nextId);
-						return _Utils_Tuple3(
-							$elm$core$Char$fromCode(
-								1 + $elm$core$Char$toCode(nextId)),
-							A3($elm$core$Dict$insert, genName, newName, seenGenerics),
-							A2(
-								$elm$core$List$cons,
-								$author$project$Stabel$Data$Type$Generic(newName),
-								acc));
-					}
-				case 'Union':
-					var members = type_.a;
-					var _v4 = A3(
-						$elm$core$List$foldr,
-						renameGenerics,
-						_Utils_Tuple3(nextId, seenGenerics, _List_Nil),
-						members);
-					var newNextId = _v4.a;
-					var newSeenGenerics = _v4.b;
-					var newMembers = _v4.c;
-					return _Utils_Tuple3(
-						newNextId,
-						newSeenGenerics,
-						A2(
-							$elm$core$List$cons,
-							$author$project$Stabel$Data$Type$Union(newMembers),
-							acc));
-				case 'CustomGeneric':
-					var name = type_.a;
-					var members = type_.b;
-					var _v5 = A3(
-						$elm$core$List$foldr,
-						renameGenerics,
-						_Utils_Tuple3(nextId, seenGenerics, _List_Nil),
-						members);
-					var newNextId = _v5.a;
-					var newSeenGenerics = _v5.b;
-					var newMembers = _v5.c;
-					return _Utils_Tuple3(
-						newNextId,
-						newSeenGenerics,
-						A2(
-							$elm$core$List$cons,
-							A2($author$project$Stabel$Data$Type$CustomGeneric, name, newMembers),
-							acc));
-				default:
-					return _Utils_Tuple3(
-						nextId,
-						seenGenerics,
-						A2($elm$core$List$cons, type_, acc));
-			}
-		});
-	var oldSignature = _Utils_ap(wordType.input, wordType.output);
-	var inputLength = $elm$core$List$length(wordType.input);
+var $author$project$Stabel$TypeChecker$simplifyFunctionType = function (_v0) {
+	var functionType = _v0.a;
+	var context = _v0.b;
+	var oldSignature = _Utils_ap(functionType.o, functionType.H);
+	var inputLength = $elm$core$List$length(functionType.o);
 	var aliases = A3(
 		$elm$core$List$foldl,
 		$author$project$Stabel$TypeChecker$reverseLookup,
@@ -10822,26 +12289,29 @@ var $author$project$Stabel$TypeChecker$simplifyWordType = function (_v0) {
 				A2($elm$core$List$filterMap, $author$project$Stabel$Data$Type$genericName, oldSignature))));
 	var reduceGenericName = function (type_) {
 		switch (type_.$) {
-			case 'Generic':
+			case 1:
 				var genName = type_.a;
-				var _v7 = A2($author$project$Stabel$TypeChecker$getGenericBinding, context, type_);
-				if (_v7.$ === 'Just') {
-					var boundType = _v7.a;
+				var _v2 = A2($author$project$Stabel$TypeChecker$getGenericBinding, context, type_);
+				if (!_v2.$) {
+					var boundType = _v2.a;
 					return boundType;
 				} else {
-					var _v8 = A2($elm$core$Dict$get, genName, aliases);
-					if (_v8.$ === 'Just') {
-						var actualName = _v8.a;
+					var _v3 = A2($elm$core$Dict$get, genName, aliases);
+					if (!_v3.$) {
+						var actualName = _v3.a;
 						return $author$project$Stabel$Data$Type$Generic(actualName);
 					} else {
 						return type_;
 					}
 				}
-			case 'Union':
-				var members = type_.a;
-				return $author$project$Stabel$Data$Type$Union(
+			case 4:
+				var name = type_.a;
+				var members = type_.b;
+				return A2(
+					$author$project$Stabel$Data$Type$Union,
+					name,
 					A2($elm$core$List$map, reduceGenericName, members));
-			case 'CustomGeneric':
+			case 3:
 				var name = type_.a;
 				var members = type_.b;
 				return A2(
@@ -10853,86 +12323,38 @@ var $author$project$Stabel$TypeChecker$simplifyWordType = function (_v0) {
 		}
 	};
 	var newSignature = $elm$core$List$reverse(
-		function (_v9) {
-			var ns = _v9.c;
+		function (_v4) {
+			var ns = _v4.c;
 			return ns;
 		}(
 			A3(
 				$elm$core$List$foldl,
-				renameGenerics,
-				_Utils_Tuple3(
-					_Utils_chr('a'),
-					$elm$core$Dict$empty,
-					_List_Nil),
+				$author$project$Stabel$TypeChecker$renameGenerics,
+				_Utils_Tuple3('a', $elm$core$Dict$empty, _List_Nil),
 				A2($elm$core$List$map, reduceGenericName, oldSignature))));
 	return _Utils_Tuple2(
-		context,
 		{
-			input: A2($elm$core$List$take, inputLength, newSignature),
-			output: A2($elm$core$List$drop, inputLength, newSignature)
-		});
+			o: A2($elm$core$List$take, inputLength, newSignature),
+			H: A2($elm$core$List$drop, inputLength, newSignature)
+		},
+		context);
 };
-var $author$project$Stabel$TypeChecker$simplifyWhenWordTypes = F2(
-	function (wordTypes, context) {
-		return _Utils_Tuple2(
-			A2(
-				$elm$core$List$map,
-				function (wt) {
-					return $author$project$Stabel$TypeChecker$simplifyWordType(
-						_Utils_Tuple2(context, wt)).b;
-				},
-				wordTypes),
-			context);
-	});
-var $author$project$Stabel$TypeChecker$Pop = function (a) {
-	return {$: 'Pop', a: a};
+var $author$project$Stabel$TypeChecker$simplifyWhenFunctionTypes = function (_v0) {
+	var functionTypes = _v0.a;
+	var context = _v0.b;
+	return _Utils_Tuple2(
+		A2(
+			$elm$core$List$map,
+			function (wt) {
+				return $author$project$Stabel$TypeChecker$simplifyFunctionType(
+					_Utils_Tuple2(wt, context)).a;
+			},
+			functionTypes),
+		context);
 };
-var $author$project$Stabel$TypeChecker$tagGeneric = F2(
-	function (idx, type_) {
-		switch (type_.$) {
-			case 'Generic':
-				var genName = type_.a;
-				return $author$project$Stabel$Data$Type$Generic(
-					_Utils_ap(
-						genName,
-						$elm$core$String$fromInt(idx)));
-			case 'CustomGeneric':
-				var name = type_.a;
-				var generics = type_.b;
-				return A2(
-					$author$project$Stabel$Data$Type$CustomGeneric,
-					name,
-					A2(
-						$elm$core$List$map,
-						$author$project$Stabel$TypeChecker$tagGeneric(idx),
-						generics));
-			case 'Union':
-				var members = type_.a;
-				return $author$project$Stabel$Data$Type$Union(
-					A2(
-						$elm$core$List$map,
-						$author$project$Stabel$TypeChecker$tagGeneric(idx),
-						members));
-			case 'Quotation':
-				var wt = type_.a;
-				return $author$project$Stabel$Data$Type$Quotation(
-					{
-						input: A2(
-							$elm$core$List$map,
-							$author$project$Stabel$TypeChecker$tagGeneric(idx),
-							wt.input),
-						output: A2(
-							$elm$core$List$map,
-							$author$project$Stabel$TypeChecker$tagGeneric(idx),
-							wt.output)
-					});
-			default:
-				return type_;
-		}
-	});
 var $author$project$Stabel$TypeChecker$tagGenericEffect = F2(
 	function (idx, effect) {
-		if (effect.$ === 'Push') {
+		if (!effect.$) {
 			var type_ = effect.a;
 			return $author$project$Stabel$TypeChecker$Push(
 				A2($author$project$Stabel$TypeChecker$tagGeneric, idx, type_));
@@ -10946,24 +12368,6 @@ var $author$project$Stabel$TypeChecker$extractTypeFromTypeMatch = function (_v0)
 	var t_ = _v0.b;
 	return t_;
 };
-var $elm$core$List$partition = F2(
-	function (pred, list) {
-		var step = F2(
-			function (x, _v0) {
-				var trues = _v0.a;
-				var falses = _v0.b;
-				return pred(x) ? _Utils_Tuple2(
-					A2($elm$core$List$cons, x, trues),
-					falses) : _Utils_Tuple2(
-					trues,
-					A2($elm$core$List$cons, x, falses));
-			});
-		return A3(
-			$elm$core$List$foldr,
-			step,
-			_Utils_Tuple2(_List_Nil, _List_Nil),
-			list);
-	});
 var $elm_community$list_extra$List$Extra$gatherWith = F2(
 	function (testFn, list) {
 		var helper = F2(
@@ -10995,8 +12399,8 @@ var $elm_community$list_extra$List$Extra$gatherEquals = function (list) {
 };
 var $author$project$Stabel$TypeChecker$unionOfTypeMatches = function (whenBranches) {
 	var flattenUnions = function (t) {
-		if (t.$ === 'Union') {
-			var members = t.a;
+		if (t.$ === 4) {
+			var members = t.b;
 			return A2($elm$core$List$concatMap, flattenUnions, members);
 		} else {
 			return _List_fromArray(
@@ -11018,173 +12422,12 @@ var $author$project$Stabel$TypeChecker$unionOfTypeMatches = function (whenBranch
 		var singleType = uniqueTypes.a;
 		return singleType;
 	} else {
-		return $author$project$Stabel$Data$Type$Union(uniqueTypes);
+		return A2($author$project$Stabel$Data$Type$Union, $elm$core$Maybe$Nothing, uniqueTypes);
 	}
 };
-var $author$project$Stabel$TypeChecker$Builtin = F2(
-	function (a, b) {
-		return {$: 'Builtin', a: a, b: b};
-	});
-var $author$project$Stabel$TypeChecker$ConstructType = function (a) {
-	return {$: 'ConstructType', a: a};
-};
-var $author$project$Stabel$TypeChecker$GetMember = F3(
-	function (a, b, c) {
-		return {$: 'GetMember', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$TypeChecker$IntLiteral = F2(
-	function (a, b) {
-		return {$: 'IntLiteral', a: a, b: b};
-	});
-var $author$project$Stabel$TypeChecker$SetMember = F3(
-	function (a, b, c) {
-		return {$: 'SetMember', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$TypeChecker$Word = F3(
-	function (a, b, c) {
-		return {$: 'Word', a: a, b: b, c: c};
-	});
-var $author$project$Stabel$TypeChecker$WordRef = F2(
-	function (a, b) {
-		return {$: 'WordRef', a: a, b: b};
-	});
-var $author$project$Stabel$TypeChecker$untypedToTypedNode = F3(
-	function (idx, context, untypedNode) {
-		switch (untypedNode.$) {
-			case 'Integer':
-				var range = untypedNode.a;
-				var num = untypedNode.b;
-				return A2($author$project$Stabel$TypeChecker$IntLiteral, range, num);
-			case 'Word':
-				var range = untypedNode.a;
-				var name = untypedNode.b;
-				var _v1 = A2($elm$core$Dict$get, name, context.typedWords);
-				if (_v1.$ === 'Just') {
-					var def = _v1.a;
-					var replaceGenericWithBoundValue = function (t) {
-						var boundType = function () {
-							var _v3 = A2($author$project$Stabel$TypeChecker$getGenericBinding, context, t);
-							if (_v3.$ === 'Just') {
-								var boundValue = _v3.a;
-								return boundValue;
-							} else {
-								return t;
-							}
-						}();
-						if (boundType.$ === 'Union') {
-							var members = boundType.a;
-							return $author$project$Stabel$Data$Type$Union(
-								A2($elm$core$List$map, replaceGenericWithBoundValue, members));
-						} else {
-							return boundType;
-						}
-					};
-					var resolvedWordType = {
-						input: A2(
-							$elm$core$List$map,
-							A2(
-								$elm$core$Basics$composeR,
-								$author$project$Stabel$TypeChecker$tagGeneric(idx),
-								replaceGenericWithBoundValue),
-							def.type_.input),
-						output: A2(
-							$elm$core$List$map,
-							A2(
-								$elm$core$Basics$composeR,
-								$author$project$Stabel$TypeChecker$tagGeneric(idx),
-								replaceGenericWithBoundValue),
-							def.type_.output)
-					};
-					return A3($author$project$Stabel$TypeChecker$Word, range, name, resolvedWordType);
-				} else {
-					return A3(
-						$author$project$Stabel$TypeChecker$Word,
-						range,
-						name,
-						A2(
-							$elm$core$Maybe$withDefault,
-							{input: _List_Nil, output: _List_Nil},
-							A2(
-								$elm$core$Maybe$andThen,
-								A2(
-									$elm$core$Basics$composeR,
-									function ($) {
-										return $.metadata;
-									},
-									A2(
-										$elm$core$Basics$composeR,
-										function ($) {
-											return $.type_;
-										},
-										$author$project$Stabel$Data$TypeSignature$toMaybe)),
-								A2($elm$core$Dict$get, name, context.untypedWords))));
-				}
-			case 'WordRef':
-				var range = untypedNode.a;
-				var ref = untypedNode.b;
-				return A2($author$project$Stabel$TypeChecker$WordRef, range, ref);
-			case 'ConstructType':
-				var typeName = untypedNode.a;
-				return $author$project$Stabel$TypeChecker$ConstructType(typeName);
-			case 'SetMember':
-				var typeName = untypedNode.a;
-				var memberName = untypedNode.b;
-				var _v4 = A3($author$project$Stabel$TypeChecker$getMemberType, context.types, typeName, memberName);
-				if (_v4.$ === 'Just') {
-					var memberType = _v4.a;
-					return A3($author$project$Stabel$TypeChecker$SetMember, typeName, memberName, memberType);
-				} else {
-					return _Debug_todo(
-						'Stabel.TypeChecker',
-						{
-							start: {line: 1541, column: 21},
-							end: {line: 1541, column: 31}
-						})('Inconcievable!');
-				}
-			case 'GetMember':
-				var typeName = untypedNode.a;
-				var memberName = untypedNode.b;
-				var _v5 = A3($author$project$Stabel$TypeChecker$getMemberType, context.types, typeName, memberName);
-				if (_v5.$ === 'Just') {
-					var memberType = _v5.a;
-					return A3($author$project$Stabel$TypeChecker$GetMember, typeName, memberName, memberType);
-				} else {
-					return _Debug_todo(
-						'Stabel.TypeChecker',
-						{
-							start: {line: 1549, column: 21},
-							end: {line: 1549, column: 31}
-						})('Inconcievable!');
-				}
-			default:
-				var range = untypedNode.a;
-				var builtin = untypedNode.b;
-				return A2($author$project$Stabel$TypeChecker$Builtin, range, builtin);
-		}
-	});
-var $author$project$Stabel$TypeChecker$untypedToTypedImplementation = F2(
-	function (context, impl) {
-		var helper = F2(
-			function (node, _v0) {
-				var idx = _v0.a;
-				var res = _v0.b;
-				return _Utils_Tuple2(
-					idx + 1,
-					A2(
-						$elm$core$List$cons,
-						A3($author$project$Stabel$TypeChecker$untypedToTypedNode, idx, context, node),
-						res));
-			});
-		return $elm$core$List$reverse(
-			A3(
-				$elm$core$List$foldl,
-				helper,
-				_Utils_Tuple2(0, _List_Nil),
-				impl).b);
-	});
 var $author$project$Stabel$TypeChecker$Problem$TypeError = F4(
 	function (a, b, c, d) {
-		return {$: 'TypeError', a: a, b: b, c: c, d: d};
+		return {$: 1, a: a, b: b, c: c, d: d};
 	});
 var $elm$core$Dict$diff = F2(
 	function (t1, t2) {
@@ -11199,10 +12442,9 @@ var $elm$core$Dict$diff = F2(
 	});
 var $elm$core$Set$diff = F2(
 	function (_v0, _v1) {
-		var dict1 = _v0.a;
-		var dict2 = _v1.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A2($elm$core$Dict$diff, dict1, dict2));
+		var dict1 = _v0;
+		var dict2 = _v1;
+		return A2($elm$core$Dict$diff, dict1, dict2);
 	});
 var $elm$core$String$endsWith = _String_endsWith;
 var $author$project$Stabel$Data$Type$sameCategory = F2(
@@ -11211,14 +12453,16 @@ var $author$project$Stabel$Data$Type$sameCategory = F2(
 		_v0$2:
 		while (true) {
 			switch (_v0.a.$) {
-				case 'Quotation':
-					if (_v0.b.$ === 'Quotation') {
+				case 5:
+					if (_v0.b.$ === 5) {
 						return true;
 					} else {
 						break _v0$2;
 					}
-				case 'Union':
-					if (_v0.b.$ === 'Union') {
+				case 4:
+					if (_v0.b.$ === 4) {
+						var _v1 = _v0.a;
+						var _v2 = _v0.b;
 						return true;
 					} else {
 						break _v0$2;
@@ -11231,37 +12475,32 @@ var $author$project$Stabel$Data$Type$sameCategory = F2(
 	});
 var $author$project$Stabel$Data$Type$toString = function (t) {
 	switch (t.$) {
-		case 'Int':
+		case 0:
 			return 'Int';
-		case 'Generic':
+		case 1:
 			var name = t.a;
 			return name + '_Generic';
-		case 'Custom':
+		case 2:
 			var name = t.a;
 			return name + '_Custom';
-		case 'CustomGeneric':
+		case 3:
 			var name = t.a;
 			return name + '_Custom';
-		case 'Union':
-			return 'Union';
-		case 'Quotation':
-			return 'quot';
+		case 4:
+			if (!t.a.$) {
+				var name = t.a.a;
+				return name + '_Union';
+			} else {
+				var _v1 = t.a;
+				return 'Union';
+			}
+		case 5:
+			return 'Function';
 		default:
 			var name = t.a;
 			return name + '...';
 	}
 };
-var $elm$core$Dict$update = F3(
-	function (targetKey, alter, dictionary) {
-		var _v0 = alter(
-			A2($elm$core$Dict$get, targetKey, dictionary));
-		if (_v0.$ === 'Just') {
-			var value = _v0.a;
-			return A3($elm$core$Dict$insert, targetKey, value, dictionary);
-		} else {
-			return A2($elm$core$Dict$remove, targetKey, dictionary);
-		}
-	});
 var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 	function (annotated, inferred, rangeDict) {
 		compatibleTypeLists:
@@ -11288,14 +12527,14 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 													return _Utils_Tuple2(rangeDict, true);
 												} else {
 													switch (_v0.b.a.$) {
-														case 'StackRange':
+														case 6:
 															if (!_v0.b.b.b) {
 																var _v4 = _v0.b;
 																return _Utils_Tuple2(rangeDict, true);
 															} else {
 																break _v0$14;
 															}
-														case 'Union':
+														case 4:
 															break _v0$12;
 														default:
 															break _v0$14;
@@ -11304,43 +12543,43 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 											} else {
 												if (!_v0.b.b) {
 													switch (_v0.a.a.$) {
-														case 'StackRange':
+														case 6:
 															if (!_v0.a.b.b) {
 																var _v3 = _v0.a;
 																return _Utils_Tuple2(rangeDict, true);
 															} else {
 																break _v0$14;
 															}
-														case 'Union':
+														case 4:
 															break _v0$11;
 														default:
 															break _v0$14;
 													}
 												} else {
 													switch (_v0.b.a.$) {
-														case 'StackRange':
+														case 6:
 															if (!_v0.b.b.b) {
 																switch (_v0.a.a.$) {
-																	case 'StackRange':
+																	case 6:
 																		break _v0$1;
-																	case 'Union':
+																	case 4:
 																		break _v0$4;
 																	default:
 																		break _v0$4;
 																}
 															} else {
 																switch (_v0.a.a.$) {
-																	case 'StackRange':
+																	case 6:
 																		break _v0$1;
-																	case 'Union':
+																	case 4:
 																		break _v0$5;
 																	default:
 																		break _v0$5;
 																}
 															}
-														case 'Quotation':
+														case 5:
 															switch (_v0.a.a.$) {
-																case 'Quotation':
+																case 5:
 																	var _v10 = _v0.a;
 																	var annotatedQuotType = _v10.a.a;
 																	var annotatedRest = _v10.b;
@@ -11352,10 +12591,10 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 																			return A2(
 																				$elm$core$List$concatMap,
 																				function (type_) {
-																					if (type_.$ === 'StackRange') {
+																					if (type_.$ === 6) {
 																						var rangeName = type_.a;
 																						var _v15 = A2($elm$core$Dict$get, rangeName, rd);
-																						if (_v15.$ === 'Just') {
+																						if (!_v15.$) {
 																							var subst = _v15.a;
 																							return subst;
 																						} else {
@@ -11370,10 +12609,10 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 																				},
 																				types);
 																		});
-																	var inferredInputRangeApplied = A2(applyRangeDict, rangeDict, inferredQuotType.input);
-																	var inferredOutputRangeApplied = A2(applyRangeDict, rangeDict, inferredQuotType.output);
-																	var annotatedOutputRangeApplied = A2(applyRangeDict, rangeDict, annotatedQuotType.output);
-																	var annotatedInputRangeApplied = A2(applyRangeDict, rangeDict, annotatedQuotType.input);
+																	var inferredInputRangeApplied = A2(applyRangeDict, rangeDict, inferredQuotType.o);
+																	var inferredOutputRangeApplied = A2(applyRangeDict, rangeDict, inferredQuotType.H);
+																	var annotatedOutputRangeApplied = A2(applyRangeDict, rangeDict, annotatedQuotType.H);
+																	var annotatedInputRangeApplied = A2(applyRangeDict, rangeDict, annotatedQuotType.o);
 																	var _v12 = A3($author$project$Stabel$Data$Type$compatibleTypeLists, annotatedInputRangeApplied, inferredInputRangeApplied, rangeDict);
 																	var dictRangePostInputs = _v12.a;
 																	var inputCompatible = _v12.b;
@@ -11391,14 +12630,14 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 																	} else {
 																		return _Utils_Tuple2(dictRangePostOutputs, false);
 																	}
-																case 'Union':
+																case 4:
 																	break _v0$11;
 																default:
 																	break _v0$13;
 															}
-														case 'Generic':
+														case 1:
 															switch (_v0.a.a.$) {
-																case 'Generic':
+																case 1:
 																	var _v16 = _v0.a;
 																	var annotatedRest = _v16.b;
 																	var _v17 = _v0.b;
@@ -11410,14 +12649,14 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 																	inferred = $temp$inferred;
 																	rangeDict = $temp$rangeDict;
 																	continue compatibleTypeLists;
-																case 'Union':
+																case 4:
 																	break _v0$8;
 																default:
 																	break _v0$8;
 															}
-														case 'CustomGeneric':
+														case 3:
 															switch (_v0.a.a.$) {
-																case 'CustomGeneric':
+																case 3:
 																	var _v20 = _v0.a;
 																	var _v21 = _v20.a;
 																	var lName = _v21.a;
@@ -11441,19 +12680,21 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 																	} else {
 																		return _Utils_Tuple2(rangeDict, false);
 																	}
-																case 'Union':
+																case 4:
 																	break _v0$11;
 																default:
 																	break _v0$13;
 															}
-														case 'Union':
-															if (_v0.a.a.$ === 'Union') {
+														case 4:
+															if (_v0.a.a.$ === 4) {
 																var _v25 = _v0.a;
-																var lMembers = _v25.a.a;
+																var _v26 = _v25.a;
+																var lMembers = _v26.b;
 																var annotatedRest = _v25.b;
-																var _v26 = _v0.b;
-																var rMembers = _v26.a.a;
-																var inferredRest = _v26.b;
+																var _v27 = _v0.b;
+																var _v28 = _v27.a;
+																var rMembers = _v28.b;
+																var inferredRest = _v27.b;
 																var rSet = $elm$core$Set$fromList(
 																	A2($elm$core$List$map, $author$project$Stabel$Data$Type$toString, rMembers));
 																var lSet = $elm$core$Set$fromList(
@@ -11490,7 +12731,7 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 																break _v0$12;
 															}
 														default:
-															if (_v0.a.a.$ === 'Union') {
+															if (_v0.a.a.$ === 4) {
 																break _v0$11;
 															} else {
 																break _v0$13;
@@ -11501,12 +12742,12 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 										}
 										return _Utils_Tuple2(rangeDict, false);
 									}
-									var _v30 = _v0.a;
-									var annotatedEl = _v30.a;
-									var annotatedRest = _v30.b;
-									var _v31 = _v0.b;
-									var inferredEl = _v31.a;
-									var inferredRest = _v31.b;
+									var _v34 = _v0.a;
+									var annotatedEl = _v34.a;
+									var annotatedRest = _v34.b;
+									var _v35 = _v0.b;
+									var inferredEl = _v35.a;
+									var inferredRest = _v35.b;
 									if (_Utils_eq(annotatedEl, inferredEl)) {
 										var $temp$annotated = annotatedRest,
 											$temp$inferred = inferredRest,
@@ -11519,10 +12760,12 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 										return _Utils_Tuple2(rangeDict, false);
 									}
 								}
-								var _v29 = _v0.b;
+								var _v32 = _v0.b;
+								var _v33 = _v32.a;
 								return _Utils_Tuple2(rangeDict, false);
 							}
-							var _v28 = _v0.a;
+							var _v30 = _v0.a;
+							var _v31 = _v30.a;
 							return _Utils_Tuple2(rangeDict, false);
 						}
 						var _v18 = _v0.a;
@@ -11617,30 +12860,46 @@ var $author$project$Stabel$Data$Type$compatibleTypeLists = F3(
 			}
 		}
 	});
-var $author$project$Stabel$Data$Type$compatibleWords = F2(
+var $author$project$Stabel$Data$Type$compatibleFunctions = F2(
 	function (annotated, inferred) {
-		var _v0 = A3($author$project$Stabel$Data$Type$compatibleTypeLists, annotated.input, inferred.input, $elm$core$Dict$empty);
+		var _v0 = A3($author$project$Stabel$Data$Type$compatibleTypeLists, annotated.o, inferred.o, $elm$core$Dict$empty);
 		var inputRangeDict = _v0.a;
 		var inputsCompatible = _v0.b;
-		var _v1 = A3($author$project$Stabel$Data$Type$compatibleTypeLists, annotated.output, inferred.output, inputRangeDict);
+		var _v1 = A3($author$project$Stabel$Data$Type$compatibleTypeLists, annotated.H, inferred.H, inputRangeDict);
 		var outputsCompatible = _v1.b;
 		return inputsCompatible && outputsCompatible;
 	});
+var $author$project$Stabel$TypeChecker$simplifyFunctionTypeGenerics = function (functionType) {
+	var oldSignature = _Utils_ap(functionType.o, functionType.H);
+	var newSignature = $elm$core$List$reverse(
+		function (_v0) {
+			var ns = _v0.c;
+			return ns;
+		}(
+			A3(
+				$elm$core$List$foldl,
+				$author$project$Stabel$TypeChecker$renameGenerics,
+				_Utils_Tuple3('a', $elm$core$Dict$empty, _List_Nil),
+				oldSignature)));
+	var inputLength = $elm$core$List$length(functionType.o);
+	return {
+		o: A2($elm$core$List$take, inputLength, newSignature),
+		H: A2($elm$core$List$drop, inputLength, newSignature)
+	};
+};
 var $author$project$Stabel$TypeChecker$verifyTypeSignature = F3(
 	function (inferredType, untypedDef, context) {
-		var _v0 = $author$project$Stabel$Data$TypeSignature$toMaybe(untypedDef.metadata.type_);
-		if (_v0.$ === 'Just') {
+		var _v0 = $author$project$Stabel$Data$TypeSignature$toMaybe(untypedDef.bO);
+		if (!_v0.$) {
 			var annotatedType = _v0.a;
-			var _v1 = $author$project$Stabel$TypeChecker$simplifyWordType(
-				_Utils_Tuple2(context, annotatedType));
-			var simplifiedAnnotatedType = _v1.b;
-			if (!A2($author$project$Stabel$Data$Type$compatibleWords, simplifiedAnnotatedType, inferredType)) {
-				var range = A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, untypedDef.metadata.sourceLocationRange);
-				var problem = A4($author$project$Stabel$TypeChecker$Problem$TypeError, range, untypedDef.name, simplifiedAnnotatedType, inferredType);
+			var simplifiedAnnotatedType = $author$project$Stabel$TypeChecker$simplifyFunctionTypeGenerics(annotatedType);
+			if (!A2($author$project$Stabel$Data$Type$compatibleFunctions, simplifiedAnnotatedType, inferredType)) {
+				var range = A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, untypedDef.U);
+				var problem = A4($author$project$Stabel$TypeChecker$Problem$TypeError, range, untypedDef.m, simplifiedAnnotatedType, inferredType);
 				return _Utils_update(
 					context,
 					{
-						errors: A2($elm$core$List$cons, problem, context.errors)
+						l: A2($elm$core$List$cons, problem, context.l)
 					});
 			} else {
 				return context;
@@ -11649,626 +12908,203 @@ var $author$project$Stabel$TypeChecker$verifyTypeSignature = F3(
 			return context;
 		}
 	});
-var $author$project$Stabel$TypeChecker$Problem$UnexpectedType = F4(
-	function (a, b, c, d) {
-		return {$: 'UnexpectedType', a: a, b: b, c: c, d: d};
-	});
-var $author$project$Stabel$TypeChecker$bindGeneric = F3(
-	function (toBind, target, context) {
-		if (toBind.$ === 'Generic') {
-			var name = toBind.a;
-			return _Utils_update(
-				context,
-				{
-					boundGenerics: A3($elm$core$Dict$insert, name, target, context.boundGenerics)
-				});
-		} else {
-			return context;
+var $author$project$Stabel$Data$TypeSignature$withDefault = F2(
+	function (_default, ts) {
+		switch (ts.$) {
+			case 0:
+				return _default;
+			case 1:
+				var wt = ts.a;
+				return wt;
+			default:
+				var wt = ts.a;
+				return wt;
 		}
 	});
-var $author$project$Stabel$TypeChecker$replaceStackRange = F2(
-	function (boundRanges, types) {
-		return A2(
-			$elm$core$List$concatMap,
-			function (t) {
-				if (t.$ === 'StackRange') {
-					var rangeName = t.a;
-					return A2(
-						$elm$core$Maybe$withDefault,
-						_List_Nil,
-						A2($elm$core$Dict$get, rangeName, boundRanges));
-				} else {
-					var otherwise = t;
-					return _List_fromArray(
-						[otherwise]);
-				}
-			},
-			types);
-	});
-var $author$project$Stabel$TypeChecker$bindStackRange = F4(
-	function (context, actual, expected, bound) {
-		bindStackRange:
-		while (true) {
-			var rangeUpdater = F2(
-				function (existing, newType) {
-					if (existing.$ === 'Just') {
-						var vals = existing.a;
-						return $elm$core$Maybe$Just(
-							_Utils_ap(
-								vals,
-								_List_fromArray(
-									[newType])));
-					} else {
-						return $elm$core$Maybe$Just(
-							_List_fromArray(
-								[newType]));
-					}
-				});
-			var _v16 = _Utils_Tuple2(actual, expected);
-			if (!_v16.a.b) {
-				return bound;
-			} else {
-				if (!_v16.b.b) {
-					return bound;
-				} else {
-					if ((_v16.b.a.$ === 'StackRange') && (!_v16.b.b.b)) {
-						var _v17 = _v16.a;
-						var afirst = _v17.a;
-						var arest = _v17.b;
-						var _v18 = _v16.b;
-						var rangeName = _v18.a.a;
-						var newBound = A3(
-							$elm$core$Dict$update,
-							rangeName,
-							function (existing) {
-								return A2(rangeUpdater, existing, afirst);
-							},
-							bound);
-						var $temp$context = context,
-							$temp$actual = arest,
-							$temp$expected = expected,
-							$temp$bound = newBound;
-						context = $temp$context;
-						actual = $temp$actual;
-						expected = $temp$expected;
-						bound = $temp$bound;
-						continue bindStackRange;
-					} else {
-						var _v19 = _v16.a;
-						var afirst = _v19.a;
-						var arest = _v19.b;
-						var _v20 = _v16.b;
-						var bfirst = _v20.a;
-						var brest = _v20.b;
-						var _v21 = A3($author$project$Stabel$TypeChecker$compatibleTypes, context, afirst, bfirst);
-						var newContext = _v21.a;
-						var compatible = _v21.b;
-						if (compatible) {
-							var $temp$context = newContext,
-								$temp$actual = arest,
-								$temp$expected = brest,
-								$temp$bound = bound;
-							context = $temp$context;
-							actual = $temp$actual;
-							expected = $temp$expected;
-							bound = $temp$bound;
-							continue bindStackRange;
-						} else {
-							return bound;
-						}
-					}
-				}
-			}
-		}
-	});
-var $author$project$Stabel$TypeChecker$compatibleTypes = F3(
-	function (context, typeA, typeB) {
-		var _v0 = _Utils_Tuple2(
-			A2($author$project$Stabel$TypeChecker$getGenericBinding, context, typeA),
-			A2($author$project$Stabel$TypeChecker$getGenericBinding, context, typeB));
-		if (_v0.a.$ === 'Nothing') {
-			if (_v0.b.$ === 'Just') {
-				var _v1 = _v0.a;
-				var boundB = _v0.b.a;
-				return _Utils_Tuple2(
-					A3($author$project$Stabel$TypeChecker$bindGeneric, typeA, boundB, context),
-					true);
-			} else {
-				var _v3 = _v0.a;
-				var _v4 = _v0.b;
-				return _Utils_Tuple2(
-					A3(
-						$author$project$Stabel$TypeChecker$bindGeneric,
-						typeB,
-						typeA,
-						A3($author$project$Stabel$TypeChecker$bindGeneric, typeA, typeB, context)),
-					true);
-			}
-		} else {
-			if (_v0.b.$ === 'Nothing') {
-				var boundA = _v0.a.a;
-				var _v2 = _v0.b;
-				return _Utils_Tuple2(
-					A3($author$project$Stabel$TypeChecker$bindGeneric, typeB, boundA, context),
-					true);
-			} else {
-				var boundA = _v0.a.a;
-				var boundB = _v0.b.a;
-				if (_Utils_eq(boundA, boundB)) {
-					return _Utils_Tuple2(context, true);
-				} else {
-					var _v5 = _Utils_Tuple2(boundA, boundB);
-					_v5$2:
-					while (true) {
-						_v5$5:
-						while (true) {
-							switch (_v5.a.$) {
-								case 'Union':
-									if (_v5.b.$ === 'Union') {
-										var leftUnion = _v5.a.a;
-										var rightUnion = _v5.b.a;
-										var lengthTest = _Utils_eq(
-											$elm$core$List$length(leftUnion),
-											$elm$core$List$length(rightUnion));
-										var foldHelper = F2(
-											function (_v7, _v8) {
-												var lType = _v7.a;
-												var rType = _v7.b;
-												var ctx = _v8.a;
-												var currValue = _v8.b;
-												return (!currValue) ? _Utils_Tuple2(ctx, currValue) : A3($author$project$Stabel$TypeChecker$compatibleTypes, ctx, lType, rType);
-											});
-										var _v6 = A3(
-											$elm$core$List$foldl,
-											foldHelper,
-											_Utils_Tuple2(context, true),
-											A3($elm$core$List$map2, $elm$core$Tuple$pair, leftUnion, rightUnion));
-										var newContext = _v6.a;
-										var allMembersTest = _v6.b;
-										return _Utils_Tuple2(newContext, lengthTest && allMembersTest);
-									} else {
-										return _Utils_Tuple2(context, false);
-									}
-								case 'CustomGeneric':
-									switch (_v5.b.$) {
-										case 'Union':
-											break _v5$2;
-										case 'CustomGeneric':
-											var _v9 = _v5.a;
-											var lName = _v9.a;
-											var lMembers = _v9.b;
-											var _v10 = _v5.b;
-											var rName = _v10.a;
-											var rMembers = _v10.b;
-											var members = A3($elm$core$List$map2, $elm$core$Tuple$pair, lMembers, rMembers);
-											var foldHelper = F2(
-												function (_v12, acc) {
-													var lType = _v12.a;
-													var rType = _v12.b;
-													var currCtx = acc.a;
-													var isCompatible = acc.b;
-													return (!isCompatible) ? acc : A3($author$project$Stabel$TypeChecker$compatibleTypes, currCtx, lType, rType);
-												});
-											var _v11 = A3(
-												$elm$core$List$foldl,
-												foldHelper,
-												_Utils_Tuple2(context, true),
-												members);
-											var updatedContext = _v11.a;
-											var compatible = _v11.b;
-											return (_Utils_eq(lName, rName) && compatible) ? _Utils_Tuple2(updatedContext, true) : _Utils_Tuple2(context, false);
-										default:
-											break _v5$5;
-									}
-								case 'Quotation':
-									switch (_v5.b.$) {
-										case 'Union':
-											break _v5$2;
-										case 'Quotation':
-											var lhs = _v5.a.a;
-											var rhs = _v5.b.a;
-											var foldHelper = F2(
-												function (_v15, acc) {
-													var lType = _v15.a;
-													var rType = _v15.b;
-													var currCtx = acc.a;
-													var isCompatible = acc.b;
-													return (!isCompatible) ? acc : A3($author$project$Stabel$TypeChecker$compatibleTypes, currCtx, lType, rType);
-												});
-											var boundRanges = A4(
-												$author$project$Stabel$TypeChecker$bindStackRange,
-												context,
-												lhs.output,
-												rhs.output,
-												A4($author$project$Stabel$TypeChecker$bindStackRange, context, lhs.input, rhs.input, $elm$core$Dict$empty));
-											var contextWithBoundRanges = _Utils_update(
-												context,
-												{
-													boundStackRanges: A2($elm$core$Dict$union, context.boundStackRanges, boundRanges)
-												});
-											var actualOutputRequirement = A2($author$project$Stabel$TypeChecker$replaceStackRange, boundRanges, rhs.output);
-											var actualInputRequirement = A2($author$project$Stabel$TypeChecker$replaceStackRange, boundRanges, rhs.input);
-											var _v13 = A3(
-												$elm$core$List$foldl,
-												foldHelper,
-												_Utils_Tuple2(contextWithBoundRanges, true),
-												A3($elm$core$List$map2, $elm$core$Tuple$pair, lhs.input, actualInputRequirement));
-											var contextAfterInputCheck = _v13.a;
-											var inputsCompatible = _v13.b;
-											var _v14 = A3(
-												$elm$core$List$foldl,
-												foldHelper,
-												_Utils_Tuple2(contextAfterInputCheck, true),
-												A3($elm$core$List$map2, $elm$core$Tuple$pair, lhs.output, actualOutputRequirement));
-											var contextAfterOutputCheck = _v14.a;
-											var outputsCompatible = _v14.b;
-											return _Utils_Tuple2(contextAfterOutputCheck, inputsCompatible && outputsCompatible);
-										default:
-											break _v5$5;
-									}
-								default:
-									if (_v5.b.$ === 'Union') {
-										break _v5$2;
-									} else {
-										break _v5$5;
-									}
-							}
-						}
-						return _Utils_Tuple2(context, false);
-					}
-					var lhsType = _v5.a;
-					var unionTypes = _v5.b.a;
-					return A2(
-						$elm$core$Maybe$withDefault,
-						_Utils_Tuple2(context, false),
-						A2(
-							$elm_community$list_extra$List$Extra$find,
-							$elm$core$Tuple$second,
-							A2(
-								$elm$core$List$map,
-								A2($author$project$Stabel$TypeChecker$compatibleTypes, context, lhsType),
-								unionTypes)));
-				}
-			}
-		}
-	});
-var $author$project$Stabel$TypeChecker$wordTypeFromStackEffectsHelper = F3(
-	function (untypedDef, effects, _v0) {
-		wordTypeFromStackEffectsHelper:
-		while (true) {
-			var context = _v0.a;
-			var wordType = _v0.b;
-			var problem = F2(
-				function (expected, actual) {
-					return A4(
-						$author$project$Stabel$TypeChecker$Problem$UnexpectedType,
-						A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, untypedDef.metadata.sourceLocationRange),
-						untypedDef.name,
-						expected,
-						actual);
-				});
-			if (!effects.b) {
-				return _Utils_Tuple2(
-					context,
-					_Utils_update(
-						wordType,
-						{
-							input: wordType.input,
-							output: $elm$core$List$reverse(wordType.output)
-						}));
-			} else {
-				if (effects.a.$ === 'Pop') {
-					if (effects.a.a.$ === 'StackRange') {
-						var type_ = effects.a.a;
-						var rangeName = type_.a;
-						var remainingEffects = effects.b;
-						var _v2 = A2($elm$core$Dict$get, rangeName, context.boundStackRanges);
-						if (_v2.$ === 'Just') {
-							var needToPop = _v2.a;
-							var $temp$untypedDef = untypedDef,
-								$temp$effects = _Utils_ap(
-								A2($elm$core$List$map, $author$project$Stabel$TypeChecker$Pop, needToPop),
-								remainingEffects),
-								$temp$_v0 = _Utils_Tuple2(context, wordType);
-							untypedDef = $temp$untypedDef;
-							effects = $temp$effects;
-							_v0 = $temp$_v0;
-							continue wordTypeFromStackEffectsHelper;
-						} else {
-							var _v3 = wordType.output;
-							if (!_v3.b) {
-								return A3(
-									$author$project$Stabel$TypeChecker$wordTypeFromStackEffectsHelper,
-									untypedDef,
-									remainingEffects,
-									_Utils_Tuple2(
-										context,
-										_Utils_update(
-											wordType,
-											{
-												input: A2($elm$core$List$cons, type_, wordType.input)
-											})));
-							} else {
-								var availableType = _v3.a;
-								var remainingOutput = _v3.b;
-								return (!_Utils_eq(availableType, type_)) ? _Utils_Tuple2(
-									_Utils_update(
-										context,
-										{
-											errors: A2(
-												$elm$core$List$cons,
-												A2(problem, type_, availableType),
-												context.errors)
-										}),
-									wordType) : _Utils_Tuple2(
-									context,
-									_Utils_update(
-										wordType,
-										{output: remainingOutput}));
-							}
-						}
-					} else {
-						var type_ = effects.a.a;
-						var remainingEffects = effects.b;
-						var _v4 = wordType.output;
-						if (!_v4.b) {
-							return A3(
-								$author$project$Stabel$TypeChecker$wordTypeFromStackEffectsHelper,
-								untypedDef,
-								remainingEffects,
-								_Utils_Tuple2(
-									context,
-									_Utils_update(
-										wordType,
-										{
-											input: A2($elm$core$List$cons, type_, wordType.input)
-										})));
-						} else {
-							var availableType = _v4.a;
-							var remainingOutput = _v4.b;
-							var _v5 = A3($author$project$Stabel$TypeChecker$compatibleTypes, context, availableType, type_);
-							var newContext = _v5.a;
-							var compatible = _v5.b;
-							return (!compatible) ? _Utils_Tuple2(
-								_Utils_update(
-									newContext,
-									{
-										errors: A2(
-											$elm$core$List$cons,
-											A2(problem, type_, availableType),
-											context.errors)
-									}),
-								wordType) : A3(
-								$author$project$Stabel$TypeChecker$wordTypeFromStackEffectsHelper,
-								untypedDef,
-								remainingEffects,
-								_Utils_Tuple2(
-									newContext,
-									_Utils_update(
-										wordType,
-										{output: remainingOutput})));
-						}
-					}
-				} else {
-					if (effects.a.a.$ === 'StackRange') {
-						var type_ = effects.a.a;
-						var rangeName = type_.a;
-						var remainingEffects = effects.b;
-						var _v6 = A2($elm$core$Dict$get, rangeName, context.boundStackRanges);
-						if (_v6.$ === 'Just') {
-							var range = _v6.a;
-							var $temp$untypedDef = untypedDef,
-								$temp$effects = _Utils_ap(
-								A2($elm$core$List$map, $author$project$Stabel$TypeChecker$Push, range),
-								remainingEffects),
-								$temp$_v0 = _Utils_Tuple2(context, wordType);
-							untypedDef = $temp$untypedDef;
-							effects = $temp$effects;
-							_v0 = $temp$_v0;
-							continue wordTypeFromStackEffectsHelper;
-						} else {
-							return A3(
-								$author$project$Stabel$TypeChecker$wordTypeFromStackEffectsHelper,
-								untypedDef,
-								remainingEffects,
-								_Utils_Tuple2(
-									context,
-									_Utils_update(
-										wordType,
-										{
-											output: A2($elm$core$List$cons, type_, wordType.output)
-										})));
-						}
-					} else {
-						var type_ = effects.a.a;
-						var remainingEffects = effects.b;
-						return A3(
-							$author$project$Stabel$TypeChecker$wordTypeFromStackEffectsHelper,
-							untypedDef,
-							remainingEffects,
-							_Utils_Tuple2(
-								context,
-								_Utils_update(
-									wordType,
-									{
-										output: A2($elm$core$List$cons, type_, wordType.output)
-									})));
-					}
-				}
-			}
-		}
-	});
-var $author$project$Stabel$TypeChecker$wordTypeFromStackEffects = F2(
-	function (untypedDef, context) {
-		return A3(
-			$author$project$Stabel$TypeChecker$wordTypeFromStackEffectsHelper,
-			untypedDef,
-			context.stackEffects,
-			_Utils_Tuple2(
-				context,
-				{input: _List_Nil, output: _List_Nil}));
-	});
-var $author$project$Stabel$TypeChecker$wordTypeToStackEffects = function (wordType) {
-	return _Utils_ap(
-		A2(
-			$elm$core$List$map,
-			$author$project$Stabel$TypeChecker$Pop,
-			$elm$core$List$reverse(wordType.input)),
-		A2($elm$core$List$map, $author$project$Stabel$TypeChecker$Push, wordType.output));
-};
 var $author$project$Stabel$TypeChecker$inferWhenTypes = F3(
-	function (untypedDef, _v37, _v39) {
-		var _v38 = _v37.a;
-		var t = _v38.b;
-		var im = _v37.b;
-		var infs = _v39.a;
-		var ctx = _v39.b;
-		var metadata = untypedDef.metadata;
+	function (untypedDef, _v19, _v21) {
+		var _v20 = _v19.a;
+		var t = _v20.b;
+		var im = _v19.b;
+		var infs = _v21.a;
+		var ctx = _v21.b;
+		var matchingCustomGenericType = F2(
+			function (nameToMatch, tipe) {
+				if (tipe.$ === 3) {
+					var name = tipe.a;
+					return _Utils_eq(name, nameToMatch);
+				} else {
+					return false;
+				}
+			});
+		var resolveFirstType = F2(
+			function (annotatedType, typeMatchType) {
+				var _v25 = _Utils_Tuple2(annotatedType, typeMatchType);
+				_v25$2:
+				while (true) {
+					if (_v25.b.$ === 3) {
+						switch (_v25.a.$) {
+							case 4:
+								var _v26 = _v25.a;
+								var unionMembers = _v26.b;
+								var _v27 = _v25.b;
+								var name = _v27.a;
+								return A2(
+									$elm$core$Maybe$withDefault,
+									typeMatchType,
+									A2(
+										$elm_community$list_extra$List$Extra$find,
+										matchingCustomGenericType(name),
+										unionMembers));
+							case 3:
+								var _v28 = _v25.a;
+								var annName = _v28.a;
+								var _v29 = _v25.b;
+								var matchName = _v29.a;
+								return _Utils_eq(annName, matchName) ? annotatedType : typeMatchType;
+							default:
+								break _v25$2;
+						}
+					} else {
+						break _v25$2;
+					}
+				}
+				return typeMatchType;
+			});
 		var alteredTypeSignature = function () {
-			var _v41 = untypedDef.metadata.type_;
-			if (_v41.$ === 'UserProvided') {
-				var wt = _v41.a;
+			var _v23 = untypedDef.bO;
+			if (_v23.$ === 1) {
+				var wt = _v23.a;
 				return $author$project$Stabel$Data$TypeSignature$UserProvided(
 					function () {
-						var _v42 = wt.input;
-						if (_v42.b) {
-							var rest = _v42.b;
+						var _v24 = wt.o;
+						if (_v24.b) {
+							var firstAnnotatedType = _v24.a;
+							var rest = _v24.b;
 							return _Utils_update(
 								wt,
 								{
-									input: A2($elm$core$List$cons, t, rest)
+									o: A2(
+										$elm$core$List$cons,
+										A2(resolveFirstType, firstAnnotatedType, t),
+										rest)
 								});
 						} else {
 							return wt;
 						}
 					}());
 			} else {
-				var x = _v41;
+				var x = _v23;
 				return x;
 			}
 		}();
-		var alteredDef = _Utils_update(
-			untypedDef,
-			{
-				metadata: _Utils_update(
-					metadata,
-					{type_: alteredTypeSignature})
-			});
-		var _v40 = A3(
+		var _v22 = A4(
 			$author$project$Stabel$TypeChecker$typeCheckImplementation,
-			alteredDef,
+			untypedDef,
+			alteredTypeSignature,
 			im,
 			$author$project$Stabel$TypeChecker$cleanContext(ctx));
-		var inf = _v40.a;
-		var newCtx = _v40.b;
+		var inf = _v22.a;
+		var newCtx = _v22.b;
 		return _Utils_Tuple2(
 			A2($elm$core$List$cons, inf, infs),
 			newCtx);
 	});
 var $author$project$Stabel$TypeChecker$typeCheckDefinition = F2(
 	function (untypedDef, context) {
-		var _v35 = A2($elm$core$Dict$get, untypedDef.name, context.typedWords);
-		if (_v35.$ === 'Just') {
-			return $author$project$Stabel$TypeChecker$cleanContext(context);
+		var _v17 = A2($elm$core$Dict$get, untypedDef.m, context.E);
+		if (!_v17.$) {
+			var def = _v17.a;
+			return _Utils_Tuple2(def, context);
 		} else {
-			var _v36 = untypedDef.implementation;
-			if (_v36.$ === 'SoloImpl') {
-				var impl = _v36.a;
+			var _v18 = untypedDef.aL;
+			if (!_v18.$) {
+				var impl = _v18.a;
 				return A3($author$project$Stabel$TypeChecker$typeCheckSoloImplementation, context, untypedDef, impl);
 			} else {
-				var initialWhens = _v36.a;
-				var defaultImpl = _v36.b;
+				var initialWhens = _v18.a;
+				var defaultImpl = _v18.b;
 				return A4($author$project$Stabel$TypeChecker$typeCheckMultiImplementation, context, untypedDef, initialWhens, defaultImpl);
 			}
 		}
 	});
-var $author$project$Stabel$TypeChecker$typeCheckImplementation = F3(
-	function (untypedDef, impl, context) {
-		var reverseWordType = function (wt) {
-			return {input: _List_Nil, output: wt.input};
+var $author$project$Stabel$TypeChecker$typeCheckImplementation = F4(
+	function (untypedDef, typeSignatureToUse, impl, context) {
+		var reverseFunctionType = function (wt) {
+			return {o: _List_Nil, H: wt.o};
 		};
-		var startingStackEffects = $author$project$Stabel$TypeChecker$wordTypeToStackEffects(
+		var startingStackEffects = $author$project$Stabel$TypeChecker$functionTypeToStackEffects(
 			A2(
-				$elm$core$Maybe$withDefault,
-				$author$project$Stabel$Data$Type$emptyWordType,
-				A2(
-					$elm$core$Maybe$map,
-					reverseWordType,
-					$author$project$Stabel$Data$TypeSignature$toMaybe(untypedDef.metadata.type_))));
+				$author$project$Stabel$Data$TypeSignature$withDefault,
+				$author$project$Stabel$Data$Type$emptyFunctionType,
+				A2($author$project$Stabel$Data$TypeSignature$map, reverseFunctionType, typeSignatureToUse)));
 		var contextWithCall = _Utils_update(
 			context,
-			{
-				callStack: A2($elm$core$Set$insert, untypedDef.name, context.callStack),
-				stackEffects: startingStackEffects
-			});
+			{y: startingStackEffects});
 		var annotatedInput = A2(
 			$elm$core$Maybe$withDefault,
 			_List_Nil,
 			A2(
 				$elm$core$Maybe$map,
 				function ($) {
-					return $.input;
+					return $.o;
 				},
-				$author$project$Stabel$Data$TypeSignature$toMaybe(untypedDef.metadata.type_)));
-		var _v31 = A3(
+				$author$project$Stabel$Data$TypeSignature$toMaybe(typeSignatureToUse)));
+		var _v14 = A3(
 			$elm$core$List$foldl,
 			F2(
-				function (node, _v32) {
-					var idx = _v32.a;
-					var ctx = _v32.b;
+				function (node, _v15) {
+					var idx = _v15.a;
+					var ctx = _v15.b;
 					return _Utils_Tuple2(
 						idx + 1,
-						A3($author$project$Stabel$TypeChecker$typeCheckNode, idx, node, ctx));
+						A4($author$project$Stabel$TypeChecker$typeCheckNode, untypedDef, idx, node, ctx));
 				}),
 			_Utils_Tuple2(0, contextWithCall),
 			impl);
-		var contextWithStackEffects = _v31.b;
-		var contextWithoutCall = _Utils_update(
-			contextWithStackEffects,
-			{
-				callStack: A2($elm$core$Set$remove, untypedDef.name, contextWithStackEffects.callStack)
-			});
-		return function (_v34) {
-			var a = _v34.a;
-			var b = _v34.b;
-			return _Utils_Tuple2(b, a);
-		}(
-			$author$project$Stabel$TypeChecker$simplifyWordType(
-				function (_v33) {
-					var ctx = _v33.a;
-					var wt = _v33.b;
-					return _Utils_Tuple2(
-						ctx,
-						_Utils_update(
-							wt,
-							{
-								input: _Utils_ap(wt.input, annotatedInput)
-							}));
-				}(
-					A2($author$project$Stabel$TypeChecker$wordTypeFromStackEffects, untypedDef, contextWithoutCall))));
+		var contextWithStackEffects = _v14.b;
+		return $author$project$Stabel$TypeChecker$simplifyFunctionType(
+			function (_v16) {
+				var ctx = _v16.a;
+				var wt = _v16.b;
+				return _Utils_Tuple2(
+					_Utils_update(
+						wt,
+						{
+							o: _Utils_ap(wt.o, annotatedInput)
+						}),
+					ctx);
+			}(
+				A2($author$project$Stabel$TypeChecker$functionTypeFromStackEffects, untypedDef, contextWithStackEffects)));
 	});
 var $author$project$Stabel$TypeChecker$typeCheckMultiImplementation = F4(
 	function (context, untypedDef, initialWhens, defaultImpl) {
-		var whens = function () {
+		var sourceLocation = A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, untypedDef.U);
+		var allBranches = function () {
 			if (!defaultImpl.b) {
 				return initialWhens;
 			} else {
-				var _v29 = A3(
+				var _v12 = A4(
 					$author$project$Stabel$TypeChecker$typeCheckImplementation,
 					untypedDef,
+					untypedDef.bO,
 					defaultImpl,
 					$author$project$Stabel$TypeChecker$cleanContext(context));
-				var inferredDefaultType = _v29.a;
-				var _v30 = inferredDefaultType.input;
-				if (!_v30.b) {
-					return _Debug_todo(
-						'Stabel.TypeChecker',
-						{
-							start: {line: 245, column: 29},
-							end: {line: 245, column: 39}
-						})('Default impl doesn\'t have an input argument');
+				var inferredDefaultType = _v12.a;
+				var _v13 = inferredDefaultType.o;
+				if (!_v13.b) {
+					return A2(
+						$elm$core$List$cons,
+						_Utils_Tuple2(
+							A3(
+								$author$project$Stabel$Qualifier$TypeMatch,
+								$author$project$Stabel$Data$SourceLocation$emptyRange,
+								$author$project$Stabel$Data$Type$Generic('*'),
+								_List_Nil),
+							defaultImpl),
+						initialWhens);
 				} else {
-					var firstType = _v30.a;
+					var firstType = _v13.a;
 					return A2(
 						$elm$core$List$cons,
 						_Utils_Tuple2(
@@ -12278,147 +13114,17 @@ var $author$project$Stabel$TypeChecker$typeCheckMultiImplementation = F4(
 				}
 			}
 		}();
+		var whens = A2(
+			$elm$core$List$map,
+			$elm$core$Tuple$mapFirst(
+				$author$project$Stabel$TypeChecker$resolveWhenConditions(untypedDef)),
+			allBranches);
 		var whenPatterns = A2($elm$core$List$map, $elm$core$Tuple$first, whens);
-		var typeCheckWhen = function (_v26) {
-			var _v27 = _v26.a;
-			var forType = _v27.b;
-			var inf = _v26.b;
-			var _v25 = inf.input;
-			if (_v25.b) {
-				var firstInput = _v25.a;
-				return A2($author$project$Stabel$Data$Type$genericlyCompatible, firstInput, forType);
-			} else {
-				return false;
-			}
-		};
-		var stripFirstInput = function (inf) {
-			return _Utils_update(
-				inf,
-				{
-					input: A2($elm$core$List$drop, 1, inf.input)
-				});
-		};
-		var replaceType = F3(
-			function (type_, _with, el) {
-				switch (el.$) {
-					case 'CustomGeneric':
-						var name = el.a;
-						var members = el.b;
-						return A2(
-							$author$project$Stabel$Data$Type$CustomGeneric,
-							name,
-							A2(
-								$elm$core$List$map,
-								A2(replaceType, type_, _with),
-								members));
-					case 'Union':
-						var members = el.a;
-						return $author$project$Stabel$Data$Type$Union(
-							A2(
-								$elm$core$List$map,
-								A2(replaceType, type_, _with),
-								members));
-					case 'Quotation':
-						var quotType = el.a;
-						return $author$project$Stabel$Data$Type$Quotation(
-							{
-								input: A2(
-									$elm$core$List$map,
-									A2(replaceType, type_, _with),
-									quotType.input),
-								output: A2(
-									$elm$core$List$map,
-									A2(replaceType, type_, _with),
-									quotType.output)
-							});
-					default:
-						return _Utils_eq(type_, el) ? _with : el;
-				}
-			});
-		var replaceFirstTypeWithPatternMatch = function (_v23) {
-			var _v24 = _v23.a;
-			var matchType = _v24.b;
-			var typeSignature = _v23.b;
-			var _v22 = typeSignature.input;
-			_v22$2:
-			while (true) {
-				if (_v22.b) {
-					switch (_v22.a.$) {
-						case 'Generic':
-							var toReplace = _v22.a;
-							return {
-								input: A2(
-									$elm$core$List$map,
-									A2(replaceType, toReplace, matchType),
-									typeSignature.input),
-								output: A2(
-									$elm$core$List$map,
-									A2(replaceType, toReplace, matchType),
-									typeSignature.output)
-							};
-						case 'StackRange':
-							var toReplace = _v22.a;
-							return {
-								input: A2(
-									$elm$core$List$map,
-									A2(replaceType, toReplace, matchType),
-									typeSignature.input),
-								output: A2(
-									$elm$core$List$map,
-									A2(replaceType, toReplace, matchType),
-									typeSignature.output)
-							};
-						default:
-							break _v22$2;
-					}
-				} else {
-					break _v22$2;
-				}
-			}
-			return typeSignature;
-		};
-		var maybeInexhaustiveError = A2(
-			$author$project$Stabel$TypeChecker$inexhaustivenessCheck,
-			A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, untypedDef.metadata.sourceLocationRange),
-			whenPatterns);
-		var countOutput = function (wordType) {
-			return _Utils_Tuple2(
-				wordType.input,
-				$elm$core$List$length(wordType.output));
-		};
-		var compatibleTypeList = F2(
-			function (aLs, bLs) {
-				return A2(
-					$elm$core$List$all,
-					$elm$core$Basics$identity,
-					A3($elm$core$List$map2, $author$project$Stabel$Data$Type$genericlyCompatible, aLs, bLs));
-			});
-		var areAllEqual = function (ls) {
-			if (!ls.b) {
-				return true;
-			} else {
-				var _v20 = ls.a;
-				var fTypes = _v20.a;
-				var fCnt = _v20.b;
-				var rest = ls.b;
-				return A2(
-					$elm$core$List$all,
-					function (_v21) {
-						var nTypes = _v21.a;
-						var nCnt = _v21.b;
-						return _Utils_eq(fCnt, nCnt) && A2(compatibleTypeList, fTypes, nTypes);
-					},
-					rest);
-			}
-		};
-		var _v17 = A2(
+		var maybeInexhaustiveError = A2($author$project$Stabel$TypeChecker$inexhaustivenessCheck, sourceLocation, whenPatterns);
+		var _v10 = A2(
 			$elm$core$Tuple$mapFirst,
-			function (whenTypes) {
-				return A2(
-					$elm$core$List$map,
-					$author$project$Stabel$TypeChecker$constrainGenerics(untypedDef.metadata.type_),
-					whenTypes);
-			},
+			$elm$core$List$map(
+				$author$project$Stabel$TypeChecker$constrainGenerics(untypedDef.bO)),
 			A2(
 				$elm$core$Tuple$mapFirst,
 				$author$project$Stabel$TypeChecker$equalizeWhenTypes,
@@ -12427,12 +13133,8 @@ var $author$project$Stabel$TypeChecker$typeCheckMultiImplementation = F4(
 					A2(
 						$elm$core$Basics$composeR,
 						A2($elm$core$List$map2, $elm$core$Tuple$pair, whenPatterns),
-						$elm$core$List$map(replaceFirstTypeWithPatternMatch)),
-					function (_v18) {
-						var wts = _v18.a;
-						var ctx = _v18.b;
-						return A2($author$project$Stabel$TypeChecker$simplifyWhenWordTypes, wts, ctx);
-					}(
+						$elm$core$List$map($author$project$Stabel$TypeChecker$replaceFirstTypeWithPatternMatch)),
+					$author$project$Stabel$TypeChecker$simplifyWhenFunctionTypes(
 						A2(
 							$elm$core$Tuple$mapFirst,
 							$author$project$Stabel$TypeChecker$normalizeWhenTypes,
@@ -12441,89 +13143,78 @@ var $author$project$Stabel$TypeChecker$typeCheckMultiImplementation = F4(
 								$author$project$Stabel$TypeChecker$inferWhenTypes(untypedDef),
 								_Utils_Tuple2(_List_Nil, context),
 								whens))))));
-		var inferredWhenTypes = _v17.a;
-		var newContext = _v17.b;
+		var inferredWhenTypes = _v10.a;
+		var newContext = _v10.b;
 		var inferredType = A2(
 			$author$project$Stabel$TypeChecker$joinOutputs,
 			A2(
 				$elm$core$List$map,
 				function ($) {
-					return $.output;
+					return $.H;
 				},
 				inferredWhenTypes),
 			A2(
-				$author$project$Stabel$TypeChecker$replaceFirstType,
+				$author$project$Stabel$TypeChecker$replaceFirstInputType,
 				$author$project$Stabel$TypeChecker$unionOfTypeMatches(whens),
 				A2(
 					$elm$core$Maybe$withDefault,
-					{input: _List_Nil, output: _List_Nil},
+					{o: _List_Nil, H: _List_Nil},
 					$elm$core$List$head(inferredWhenTypes))));
-		var exposedType = A2(
-			$elm$core$Maybe$withDefault,
-			inferredType,
-			$author$project$Stabel$Data$TypeSignature$toMaybe(untypedDef.metadata.type_));
-		var whensAreCompatible = areAllEqual(
+		var exposedType = A2($author$project$Stabel$Data$TypeSignature$withDefault, inferredType, untypedDef.bO);
+		var whensAreCompatible = $author$project$Stabel$TypeChecker$areAllEqual(
 			A2(
 				$elm$core$List$map,
-				A2($elm$core$Basics$composeR, stripFirstInput, countOutput),
+				A2($elm$core$Basics$composeR, $author$project$Stabel$TypeChecker$dropFirstInputType, $author$project$Stabel$TypeChecker$countOutput),
 				inferredWhenTypes));
 		var whensAreConsistent = A2(
 			$elm$core$List$all,
-			typeCheckWhen,
+			$author$project$Stabel$TypeChecker$patternMatchIsCompatibleWithInferredType,
 			A3($elm$core$List$map2, $elm$core$Tuple$pair, whenPatterns, inferredWhenTypes));
-		var maybeConsistencyError = function () {
-			if (whensAreConsistent && whensAreCompatible) {
-				return $elm$core$Maybe$Nothing;
-			} else {
-				var error = A2(
-					$author$project$Stabel$TypeChecker$Problem$InconsistentWhens,
-					A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, untypedDef.metadata.sourceLocationRange),
-					untypedDef.name);
-				return $elm$core$Maybe$Just(error);
-			}
-		}();
-		var finalContext = _Utils_update(
-			newContext,
-			{
-				errors: _Utils_ap(
-					A2(
-						$elm$core$List$filterMap,
-						$elm$core$Basics$identity,
-						_List_fromArray(
-							[maybeConsistencyError, maybeInexhaustiveError])),
-					newContext.errors),
-				typedWords: A3(
-					$elm$core$Dict$insert,
-					untypedDef.name,
+		var maybeConsistencyError = (whensAreConsistent && whensAreCompatible) ? $elm$core$Maybe$Nothing : $elm$core$Maybe$Just(
+			A2($author$project$Stabel$TypeChecker$Problem$InconsistentWhens, sourceLocation, untypedDef.m));
+		var typeImplementation = function (impl) {
+			return A2($author$project$Stabel$TypeChecker$untypedToTypedImplementation, newContext, impl);
+		};
+		var typedDef = {
+			aL: A2(
+				$author$project$Stabel$TypeChecker$MultiImpl,
+				A2(
+					$elm$core$List$map,
+					A2($elm$core$Tuple$mapBoth, $author$project$Stabel$TypeChecker$mapTypeMatch, typeImplementation),
+					initialWhens),
+				typeImplementation(defaultImpl)),
+			m: untypedDef.m,
+			U: untypedDef.U,
+			V: exposedType
+		};
+		var finalContext = $author$project$Stabel$TypeChecker$cleanContext(
+			A3(
+				$author$project$Stabel$TypeChecker$verifyTypeSignature,
+				inferredType,
+				untypedDef,
+				_Utils_update(
+					newContext,
 					{
-						implementation: A2(
-							$author$project$Stabel$TypeChecker$MultiImpl,
+						l: _Utils_ap(
 							A2(
-								$elm$core$List$map,
-								A2(
-									$elm$core$Tuple$mapBoth,
-									$author$project$Stabel$TypeChecker$mapTypeMatch,
-									$author$project$Stabel$TypeChecker$untypedToTypedImplementation(newContext)),
-								initialWhens),
-							A2($author$project$Stabel$TypeChecker$untypedToTypedImplementation, newContext, defaultImpl)),
-						metadata: untypedDef.metadata,
-						name: untypedDef.name,
-						type_: exposedType
-					},
-					newContext.typedWords)
-			});
-		return $author$project$Stabel$TypeChecker$cleanContext(
-			A3($author$project$Stabel$TypeChecker$verifyTypeSignature, inferredType, untypedDef, finalContext));
+								$elm$core$List$filterMap,
+								$elm$core$Basics$identity,
+								_List_fromArray(
+									[maybeConsistencyError, maybeInexhaustiveError])),
+							newContext.l),
+						E: A3($elm$core$Dict$insert, untypedDef.m, typedDef, newContext.E)
+					})));
+		return _Utils_Tuple2(typedDef, finalContext);
 	});
-var $author$project$Stabel$TypeChecker$typeCheckNode = F3(
-	function (idx, node, context) {
+var $author$project$Stabel$TypeChecker$typeCheckNode = F4(
+	function (currentDef, idx, node, context) {
 		var addStackEffect = F2(
 			function (ctx, effects) {
 				return _Utils_update(
 					ctx,
 					{
-						stackEffects: _Utils_ap(
-							ctx.stackEffects,
+						y: _Utils_ap(
+							ctx.y,
 							A2(
 								$elm$core$List$map,
 								$author$project$Stabel$TypeChecker$tagGenericEffect(idx),
@@ -12531,7 +13222,7 @@ var $author$project$Stabel$TypeChecker$typeCheckNode = F3(
 					});
 			});
 		switch (node.$) {
-			case 'Integer':
+			case 0:
 				return A2(
 					addStackEffect,
 					context,
@@ -12539,542 +13230,388 @@ var $author$project$Stabel$TypeChecker$typeCheckNode = F3(
 						[
 							$author$project$Stabel$TypeChecker$Push($author$project$Stabel$Data$Type$Int)
 						]));
-			case 'Word':
-				var name = node.b;
-				var _v2 = A2($elm$core$Dict$get, name, context.typedWords);
-				if (_v2.$ === 'Just') {
-					var def = _v2.a;
-					return A2(
-						addStackEffect,
-						context,
-						$author$project$Stabel$TypeChecker$wordTypeToStackEffects(def.type_));
-				} else {
-					var _v3 = A2($elm$core$Dict$get, name, context.untypedWords);
-					if (_v3.$ === 'Nothing') {
-						return _Debug_todo(
-							'Stabel.TypeChecker',
-							{
-								start: {line: 895, column: 29},
-								end: {line: 895, column: 39}
-							})('inconcievable!');
-					} else {
-						var untypedDef = _v3.a;
-						if (A2($elm$core$Set$member, name, context.callStack)) {
-							var _v4 = $author$project$Stabel$Data$TypeSignature$toMaybe(untypedDef.metadata.type_);
-							if (_v4.$ === 'Just') {
-								var annotatedType = _v4.a;
-								return A2(
-									addStackEffect,
-									context,
-									$author$project$Stabel$TypeChecker$wordTypeToStackEffects(annotatedType));
-							} else {
-								var problem = A2(
-									$author$project$Stabel$TypeChecker$Problem$MissingTypeAnnotationInRecursiveCallStack,
-									A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, untypedDef.metadata.sourceLocationRange),
-									untypedDef.name);
-								return _Utils_update(
-									context,
-									{
-										errors: A2($elm$core$List$cons, problem, context.errors)
-									});
-							}
-						} else {
-							var contextWithTypedDef = A2($author$project$Stabel$TypeChecker$typeCheckDefinition, untypedDef, context);
-							var newContext = _Utils_update(
-								contextWithTypedDef,
-								{stackEffects: context.stackEffects});
-							var _v5 = A2($elm$core$Dict$get, name, newContext.typedWords);
-							if (_v5.$ === 'Nothing') {
-								return _Debug_todo(
-									'Stabel.TypeChecker',
-									{
-										start: {line: 923, column: 41},
-										end: {line: 923, column: 51}
-									})('inconcievable!');
-							} else {
-								var def = _v5.a;
-								return A2(
-									addStackEffect,
-									newContext,
-									$author$project$Stabel$TypeChecker$wordTypeToStackEffects(def.type_));
-							}
-						}
-					}
-				}
-			case 'WordRef':
-				var loc = node.a;
-				var ref = node.b;
-				var stackEffectsBeforeWordCheck = context.stackEffects;
-				var contextAfterWordCheck = A3(
-					$author$project$Stabel$TypeChecker$typeCheckNode,
-					idx,
-					A2($author$project$Stabel$Qualifier$Word, loc, ref),
-					context);
+			case 1:
+				var untypedDef = node.b;
+				var _v6 = A2($author$project$Stabel$TypeChecker$typeCheckDefinition, untypedDef, context);
+				var def = _v6.a;
+				var contextWithTypedDef = _v6.b;
 				var newContext = _Utils_update(
-					contextAfterWordCheck,
-					{stackEffects: stackEffectsBeforeWordCheck});
-				var _v6 = A2($elm$core$Dict$get, ref, newContext.typedWords);
-				if (_v6.$ === 'Just') {
-					var def = _v6.a;
-					return A2(
-						addStackEffect,
-						newContext,
-						_List_fromArray(
-							[
-								$author$project$Stabel$TypeChecker$Push(
-								$author$project$Stabel$Data$Type$Quotation(def.type_))
-							]));
-				} else {
-					return _Debug_todo(
-						'Stabel.TypeChecker',
-						{
-							start: {line: 945, column: 21},
-							end: {line: 945, column: 31}
-						})('inconcievable!');
-				}
-			case 'ConstructType':
-				var typeName = node.a;
-				var _v7 = A2($elm$core$Dict$get, typeName, context.types);
-				if ((_v7.$ === 'Just') && (_v7.a.$ === 'CustomTypeDef')) {
-					var _v8 = _v7.a;
-					var members = _v8.d;
-					var memberTypes = A2($elm$core$List$map, $elm$core$Tuple$second, members);
-					var genericMembers = A2($elm$core$List$filter, $author$project$Stabel$Data$Type$isGeneric, memberTypes);
-					var typeInQuestion = function () {
-						if (!genericMembers.b) {
-							return $author$project$Stabel$Data$Type$Custom(typeName);
-						} else {
-							return A2($author$project$Stabel$Data$Type$CustomGeneric, typeName, genericMembers);
-						}
-					}();
+					contextWithTypedDef,
+					{y: context.y});
+				return A2(
+					addStackEffect,
+					newContext,
+					$author$project$Stabel$TypeChecker$functionTypeToStackEffects(def.V));
+			case 2:
+				var ref = node.b;
+				var stackEffectsBeforeFunctionCheck = context.y;
+				var _v7 = A2($author$project$Stabel$TypeChecker$typeCheckDefinition, ref, context);
+				var def = _v7.a;
+				var contextAfterFunctionCheck = _v7.b;
+				var newContext = _Utils_update(
+					contextAfterFunctionCheck,
+					{y: stackEffectsBeforeFunctionCheck});
+				return A2(
+					addStackEffect,
+					newContext,
+					_List_fromArray(
+						[
+							$author$project$Stabel$TypeChecker$Push(
+							$author$project$Stabel$Data$Type$FunctionSignature(def.V))
+						]));
+			case 3:
+				var _v8 = $author$project$Stabel$Data$TypeSignature$toMaybe(currentDef.bO);
+				if (!_v8.$) {
+					var annotatedType = _v8.a;
 					return A2(
 						addStackEffect,
 						context,
-						$author$project$Stabel$TypeChecker$wordTypeToStackEffects(
-							{
-								input: memberTypes,
-								output: _List_fromArray(
-									[typeInQuestion])
-							}));
+						$author$project$Stabel$TypeChecker$functionTypeToStackEffects(annotatedType));
 				} else {
-					var other = _v7;
-					return _Debug_todo(
-						'Stabel.TypeChecker',
+					var problem = A2(
+						$author$project$Stabel$TypeChecker$Problem$MissingTypeAnnotationInRecursiveCallStack,
+						A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, currentDef.U),
+						currentDef.m);
+					return _Utils_update(
+						context,
 						{
-							start: {line: 972, column: 21},
-							end: {line: 972, column: 31}
-						})(
-						'inconcievable: ' + (typeName + (': ' + $elm$core$Debug$toString(other))));
+							l: A2($elm$core$List$cons, problem, context.l)
+						});
 				}
-			case 'SetMember':
-				var typeName = node.a;
-				var memberName = node.b;
-				var _v10 = _Utils_Tuple2(
-					A2($elm$core$Dict$get, typeName, context.types),
-					A3($author$project$Stabel$TypeChecker$getMemberType, context.types, typeName, memberName));
-				if (((_v10.a.$ === 'Just') && (_v10.a.a.$ === 'CustomTypeDef')) && (_v10.b.$ === 'Just')) {
-					var _v11 = _v10.a.a;
-					var members = _v11.d;
-					var memberType = _v10.b.a;
-					var memberTypes = A2($elm$core$List$map, $elm$core$Tuple$second, members);
-					var genericMembers = A2($elm$core$List$filter, $author$project$Stabel$Data$Type$isGeneric, memberTypes);
-					var typeInQuestion = function () {
-						if (!genericMembers.b) {
-							return $author$project$Stabel$Data$Type$Custom(typeName);
-						} else {
-							return A2($author$project$Stabel$Data$Type$CustomGeneric, typeName, genericMembers);
-						}
-					}();
+			case 4:
+				var data = node.b;
+				var _v9 = $author$project$Stabel$Data$TypeSignature$toMaybe(data.bO);
+				if (!_v9.$) {
+					var annotatedType = _v9.a;
 					return A2(
 						addStackEffect,
 						context,
-						$author$project$Stabel$TypeChecker$wordTypeToStackEffects(
-							{
-								input: _List_fromArray(
-									[typeInQuestion, memberType]),
-								output: _List_fromArray(
-									[typeInQuestion])
-							}));
+						$author$project$Stabel$TypeChecker$functionTypeToStackEffects(annotatedType));
 				} else {
-					var other = _v10;
-					return _Debug_todo(
-						'Stabel.TypeChecker',
-						{
-							start: {line: 1003, column: 21},
-							end: {line: 1003, column: 31}
-						})(
-						'inconcievable! ' + $elm$core$Debug$toString(other));
-				}
-			case 'GetMember':
-				var typeName = node.a;
-				var memberName = node.b;
-				var _v13 = _Utils_Tuple2(
-					A2($elm$core$Dict$get, typeName, context.types),
-					A3($author$project$Stabel$TypeChecker$getMemberType, context.types, typeName, memberName));
-				if (((_v13.a.$ === 'Just') && (_v13.a.a.$ === 'CustomTypeDef')) && (_v13.b.$ === 'Just')) {
-					var _v14 = _v13.a.a;
-					var members = _v14.d;
-					var memberType = _v13.b.a;
-					var memberTypes = A2($elm$core$List$map, $elm$core$Tuple$second, members);
-					var genericMembers = A2($elm$core$List$filter, $author$project$Stabel$Data$Type$isGeneric, memberTypes);
-					var typeInQuestion = function () {
-						if (!genericMembers.b) {
-							return $author$project$Stabel$Data$Type$Custom(typeName);
-						} else {
-							return A2($author$project$Stabel$Data$Type$CustomGeneric, typeName, genericMembers);
-						}
-					}();
-					return A2(
-						addStackEffect,
+					var problem = A2(
+						$author$project$Stabel$TypeChecker$Problem$MissingTypeAnnotationInRecursiveCallStack,
+						A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, data.U),
+						data.m);
+					return _Utils_update(
 						context,
-						$author$project$Stabel$TypeChecker$wordTypeToStackEffects(
-							{
-								input: _List_fromArray(
-									[typeInQuestion]),
-								output: _List_fromArray(
-									[memberType])
-							}));
-				} else {
-					return _Debug_todo(
-						'Stabel.TypeChecker',
 						{
-							start: {line: 1034, column: 21},
-							end: {line: 1034, column: 31}
-						})('inconcievable!');
+							l: A2($elm$core$List$cons, problem, context.l)
+						});
 				}
+			case 6:
+				var typeDef = node.a;
+				var typeInQuestion = $author$project$Stabel$TypeChecker$getStructType(typeDef);
+				var memberTypes = A2(
+					$elm$core$List$map,
+					$elm$core$Tuple$second,
+					$author$project$Stabel$TypeChecker$getStructMembers(typeDef));
+				return A2(
+					addStackEffect,
+					context,
+					$author$project$Stabel$TypeChecker$functionTypeToStackEffects(
+						{
+							o: memberTypes,
+							H: _List_fromArray(
+								[typeInQuestion])
+						}));
+			case 8:
+				var typeDef = node.a;
+				var memberType = node.d;
+				var typeInQuestion = $author$project$Stabel$TypeChecker$getStructType(typeDef);
+				return A2(
+					addStackEffect,
+					context,
+					$author$project$Stabel$TypeChecker$functionTypeToStackEffects(
+						{
+							o: _List_fromArray(
+								[typeInQuestion, memberType]),
+							H: _List_fromArray(
+								[typeInQuestion])
+						}));
+			case 7:
+				var typeDef = node.a;
+				var memberType = node.d;
+				var typeInQuestion = $author$project$Stabel$TypeChecker$getStructType(typeDef);
+				return A2(
+					addStackEffect,
+					context,
+					$author$project$Stabel$TypeChecker$functionTypeToStackEffects(
+						{
+							o: _List_fromArray(
+								[typeInQuestion]),
+							H: _List_fromArray(
+								[memberType])
+						}));
 			default:
 				var builtin = node.b;
 				return A2(
 					addStackEffect,
 					context,
-					$author$project$Stabel$TypeChecker$wordTypeToStackEffects(
-						$author$project$Stabel$Data$Builtin$wordType(builtin)));
+					$author$project$Stabel$TypeChecker$functionTypeToStackEffects(
+						$author$project$Stabel$Data$Builtin$functionType(builtin)));
 		}
 	});
 var $author$project$Stabel$TypeChecker$typeCheckSoloImplementation = F3(
 	function (context, untypedDef, impl) {
-		var _v0 = A3(
+		var _v4 = A4(
 			$author$project$Stabel$TypeChecker$typeCheckImplementation,
 			untypedDef,
+			untypedDef.bO,
 			impl,
 			$author$project$Stabel$TypeChecker$cleanContext(context));
-		var inferredType = _v0.a;
-		var newContext = _v0.b;
-		var finalContext = _Utils_update(
-			newContext,
-			{
-				typedWords: A3(
-					$elm$core$Dict$insert,
-					untypedDef.name,
+		var inferredType = _v4.a;
+		var newContext = _v4.b;
+		var typedImplementation = $author$project$Stabel$TypeChecker$SoloImpl(
+			A2($author$project$Stabel$TypeChecker$untypedToTypedImplementation, newContext, impl));
+		var typedDef = {
+			aL: typedImplementation,
+			m: untypedDef.m,
+			U: untypedDef.U,
+			V: A2($author$project$Stabel$Data$TypeSignature$withDefault, inferredType, untypedDef.bO)
+		};
+		var finalContext = $author$project$Stabel$TypeChecker$cleanContext(
+			A3(
+				$author$project$Stabel$TypeChecker$verifyTypeSignature,
+				inferredType,
+				untypedDef,
+				_Utils_update(
+					newContext,
 					{
-						implementation: $author$project$Stabel$TypeChecker$SoloImpl(
-							A2($author$project$Stabel$TypeChecker$untypedToTypedImplementation, newContext, impl)),
-						metadata: untypedDef.metadata,
-						name: untypedDef.name,
-						type_: A2(
-							$elm$core$Maybe$withDefault,
-							inferredType,
-							$author$project$Stabel$Data$TypeSignature$toMaybe(untypedDef.metadata.type_))
-					},
-					newContext.typedWords)
-			});
-		return $author$project$Stabel$TypeChecker$cleanContext(
-			A3($author$project$Stabel$TypeChecker$verifyTypeSignature, inferredType, untypedDef, finalContext));
+						E: A3($elm$core$Dict$insert, untypedDef.m, typedDef, newContext.E)
+					})));
+		return _Utils_Tuple2(typedDef, finalContext);
 	});
-var $author$project$Stabel$TypeChecker$typeCheckHelper = F2(
+var $author$project$Stabel$TypeChecker$untypedToTypedImplementation = F2(
+	function (context, impl) {
+		var helper = F2(
+			function (node, _v3) {
+				var idx = _v3.a;
+				var res = _v3.b;
+				return _Utils_Tuple2(
+					idx + 1,
+					A2(
+						$elm$core$List$cons,
+						A3($author$project$Stabel$TypeChecker$untypedToTypedNode, idx, context, node),
+						res));
+			});
+		return $elm$core$List$reverse(
+			A3(
+				$elm$core$List$foldl,
+				helper,
+				_Utils_Tuple2(0, _List_Nil),
+				impl).b);
+	});
+var $author$project$Stabel$TypeChecker$untypedToTypedNode = F3(
+	function (idx, context, untypedNode) {
+		switch (untypedNode.$) {
+			case 0:
+				var range = untypedNode.a;
+				var num = untypedNode.b;
+				return A2($author$project$Stabel$TypeChecker$IntLiteral, range, num);
+			case 1:
+				var range = untypedNode.a;
+				var _function = untypedNode.b;
+				var _v1 = A2($author$project$Stabel$TypeChecker$typeCheckDefinition, _function, context);
+				var def = _v1.a;
+				return A3(
+					$author$project$Stabel$TypeChecker$Function,
+					range,
+					def,
+					A3($author$project$Stabel$TypeChecker$resolveGenericsInFunctionType, idx, context, def.V));
+			case 2:
+				var range = untypedNode.a;
+				var ref = untypedNode.b;
+				var _v2 = A2($author$project$Stabel$TypeChecker$typeCheckDefinition, ref, context);
+				var def = _v2.a;
+				return A2($author$project$Stabel$TypeChecker$FunctionRef, range, def);
+			case 3:
+				var range = untypedNode.a;
+				return $author$project$Stabel$TypeChecker$Recurse(range);
+			case 4:
+				var range = untypedNode.a;
+				var data = untypedNode.b;
+				var functionType = A2(
+					$author$project$Stabel$Data$TypeSignature$withDefault,
+					$author$project$Stabel$Data$Type$emptyFunctionType,
+					A2(
+						$author$project$Stabel$Data$TypeSignature$map,
+						A2($author$project$Stabel$TypeChecker$resolveGenericsInFunctionType, idx, context),
+						data.bO));
+				return A2(
+					$author$project$Stabel$TypeChecker$Cycle,
+					range,
+					{bp: data.bp, m: data.m, U: data.U, bO: functionType});
+			case 5:
+				var range = untypedNode.a;
+				var builtin = untypedNode.b;
+				return A2($author$project$Stabel$TypeChecker$Builtin, range, builtin);
+			case 6:
+				var typeDef = untypedNode.a;
+				return $author$project$Stabel$TypeChecker$ConstructType(typeDef);
+			case 8:
+				var typeDef = untypedNode.a;
+				var memberName = untypedNode.b;
+				var memberIndex = untypedNode.c;
+				var memberType = untypedNode.d;
+				return A4($author$project$Stabel$TypeChecker$SetMember, typeDef, memberName, memberIndex, memberType);
+			default:
+				var typeDef = untypedNode.a;
+				var memberName = untypedNode.b;
+				var memberIndex = untypedNode.c;
+				var memberType = untypedNode.d;
+				return A4($author$project$Stabel$TypeChecker$GetMember, typeDef, memberName, memberIndex, memberType);
+		}
+	});
+var $author$project$Stabel$TypeChecker$typeCheck = F2(
 	function (context, ast) {
 		var updatedContext = A3(
 			$elm$core$Dict$foldl,
 			F3(
 				function (_v0, v, acc) {
-					return A2($author$project$Stabel$TypeChecker$typeCheckDefinition, v, acc);
+					return A2($author$project$Stabel$TypeChecker$typeCheckDefinition, v, acc).b;
 				}),
 			context,
-			ast.words);
-		return $elm$core$List$isEmpty(updatedContext.errors) ? $elm$core$Result$Ok(
-			{types: updatedContext.types, words: updatedContext.typedWords}) : $elm$core$Result$Err(updatedContext.errors);
+			ast.bj);
+		return $elm$core$List$isEmpty(updatedContext.l) ? $elm$core$Result$Ok(
+			{bj: updatedContext.E, bF: ast.aW, I: updatedContext.I}) : $elm$core$Result$Err(updatedContext.l);
 	});
 var $author$project$Stabel$TypeChecker$run = function (ast) {
 	return A2(
-		$author$project$Stabel$TypeChecker$typeCheckHelper,
+		$author$project$Stabel$TypeChecker$typeCheck,
 		$author$project$Stabel$TypeChecker$initContext(ast),
 		ast);
 };
-var $elm$core$String$lines = _String_lines;
-var $elm$core$String$trim = _String_trim;
-var $author$project$Stabel$Data$SourceLocation$extractFromString = F2(
-	function (sourceCode, range) {
-		return A2(
-			$elm$core$String$join,
-			'\n',
-			A2(
-				$elm$core$List$indexedMap,
-				F2(
-					function (i, l) {
-						return $elm$core$String$fromInt(range.start.row + i) + (' | ' + l);
-					}),
-				$elm$core$String$lines(
-					$elm$core$String$trim(
-						A3($elm$core$String$slice, range.start.offset, range.end.offset, sourceCode)))));
-	});
-var $author$project$Stabel$Data$SourceLocation$toString = function (location) {
-	return $elm$core$String$fromInt(location.row) + (':' + $elm$core$String$fromInt(location.col));
-};
-var $author$project$Stabel$Parser$Problem$toString = F2(
-	function (source, problem) {
-		switch (problem.$) {
-			case 'NotInt':
-				return 'this is not an integer';
-			case 'NotSymbol':
-				return 'this is not a symbol';
-			case 'NotMetadata':
-				return 'this is not metadata';
-			case 'NotGeneric':
-				return 'this is not a generic variable';
-			case 'NotType':
-				return 'this is not a type';
-			case 'NoProblem':
-				return 'not sure how we got this error';
-			case 'FoundMetadata':
-				return 'found metadata where we did not expect too';
-			case 'ExpectedLeftParen':
-				return 'expected an opening parenthesis';
-			case 'ExpectedRightParen':
-				return 'expected an closing parenthesis';
-			case 'ExpectedEnd':
-				return 'expected end of file';
-			case 'ExpectedTypeSeperator':
-				return 'expected type seperator';
-			case 'ExpectedLeftBracket':
-				return 'expected opening bracket';
-			case 'ExpectedRightBracket':
-				return 'expected closing brakcet';
-			case 'WordAlreadyDefined':
-				var wordName = problem.a;
-				var maybePreviousDefinitionRange = problem.b;
-				var maybeDefinitionRange = problem.c;
-				var definitionRange = A2($elm$core$Maybe$withDefault, $author$project$Stabel$Data$SourceLocation$emptyRange, maybeDefinitionRange);
-				if (maybePreviousDefinitionRange.$ === 'Nothing') {
-					return $author$project$Stabel$Data$SourceLocation$toString(definitionRange.start) + (': You\'re trying to define a new word called \'' + (wordName + '\', but this word has already been defined.'));
-				} else {
-					var previousDefinitionRange = maybePreviousDefinitionRange.a;
-					return $author$project$Stabel$Data$SourceLocation$toString(definitionRange.start) + (': You\'re trying to define a new word called \'' + (wordName + ('\', but this word has already been defined here:\n\n' + A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, previousDefinitionRange))));
-				}
-			case 'TypeAlreadyDefined':
-				var typeName = problem.a;
-				var previousDefinitionRange = problem.b;
-				var definitionRange = problem.c;
-				return $author$project$Stabel$Data$SourceLocation$toString(definitionRange.start) + (': You\'re trying to define a new type called \'' + (typeName + ('\', but this type has already been defined here:\n\n' + A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, previousDefinitionRange))));
-			case 'UnknownMetadata':
-				var meta = problem.a;
-				return meta + ' is not a known metadata label.';
-			default:
-				var path = problem.a;
-				return '\'' + (path + '\' is not a valid module path. Note: Upper case characters are not allowed.');
-		}
-	});
-var $author$project$Stabel$Qualifier$Problem$toString = F2(
-	function (source, problem) {
-		switch (problem.$) {
-			case 'UnknownWordRef':
-				var range = problem.a;
-				var wordRef = problem.b;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('No such word: \'' + (wordRef + '\'.')));
-			case 'UnknownTypeRef':
-				var range = problem.a;
-				var typeRef = problem.b;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('No such type: \'' + (typeRef + '\'.')));
-			case 'UnionTypeMatchWithPatterns':
-				var range = problem.a;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + 'Union types cannot have sub-patterns.');
-			case 'InvalidTypeMatch':
-				var range = problem.a;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + 'This is not a valid pattern match. Pattern matches look like Type( <member> <value> ).');
-			case 'NoSuchMemberOnType':
-				var range = problem.a;
-				var typeName = problem.b;
-				var member = problem.c;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + (typeName + (' does not have a member called \'' + (member + '\'.'))));
-			case 'WordNotExposed':
-				var range = problem.a;
-				var wordRef = problem.b;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('Trying to call \'' + (wordRef + '\' but this function is not exposed.')));
-			default:
-				var range = problem.a;
-				var typeRef = problem.b;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('Referencing \'' + (typeRef + '\' but this type is not exposed.')));
-		}
-	});
-var $author$project$Stabel$Data$Type$toDisplayString = function (t) {
-	switch (t.$) {
-		case 'Int':
-			return 'Int';
-		case 'Generic':
-			var name = t.a;
-			return name;
-		case 'Custom':
-			var name = t.a;
-			return name;
-		case 'CustomGeneric':
-			var name = t.a;
-			return name;
-		case 'Union':
-			var members = t.a;
-			var memberString = A2(
-				$elm$core$String$join,
-				', ',
-				A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, members));
-			return 'Union(' + (memberString + ')');
-		case 'Quotation':
-			var quotType = t.a;
-			return '[ ' + ($author$project$Stabel$Data$Type$wordTypeToString(quotType) + ' ]');
+var $author$project$Stabel$Qualifier$Problem$sourceLocationRef = function (problem) {
+	switch (problem.$) {
+		case 0:
+			var range = problem.a;
+			return range.bI;
+		case 1:
+			var range = problem.a;
+			return range.bI;
+		case 2:
+			var range = problem.a;
+			return range.bI;
+		case 3:
+			var range = problem.a;
+			return range.bI;
+		case 4:
+			var range = problem.a;
+			return range.bI;
+		case 5:
+			var range = problem.a;
+			return range.bI;
 		default:
-			var name = t.a;
-			return name + '...';
+			var range = problem.a;
+			return range.bI;
 	}
 };
-var $author$project$Stabel$Data$Type$wordTypeToString = function (wordType) {
-	var outputTypeStrings = A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, wordType.output);
-	var inputTypeStrings = A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, wordType.input);
-	return A2($elm$core$String$join, ' ', inputTypeStrings) + (' -- ' + A2($elm$core$String$join, ' ', outputTypeStrings));
+var $author$project$Stabel$TypeChecker$Problem$sourceLocationRef = function (problem) {
+	switch (problem.$) {
+		case 0:
+			var range = problem.a;
+			return range.bI;
+		case 1:
+			var range = problem.a;
+			return range.bI;
+		case 2:
+			var range = problem.a;
+			return range.bI;
+		case 3:
+			var range = problem.a;
+			return range.bI;
+		case 4:
+			var range = problem.a;
+			return range.bI;
+		case 5:
+			var range = problem.a;
+			return range.bI;
+		default:
+			var range = problem.a;
+			return range.bI;
+	}
 };
-var $author$project$Stabel$TypeChecker$Problem$toString = F2(
-	function (source, problem) {
-		switch (problem.$) {
-			case 'UndeclaredGeneric':
-				var range = problem.a;
-				var generic = problem.b;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('Generic variable \'' + (generic + '\' needs to be declared.')));
-			case 'TypeError':
-				var range = problem.a;
-				var name = problem.b;
-				var actual = problem.c;
-				var expected = problem.d;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('The type of \'' + (name + ('\' is specified to be:\n\n' + ($author$project$Stabel$Data$Type$wordTypeToString(actual) + ('\n\nHowever, it seems that the actual type is:\n\n' + $author$project$Stabel$Data$Type$wordTypeToString(expected)))))));
-			case 'UnexpectedType':
-				var range = problem.a;
-				var name = problem.b;
-				var actual = problem.c;
-				var expected = problem.d;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('Found a problem in the implementation of \'' + (name + ('\'.\n\nExpected:\n\n' + ($author$project$Stabel$Data$Type$toDisplayString(expected) + ('\n\nActual:\n' + $author$project$Stabel$Data$Type$toDisplayString(actual)))))));
-			case 'InconsistentWhens':
-				var range = problem.a;
-				var name = problem.b;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('The branches of \'' + (name + '\' do not all have the same type.')));
-			case 'MissingTypeAnnotationInRecursiveCallStack':
-				var range = problem.a;
-				var name = problem.b;
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('We require a type annotation for \'' + (name + '\' as we\'re unable to infer the type of a recursive call.')));
-			default:
-				var range = problem.a;
-				var missingTypes = problem.b;
-				var formatTypePattern = function (tp) {
-					return A2(
-						$elm$core$String$join,
-						' -> ',
-						A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, tp));
-				};
-				return A2($author$project$Stabel$Data$SourceLocation$extractFromString, source, range) + ('\n\n' + ('This multiword doesn\'t handle all potential patterns. Missing patterns for:\n\n' + A2(
-					$elm$core$String$join,
-					'\n',
-					A2($elm$core$List$map, formatTypePattern, missingTypes))));
-		}
-	});
-var $author$project$TestCompiler$compile = F2(
-	function (entry, sourceCode) {
-		var _v0 = $author$project$Stabel$Parser$run(sourceCode);
-		if (_v0.$ === 'Err') {
-			var parserErrors = _v0.a;
-			return A2(
-				$author$project$TestCompiler$formatErrors,
-				$author$project$Stabel$Parser$Problem$toString(sourceCode),
-				parserErrors);
+var $author$project$Stabel$Parser$Problem$contextToString = function (context) {
+	switch (context.$) {
+		case 0:
+			return 'module definition';
+		case 1:
+			var name = context.b;
+			return '\'' + (name + '\' function');
+		case 2:
+			var name = context.b;
+			return '\'' + (name + '\' multi-function');
+		case 3:
+			var name = context.b;
+			return '\'' + (name + '\' struct');
+		case 4:
+			var name = context.b;
+			return '\'' + (name + '\' union');
+		case 5:
+			return 'alias keyword';
+		case 6:
+			return 'import keyword';
+		case 7:
+			return 'exposing keyword';
+		case 8:
+			return 'type keyword';
+		case 9:
+			return 'member';
+		case 10:
+			return 'implementation';
+		default:
+			return 'else branch';
+	}
+};
+var $author$project$Stabel$Parser$Problem$contextStackExplination = function (deadEnd) {
+	var _v0 = deadEnd.aE;
+	if (_v0.b) {
+		if (!_v0.b.b) {
+			var contextFrame = _v0.a;
+			return 'I came across a problem while parsing the ' + $author$project$Stabel$Parser$Problem$contextToString(contextFrame.W);
 		} else {
-			var ast = _v0.a;
-			var setEntryPoint = function (word) {
-				return _Utils_update(
-					word,
-					{
-						metadata: $author$project$Stabel$Data$Metadata$asEntryPoint(word.metadata)
-					});
-			};
-			var qualifierResult = A2(
-				$elm$core$Result$map,
-				function (qast) {
-					return _Utils_update(
-						qast,
-						{
-							words: A3(
-								$elm$core$Dict$update,
-								entry,
-								$elm$core$Maybe$map(setEntryPoint),
-								qast.words)
-						});
-				},
-				$author$project$Stabel$Qualifier$run(
-					{
-						ast: ast,
-						externalModules: $elm$core$Dict$empty,
-						inProgressAST: {types: $elm$core$Dict$empty, words: $elm$core$Dict$empty},
-						modulePath: '',
-						packageName: ''
-					}));
-			if (qualifierResult.$ === 'Err') {
-				var qualifierErrors = qualifierResult.a;
-				return A2(
-					$author$project$TestCompiler$formatErrors,
-					$author$project$Stabel$Qualifier$Problem$toString(sourceCode),
-					qualifierErrors);
+			var contextFrame1 = _v0.a;
+			var _v1 = _v0.b;
+			var contextFrame2 = _v1.a;
+			return 'I came across a problem while parsing the ' + ($author$project$Stabel$Parser$Problem$contextToString(contextFrame1.W) + (' of the ' + $author$project$Stabel$Parser$Problem$contextToString(contextFrame2.W)));
+		}
+	} else {
+		return 'I came across a problem';
+	}
+};
+var $elm$core$String$trim = _String_trim;
+var $author$project$Stabel$Data$SourceLocation$dropLastEmptyLinesHelper = function (ls) {
+	dropLastEmptyLinesHelper:
+	while (true) {
+		if (!ls.b) {
+			return _List_Nil;
+		} else {
+			var _v1 = ls.a;
+			var line = _v1.b;
+			var rest = ls.b;
+			if ($elm$core$String$isEmpty(
+				$elm$core$String$trim(line))) {
+				var $temp$ls = rest;
+				ls = $temp$ls;
+				continue dropLastEmptyLinesHelper;
 			} else {
-				var qualifiedAst = qualifierResult.a;
-				var _v2 = $author$project$Stabel$TypeChecker$run(qualifiedAst);
-				if (_v2.$ === 'Err') {
-					var typeErrors = _v2.a;
-					return A2(
-						$author$project$TestCompiler$formatErrors,
-						$author$project$Stabel$TypeChecker$Problem$toString(sourceCode),
-						typeErrors);
-				} else {
-					var typedAst = _v2.a;
-					return A2(
-						$elm$core$Result$mapError,
-						$elm$core$Debug$toString,
-						$author$project$Stabel$Codegen$codegen(typedAst));
-				}
+				return ls;
 			}
 		}
-	});
-var $elm$json$Json$Encode$bool = _Json_wrap;
-var $elm$json$Json$Encode$list = F2(
-	function (func, entries) {
-		return _Json_wrap(
-			A3(
-				$elm$core$List$foldl,
-				_Json_addEntry(func),
-				_Json_emptyArray(_Utils_Tuple0),
-				entries));
-	});
-var $elm$json$Json$Encode$string = _Json_wrap;
-var $author$project$TestCompiler$compileFinished = _Platform_outgoingPort(
-	'compileFinished',
-	function ($) {
-		var a = $.a;
-		var b = $.b;
-		return A2(
-			$elm$json$Json$Encode$list,
-			$elm$core$Basics$identity,
-			_List_fromArray(
-				[
-					$elm$json$Json$Encode$bool(a),
-					$elm$json$Json$Encode$string(b)
-				]));
-	});
-var $author$project$Wasm$Indent = function (a) {
-	return {$: 'Indent', a: a};
+	}
 };
-var $author$project$Wasm$Str = function (a) {
-	return {$: 'Str', a: a};
+var $author$project$Stabel$Data$SourceLocation$dropLastEmptyLines = function (ls) {
+	return $author$project$Stabel$Data$SourceLocation$dropLastEmptyLinesHelper(
+		$elm$core$List$reverse(
+			$author$project$Stabel$Data$SourceLocation$dropLastEmptyLinesHelper(
+				$elm$core$List$reverse(ls))));
 };
+var $elm$core$Basics$ge = _Utils_ge;
+var $elm$core$String$left = F2(
+	function (n, string) {
+		return (n < 1) ? '' : A3($elm$core$String$slice, 0, n, string);
+	});
+var $elm$core$String$lines = _String_lines;
 var $elm$core$Bitwise$and = _Bitwise_and;
 var $elm$core$Bitwise$shiftRightBy = _Bitwise_shiftRightBy;
 var $elm$core$String$repeatHelp = F3(
@@ -13089,24 +13626,488 @@ var $elm$core$String$repeat = F2(
 	function (n, chunk) {
 		return A3($elm$core$String$repeatHelp, n, chunk, '');
 	});
-var $author$project$Wasm$applyIndentation = F2(
+var $elm$core$String$padLeft = F3(
+	function (n, _char, string) {
+		return _Utils_ap(
+			A2(
+				$elm$core$String$repeat,
+				n - $elm$core$String$length(string),
+				$elm$core$String$fromChar(_char)),
+			string);
+	});
+var $author$project$Stabel$Data$SourceLocation$extractFromString = F3(
+	function (sourceCode, startLoc, endLoc) {
+		var numPadding = $elm$core$String$length(
+			$elm$core$String$fromInt(endLoc.S));
+		var modifyLastLine = F2(
+			function (idx, line) {
+				return _Utils_eq(idx, endLoc.S) ? ($elm$core$String$isEmpty(
+					$elm$core$String$trim(
+						A2($elm$core$String$left, endLoc.aD - 1, line))) ? '' : line) : line;
+			});
+		return A2(
+			$elm$core$String$join,
+			'\n',
+			A2(
+				$elm$core$List$map,
+				function (_v2) {
+					var idx = _v2.a;
+					var line = _v2.b;
+					return A3(
+						$elm$core$String$padLeft,
+						numPadding,
+						' ',
+						$elm$core$String$fromInt(idx)) + (' | ' + line);
+				},
+				$author$project$Stabel$Data$SourceLocation$dropLastEmptyLines(
+					A2(
+						$elm$core$List$filter,
+						function (_v1) {
+							var idx = _v1.a;
+							return (_Utils_cmp(idx, startLoc.S) > -1) && (_Utils_cmp(idx, endLoc.S) < 1);
+						},
+						A2(
+							$elm$core$List$map,
+							function (_v0) {
+								var idx = _v0.a;
+								var line = _v0.b;
+								return _Utils_Tuple2(
+									idx,
+									A2(modifyLastLine, idx, line));
+							},
+							A2(
+								$elm$core$List$indexedMap,
+								F2(
+									function (idx, line) {
+										return _Utils_Tuple2(idx + 1, line);
+									}),
+								$elm$core$String$lines(sourceCode)))))));
+	});
+var $author$project$Stabel$Parser$Problem$firstContextRow = function (deadEnd) {
+	var _v0 = deadEnd.aE;
+	if (_v0.b) {
+		var frame = _v0.a;
+		var _v1 = frame.W;
+		switch (_v1.$) {
+			case 1:
+				var loc = _v1.a;
+				return $elm$core$Maybe$Just(loc.S);
+			case 2:
+				var loc = _v1.a;
+				return $elm$core$Maybe$Just(loc.S);
+			case 3:
+				var loc = _v1.a;
+				return $elm$core$Maybe$Just(loc.S);
+			case 4:
+				var loc = _v1.a;
+				return $elm$core$Maybe$Just(loc.S);
+			default:
+				return $elm$core$Maybe$Just(frame.S);
+		}
+	} else {
+		return $elm$core$Maybe$Nothing;
+	}
+};
+var $elm$core$Basics$min = F2(
+	function (x, y) {
+		return (_Utils_cmp(x, y) < 0) ? x : y;
+	});
+var $author$project$Stabel$Parser$Problem$problemToString = F2(
+	function (source, problem) {
+		switch (problem.$) {
+			case 0:
+				return 'Expected to find an integer';
+			case 1:
+				return 'Expected to find a symbol';
+			case 2:
+				return 'Expected to find a keyword';
+			case 3:
+				return 'Expected to find a generic variable';
+			case 4:
+				return 'Expected to find a type';
+			case 5:
+				return 'Not sure why there is an error';
+			case 6:
+				return 'Expected a forward slash';
+			case 7:
+				return 'Expected whitespace';
+			case 8:
+				return 'Found metadata where we did not expect too';
+			case 9:
+				return 'Expected a opening parenthesis';
+			case 10:
+				return 'Expected a closing parenthesis';
+			case 11:
+				return 'Expected end of file';
+			case 12:
+				return 'Expected type seperator (--)';
+			case 13:
+				return 'Expected opening bracket';
+			case 14:
+				return 'Expected closing bracket';
+			case 15:
+				var functionName = problem.a;
+				var maybePreviousDefinitionRange = problem.b;
+				if (maybePreviousDefinitionRange.$ === 1) {
+					return 'You\'re trying to define a new function called \'' + (functionName + '\', but this function has already been defined.');
+				} else {
+					var previousDefinitionRange = maybePreviousDefinitionRange.a;
+					return 'You\'re trying to define a new function called \'' + (functionName + ('\', but this function has already been defined here:\n\n' + A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, previousDefinitionRange.bJ, previousDefinitionRange.bd)));
+				}
+			case 16:
+				var typeName = problem.a;
+				var previousDefinitionRange = problem.b;
+				return 'You\'re trying to define a new type called \'' + (typeName + ('\', but this type has already been defined here:\n\n' + A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, previousDefinitionRange.bJ, previousDefinitionRange.bd)));
+			case 17:
+				var meta = problem.a;
+				return '\'' + (meta + ':\' is not a known keyword in this context.');
+			case 18:
+				var path = problem.a;
+				return '\'' + (path + '\' is not a valid module path. Note: Upper case characters are not allowed.');
+			case 19:
+				return 'A module is required to contain at least one definition.';
+			default:
+				var name = problem.a;
+				return '\'' + (name + '\' is not a valid definition. Expected either defmodule:, def:, defmulti:, defstruct: or defunion:');
+		}
+	});
+var $author$project$Stabel$Parser$Problem$toString = F3(
+	function (sourceRef, source, deadEnd) {
+		var problemDetail = A2($author$project$Stabel$Parser$Problem$problemToString, source, deadEnd.bE);
+		var lineOfProblem = deadEnd.S;
+		var lineOfContext = A2(
+			$elm$core$Maybe$withDefault,
+			lineOfProblem,
+			$author$project$Stabel$Parser$Problem$firstContextRow(deadEnd));
+		var contextExplination = $author$project$Stabel$Parser$Problem$contextStackExplination(deadEnd);
+		var _v0 = _Utils_Tuple2(
+			A2($elm$core$Basics$min, lineOfProblem, lineOfContext),
+			A2($elm$core$Basics$max, lineOfProblem, lineOfContext));
+		var startLine = _v0.a;
+		var endLine = _v0.b;
+		var endLoc = {aD: 1000, S: endLine};
+		var startLoc = {aD: 1, S: startLine};
+		var codeBlock = A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, startLoc, endLoc);
+		return A2(
+			$elm$core$String$join,
+			'\n\n',
+			A2(
+				$elm$core$List$filter,
+				A2($elm$core$Basics$composeL, $elm$core$Basics$not, $elm$core$String$isEmpty),
+				_List_fromArray(
+					['>> ' + sourceRef, contextExplination, codeBlock, problemDetail])));
+	});
+var $author$project$Stabel$Qualifier$Problem$toString = F2(
+	function (source, problem) {
+		switch (problem.$) {
+			case 0:
+				var range = problem.a;
+				var functionRef = problem.b;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('No such function: \'' + (functionRef + '\''))))));
+			case 1:
+				var range = problem.a;
+				var typeRef = problem.b;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('No such type: \'' + (typeRef + '\''))))));
+			case 2:
+				var range = problem.a;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + 'Union types cannot have sub-patterns.'))));
+			case 3:
+				var range = problem.a;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + 'This is not a valid pattern match. Pattern matches look like Type( <member> <value> ).'))));
+			case 4:
+				var range = problem.a;
+				var typeName = problem.b;
+				var member = problem.c;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + (typeName + (' does not have a member called \'' + (member + '\'')))))));
+			case 5:
+				var range = problem.a;
+				var functionRef = problem.b;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('Trying to call \'' + (functionRef + '\' but this function is not exposed.'))))));
+			default:
+				var range = problem.a;
+				var typeRef = problem.b;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('Referencing \'' + (typeRef + '\' but this type is not exposed.'))))));
+		}
+	});
+var $author$project$Stabel$Data$Type$functionTypeToString = function (functionType) {
+	var outputTypeStrings = A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, functionType.H);
+	var inputTypeStrings = A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, functionType.o);
+	return A2($elm$core$String$join, ' ', inputTypeStrings) + (' -- ' + A2($elm$core$String$join, ' ', outputTypeStrings));
+};
+var $author$project$Stabel$Data$Type$toDisplayString = function (t) {
+	toDisplayString:
+	while (true) {
+		switch (t.$) {
+			case 0:
+				return 'Int';
+			case 1:
+				var name = t.a;
+				return name;
+			case 2:
+				var name = t.a;
+				return name;
+			case 3:
+				if (!t.b.b) {
+					var name = t.a;
+					return name;
+				} else {
+					var name = t.a;
+					var gens = t.b;
+					return name + ('(' + (A2(
+						$elm$core$String$join,
+						', ',
+						A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, gens)) + ')'));
+				}
+			case 4:
+				if (!t.a.$) {
+					var name = t.a.a;
+					var members = t.b;
+					var memberString = A2(
+						$elm$core$String$join,
+						', ',
+						A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, members));
+					return name + ('(' + (memberString + ')'));
+				} else {
+					var _v1 = t.a;
+					var members = t.b;
+					var $temp$t = A2(
+						$author$project$Stabel$Data$Type$Union,
+						$elm$core$Maybe$Just('Union'),
+						members);
+					t = $temp$t;
+					continue toDisplayString;
+				}
+			case 5:
+				var quotType = t.a;
+				return '[ ' + ($author$project$Stabel$Data$Type$functionTypeToString(quotType) + ' ]');
+			default:
+				var name = t.a;
+				return name + '...';
+		}
+	}
+};
+var $author$project$Stabel$TypeChecker$Problem$toString = F2(
+	function (source, problem) {
+		switch (problem.$) {
+			case 0:
+				var range = problem.a;
+				var generic = problem.b;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('Generic variable \'' + (generic + '\' needs to be declared.'))))));
+			case 1:
+				var range = problem.a;
+				var name = problem.b;
+				var actual = problem.c;
+				var expected = problem.d;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('The type of \'' + (name + ('\' is specified to be:\n\n' + ($author$project$Stabel$Data$Type$functionTypeToString(actual) + ('\n\nHowever, it seems that the actual type is:\n\n' + $author$project$Stabel$Data$Type$functionTypeToString(expected))))))))));
+			case 2:
+				var range = problem.a;
+				var name = problem.b;
+				var actual = problem.c;
+				var expected = problem.d;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('Found a problem in the implementation of \'' + (name + ('\'\n\nExpected:\n\n' + ($author$project$Stabel$Data$Type$toDisplayString(expected) + ('\n\nActual:\n\n' + $author$project$Stabel$Data$Type$toDisplayString(actual))))))))));
+			case 3:
+				var range = problem.a;
+				var name = problem.b;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('The branches of \'' + (name + '\' do not all have the same type.'))))));
+			case 4:
+				var range = problem.a;
+				var name = problem.b;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('We require a type annotation for \'' + (name + '\' as we\'re unable to infer the type of a recursive call.'))))));
+			case 5:
+				var range = problem.a;
+				var missingTypes = problem.b;
+				var formatTypePattern = function (tp) {
+					return A2(
+						$elm$core$String$join,
+						' -> ',
+						A2($elm$core$List$map, $author$project$Stabel$Data$Type$toDisplayString, tp));
+				};
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('This multi-function doesn\'t handle all potential patterns. Missing patterns for:\n\n' + A2(
+					$elm$core$String$join,
+					'\n',
+					A2($elm$core$List$map, formatTypePattern, missingTypes)))))));
+			default:
+				var range = problem.a;
+				var name = problem.b;
+				var actual = problem.c;
+				var expected = problem.d;
+				return '>> ' + (range.bI + ('\n\n' + (A3($author$project$Stabel$Data$SourceLocation$extractFromString, source, range.bJ, range.bd) + ('\n\n' + ('In order to be called from the command line, the type of \'' + (name + ('\' needs to be:\n\n' + ($author$project$Stabel$Data$Type$functionTypeToString(actual) + ('\n\nHowever, it seems that the actual type is:\n\n' + $author$project$Stabel$Data$Type$functionTypeToString(expected))))))))));
+		}
+	});
+var $author$project$TestCompiler$compileProject = function (opts) {
+	var sourceDict = $elm$core$Dict$fromList(
+		A2(
+			$elm$core$List$map,
+			function (mod) {
+				return _Utils_Tuple2(
+					_Utils_ap(mod.ah, mod.aR),
+					mod.bI);
+			},
+			opts.as));
+	var parseModuleSource = function (mod) {
+		var fullPath = _Utils_ap(mod.ah, mod.aR);
+		var _v4 = A2($author$project$Stabel$Parser$run, fullPath, mod.bI);
+		if (_v4.$ === 1) {
+			var errs = _v4.a;
+			return $elm$core$Result$Err(
+				_Utils_Tuple3(fullPath, mod.bI, errs));
+		} else {
+			var ast = _v4.a;
+			return $elm$core$Result$Ok(
+				_Utils_Tuple3(mod.ah, mod.aR, ast));
+		}
+	};
+	var parserResult = $elm_community$result_extra$Result$Extra$combine(
+		A2($elm$core$List$map, parseModuleSource, opts.as));
+	if (parserResult.$ === 1) {
+		var _v1 = parserResult.a;
+		var ref = _v1.a;
+		var sourceCode = _v1.b;
+		var errs = _v1.c;
+		return A2(
+			$author$project$TestCompiler$formatParserErrors,
+			$author$project$Stabel$Parser$Problem$toString,
+			A2(
+				$elm$core$List$map,
+				function (e) {
+					return _Utils_Tuple3(ref, sourceCode, e);
+				},
+				errs));
+	} else {
+		var withAst = parserResult.a;
+		var initialConfig = {
+			k: {bj: $elm$core$Dict$empty, aq: $author$project$Stabel$Parser$ModuleDefinition$Undefined, a$: 'test', I: $elm$core$Dict$empty},
+			B: $elm$core$Dict$empty,
+			G: $author$project$TestCompiler$emptyQualifierAst,
+			aR: '',
+			x: ''
+		};
+		var qualifierResult = A3(
+			$elm$core$List$foldl,
+			$author$project$TestCompiler$qualifyTestTuples,
+			_Utils_Tuple2(_List_Nil, initialConfig),
+			withAst);
+		var exportedFunctions = $elm$core$Set$singleton(opts.Y);
+		if (qualifierResult.a.b) {
+			var qualifierErrors = qualifierResult.a;
+			return A2(
+				$author$project$TestCompiler$formatErrors,
+				$author$project$Stabel$Qualifier$Problem$toString,
+				A2(
+					$elm$core$List$map,
+					function (problem) {
+						return _Utils_Tuple2(
+							A2(
+								$elm$core$Maybe$withDefault,
+								'',
+								A2(
+									$elm$core$Dict$get,
+									$author$project$Stabel$Qualifier$Problem$sourceLocationRef(problem),
+									sourceDict)),
+							problem);
+					},
+					qualifierErrors));
+		} else {
+			var qualifiedAst = qualifierResult.b;
+			var _v3 = $author$project$Stabel$TypeChecker$run(qualifiedAst.G);
+			if (_v3.$ === 1) {
+				var typeErrors = _v3.a;
+				return A2(
+					$author$project$TestCompiler$formatErrors,
+					$author$project$Stabel$TypeChecker$Problem$toString,
+					A2(
+						$elm$core$List$map,
+						function (problem) {
+							return _Utils_Tuple2(
+								A2(
+									$elm$core$Maybe$withDefault,
+									'',
+									A2(
+										$elm$core$Dict$get,
+										$author$project$Stabel$TypeChecker$Problem$sourceLocationRef(problem),
+										sourceDict)),
+								problem);
+						},
+						typeErrors));
+			} else {
+				var typedAst = _v3.a;
+				return $elm$core$Result$Ok(
+					A2($author$project$Stabel$Codegen$run, exportedFunctions, typedAst));
+			}
+		}
+	}
+};
+var $author$project$TestCompiler$compileString = function (opts) {
+	var _v0 = A2($author$project$Stabel$Parser$run, '<buffer>', opts.T);
+	if (_v0.$ === 1) {
+		var parserErrors = _v0.a;
+		return A2(
+			$author$project$TestCompiler$formatParserErrors,
+			$author$project$Stabel$Parser$Problem$toString,
+			A2(
+				$elm$core$List$map,
+				function (e) {
+					return _Utils_Tuple3('<buffer>', opts.T, e);
+				},
+				parserErrors));
+	} else {
+		var ast = _v0.a;
+		var qualifierResult = $author$project$Stabel$Qualifier$run(
+			{k: ast, B: $elm$core$Dict$empty, G: $author$project$TestCompiler$emptyQualifierAst, aR: '', x: ''});
+		var exportedFunctions = $elm$core$Set$singleton(opts.Y);
+		if (qualifierResult.$ === 1) {
+			var qualifierErrors = qualifierResult.a;
+			return A2(
+				$author$project$TestCompiler$formatErrors,
+				$author$project$Stabel$Qualifier$Problem$toString,
+				A2(
+					$elm$core$List$map,
+					$elm$core$Tuple$pair(opts.T),
+					qualifierErrors));
+		} else {
+			var qualifiedAst = qualifierResult.a;
+			var _v2 = $author$project$Stabel$TypeChecker$run(qualifiedAst);
+			if (_v2.$ === 1) {
+				var typeErrors = _v2.a;
+				return A2(
+					$author$project$TestCompiler$formatErrors,
+					$author$project$Stabel$TypeChecker$Problem$toString,
+					A2(
+						$elm$core$List$map,
+						$elm$core$Tuple$pair(opts.T),
+						typeErrors));
+			} else {
+				var typedAst = _v2.a;
+				return $elm$core$Result$Ok(
+					A2($author$project$Stabel$Codegen$run, exportedFunctions, typedAst));
+			}
+		}
+	}
+};
+var $author$project$Stabel$Wasm$Indent = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Stabel$Wasm$Str = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Stabel$Wasm$applyIndentation = F2(
 	function (indent, str) {
 		return _Utils_ap(
 			A2($elm$core$String$repeat, indent, ' '),
 			str);
 	});
-var $author$project$Wasm$formatHelper = F2(
+var $author$project$Stabel$Wasm$formatHelper = F2(
 	function (indentation, hint) {
 		switch (hint.$) {
-			case 'Str':
+			case 0:
 				if (hint.a === '') {
 					return $elm$core$Maybe$Nothing;
 				} else {
 					var value = hint.a;
 					return $elm$core$Maybe$Just(
-						A2($author$project$Wasm$applyIndentation, indentation, value));
+						A2($author$project$Stabel$Wasm$applyIndentation, indentation, value));
 				}
-			case 'Indent':
+			case 1:
 				if (!hint.a.b) {
 					return $elm$core$Maybe$Nothing;
 				} else {
@@ -13117,7 +14118,7 @@ var $author$project$Wasm$formatHelper = F2(
 							'\n',
 							A2(
 								$elm$core$List$filterMap,
-								$author$project$Wasm$formatHelper(indentation + 2),
+								$author$project$Stabel$Wasm$formatHelper(indentation + 2),
 								strs)));
 				}
 			default:
@@ -13131,204 +14132,132 @@ var $author$project$Wasm$formatHelper = F2(
 							'\n',
 							A2(
 								$elm$core$List$filterMap,
-								$author$project$Wasm$formatHelper(indentation),
+								$author$project$Stabel$Wasm$formatHelper(indentation),
 								hints)));
 				}
 		}
 	});
-var $author$project$Wasm$format = function (hint) {
+var $author$project$Stabel$Wasm$format = function (hint) {
 	return A2(
 		$elm$core$Maybe$withDefault,
 		'',
-		A2($author$project$Wasm$formatHelper, 0, hint));
+		A2($author$project$Stabel$Wasm$formatHelper, 0, hint));
 };
-var $elm_community$list_extra$List$Extra$getAt = F2(
-	function (idx, xs) {
-		return (idx < 0) ? $elm$core$Maybe$Nothing : $elm$core$List$head(
-			A2($elm$core$List$drop, idx, xs));
-	});
-var $author$project$Wasm$formatExport = F2(
-	function (_v0, idx) {
-		var module_ = _v0.a;
-		var _v1 = A2($elm_community$list_extra$List$Extra$getAt, idx, module_.functions);
-		if (_v1.$ === 'Just') {
-			var func = _v1.a;
-			return _List_fromArray(
-				[
-					$author$project$Wasm$Str(
-					'(export \"' + (func.name + ('\" (func ' + ($elm$core$String$fromInt(idx) + '))'))))
-				]);
-		} else {
-			return _Debug_todo(
-				'Wasm',
-				{
-					start: {line: 436, column: 13},
-					end: {line: 436, column: 23}
-				})('Did not expect this...');
-		}
-	});
-var $author$project$Wasm$BatchFormat = function (a) {
-	return {$: 'BatchFormat', a: a};
+var $author$project$Stabel$Wasm$formatExport = function (_v0) {
+	var functionName = _v0.a;
+	var index = _v0.b;
+	return $author$project$Stabel$Wasm$Str(
+		'(export \"' + (functionName + ('\" (func ' + ($elm$core$String$fromInt(index) + '))'))));
 };
-var $elm$core$Debug$log = _Debug_log;
-var $author$project$Wasm$formatInstruction = F2(
-	function (fullModule, ins) {
-		var module_ = fullModule.a;
-		switch (ins.$) {
-			case 'NoOp':
-				return $author$project$Wasm$Str('nop');
-			case 'Batch':
-				var insList = ins.a;
-				return $author$project$Wasm$BatchFormat(
-					A2(
-						$elm$core$List$map,
-						$author$project$Wasm$formatInstruction(fullModule),
-						insList));
-			case 'Block':
-				var insList = ins.a;
-				return $author$project$Wasm$BatchFormat(
-					_List_fromArray(
-						[
-							$author$project$Wasm$Str('(block'),
-							$author$project$Wasm$Indent(
-							A2(
-								$elm$core$List$map,
-								$author$project$Wasm$formatInstruction(fullModule),
-								insList)),
-							$author$project$Wasm$Str(')')
-						]));
-			case 'Loop':
-				var insList = ins.a;
-				return $author$project$Wasm$BatchFormat(
-					_List_fromArray(
-						[
-							$author$project$Wasm$Str('(loop'),
-							$author$project$Wasm$Indent(
-							A2(
-								$elm$core$List$map,
-								$author$project$Wasm$formatInstruction(fullModule),
-								insList)),
-							$author$project$Wasm$Str(')')
-						]));
-			case 'Break':
-				var num = ins.a;
-				return $author$project$Wasm$Str(
-					'(br ' + ($elm$core$String$fromInt(num) + ')'));
-			case 'BreakIf':
-				var num = ins.a;
-				return $author$project$Wasm$Str(
-					'(br_if ' + ($elm$core$String$fromInt(num) + ')'));
-			case 'Return':
-				return $author$project$Wasm$Str('return');
-			case 'Call':
-				var word = ins.a;
-				var _v1 = A2(
-					$elm_community$list_extra$List$Extra$findIndex,
-					function (f) {
-						return _Utils_eq(f.name, word);
-					},
-					module_.functions);
-				if (_v1.$ === 'Just') {
-					var idx = _v1.a;
-					return $author$project$Wasm$Str(
-						'(call ' + ($elm$core$String$fromInt(idx) + (') ;; $' + word)));
-				} else {
-					var _v2 = A2($elm$core$Debug$log, 'name', word);
-					var _v3 = A2(
-						$elm$core$Debug$log,
-						'available',
+var $author$project$Stabel$Wasm$BatchFormat = function (a) {
+	return {$: 2, a: a};
+};
+var $author$project$Stabel$Wasm$formatInstruction = function (ins) {
+	switch (ins.$) {
+		case 0:
+			var insList = ins.a;
+			return $author$project$Stabel$Wasm$BatchFormat(
+				A2($elm$core$List$map, $author$project$Stabel$Wasm$formatInstruction, insList));
+		case 1:
+			var insList = ins.a;
+			return $author$project$Stabel$Wasm$BatchFormat(
+				_List_fromArray(
+					[
+						$author$project$Stabel$Wasm$Str('(block'),
+						$author$project$Stabel$Wasm$Indent(
+						A2($elm$core$List$map, $author$project$Stabel$Wasm$formatInstruction, insList)),
+						$author$project$Stabel$Wasm$Str(')')
+					]));
+		case 2:
+			var insList = ins.a;
+			return $author$project$Stabel$Wasm$BatchFormat(
+				_List_fromArray(
+					[
+						$author$project$Stabel$Wasm$Str('(loop'),
+						$author$project$Stabel$Wasm$Indent(
+						A2($elm$core$List$map, $author$project$Stabel$Wasm$formatInstruction, insList)),
+						$author$project$Stabel$Wasm$Str(')')
+					]));
+		case 3:
+			var num = ins.a;
+			return $author$project$Stabel$Wasm$Str(
+				'(br ' + ($elm$core$String$fromInt(num) + ')'));
+		case 4:
+			var num = ins.a;
+			return $author$project$Stabel$Wasm$Str(
+				'(br_if ' + ($elm$core$String$fromInt(num) + ')'));
+		case 5:
+			return $author$project$Stabel$Wasm$Str('return');
+		case 6:
+			var id = ins.a;
+			var fnName = ins.b;
+			return $author$project$Stabel$Wasm$Str(
+				'(call ' + ($elm$core$String$fromInt(id) + (') ;; $' + fnName)));
+		case 7:
+			return $author$project$Stabel$Wasm$Str('call_indirect');
+		case 8:
+			var idx = ins.a;
+			return $author$project$Stabel$Wasm$Str(
+				'(local.get ' + ($elm$core$String$fromInt(idx) + ')'));
+		case 9:
+			var idx = ins.a;
+			return $author$project$Stabel$Wasm$Str(
+				'(local.set ' + ($elm$core$String$fromInt(idx) + ')'));
+		case 10:
+			var idx = ins.a;
+			return $author$project$Stabel$Wasm$Str(
+				'(local.tee ' + ($elm$core$String$fromInt(idx) + ')'));
+		case 11:
+			var num = ins.a;
+			return $author$project$Stabel$Wasm$Str(
+				'(i32.const ' + ($elm$core$String$fromInt(num) + ')'));
+		case 12:
+			return $author$project$Stabel$Wasm$Str('i32.add');
+		case 13:
+			return $author$project$Stabel$Wasm$Str('i32.sub');
+		case 14:
+			return $author$project$Stabel$Wasm$Str('i32.mul');
+		case 15:
+			return $author$project$Stabel$Wasm$Str('i32.div_s');
+		case 16:
+			return $author$project$Stabel$Wasm$Str('i32.eq');
+		case 17:
+			return $author$project$Stabel$Wasm$Str('i32.ne');
+		case 18:
+			return $author$project$Stabel$Wasm$Str('i32.eqz');
+		case 19:
+			return $author$project$Stabel$Wasm$Str('i32.store');
+		case 20:
+			return $author$project$Stabel$Wasm$Str('i32.load');
+		case 21:
+			return $author$project$Stabel$Wasm$Str('drop');
+		case 22:
+			return $author$project$Stabel$Wasm$Str('unreachable');
+		default:
+			var comment = ins.a;
+			var inst = ins.b;
+			var _v1 = $author$project$Stabel$Wasm$formatInstruction(inst);
+			switch (_v1.$) {
+				case 0:
+					var val = _v1.a;
+					return $author$project$Stabel$Wasm$Str(val + (';; ' + comment));
+				case 2:
+					var batch = _v1.a;
+					return $author$project$Stabel$Wasm$BatchFormat(
 						A2(
-							$elm$core$List$map,
-							function ($) {
-								return $.name;
-							},
-							module_.functions));
-					return _Debug_todo(
-						'Wasm',
-						{
-							start: {line: 365, column: 21},
-							end: {line: 365, column: 31}
-						})('Did not expect this');
-				}
-			case 'CallIndirect':
-				return $author$project$Wasm$Str('call_indirect');
-			case 'FunctionIndex':
-				var word = ins.a;
-				var _v4 = A2(
-					$elm_community$list_extra$List$Extra$findIndex,
-					function (f) {
-						return _Utils_eq(f.name, word);
-					},
-					module_.functions);
-				if (_v4.$ === 'Just') {
-					var idx = _v4.a;
-					var _v5 = A2(
-						$elm_community$list_extra$List$Extra$findIndex,
-						$elm$core$Basics$eq(idx),
-						module_.quotables);
-					if (_v5.$ === 'Just') {
-						var quoteIdx = _v5.a;
-						return $author$project$Wasm$BatchFormat(
-							_List_fromArray(
-								[
-									$author$project$Wasm$Str(
-									'(i32.const ' + ($elm$core$String$fromInt(quoteIdx) + (') ;; $' + word))),
-									$author$project$Wasm$Str('(call $__stack_push)')
-								]));
-					} else {
-						return _Debug_todo(
-							'Wasm',
-							{
-								start: {line: 381, column: 29},
-								end: {line: 381, column: 39}
-							})('Did not expect this');
-					}
-				} else {
-					return _Debug_todo(
-						'Wasm',
-						{
-							start: {line: 384, column: 21},
-							end: {line: 384, column: 31}
-						})('Did not expect this');
-				}
-			case 'Local_Get':
-				var idx = ins.a;
-				return $author$project$Wasm$Str(
-					'(local.get ' + ($elm$core$String$fromInt(idx) + ')'));
-			case 'Local_Set':
-				var idx = ins.a;
-				return $author$project$Wasm$Str(
-					'(local.set ' + ($elm$core$String$fromInt(idx) + ')'));
-			case 'Local_Tee':
-				var idx = ins.a;
-				return $author$project$Wasm$Str(
-					'(local.tee ' + ($elm$core$String$fromInt(idx) + ')'));
-			case 'I32_Const':
-				var num = ins.a;
-				return $author$project$Wasm$Str(
-					'(i32.const ' + ($elm$core$String$fromInt(num) + ')'));
-			case 'I32_Add':
-				return $author$project$Wasm$Str('i32.add');
-			case 'I32_Sub':
-				return $author$project$Wasm$Str('i32.sub');
-			case 'I32_Mul':
-				return $author$project$Wasm$Str('i32.mul');
-			case 'I32_Div':
-				return $author$project$Wasm$Str('i32.div_s');
-			case 'I32_Eq':
-				return $author$project$Wasm$Str('i32.eq');
-			case 'I32_NotEq':
-				return $author$project$Wasm$Str('i32.ne');
-			case 'I32_EqZero':
-				return $author$project$Wasm$Str('i32.eqz');
-			case 'I32_Store':
-				return $author$project$Wasm$Str('i32.store');
-			case 'I32_Load':
-				return $author$project$Wasm$Str('i32.load');
-			default:
-				return $author$project$Wasm$Str('drop');
-		}
-	});
+							$elm$core$List$cons,
+							$author$project$Stabel$Wasm$Str(';; ' + comment),
+							batch));
+				default:
+					var batch = _v1.a;
+					return $author$project$Stabel$Wasm$Indent(
+						A2(
+							$elm$core$List$cons,
+							$author$project$Stabel$Wasm$Str(';; ' + comment),
+							batch));
+			}
+	}
+};
 var $elm$core$String$replace = F3(
 	function (before, after, string) {
 		return A2(
@@ -13336,38 +14265,34 @@ var $elm$core$String$replace = F3(
 			after,
 			A2($elm$core$String$split, before, string));
 	});
-var $author$project$Wasm$typeToString = function (type_) {
+var $author$project$Stabel$Wasm$typeToString = function (_v0) {
 	return 'i32';
 };
-var $author$project$Wasm$formatFunction = F2(
-	function (module_, _function) {
-		var locals = $elm$core$List$isEmpty(_function.locals) ? '' : ('(local ' + (A2(
-			$elm$core$String$join,
-			' ',
-			A2($elm$core$List$map, $author$project$Wasm$typeToString, _function.locals)) + ')'));
-		var fullFuncDef = A2(
-			$elm$core$String$join,
-			' ',
-			_List_fromArray(
-				[
-					'(func',
-					'$' + A3($elm$core$String$replace, ',', '__COMMA__', _function.name),
-					'(type ' + ($elm$core$String$fromInt(_function.typeSignatureIndex) + ')'),
-					locals
-				]));
-		return _List_fromArray(
+var $author$project$Stabel$Wasm$formatFunction = function (_function) {
+	var locals = $elm$core$List$isEmpty(_function.bq) ? '' : ('(local ' + (A2(
+		$elm$core$String$join,
+		' ',
+		A2($elm$core$List$map, $author$project$Stabel$Wasm$typeToString, _function.bq)) + ')'));
+	var fullFuncDef = A2(
+		$elm$core$String$join,
+		' ',
+		_List_fromArray(
 			[
-				$author$project$Wasm$Str(fullFuncDef),
-				$author$project$Wasm$Indent(
-				A2(
-					$elm$core$List$map,
-					$author$project$Wasm$formatInstruction(module_),
-					_function.instructions)),
-				$author$project$Wasm$Str(')')
-			]);
-	});
-var $author$project$Wasm$moduleTypeToString = function (moduleType) {
-	if (moduleType.b.$ === 'Nothing') {
+				'(func',
+				'$' + A3($elm$core$String$replace, ',', '__COMMA__', _function.m),
+				'(type ' + ($elm$core$String$fromInt(_function.ay) + ')'),
+				locals
+			]));
+	return _List_fromArray(
+		[
+			$author$project$Stabel$Wasm$Str(fullFuncDef),
+			$author$project$Stabel$Wasm$Indent(
+			A2($elm$core$List$map, $author$project$Stabel$Wasm$formatInstruction, _function.bn)),
+			$author$project$Stabel$Wasm$Str(')')
+		]);
+};
+var $author$project$Stabel$Wasm$moduleTypeToString = function (moduleType) {
+	if (moduleType.b.$ === 1) {
 		var lower = moduleType.a;
 		var _v1 = moduleType.b;
 		return '(memory ' + ($elm$core$String$fromInt(lower) + ')');
@@ -13377,28 +14302,24 @@ var $author$project$Wasm$moduleTypeToString = function (moduleType) {
 		return '(memory ' + ($elm$core$String$fromInt(lower) + (' ' + ($elm$core$String$fromInt(upper) + ')')));
 	}
 };
-var $author$project$Wasm$formatImports = function (importType) {
-	return _List_fromArray(
-		[
-			$author$project$Wasm$Str(
-			'(import \"' + (importType.moduleName + ('\" \"' + (importType.entityName + ('\" ' + ($author$project$Wasm$moduleTypeToString(importType.type_) + ')'))))))
-		]);
+var $author$project$Stabel$Wasm$formatImport = function (importType) {
+	return $author$project$Stabel$Wasm$Str(
+		'(import \"' + (importType.ar + ('\" \"' + (importType.an + ('\" ' + ($author$project$Stabel$Wasm$moduleTypeToString(importType.V) + ')'))))));
 };
-var $author$project$Wasm$formatStartFunction = function (maybeStartFunction) {
-	if (maybeStartFunction.$ === 'Nothing') {
-		return $author$project$Wasm$Str('');
+var $author$project$Stabel$Wasm$formatStartFunction = function (maybeStartFunction) {
+	if (maybeStartFunction.$ === 1) {
+		return $author$project$Stabel$Wasm$Str('');
 	} else {
 		var idx = maybeStartFunction.a;
-		return $author$project$Wasm$Indent(
+		return $author$project$Stabel$Wasm$Indent(
 			_List_fromArray(
 				[
-					$author$project$Wasm$Str(
+					$author$project$Stabel$Wasm$Str(
 					'(start ' + ($elm$core$String$fromInt(idx) + ')'))
 				]));
 	}
 };
-var $author$project$Wasm$formatTable = function (_v0) {
-	var module_ = _v0.a;
+var $author$project$Stabel$Wasm$formatTable = function (references) {
 	var tableDef = A2(
 		$elm$core$String$join,
 		' ',
@@ -13406,7 +14327,7 @@ var $author$project$Wasm$formatTable = function (_v0) {
 			[
 				'(table',
 				$elm$core$String$fromInt(
-				$elm$core$List$length(module_.quotables)),
+				$elm$core$List$length(references)),
 				'funcref)'
 			]));
 	var elemDef = A2(
@@ -13419,29 +14340,24 @@ var $author$project$Wasm$formatTable = function (_v0) {
 				A2(
 				$elm$core$String$join,
 				' ',
-				A2(
-					$elm$core$List$map,
-					function (funcIdx) {
-						return $elm$core$String$fromInt(funcIdx);
-					},
-					module_.quotables)),
+				A2($elm$core$List$map, $elm$core$String$fromInt, references)),
 				')'
 			]));
 	return _List_fromArray(
 		[
-			$author$project$Wasm$Str(tableDef),
-			$author$project$Wasm$Str(elemDef)
+			$author$project$Stabel$Wasm$Str(tableDef),
+			$author$project$Stabel$Wasm$Str(elemDef)
 		]);
 };
-var $author$project$Wasm$formatTypeSignature = function (typeSignature) {
-	var results = $elm$core$List$isEmpty(typeSignature.outputs) ? '' : ('(result ' + (A2(
+var $author$project$Stabel$Wasm$formatTypeSignature = function (typeSignature) {
+	var results = $elm$core$List$isEmpty(typeSignature.af) ? '' : ('(result ' + (A2(
 		$elm$core$String$join,
 		' ',
-		A2($elm$core$List$map, $author$project$Wasm$typeToString, typeSignature.outputs)) + ')'));
-	var inputs = $elm$core$List$isEmpty(typeSignature.inputs) ? '' : ('(param ' + (A2(
+		A2($elm$core$List$map, $author$project$Stabel$Wasm$typeToString, typeSignature.af)) + ')'));
+	var inputs = $elm$core$List$isEmpty(typeSignature.ac) ? '' : ('(param ' + (A2(
 		$elm$core$String$join,
 		' ',
-		A2($elm$core$List$map, $author$project$Wasm$typeToString, typeSignature.inputs)) + ')'));
+		A2($elm$core$List$map, $author$project$Stabel$Wasm$typeToString, typeSignature.ac)) + ')'));
 	var formattedSignature = A2(
 		$elm$core$String$join,
 		' ',
@@ -13452,11 +14368,11 @@ var $author$project$Wasm$formatTypeSignature = function (typeSignature) {
 				['(type', '(func', inputs, results, '))'])));
 	return _List_fromArray(
 		[
-			$author$project$Wasm$Str(formattedSignature)
+			$author$project$Stabel$Wasm$Str(formattedSignature)
 		]);
 };
-var $author$project$Wasm$toString = function (fullModule) {
-	var module_ = fullModule.a;
+var $author$project$Stabel$Wasm$toString = function (_v0) {
+	var module_ = _v0;
 	return A2(
 		$elm$core$String$join,
 		'\n',
@@ -13465,54 +14381,158 @@ var $author$project$Wasm$toString = function (fullModule) {
 			A2($elm$core$Basics$composeL, $elm$core$Basics$not, $elm$core$String$isEmpty),
 			A2(
 				$elm$core$List$map,
-				$author$project$Wasm$format,
+				$author$project$Stabel$Wasm$format,
 				_List_fromArray(
 					[
-						$author$project$Wasm$Str('(module'),
-						$author$project$Wasm$Indent(
-						A2($elm$core$List$concatMap, $author$project$Wasm$formatImports, module_.imports)),
-						$author$project$Wasm$Indent(
-						A2($elm$core$List$concatMap, $author$project$Wasm$formatTypeSignature, module_.typeSignatures)),
-						$author$project$Wasm$Indent(
-						$author$project$Wasm$formatTable(fullModule)),
-						$author$project$Wasm$Indent(
+						$author$project$Stabel$Wasm$Str('(module'),
+						$author$project$Stabel$Wasm$Indent(
+						A2($elm$core$List$map, $author$project$Stabel$Wasm$formatImport, module_.t)),
+						$author$project$Stabel$Wasm$Indent(
+						A2($elm$core$List$concatMap, $author$project$Stabel$Wasm$formatTypeSignature, module_.M)),
+						$author$project$Stabel$Wasm$Indent(
+						$author$project$Stabel$Wasm$formatTable(module_.bF)),
+						$author$project$Stabel$Wasm$Indent(
 						A2(
 							$elm$core$List$concatMap,
-							$author$project$Wasm$formatFunction(fullModule),
-							module_.functions)),
-						$author$project$Wasm$Indent(
-						A2(
-							$elm$core$List$concatMap,
-							$author$project$Wasm$formatExport(fullModule),
-							module_.exports)),
-						$author$project$Wasm$formatStartFunction(module_.start),
-						$author$project$Wasm$Str(')')
+							$author$project$Stabel$Wasm$formatFunction,
+							A2(
+								$elm$core$List$sortBy,
+								function ($) {
+									return $.bk;
+								},
+								module_.bj))),
+						$author$project$Stabel$Wasm$Indent(
+						A2($elm$core$List$map, $author$project$Stabel$Wasm$formatExport, module_.ao)),
+						$author$project$Stabel$Wasm$formatStartFunction(module_.bJ),
+						$author$project$Stabel$Wasm$Str(')')
 					]))));
 };
-var $author$project$TestCompiler$update = F2(
-	function (msg, _v0) {
-		var _v2 = msg.a;
-		var entry = _v2.a;
-		var sourceCode = _v2.b;
-		var _v3 = A2($author$project$TestCompiler$compile, entry, sourceCode);
-		if (_v3.$ === 'Ok') {
-			var wasm = _v3.a;
-			return _Utils_Tuple2(
-				_Utils_Tuple0,
-				$author$project$TestCompiler$compileFinished(
-					_Utils_Tuple2(
-						true,
-						$author$project$Wasm$toString(wasm))));
-		} else {
-			var errmsg = _v3.a;
-			return _Utils_Tuple2(
-				_Utils_Tuple0,
-				$author$project$TestCompiler$compileFinished(
-					_Utils_Tuple2(false, 'Compilation failed:\n\n' + errmsg)));
-		}
+var $author$project$TestCompiler$compileSucceded = function (wasm) {
+	return $author$project$TestCompiler$compileFinished(
+		_Utils_Tuple2(
+			true,
+			$author$project$Stabel$Wasm$toString(wasm)));
+};
+var $elm$json$Json$Decode$decodeValue = _Json_run;
+var $elm$json$Json$Decode$andThen = _Json_andThen;
+var $author$project$TestCompiler$CompileProject = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$TestCompiler$CompileProjectOpts = F2(
+	function (entryPoint, modules) {
+		return {Y: entryPoint, as: modules};
 	});
+var $elm$json$Json$Decode$field = _Json_decodeField;
+var $elm$json$Json$Decode$list = _Json_decodeList;
+var $elm$json$Json$Decode$map = _Json_map1;
+var $elm$json$Json$Decode$map2 = _Json_map2;
+var $author$project$TestCompiler$ModuleSource = F3(
+	function (_package, modulePath, source) {
+		return {aR: modulePath, ah: _package, bI: source};
+	});
+var $elm$json$Json$Decode$map3 = _Json_map3;
+var $elm$json$Json$Decode$string = _Json_decodeString;
+var $author$project$TestCompiler$moduleSourceDecoder = A4(
+	$elm$json$Json$Decode$map3,
+	$author$project$TestCompiler$ModuleSource,
+	A2($elm$json$Json$Decode$field, 'package', $elm$json$Json$Decode$string),
+	A2($elm$json$Json$Decode$field, 'module', $elm$json$Json$Decode$string),
+	A2($elm$json$Json$Decode$field, 'source', $elm$json$Json$Decode$string));
+var $author$project$TestCompiler$compileProjectOptsDecoder = A2(
+	$elm$json$Json$Decode$map,
+	$author$project$TestCompiler$CompileProject,
+	A3(
+		$elm$json$Json$Decode$map2,
+		$author$project$TestCompiler$CompileProjectOpts,
+		A2($elm$json$Json$Decode$field, 'entryPoint', $elm$json$Json$Decode$string),
+		A2(
+			$elm$json$Json$Decode$field,
+			'modules',
+			$elm$json$Json$Decode$list($author$project$TestCompiler$moduleSourceDecoder))));
+var $author$project$TestCompiler$CompileString = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$TestCompiler$CompileStringOpts = F2(
+	function (entryPoint, sourceCode) {
+		return {Y: entryPoint, T: sourceCode};
+	});
+var $author$project$TestCompiler$compileStringOptsDecoder = A2(
+	$elm$json$Json$Decode$map,
+	$author$project$TestCompiler$CompileString,
+	A3(
+		$elm$json$Json$Decode$map2,
+		$author$project$TestCompiler$CompileStringOpts,
+		A2($elm$json$Json$Decode$field, 'entryPoint', $elm$json$Json$Decode$string),
+		A2($elm$json$Json$Decode$field, 'sourceCode', $elm$json$Json$Decode$string)));
+var $elm$json$Json$Decode$fail = _Json_fail;
+var $elm$core$String$toUpper = _String_toUpper;
+var $author$project$TestCompiler$inputDecoder = function () {
+	var specializedDecoder = function (type_) {
+		var _v0 = $elm$core$String$toUpper(type_);
+		switch (_v0) {
+			case 'COMPILESTRING':
+				return $author$project$TestCompiler$compileStringOptsDecoder;
+			case 'COMPILEPROJECT':
+				return $author$project$TestCompiler$compileProjectOptsDecoder;
+			default:
+				return $elm$json$Json$Decode$fail('Unknown compilation mode: ' + type_);
+		}
+	};
+	return A2(
+		$elm$json$Json$Decode$andThen,
+		specializedDecoder,
+		A2($elm$json$Json$Decode$field, '__type', $elm$json$Json$Decode$string));
+}();
+var $author$project$TestCompiler$decodeInput = function (json) {
+	return A2($elm$json$Json$Decode$decodeValue, $author$project$TestCompiler$inputDecoder, json);
+};
+var $author$project$TestCompiler$init = function (input) {
+	var _v0 = $author$project$TestCompiler$decodeInput(input);
+	if (_v0.$ === 1) {
+		var err = _v0.a;
+		return $author$project$TestCompiler$compileFailed(
+			'Something is wrong with the input: ' + $elm$json$Json$Decode$errorToString(err));
+	} else {
+		if (!_v0.a.$) {
+			var opts = _v0.a.a;
+			var _v1 = $author$project$TestCompiler$compileString(opts);
+			if (!_v1.$) {
+				var wasm = _v1.a;
+				return $author$project$TestCompiler$compileSucceded(wasm);
+			} else {
+				var errmsg = _v1.a;
+				return $author$project$TestCompiler$compileFailed(errmsg);
+			}
+		} else {
+			var opts = _v0.a.a;
+			var _v2 = $author$project$TestCompiler$compileProject(opts);
+			if (!_v2.$) {
+				var wasm = _v2.a;
+				return $author$project$TestCompiler$compileSucceded(wasm);
+			} else {
+				var errmsg = _v2.a;
+				return $author$project$TestCompiler$compileFailed(errmsg);
+			}
+		}
+	}
+};
+var $elm$core$Platform$Cmd$batch = _Platform_batch;
+var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
+var $elm$core$Platform$Sub$batch = _Platform_batch;
+var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
+var $elm$json$Json$Decode$value = _Json_decodeValue;
 var $elm$core$Platform$worker = _Platform_worker;
 var $author$project$TestCompiler$main = $elm$core$Platform$worker(
-	{init: $author$project$TestCompiler$init, subscriptions: $author$project$TestCompiler$subscriptions, update: $author$project$TestCompiler$update});
-_Platform_export({'TestCompiler':{'init':$author$project$TestCompiler$main(
-	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
+	{
+		bm: function (input) {
+			return _Utils_Tuple2(
+				0,
+				$author$project$TestCompiler$init(input));
+		},
+		bL: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		bP: F2(
+			function (_v0, _v1) {
+				return _Utils_Tuple2(0, $elm$core$Platform$Cmd$none);
+			})
+	});
+_Platform_export({'TestCompiler':{'init':$author$project$TestCompiler$main($elm$json$Json$Decode$value)(0)}});}(this));
