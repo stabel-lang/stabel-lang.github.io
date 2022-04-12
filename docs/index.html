@@ -1,0 +1,17 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="A pure, concatenative programming language which compiles to WebAssembly."><title>Stabel</title><link rel="stylesheet" href="/src.71dbfa9c.css"><link rel="icon shortcut" href="/favicon.a34ee4a6.ico"></head><body> <header> <div id="header-content"> <nav> <h1> <span class="big">Stabel</span> <span class="small">v0.2.1-alpha</span> </h1> <ul> <li><a title="Access the source code" href="https://www.github.com/stabel-lang">Source</a></li> </ul> </nav> <div id="title"> <img alt="Stabel" src="/logo.edaf0009.png"> <div> <h2>Small Safe Portable</h2> <div id="title-links"> <a class="link-button" alt="Try Stabel" href="/playground.html"> Playground </a> </div> </div> </div> </div> </header> <main> <h3>Minimal, yet flexible</h3> <p>The syntax and semantics of Stabel uses reverse polish notation, meaning the function name comes <em>after</em> its arguments. This frees the syntax of many control characters while the semantics consist of a few, but powerful, rules.</p> <pre class="right shell">
+                def: main
+                : 2 increment 
+
+                def: increment
+                : 1 +
+            </pre> <p>Code in Stabel consists of whitespace-separated functions which are called in a left-to-right fashion. The return value, or values, of a function call serve as the input arguments for the next function call. Numbers are functions which return themselves. This is known as concatenative programming.</p> <h3>Easy to reason about</h3> <p>A strong, static type system helps you prevent bugs and document your code. Errors and IO are represented in the type system, so that forgetting to deal with a certain error condition is caught at compile time. All data structures in Stabel are also immutable, which greatly reduces the number of states your program can be in, which again makes your code easy to reason about.</p> <pre class="left shell">
+                Compilation failed:
+
+                9 | def: some-word
+                10| type: -- Bool
+                11| : 1
+
+                The type of 'some-word' is specified to be  -- Bool
+
+                However, it seems that the actual type is:  -- Int
+            </pre> <h3>Portable</h3> <p>Your code can run on the command line, on a server or even in the browser. Stabel is compiled to WebAssembly, so you're sure to enjoy the same semantics wherever your code is executed.</p> <h3 class="clear">In Alpha</h3> <p>Stabel is still in early development. There are currently no strings, arrays or even garbage collection. All of this will come in time. For more information, take a look at the <a alt="Read the roadmap" href="https://fossils.stabel-lang.org/compiler/wiki?name=roadmap">roadmap</a>.</p> </main> <footer> <ul> <li>© 2020-2021 Robin Heggelund Hansen</li> </ul> </footer> </body></html>

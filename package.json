@@ -2,7 +2,7 @@
   "name": "playground",
   "version": "1.0.0",
   "private": true,
-  "description": "A playground for the Play programming language",
+  "description": "A playground for the Stabel programming language",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --no-source-maps",
